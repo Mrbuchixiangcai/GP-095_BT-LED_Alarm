@@ -1,0 +1,72 @@
+C51 COMPILER V9.00   LED_MODE                                                              11/06/2018 12:13:27 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE LED_MODE
+OBJECT MODULE PLACED IN .\Objects\LED_mode.obj
+COMPILER INVOKED BY: D:\ProgramFiles\Keil_v5\C51\BIN\C51.EXE App_User\Source\LED_mode.c OPTIMIZE(8,SPEED) BROWSE INCDIR(
+                    -.\Device;.\App_User\Include) DEBUG OBJECTEXTEND PRINT(.\Listings\LED_mode.lst) OBJECT(.\Objects\LED_mode.obj)
+
+line level    source
+
+   1          /*******************/
+   2          /*头文件header file*/
+   3          /*******************/
+   4          #include "app_main.h"
+   5          
+   6          /************************/
+   7          /*宏定义macro definition*/
+   8          /************************/
+   9          
+  10          /*************************/
+  11          /*类型定义byte definition*/
+  12          /*************************/
+  13          LED_BRIGHTNESS  TYPE_LED_Brightness;
+  14          /****************************/
+  15          /*标志位定义flags definetion*/
+  16          /****************************/
+  17          
+  18          /*****************************/
+  19          /*变量定义variable definition*/
+  20          /*****************************/
+  21          //uint8_t  displaySecond; //判断此变量的值，通过LED显示出来，也可以直接对此变量进行设置
+  22          //uint8_t  displayMinute;
+  23          //uint8_t  displayHour;
+  24          uint8_t  ledBrightness;//LED显示的亮度
+  25          uint8_t  alarmMinute;//判断此变量的值，通过LED显示出来，也可以直接对此变量进行设置
+  26          uint8_t  alarmHour;
+  27          uint8_t  tempAlarmMinute;//因为设置闹钟有个确认设置(虽然作用不大),所以需要有个临时变量作为中间值，等
+  28          uint8_t  tempAlarmHour;  //到缺人设置或者30s后自动确认再把tempXxx这几个变量赋给闹钟的最后设定时间
+  29          
+  30          /**************************/
+  31          /*数组定义array definition*/
+  32          /**************************/
+  33          
+  34          /******************************/
+  35          /*函数声明Function declaration*/
+  36          /******************************/
+  37          
+  38          /*****************************/
+  39          /*函数定义function definetion*/
+  40          /*****************************/
+  41          
+  42          
+  43          
+  44          
+  45          
+  46          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6    ----
+C51 COMPILER V9.00   LED_MODE                                                              11/06/2018 12:13:27 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

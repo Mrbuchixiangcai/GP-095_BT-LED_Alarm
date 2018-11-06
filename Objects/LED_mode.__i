@@ -1,0 +1,1 @@
+"App_User\Source\LED_mode.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Device;.\App_User\Include) DEBUG OBJECTEXTEND PRINT(.\Listings\LED_mode.lst) OBJECT(.\Objects\LED_mode.obj)

@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\GP-095_BT-LED_Alarm" 
+PRINT(".\Listings\GP-095_BT-LED_Alarm.m51") RAMSIZE(256) 

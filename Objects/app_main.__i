@@ -1,0 +1,1 @@
+"App_User\Source\app_main.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Device;.\App_User\Include) DEBUG OBJECTEXTEND PRINT(.\Listings\app_main.lst) OBJECT(.\Objects\app_main.obj)

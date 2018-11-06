@@ -1,0 +1,305 @@
+C51 COMPILER V9.00   MAIN                                                                  11/06/2018 12:14:39 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\ProgramFiles\Keil_v5\C51\BIN\C51.EXE Device\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Device;.\Ap
+                    -p_User\Include) DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          //======================================================
+   2          // Main program routine
+   3          // - Device name  : MC96F6508A
+   4          // - Package type : 52LQFP
+   5          //======================================================
+   6          // For XDATA variable : V1.041.00 ~
+   7          #define         MAIN    1
+   8          
+   9          // Generated    : Mon, Nov 05, 2018 (15:44:40)
+  10          #include        "MC96F6508A.h"
+  11          #include        "func_def.h"
+  12          #include    "app_main.h"
+  13          
+  14          void main()
+  15          {
+  16   1              cli();                  // disable INT. during peripheral setting
+  17   1              port_init();            // initialize ports
+  18   1              clock_init();           // initialize operation clock
+  19   1              KeyINT_init();          // initialize KEY interrupt
+  20   1              LCD_init();             // initialize LCD
+  21   1              Timer0_init();          // initialize Timer0
+  22   1              Timer3_init();          // initialize Timer3
+  23   1              UART_init();            // initialize UART interface
+  24   1              WDT_init();             // initialize Watch-dog timer
+  25   1              WT_init();              // initialize Watch timer
+  26   1              sei();                  // enable INT.
+  27   1              
+  28   1              // TODO: add your main code here
+  29   1              app_main();
+  30   1              while(1);
+  31   1      }
+  32          
+  33          //======================================================
+  34          // interrupt routines
+  35          //======================================================
+  36          
+  37          void INT_UART_Rx() interrupt 9
+  38          {
+  39   1              // UART Rx interrupt
+  40   1              // TODO: add your code here
+  41   1      }
+  42          
+  43          void INT_UART_Tx() interrupt 10
+  44          {
+  45   1              // UART Tx interrupt
+  46   1              // TODO: add your code here
+  47   1      }
+  48          
+  49          void INT_Timer0() interrupt 13
+  50          {
+  51   1              // Timer0 interrupt
+  52   1              // TODO: add your code here
+  53   1              Sys_Tick();
+  54   1      }
+C51 COMPILER V9.00   MAIN                                                                  11/06/2018 12:14:39 PAGE 2   
+
+  55          
+  56          void INT_WT() interrupt 20
+  57          {
+  58   1              // Watch timer interrupt
+  59   1              // TODO: add your code here
+  60   1              //这里变量gbHalfSecong的意思为半秒，是因为这个函数中断一次为0.5秒，
+  61   1              gbHalfSecong=(!gbHalfSecong);
+  62   1              if(gbHalfSecong)
+  63   1              {
+  64   2                      if(++gRTC_Sec>59)
+  65   2                      {
+  66   3                              gRTC_Sec=0;
+  67   3                              if(++gRTC_Minute>59)
+  68   3                              {
+  69   4                                      gRTC_Minute=0;
+  70   4                                      if(++gRTC_Hour>23)
+  71   4                                      {
+  72   5                                              gRTC_Hour=0;
+  73   5                                              gRTC_Week<<=1;
+  74   5                                              if(gRTC_Week==0x80)//如果移位之后等于0x80，说明是第8次移位，这时候就是
+  75   5                                                      gRTC_Week=0x01;//周一，所以赋值为0x01。
+  76   5                                      }
+  77   4                              }
+  78   3                      }
+  79   2              }
+  80   1      }
+  81          
+  82          //======================================================
+  83          // peripheral setting routines
+  84          //======================================================
+  85          
+  86          unsigned char UART_read()
+  87          {
+  88   1              unsigned char dat;
+  89   1              
+  90   1              while(!(UARTST & 0x20));        // wait
+  91   1              dat = UARTDR;           // read
+  92   1              return  dat;
+  93   1      }
+  94          
+  95          void KeyINT_init()
+  96          {
+  97   1              // initialize KEY interrupt
+  98   1              KPOL1 = 0x05;           // edge : KEY INT.7~4
+  99   1              KPOL0 = 0x55;           // edge : KEY INT.3~0
+ 100   1      }
+ 101          
+ 102          void LCD_init()
+ 103          {
+ 104   1              // initialize LCD
+ 105   1              // Frame freq. = 16.000000Hz
+ 106   1              LCDCRH = 0x00;          // LCD control High
+ 107   1              LCDCRL = 0x00;          // LCD control Low
+ 108   1              LCDCCR = 0x00;          // LCD Contrast control
+ 109   1      }
+ 110          
+ 111          void Timer0_init()
+ 112          {
+ 113   1              // initialize Timer0
+ 114   1              // 8bit timer, period = 1.008000mS
+ 115   1              T0CR = 0x92;            // timer setting
+ 116   1              T0DR = 0x7D;            // period count
+C51 COMPILER V9.00   MAIN                                                                  11/06/2018 12:14:39 PAGE 3   
+
+ 117   1              IE2 |= 0x02;            // Enable Timer0 interrupt
+ 118   1              T0CR |= 0x01;           // clear counter
+ 119   1      }
+ 120          
+ 121          void Timer3_init()
+ 122          {
+ 123   1              // initialize Timer3
+ 124   1              // 8bit timer, period = 0.050000mS
+ 125   1              T3DR = 0x18;            // period count
+ 126   1              T3CR = 0x8A;            // timer setting
+ 127   1              T3CR |= 0x01;           // clear counter
+ 128   1      }
+ 129          
+ 130          void UART_init()
+ 131          {
+ 132   1              // initialize UART interface
+ 133   1              // UART : 9615bps N 8 1
+ 134   1              UARTCR2 = 0x02;         // activate UART
+ 135   1              UARTCR1 = 0x06;         // bit count, parity
+ 136   1              UARTCR2 |= 0xEC;        // interrupt, speed
+ 137   1              UARTCR3 = 0x00;         // stop bit
+ 138   1              UARTBD = 0x67;          // baud rate
+ 139   1              IE1 |= 0x18;            // enable UART interrupt
+ 140   1      }
+ 141          
+ 142          void UART_write(unsigned char dat)
+ 143          {
+ 144   1              while(!(UARTST & 0x80));        // wait
+ 145   1              UARTDR = dat;           // write
+ 146   1      }
+ 147          
+ 148          void WDT_clear()
+ 149          {
+ 150   1              WDTCR |= 0x20;          // Clear Watch-dog timer
+ 151   1      }
+ 152          
+ 153          void WDT_init()
+ 154          {
+ 155   1              // initialize Watch-dog timer
+ 156   1              WDTDR = 0x01;           // period
+ 157   1              WDTCR = 0xC0;           // setting
+ 158   1              //WDTCR |= 0x02;        // Use WDTRC
+ 159   1              WDT_clear();
+ 160   1      }
+ 161          
+ 162          void WT_init()
+ 163          {
+ 164   1              // initialize Watch timer
+ 165   1              WTCR = 0x88;            // setting
+ 166   1              WTDR = 0x01;            // set duty
+ 167   1              WTDR = 0x81;            // clear WT
+ 168   1              IE3 |= 0x04;            // Enable WT interrupt
+ 169   1      }
+ 170          
+ 171          void clock_init()
+ 172          {
+ 173   1              // internal RC clock (16.000000MHz)
+ 174   1              OSCCR = 0x28;           // Set Int. OSC
+ 175   1              SCCR = 0x00;            // Use Int. OSC
+ 176   1      }
+ 177          
+ 178          void port_init()
+C51 COMPILER V9.00   MAIN                                                                  11/06/2018 12:14:39 PAGE 4   
+
+ 179          {
+ 180   1              // initialize ports
+ 181   1              //   1 : P13      in  
+ 182   1              //   2 : P14      out 
+ 183   1              //   3 : P15      out 
+ 184   1              //   8 : P60      out 
+ 185   1              //   9 : P61      out 
+ 186   1              //  11 : SXIN     out 
+ 187   1              //  12 : SXOUT    out 
+ 188   1              //  14 : P20      out 
+ 189   1              //  15 : P21      out 
+ 190   1              //  16 : P22      out 
+ 191   1              //  17 : P23      out 
+ 192   1              //  18 : P24      out 
+ 193   1              //  19 : P25      out 
+ 194   1              //  20 : P26      out 
+ 195   1              //  21 : P27      out 
+ 196   1              //  22 : P30      out 
+ 197   1              //  23 : P31      out 
+ 198   1              //  24 : P32      out 
+ 199   1              //  25 : P33      out 
+ 200   1              //  26 : P34      out 
+ 201   1              //  27 : P35      out 
+ 202   1              //  28 : P36      out 
+ 203   1              //  29 : P37      out 
+ 204   1              //  30 : P40      out 
+ 205   1              //  31 : P41      out 
+ 206   1              //  32 : P42      out 
+ 207   1              //  33 : P43      out 
+ 208   1              //  34 : P44      out 
+ 209   1              //  35 : P45      out 
+ 210   1              //  36 : P46      out 
+ 211   1              //  37 : P47      out 
+ 212   1              //  38 : P50      out 
+ 213   1              //  39 : P51      out 
+ 214   1              //  40 : P52      out 
+ 215   1              //  41 : P53      out BT_RED_OUTPUT
+ 216   1              //  42 : P54      out BT_RED_OUTPUT
+ 217   1              //  43 : P55      out BT_BLUE_INPUT
+ 218   1              //  44 : TXD      out 
+ 219   1              //  45 : RXD      in  
+ 220   1              //  46 : P00      in  
+ 221   1              //  47 : P01      out 
+ 222   1              //  48 : P02      out 
+ 223   1              //  49 : P03      out BT_RED_INPUT
+ 224   1              //  50 : P10      in  
+ 225   1              //  51 : P11      in  
+ 226   1              //  52 : P12      in  
+ 227   1              P0IO = 0xFE;            // direction
+ 228   1              P0PU = 0x00;            // pullup
+ 229   1              P0OD = 0x00;            // open drain
+ 230   1              P0DB = 0x00;            // bit7~6(debounce clock), bit1~0=P01~00 debounce
+ 231   1              P0   = 0x00;            // port initial value
+ 232   1      
+ 233   1              P1IO = 0xF0;            // direction
+ 234   1              P1PU = 0x3F;            // pullup
+ 235   1              P1OD = 0x00;            // open drain
+ 236   1              P1DB = 0x00;            // P17~10 debounce
+ 237   1              P1   = 0x00;            // port initial value
+ 238   1      
+ 239   1              P2IO = 0xFF;            // direction
+ 240   1              P2PU = 0xFF;            // pullup
+C51 COMPILER V9.00   MAIN                                                                  11/06/2018 12:14:39 PAGE 5   
+
+ 241   1              P2OD = 0x00;            // open drain
+ 242   1              P2   = 0x00;            // port initial value
+ 243   1      
+ 244   1              P3IO = 0xFF;            // direction
+ 245   1              P3PU = 0xFF;            // pullup
+ 246   1              P3OD = 0x00;            // open drain
+ 247   1              P3   = 0x00;            // port initial value
+ 248   1      
+ 249   1              P4IO = 0xFF;            // direction
+ 250   1              P4PU = 0xFF;            // pullup
+ 251   1              P4OD = 0x00;            // open drain
+ 252   1              P4   = 0x00;            // port initial value
+ 253   1      
+ 254   1              P5IO = 0x7F;            // direction
+ 255   1              P5PU = 0x00;            // pullup
+ 256   1              P5OD = 0x00;            // open drain
+ 257   1              P5   = 0x00;            // port initial value
+ 258   1      
+ 259   1              P6IO = 0xFF;            // direction
+ 260   1              P6PU = 0x01;            // pullup
+ 261   1              P6OD = 0x00;            // open drain
+ 262   1              P6   = 0x00;            // port initial value
+ 263   1      
+ 264   1              // Set port functions
+ 265   1              P0FSR = 0x00;           // P0 selection
+ 266   1              P2FSR = 0x00;           // P2 selection
+ 267   1              P3FSR = 0x00;           // P3 selection
+ 268   1              P4FSR = 0x00;           // P4 selection
+ 269   1              P5FSRH = 0x18;          // P5 selection High
+ 270   1              P5FSRL = 0x00;          // P5 selection Low
+ 271   1              P6FSR = 0x0C;           // P6 selection
+ 272   1      }
+ 273          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    365    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

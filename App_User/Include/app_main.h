@@ -15,7 +15,7 @@
 #include "MC96F6508A.h"
 #include "func_def.h"
 #include "led_mode.h"
-//#include "bt_mode.h"
+#include "bt_mode.h"
 #include "key_mode.h"
 
 /************************/
@@ -29,10 +29,10 @@ typedef enum
 {
 	PLAY_OFF = 0,
 	PLAY_JUST_POWER,//刚上电，全显2s和设置时间
+	PLAY_ALARM,
 	PLAY_IN_TIME,//走时模式
-	PLAY_ALARM  ,
-	PLAY_BT     ,
-	PLAY_TF_CARD,
+	PLAY_IN_TIME_BT     ,
+	//PLAY_IN_TIME_TF_CARD,
 }PLAY_MODE_TypeDef;
 
 typedef enum
@@ -43,13 +43,17 @@ typedef enum
 
 typedef struct
 {
-	uint8_t  Enable;	//闹钟总开关
-	uint8_t  Week;	
-	uint8_t  Hour;
-	uint8_t  Minute;	
-	uint8_t  Runing; 
+	uint8_t  enable;	//闹钟总开关
+	uint8_t  week;	
+	uint8_t  hour;  //判断此变量的值，通过LED显示出来，也可以直接对此变量进行设置
+	uint8_t  minute;//判断此变量的值，通过LED显示出来，也可以直接对此变量进行设置
+	uint8_t  tempHour;  //因为设置闹钟有个确认设置(虽然作用不大),所以需要有个临时变量作为中间值，等
+	uint8_t  tempMinute;//到缺人设置或者30s后自动确认再把tempXxx这几个变量赋给闹钟的最后设定时间
+	uint8_t  runing; 
 	uint8_t  cntTimer;	
-	ALARM_MODE_TypeDef Alarm_Mode;
+	uint8_t  Flag_Confirm_TimeCnt_30Sec;//短按ALARM键确认设置或不动作30s自动保存，(为1是确认闹钟设置标
+										//志位),为2是30s计时标志位，
+	ALARM_MODE_TypeDef  Alarm_Mode;
 }ALRAM_TypeDef;
 
 
@@ -87,8 +91,7 @@ extern ALRAM_TypeDef  TYPE_Alarm1;
 /************************************/
 /*外部调用_标志位定义flags definetion*/
 /************************************/
-extern bit  Flag_Alarm;  //为1为闹钟开启，为0则关闭
-extern bit  Flag_AlarmSet_Confirm_TimeCnt_30Sec;
+
 /*************************************/
 /*外部调用_变量定义variable definition*/
 /*************************************/
@@ -101,7 +104,7 @@ extern uint8_t  idata gRTC_Hour;
 extern uint8_t  idata gRTC_Hour_bk;
 extern uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
 extern uint8_t  idata gRTC_Week; 
-extern uint8_t  idata sys_volume;
+extern uint8_t  idata sys_Volume;
 extern uint16_t idata timeCnt_30Sec;
 /**********************************/
 /*外部调用_数组定义array definition*/

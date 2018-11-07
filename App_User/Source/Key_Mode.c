@@ -10,6 +10,7 @@
 /*************************/
 /*类型定义byte definition*/
 /*************************/
+FLAG_KEYSET_TypeDef  TYPE_Flag_KSet;//按键的功能设置标志
 
 /****************************/
 /*标志位定义flags definetion*/
@@ -55,8 +56,6 @@ uint8_t  KeyLastValue;//按键上一次的值
  * 口电平为(P1&0x0f)为0x0E(0000_1110),然后与0x0F(0000_1111)异或得到0x01(0000_0001),
  * 
  *******************************************************************************/
-uint8_t  triger;
-uint8_t  count;
 uint8_t  Matrix_Buttons(void)
  {
 	 uint8_t  readData1,readData2;
@@ -67,7 +66,7 @@ uint8_t  Matrix_Buttons(void)
 	 *功能："P1=0x2F(0010_1111)"先赋值给P1口，P15为1，P14为0，输入端(P10-P13)为1，然
 	 * 后再读P1口电平(P1&0x0F)，并把高四位都清0(P1&0x0F，假如这时候P10被按下，那读到
 	 * 的P1口电平为0x0E(0000_1110),然后与0x0F(0000_1111)异或得到0x01(0000_0001),
-	 * readData1的范围为1~4，keyValue的范围为1~8。
+	 * readData1的范围为1、2、4、8，keyValue的范围为1~8。
 	 *******************************************************************************/
 	 P1=0x2F;			
 	 readData1=(P1&0x0F)^0x0F;
@@ -79,10 +78,10 @@ uint8_t  Matrix_Buttons(void)
 		 case 2:
 			 keyValue=2; //VOL+
 			 break;
-		 case 3:
+		 case 4:
 			 keyValue=3; //TIME-DIM
 			 break;
-		 case 4:
+		 case 8:
 			 keyValue=4; //NEXT
 			 break;
 		 default:
@@ -92,7 +91,7 @@ uint8_t  Matrix_Buttons(void)
 	 *功能："P1=0x1F(0001_1111)"先赋值给P1口，P15为0，P14为1，输入端(P10-P13)为1，然
 	 * 后再读P1口电平(P1&0x0F)，并把高四位都清0(P1&0x0F，假如这时候P11被按下，那读到
 	 * 的P1口电平为0x0D(0000_1101),然后与0x0F(0000_1111)异或得到0x02(0000_0010),
-	 * readData2的范围为1~4，keyValue的范围为1~8。
+	 * readData2的范围为1、2、4、8，keyValue的范围为1~8。
 	 *******************************************************************************/
 	 P1=0x1F;
 	 readData2=(P1&0x0F)^0x0F;
@@ -104,10 +103,10 @@ uint8_t  Matrix_Buttons(void)
 		 case 2:
 			 keyValue=6; //VOL-
 			 break;
-		 case 3:
+		 case 4:
 			 keyValue=7; //BT
 			 break;
-		 case 4:
+		 case 8:
 			 keyValue=8; //PREV
 			 break;
 		 default:
@@ -278,71 +277,244 @@ void KeyComMsg(void)
 				break;
 			}
 			case KU(K_VOLINC): //短按//音量加 
-			{
-				//短按“VOL+/NEXT”键，小时递增，
-				//短按“VOL+/NEXT”键，分钟位数递增，
-				break;
-			}
 			case KR(K_VOLINC): //长按//音量加
 			{
 				//长按“VOL+/NEXT”键，小时快速递增。
 				//长按“VOL+/NEXT”键，分钟位数快速递增。
+				if ((TYPE_Flag_KSet == FLAG_KEYSET_JUST_POWER_LONG_TIME) && (TYPE_Play_Mode == PLAY_JUST_POWER))
+				{
+					if (gRTC_Hour < 12)
+					{
+						gRTC_Hour++;
+					}
+				}
+				else if ((TYPE_Flag_KSet == FLAG_KEYSET_JUST_POWER_SHORT_TIME) && (TYPE_Play_Mode == PLAY_JUST_POWER))
+				{
+					if (gRTC_Minute < 59)
+					{
+						gRTC_Minute++;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_LONG_ALARM_HOUR)
+				{
+					if (TYPE_Alarm1.tempHour < 12)
+					{
+						TYPE_Alarm1.tempHour++;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_MINUTE)
+				{
+					if (TYPE_Alarm1.tempMinute < 59)
+					{
+						TYPE_Alarm1.tempMinute++;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_ALMODE)
+				{
+					if (TYPE_Alarm1.Alarm_Mode == ALARM_BEEP)
+					{
+						TYPE_Alarm1.Alarm_Mode = ALARM_BT;
+					}
+					else
+					{
+						TYPE_Alarm1.Alarm_Mode = ALARM_BEEP;
+					}
+				}
+
+				if (TYPE_Play_Mode == PLAY_IN_TIME)//在走时模式下蓝牙状态和TF卡
+				{
+					if (sys_Volume < 15)
+					{
+						sys_Volume++;
+					}
+				}
 				break;
 			}
 			case KU(K_TIME_DIM): //短按//短按分钟字符闪烁，
-			{					 //短按“TIME/DIM”键，调整显示亮度，可循环调整高、中、低亮（默认为高亮）
+			{					
+				if (TYPE_Play_Mode == PLAY_JUST_POWER)
+				{
+					TYPE_Flag_KSet = FLAG_KEYSET_JUST_POWER_SHORT_TIME;
+				}
+				else if (TYPE_Play_Mode == PLAY_IN_TIME)
+				{
+					TYPE_LED_Brightness--;
+					if (TYPE_LED_Brightness == LED_TURN_OFF)//三种亮度形成循环
+					{
+						TYPE_LED_Brightness = LED_HIGH;
+					}
+				}
+				//短按“TIME/DIM”键，调整显示亮度，可循环调整高、中、低亮（默认为高亮）
 				break;
 			}
-			case KR(K_TIME_DIM) //计时
+			case KR(K_TIME_DIM): //计时
 			{
-				if(cntKeylong==10)//长按2s小时字符闪烁
+				if (TYPE_Play_Mode == PLAY_JUST_POWER)
 				{
-					
+					if (cntKeylong == 10)//长按2s小时字符闪烁
+					{
+						TYPE_Flag_KSet = FLAG_KEYSET_JUST_POWER_LONG_TIME;
+					}
 				}
 				break;
 			}
 			case KU(K_NEXT): //短按
-			{
-				//短按“VOL+/NEXT”键，小时递增，
-				//短按“VOL+/NEXT”键，分钟位数递增，
-				break;
-			}
-			case KH(K_NEXT): //长按
+			case KR(K_NEXT): //长按
 			{
 				//长按“VOL+/NEXT”键，小时快速递增。
 				//长按“VOL+/NEXT”键，分钟位数快速递增。
+				if ((TYPE_Flag_KSet == FLAG_KEYSET_JUST_POWER_LONG_TIME) && (TYPE_Play_Mode == PLAY_JUST_POWER))
+				{
+					if (gRTC_Hour < 12)
+					{
+						gRTC_Hour++;
+					}
+				}
+				else if ((TYPE_Flag_KSet == FLAG_KEYSET_JUST_POWER_SHORT_TIME) && (TYPE_Play_Mode == PLAY_JUST_POWER))
+				{
+					if (gRTC_Minute < 59)
+					{
+						gRTC_Minute++;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_LONG_ALARM_HOUR)
+				{
+					if (TYPE_Alarm1.tempHour < 12)
+					{
+						TYPE_Alarm1.tempHour++;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_MINUTE)
+				{
+					if (TYPE_Alarm1.tempMinute < 59)
+					{
+						TYPE_Alarm1.tempMinute++;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_ALMODE)
+				{
+					if (TYPE_Alarm1.Alarm_Mode == ALARM_BEEP)
+					{
+						TYPE_Alarm1.Alarm_Mode = ALARM_BT;
+					}
+					else
+					{
+						TYPE_Alarm1.Alarm_Mode = ALARM_BEEP;
+					}
+				}
 				break;
 			}
 			case KU(K_ALARM): //短按//闹钟
 			{
 				//短按“VOL+/NEXT”键，小时递增，
 				//短按“VOL+/NEXT”键，分钟位数递增，
+				if (TYPE_Play_Mode == PLAY_IN_TIME)
+				{
+					//首先显示ALARM时间，现在还没有写，可以写个函数
+					TYPE_Alarm1.enable = 1;//打开闹钟
+				}
+				if (TYPE_Flag_KSet == FLAG_KEYSET_LONG_ALARM_HOUR)
+				{
+					//要先长按ALARM键2s，再短按ALARM键进入此if功能，为设置闹钟分钟时间
+					TYPE_Flag_KSet = FLAG_KEYSET_SHORT_ALARM_MINUTE;
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_MINUTE)
+				{
+					//要先短按ALARM键进入设置闹钟弄分钟功能，再短按ALARM键进入此else-if功能，为选择响闹模式
+					TYPE_Flag_KSet = FLAG_KEYSET_SHORT_ALARM_ALMODE;
+					TYPE_Alarm1.Flag_Confirm_TimeCnt_30Sec = 2;//短按ALARM键确认设置或不动作30s自动保存，(为1
+															   //是确认闹钟设置标志位)为2是30s计时标志位，
+					timeCnt_30Sec = 0;
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_ALMODE)
+				{
+					//要先短按ALARM键进入选择闹钟响闹模式，再短按ALARM键进入此else-if功能，为确认闹钟设置或
+					//不动作30s自动保存，并返回走时模式，响闹时间60min
+					//TYPE_Alarm1.Flag_Confirm_TimeCnt_30Sec = 1;//短按ALARM键确认设置或不动作30s自动保存，(为1
+															   //是确认闹钟设置标志位)为2是30s计时标志位，
+					TYPE_Alarm1.hour=TYPE_Alarm1.tempHour;    //直接确认把临时的alarm时间变量赋给与RTC时钟对比的变量
+					TYPE_Alarm1.minute=TYPE_Alarm1.tempMinute;
+					timeCnt_30Sec = 0;
+				}
 				break;
 			}
 			case KH(K_ALARM): //长按//闹钟
 			{
 				//长按“VOL+/NEXT”键，小时快速递增。
 				//长按“VOL+/NEXT”键，分钟位数快速递增。
+				if (TYPE_Play_Mode == PLAY_IN_TIME)
+				{
+					if (cntKeylong > 10)
+					{
+						//同时字符闪烁，还没有写
+						TYPE_Play_Mode = PLAY_ALARM;
+						TYPE_Flag_KSet = FLAG_KEYSET_LONG_ALARM_HOUR;//为设置闹钟小时时间
+					}
+				}
 				break;
 			}
 			case KU(K_VOLDEC): //短按//音量减
-			{
-				//短按“VOL-/PREV”键，小时递减，
-				//短按“VOL-/PREV”键，分钟位数递减，
-				
-				sys
-				break;
-			}
 			case KR(K_VOLDEC): //长按//音量减
 			{
 				//长按“VOL-/PREV”键，小时快速递减；
-				///长按“VOL-/PREV”键，分钟位数快速递减；
+				//长按“VOL-/PREV”键，分钟位数快速递减；
+				if ((TYPE_Flag_KSet == FLAG_KEYSET_JUST_POWER_LONG_TIME) && (TYPE_Play_Mode == PLAY_JUST_POWER))
+				{
+					if (gRTC_Hour > 0)
+					{
+						gRTC_Hour--;
+					}
+				}
+				else if ((TYPE_Flag_KSet == FLAG_KEYSET_JUST_POWER_SHORT_TIME) && (TYPE_Play_Mode == PLAY_JUST_POWER))
+				{
+					if (gRTC_Minute > 0)
+					{
+						gRTC_Minute--;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_LONG_ALARM_HOUR)
+				{
+					if (TYPE_Alarm1.tempHour > 0)
+					{
+						TYPE_Alarm1.tempHour--;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_MINUTE)
+				{
+					if (TYPE_Alarm1.tempMinute > 0)
+					{
+						TYPE_Alarm1.tempMinute--;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_ALMODE)
+				{
+					if (TYPE_Alarm1.Alarm_Mode == ALARM_BEEP)
+					{
+						TYPE_Alarm1.Alarm_Mode = ALARM_BT;
+					}
+					else
+					{
+						TYPE_Alarm1.Alarm_Mode = ALARM_BEEP;
+					}
+				}
+
+				if (TYPE_Play_Mode == PLAY_IN_TIME)//在走时模式下蓝牙状态和TF卡
+				{
+					if (sys_Volume > 0)
+					{
+						sys_Volume--;
+					}
+				}
 				break;
 			}
 			case KU(K_BT): //短按
 			{
 				//短按“VOL-/PREV”键，小时递减，
 				//短按“VOL-/PREV”键，分钟位数递减，
+				if (TYPE_Play_Mode != PLAY_IN_TIME_BT)
+				{
+					TYPE_Play_Mode = PLAY_IN_TIME_BT;
+				}
 				break;
 			}
 			case KH(K_BT): //长按
@@ -352,15 +524,49 @@ void KeyComMsg(void)
 				break;
 			}
 			case KU(K_PREV): //短按
-			{
-				//短按“VOL-/PREV”键，小时递减，
-				//短按“VOL-/PREV”键，分钟位数递减，
-				break;
-			}
-			case KH(K_PREV): //长按
+			case KR(K_PREV): //长按
 			{
 				//长按“VOL-/PREV”键，小时快速递减；
 				//长按“VOL-/PREV”键，分钟位数快速递减；
+				if ((TYPE_Flag_KSet == FLAG_KEYSET_JUST_POWER_LONG_TIME) && (TYPE_Play_Mode == PLAY_JUST_POWER))
+				{
+					if (gRTC_Hour > 0)
+					{
+						gRTC_Hour--;
+					}
+				}
+				else if ((TYPE_Flag_KSet == FLAG_KEYSET_JUST_POWER_SHORT_TIME) && (TYPE_Play_Mode == PLAY_JUST_POWER))
+				{
+					if (gRTC_Minute > 0)
+					{
+						gRTC_Minute--;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_LONG_ALARM_HOUR)
+				{
+					if (TYPE_Alarm1.tempHour > 0)
+					{
+						TYPE_Alarm1.tempHour--;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_MINUTE)
+				{
+					if (TYPE_Alarm1.tempMinute > 0)
+					{
+						TYPE_Alarm1.tempMinute--;
+					}
+				}
+				else if (TYPE_Flag_KSet == FLAG_KEYSET_SHORT_ALARM_ALMODE)
+				{
+					if (TYPE_Alarm1.Alarm_Mode == ALARM_BEEP)
+					{
+						TYPE_Alarm1.Alarm_Mode = ALARM_BT;
+					}
+					else
+					{
+						TYPE_Alarm1.Alarm_Mode = ALARM_BEEP;
+					}
+				}
 				break;
 			}
 			

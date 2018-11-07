@@ -397,11 +397,6 @@
               <FilePath>.\App_User\Source\app_main.c</FilePath>
             </File>
             <File>
-              <FileName>BT_Mode.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App_User\Source\BT_Mode.c</FilePath>
-            </File>
-            <File>
               <FileName>Key_Mode.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\App_User\Source\Key_Mode.c</FilePath>
@@ -410,6 +405,11 @@
               <FileName>LED_Mode.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\App_User\Source\LED_Mode.c</FilePath>
+            </File>
+            <File>
+              <FileName>BT_Mode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App_User\Source\BT_Mode.c</FilePath>
             </File>
           </Files>
         </Group>

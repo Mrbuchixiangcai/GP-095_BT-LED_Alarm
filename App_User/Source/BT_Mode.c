@@ -11,6 +11,7 @@
 /*类型定义byte definition*/
 /*************************/
 BT_STEP  BT_Step;
+
 /****************************/
 /*标志位定义flags definetion*/
 /****************************/
@@ -40,7 +41,7 @@ uint8_t  idata uart1_RX_Timeout;
 uint8_t  xdata uart1_TransmitBuffer[UART1_LEN_BUFFER];
 uint8_t  xdata uart1_ReceiveBuffer_A[UART1_LEN_BUFFER];
 uint8_t  xdata uart1_ReceiveBuffer_B[UART1_LEN_BUFFER];
-char  code BT_Command_tab[][8]= //用于改变歌曲时发送给wifi的第几首歌
+char  code BT_Command_Tab[][8]= //用于改变歌曲时发送给wifi的第几首歌
 {
 	"     \r\n",//NONE
 	"AT+MT\r\n",//BT_PAUSE
@@ -97,16 +98,16 @@ char  code BT_Command_tab[][8]= //用于改变歌曲时发送给wifi的第几首歌
 	 while(uart1_EnableSend);
 	 for(i=0;i<UART1_LEN_BUFFER;i++)
 	 {
-		Uart1_TransmitBuffer[i]=0;
+		uart1_TransmitBuffer[i]=0;
 	 }
 	 for(i=0;*str!='\0';i++)
 	 {
-		 Uart1_TransmitBuffer[i]=*str;
+		 uart1_TransmitBuffer[i]=*str;
 		 str++;
 	 }
 	 uart1_TX_Pointer=0;
 	 uart1_EnableSend=1;
-	 UARTDR=Uart1_TransmitBuffer[uart1_TX_Pointer++];
+	 UARTDR=uart1_TransmitBuffer[uart1_TX_Pointer++];
  }
  
  
@@ -126,11 +127,11 @@ char  code BT_Command_tab[][8]= //用于改变歌曲时发送给wifi的第几首歌
  *******************************************************************************/
 void BT_Send_CMD(uint8_t cmd)
 {
-	uint8_t  code bt_VOL_Send_Tab[]={0,1,2,3,4,5,6,7};
-	if(cmd)
+	uint8_t  code bt_VOL_Send_Tab[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+	if(cmd<BT_VOL)
 		Uart1Transmit_SendString(&BT_Command_Tab[cmd][0]);
 	else
-		Uart1Transmit_SendString(&&BT_Command_Tab[0+bt_VOL_Send_Tab[sys_volume]][0]);
+		Uart1Transmit_SendString(&BT_Command_Tab[BT_VOL+bt_VOL_Send_Tab[sys_volume]][0]);
 }
  
  /*******************************************************************************

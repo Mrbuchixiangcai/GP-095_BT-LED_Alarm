@@ -15,21 +15,37 @@
 /*************************/
 /*类型定义byte definition*/
 /*************************/
+enum
+{
+	BT_NONE    = 0,
+	BT_PAUSE      ,//暂停
+	BT_PLAY       ,//播放
+	BT_PREV       ,//上一曲
+	BT_NEXT       ,//下一曲
+	BT_PAIR       ,//配对
+	BT_PAIR_EXT   ,//退出配对
+	BT_LINK_BACK  ,//回连
+	BT_POWER_DOWN ,//关机
+	BT_DISCONN    ,//断开连接
+	BT_CLEAR_LIST ,//断开连接
+	BT_VOL	      ,//音量
+};
+
 typedef enum
 {
-    BT_STEP_START = 0,
-    BT_STEP_INITI1,
-    BT_STEP_INITI2,
-    BT_STEP_INITI3,
-    BT_STEP_INITI4,
-    BT_STEP_INITI5,
-    BT_STEP_INITI6,
-    BT_STEP_INITI7,
-    BT_STEP_INITI8,
-    BT_STEP_INITI9,
-    BT_STEP_INITI10,
-    BT_STEP_INITI11,
-    BT_STEP_INITI12,
+	BT_STEP_START = 0,
+	BT_STEP_INITI1,
+	BT_STEP_INITI2,
+	BT_STEP_INITI3,
+	BT_STEP_INITI4,
+	BT_STEP_INITI5,
+	BT_STEP_INITI6,
+	BT_STEP_INITI7,
+	BT_STEP_INITI8,
+	BT_STEP_INITI9,
+	BT_STEP_INITI10,
+	BT_STEP_INITI11,
+	BT_STEP_INITI12,
 } BT_STEP;
 
 /****************************/

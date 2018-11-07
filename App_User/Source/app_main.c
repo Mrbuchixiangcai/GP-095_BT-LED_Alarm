@@ -24,10 +24,6 @@ bit  AppTick4;
 bit  AppTick5;
 bit  AppTick1ms;
 
-bit  Flag_Alarm;  //为1为闹钟开启，为0则关闭
-bit  Flag_AlarmSet_Confirm_TimeCnt_30Sec;//短按ALARM键确认设置或不动作30s自动保存，(为1是确认闹钟设置标志位)为2是30s计时标志位，
-
-
 /*****************************/
 /*变量定义variable definition*/
 /*****************************/
@@ -41,9 +37,8 @@ uint8_t  idata gRTC_Hour;
 uint8_t  idata gRTC_Hour_bk;
 uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
 uint8_t  idata gRTC_Week; //一周7天
-uint8_t  idata sys_volume;
+uint8_t  idata sys_Volume;
 uint16_t idata timeCnt_30Sec;//短按ALARM键缺人设置或不动作30s自动保存，30s计时
-
 
 /**************************/
 /*数组定义array definition*/
@@ -80,9 +75,16 @@ void Compare_1MinutePorc(void)
 		if(gRTC_Minute!=gRTC_Minute_bk)
 		{
 			gRTC_Minute_bk=gRTC_Minute;
-			if(Flag_Alarm==1)
+			if((TYPE_Alarm1.enable == 1) && (gRTC_Hour == TYPE_Alarm1.hour) && (gRTC_Minute == TYPE_Alarm1.minute))
 			{
-				
+				if(TYPE_Alarm1.Alarm_Mode==ALARM_BT)
+				{
+					
+				}
+				else
+				{
+
+				}
 			}
 				
 			if(gRTC_Hour!=gRTC_Hour_bk)
@@ -115,17 +117,19 @@ void Compare_1MinutePorc(void)
  *******************************************************************************/
 void Timing_Handle(void)
 {
-	if(Flag_AlarmSet_Confirm_TimeCnt_30Sec==2)
+	if (TYPE_Alarm1.Flag_Confirm_TimeCnt_30Sec == 2)
 	{
 		timeCnt_30Sec++;
-		if(timeCnt_30Sec>=3000)
+		if (timeCnt_30Sec >= 3000)
 		{
-			Flag_AlarmSet_Confirm_TimeCnt_30Sec=0;
-			timeCnt_30Sec=0;
-			alarmHour=tempAlarmHour;	//30s计时结束把设定的闹钟时间赋给与RTC比对的闹钟变量
-			alarmMinute=tempAlarmMinute;
+			TYPE_Alarm1.Flag_Confirm_TimeCnt_30Sec = 0;
+			timeCnt_30Sec = 0;
+			TYPE_Alarm1.hour = TYPE_Alarm1.tempHour;//30s计时结束把设定的闹钟时间赋给与RTC比对的闹钟变量
+			TYPE_Alarm1.minute = TYPE_Alarm1.tempMinute;
 		}
 	}
+	else
+		timeCnt_30Sec = 0;
 }
 
 /*******************************************************************************

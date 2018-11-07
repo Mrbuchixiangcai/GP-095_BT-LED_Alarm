@@ -226,8 +226,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App_User\Source\BT_Mode.c</PathWithFileName>
-      <FilenameWithoutPath>BT_Mode.c</FilenameWithoutPath>
+      <PathWithFileName>.\App_User\Source\Key_Mode.c</PathWithFileName>
+      <FilenameWithoutPath>Key_Mode.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -238,8 +238,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App_User\Source\Key_Mode.c</PathWithFileName>
-      <FilenameWithoutPath>Key_Mode.c</FilenameWithoutPath>
+      <PathWithFileName>.\App_User\Source\LED_Mode.c</PathWithFileName>
+      <FilenameWithoutPath>LED_Mode.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -250,8 +250,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\App_User\Source\LED_Mode.c</PathWithFileName>
-      <FilenameWithoutPath>LED_Mode.c</FilenameWithoutPath>
+      <PathWithFileName>.\App_User\Source\BT_Mode.c</PathWithFileName>
+      <FilenameWithoutPath>BT_Mode.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

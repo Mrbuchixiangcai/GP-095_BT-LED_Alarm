@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   APP_MAIN                                                              11/07/2018 14:17:31 PAGE 1   
+C51 COMPILER V9.00   APP_MAIN                                                              11/09/2018 13:58:08 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE APP_MAIN
@@ -12,272 +12,421 @@ line level    source
    2          /*头文件header file*/
    3          /*******************/
    4          #include "app_main.h"
-*** ERROR C129 IN LINE 10 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED_
-             -MODE.H: missing ';' before '|='
+*** WARNING C329 IN LINE 16 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 17 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 20 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 21 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 24 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 25 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 28 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 29 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 32 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 33 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 36 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 37 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 40 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 41 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 44 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 45 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 48 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 49 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 52 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 53 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 56 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 57 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 60 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 61 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 64 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+C51 COMPILER V9.00   APP_MAIN                                                              11/09/2018 13:58:08 PAGE 2   
+
+*** WARNING C329 IN LINE 65 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 68 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 69 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 72 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 73 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 76 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 77 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 80 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 81 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 84 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 85 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 88 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 89 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 92 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 93 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 96 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 97 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+             -D_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 100 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 101 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 104 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 105 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 108 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 109 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 112 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 113 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 116 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 117 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 120 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
+*** WARNING C329 IN LINE 121 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+             -ED_MODE.H: single-line comment contains line-continuation
    5          
    6          /************************/
    7          /*宏定义macro definition*/
    8          /************************/
+C51 COMPILER V9.00   APP_MAIN                                                              11/09/2018 13:58:08 PAGE 3   
+
    9          
   10          /*************************/
   11          /*类型定义byte definition*/
   12          /*************************/
-  13          PLAY_MODE_TypeDef  TYPE_Play_Mode;
-  14          ALRAM_TypeDef  TYPE_Alarm1;
+  13          PLAY_MODE_TypeDef  PlayMode_TypeDef;
+  14          
   15          
   16          /****************************/
   17          /*标志位定义flags definetion*/
   18          /****************************/
-  19          bit  AppTick0;
-  20          bit  AppTick1;
-  21          bit  AppTick2;
-  22          bit  AppTick3;
-  23          bit  AppTick4;
-  24          bit  AppTick5;
-  25          bit  AppTick1ms;
+  19          bit   AppTick0;
+  20          bit   AppTick1;
+  21          bit   AppTick2;
+  22          bit   AppTick3;
+  23          bit   AppTick4;
+  24          bit   AppTick5;
+  25          bit   AppTick1ms;
   26          
-  27          /*****************************/
-  28          /*变量定义variable definition*/
-  29          /*****************************/
-  30          uint8_t  idata cntAppTick;
-  31          bit                        gbHalfSecong;
-  32          uint8_t  idata gRTC_Sec;//RTC数据 
-  33          uint8_t  idata gRTC_Sec_bk;
-  34          uint8_t  idata gRTC_Minute;
-  35          uint8_t  idata gRTC_Minute_bk;
-  36          uint8_t  idata gRTC_Hour;
-  37          uint8_t  idata gRTC_Hour_bk;
-  38          uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
-  39          uint8_t  idata gRTC_Week; //一周7天
-  40          uint8_t  idata sys_Volume;
-  41          uint16_t idata timeCnt_30Sec;//短按ALARM键缺人设置或不动作30s自动保存，30s计时
-  42          
-  43          /**************************/
-  44          /*数组定义array definition*/
-  45          /**************************/
-  46          
-  47          /******************************/
-  48          /*函数声明Function declaration*/
-  49          /******************************/
-  50          
-  51          /*****************************/
-  52          /*函数定义function definetion*/
-C51 COMPILER V9.00   APP_MAIN                                                              11/07/2018 14:17:31 PAGE 2   
+  27          BOOL  gb12HourDisp;
+  28          BOOL  gb0_5s;
+  29          BOOL  gbUser_AdjClk;
+  30          BOOL  gbHalfSecond;
+  31          
+  32          /*****************************/
+  33          /*变量定义variable definition*/
+  34          /*****************************/
+  35          uint8_t  idata cntAppTick;
+  36          bit                        gbHalfSecond;
+  37          uint8_t  idata gRTC_Sec;//RTC数据 
+  38          uint8_t  idata gRTC_Sec_bk;
+  39          uint8_t  idata gRTC_Minute;
+  40          uint8_t  idata gRTC_Minute_bk;
+  41          uint8_t  idata gRTC_Hour;
+  42          uint8_t  idata gRTC_Hour_bk;
+  43          uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
+  44          uint8_t  idata gRTC_Week; //一周7天
+  45          uint8_t  idata sys_Volume;
+  46          uint16_t idata timeCnt_30Sec;//短按ALARM键缺人设置或不动作30s自动保存，30s计时
+  47          
+  48          u8       idata cntNoFlash;
+  49          u8               idata AlarmingType;//闹钟时开启还是关闭，用Alarm1_TypeDef.Alarm_OnOFF代替
+  50          u8               idata Alarm1Mode;//用Alarm1_TypeDef.Alarm_Mode代替了
+  51          u8                         gZone;
+  52          u8                         dispStatus;
+  53          
+  54          /**************************/
+  55          /*数组定义array definition*/
+  56          /**************************/
+  57          
+  58          /******************************/
+  59          /*函数声明Function declaration*/
+  60          /******************************/
+  61          
+  62          /*****************************/
+  63          /*函数定义function definetion*/
+  64          /*****************************/
+  65          /*******************************************************************************
+  66           * 函数原型：
+  67           * 输入参数：
+  68           * 输出参数：
+  69           * 函数功能：时间比较，把RTC时间与某个定时时间比较，比如闹钟
+  70           * 返回值说明：
+C51 COMPILER V9.00   APP_MAIN                                                              11/09/2018 13:58:08 PAGE 4   
 
-  53          /*****************************/
-  54          /*******************************************************************************
-  55           * 函数原型：
-  56           * 输入参数：
-  57           * 输出参数：
-  58           * 函数功能：时间比较，把RTC时间与某个定时时间比较，比如闹钟
-  59           * 返回值说明：
-  60           * 创建日期：
-  61           * 创建人：
-  62           * 修改日期
-  63           * 修改人：
-  64           * 第N次修改：
-  65           * 修改原因：
-  66           * 备注：
-  67           *******************************************************************************/
-  68          void Compare_1MinutePorc(void)
-  69          {
-  70                  //static uint8_t  cntSetVolume; //此变量只在上电时初始化一次，再调用此函数时不会执行此语句
-  71                  if(gRTC_Sec!=gRTC_Sec_bk)
-  72                  {
-  73                          gRTC_Sec_bk=gRTC_Sec;
-  74                          
-  75                          if(gRTC_Minute!=gRTC_Minute_bk)
-  76                          {
-  77                                  gRTC_Minute_bk=gRTC_Minute;
-  78                                  if((TYPE_Alarm1.enable == 1) && (gRTC_Hour == TYPE_Alarm1.hour) && (gRTC_Minute == TYPE_Alarm1.minute))
-  79                                  {
-  80                                          if(TYPE_Alarm1.Alarm_Mode==ALARM_BT)
-  81                                          {
-  82                                                  
-  83                                          }
-  84                                          else
-  85                                          {
-  86          
-  87                                          }
-  88                                  }
-  89                                          
-  90                                  if(gRTC_Hour!=gRTC_Hour_bk)
-  91                                  {
-  92                                          gRTC_Hour_bk=gRTC_Hour_bk;
-  93                                          gRTC_Hour_bk_24++;
-  94                                          if(gRTC_Hour_bk_24>=24)
-  95                                          {
-  96                                                  gRTC_Hour_bk_24=0;
-  97                                                  
-  98                                          }
-  99                                  }
- 100                          }
- 101                  }
- 102          }
- 103          
- 104          /*******************************************************************************
- 105           * 函数原型：
- 106           * 输入参数：
- 107           * 输出参数：
- 108           * 函数功能：其他程序需要用到的计时放在这里进行
- 109           * 返回值说明：
- 110           * 创建日期：
- 111           * 创建人：
- 112           * 修改日期
- 113           * 修改人：
- 114           * 第N次修改：
-C51 COMPILER V9.00   APP_MAIN                                                              11/07/2018 14:17:31 PAGE 3   
+  71           * 创建日期：
+  72           * 创建人：
+  73           * 修改日期
+  74           * 修改人：
+  75           * 第N次修改：
+  76           * 修改原因：
+  77           * 备注：
+  78           *******************************************************************************/
+  79          void Compare_1MinutePorc(void)
+  80          {
+  81   1              //static uint8_t  cntSetVolume; //此变量只在上电时初始化一次，再调用此函数时不会执行此语句
+  82   1              if(gRTC_Sec!=gRTC_Sec_bk)
+  83   1              {
+  84   2                      gRTC_Sec_bk=gRTC_Sec;
+  85   2                      
+  86   2                      if(gRTC_Minute!=gRTC_Minute_bk)
+  87   2                      {
+  88   3                              gRTC_Minute_bk=gRTC_Minute;
+  89   3                              if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (gRTC_Hour == Alarm1_TypeDef.hour) && (gRTC_Minute == Al
+             -arm1_TypeDef.minute))
+  90   3                              {
+  91   4                                      if(Alarm1_TypeDef.AlarmWorkMode==ALARM_BT)
+  92   4                                      {
+  93   5                                              
+  94   5                                      }
+  95   4                                      else
+  96   4                                      {
+  97   5      
+  98   5                                      }
+  99   4                              }
+ 100   3                                      
+ 101   3                              if(gRTC_Hour!=gRTC_Hour_bk)
+ 102   3                              {
+ 103   4                                      gRTC_Hour_bk=gRTC_Hour_bk;
+ 104   4                                      gRTC_Hour_bk_24++;
+ 105   4                                      if(gRTC_Hour_bk_24>=24)
+ 106   4                                      {
+ 107   5                                              gRTC_Hour_bk_24=0;
+ 108   5                                              
+ 109   5                                      }
+ 110   4                              }
+ 111   3                      }
+ 112   2              }
+ 113   1      }
+ 114          
+ 115          /*******************************************************************************
+ 116           * 函数原型：
+ 117           * 输入参数：
+ 118           * 输出参数：
+ 119           * 函数功能：其他程序需要用到的计时放在这里进行
+ 120           * 返回值说明：
+ 121           * 创建日期：
+ 122           * 创建人：
+ 123           * 修改日期
+ 124           * 修改人：
+ 125           * 第N次修改：
+ 126           * 修改原因：
+ 127           * 备注：
+ 128           *******************************************************************************/
+ 129          void Timing_Handle(void)
+ 130          {
+ 131   1              if (Time_Temp_TypeDef.Flag_Confirm_30Sec == 2)
+C51 COMPILER V9.00   APP_MAIN                                                              11/09/2018 13:58:08 PAGE 5   
 
- 115           * 修改原因：
- 116           * 备注：
- 117           *******************************************************************************/
- 118          void Timing_Handle(void)
- 119          {
- 120                  if (TYPE_Alarm1.Flag_Confirm_TimeCnt_30Sec == 2)
- 121                  {
- 122                          timeCnt_30Sec++;
- 123                          if (timeCnt_30Sec >= 3000)
- 124                          {
- 125                                  TYPE_Alarm1.Flag_Confirm_TimeCnt_30Sec = 0;
- 126                                  timeCnt_30Sec = 0;
- 127                                  TYPE_Alarm1.hour = TYPE_Alarm1.tempHour;//30s计时结束把设定的闹钟时间赋给与RTC比对的闹钟变量
- 128                                  TYPE_Alarm1.minute = TYPE_Alarm1.tempMinute;
- 129                          }
- 130                  }
- 131                  else
- 132                          timeCnt_30Sec = 0;
- 133          }
- 134          
- 135          /*******************************************************************************
- 136           * 函数原型：
- 137           * 输入参数：
- 138           * 输出参数：
- 139           * 函数功能：
- 140           * 返回值说明：
- 141           * 创建日期：
- 142           * 创建人：
- 143           * 修改日期
- 144           * 修改人：
- 145           * 第N次修改：
- 146           * 修改原因：
- 147           * 备注：
- 148           *******************************************************************************/
- 149          void Sys_Tick(void)
- 150          {
- 151                  AppTick1ms=1;
- 152                  if(cntAppTick==0)
- 153                          AppTick0=1;
- 154                  if(cntAppTick==1)
- 155                          AppTick1=1;
- 156                  if(cntAppTick==2)
- 157                          AppTick2=1;
- 158                  if(cntAppTick==3)
- 159                          AppTick3=1;
- 160                  if(cntAppTick==4)
- 161                          AppTick4=1;
- 162                  if(cntAppTick==5)
- 163                          AppTick5=1;
- 164                  if(cntAppTick==6)
- 165                  {
- 166                  
- 167                  }
- 168                  if(++cntAppTick>=10)
- 169                          cntAppTick=0;
- 170          }
- 171          
- 172          /*******************************************************************************
- 173           * 函数原型：
- 174           * 输入参数：
- 175           * 输出参数：
- 176           * 函数功能：
-C51 COMPILER V9.00   APP_MAIN                                                              11/07/2018 14:17:31 PAGE 4   
+ 132   1              {
+ 133   2                      timeCnt_30Sec++;
+ 134   2                      if (timeCnt_30Sec >= 3000)
+ 135   2                      {
+ 136   3                              Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;
+ 137   3                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 138   3                              timeCnt_30Sec = 0;
+ 139   3                              gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour; //30s计时结束把设定的临时RTC时间付给一直在运行的RTC时间
+ 140   3                              gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
+ 141   3                      }
+ 142   2              }
+ 143   1              else if (Alarm1_TypeDef.Flag_Confirm_30Sec == 2)
+ 144   1              {
+ 145   2                      timeCnt_30Sec++;
+ 146   2                      if (timeCnt_30Sec >= 3000)
+ 147   2                      {
+ 148   3                              Alarm1_TypeDef.Flag_Confirm_30Sec = 0;
+ 149   3                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 150   3                              timeCnt_30Sec = 0;
+ 151   3                              Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//30s计时结束把设定的闹钟时间赋给与RTC比对的闹钟变量
+ 152   3                              Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
+ 153   3                      }
+ 154   2              }
+ 155   1              //else
+ 156   1              //      timeCnt_30Sec = 0;
+ 157   1      }
+ 158          
+ 159          /*******************************************************************************
+ 160           * 函数原型：
+ 161           * 输入参数：
+ 162           * 输出参数：
+ 163           * 函数功能：
+ 164           * 返回值说明：
+ 165           * 创建日期：
+ 166           * 创建人：
+ 167           * 修改日期
+ 168           * 修改人：
+ 169           * 第N次修改：
+ 170           * 修改原因：
+ 171           * 备注：
+ 172           *******************************************************************************/
+ 173          void Sys_Tick(void)
+ 174          {
+ 175   1              AppTick1ms=1;
+ 176   1              if(cntAppTick==0)
+ 177   1                      AppTick0=1;
+ 178   1              if(cntAppTick==1)
+ 179   1                      AppTick1=1;
+ 180   1              if(cntAppTick==2)
+ 181   1                      AppTick2=1;
+ 182   1              if(cntAppTick==3)
+ 183   1                      AppTick3=1;
+ 184   1              if(cntAppTick==4)
+ 185   1                      AppTick4=1;
+ 186   1              if(cntAppTick==5)
+ 187   1                      AppTick5=1;
+ 188   1              if(cntAppTick==6)
+ 189   1              {
+ 190   2              
+ 191   2              }
+ 192   1              if(++cntAppTick>=10)
+ 193   1                      cntAppTick=0;
+C51 COMPILER V9.00   APP_MAIN                                                              11/09/2018 13:58:08 PAGE 6   
 
- 177           * 返回值说明：
- 178           * 创建日期：
- 179           * 创建人：
- 180           * 修改日期
- 181           * 修改人：
- 182           * 第N次修改：
- 183           * 修改原因：
- 184           * 备注：
- 185           *******************************************************************************/
- 186          void PowerON_Reset(void)
- 187          {
- 188                  TYPE_Play_Mode=PLAY_JUST_POWER;//刚上电，模式设为刚上电模式
- 189                  TYPE_LED_Brightness=LED_HIGH;//亮度默认为高
- 190                  TYPE_Alarm1.Alarm_Mode=ALARM_BEEP; //自己加的为闹钟响闹模式为beep模式，方便写程序，也防止使用者在设置闹钟
- 191                                                                          //时没有选择模式，那就选择默认是beep模式
- 192          }
- 193          
- 194          /*******************************************************************************
- 195           * 函数原型：
- 196           * 输入参数：
- 197           * 输出参数：
- 198           * 函数功能：
- 199           * 返回值说明：
- 200           * 创建日期：
- 201           * 创建人：
- 202           * 修改日期
- 203           * 修改人：
- 204           * 第N次修改：
- 205           * 修改原因：
- 206           * 备注：
- 207           *******************************************************************************/
- 208          void app_main(void)
- 209          {
- 210                  PowerON_Reset();
- 211                  while(1)
- 212                  {
- 213                          if(AppTick1ms)
- 214                          {
- 215                                  AppTick1ms=0;
- 216                          }
- 217                          if(AppTick0)
- 218                          {
- 219                                  AppTick0=0;
- 220                                  KeyScan();
- 221                                  KeyComMsg();
- 222                          }
- 223                          if(AppTick1)
- 224                          {
- 225                                  AppTick1=0;
- 226                                  
- 227                          }
- 228                          if(AppTick2)
- 229                          {
- 230                                  AppTick2=0;
- 231                                  
- 232                          }
- 233                          if(AppTick3)
- 234                          {
- 235                                  AppTick3=0;
- 236                                  
- 237                          }
- 238                          if(AppTick4)
-C51 COMPILER V9.00   APP_MAIN                                                              11/07/2018 14:17:31 PAGE 5   
+ 194   1      }
+ 195          
+ 196          /*******************************************************************************
+ 197           * 函数原型：
+ 198           * 输入参数：
+ 199           * 输出参数：
+ 200           * 函数功能：
+ 201           * 返回值说明：
+ 202           * 创建日期：
+ 203           * 创建人：
+ 204           * 修改日期
+ 205           * 修改人：
+ 206           * 第N次修改：
+ 207           * 修改原因：
+ 208           * 备注：
+ 209           *******************************************************************************/
+ 210          void PowerON_Reset(void)
+ 211          {
+ 212   1              PlayMode_TypeDef=PLAY_JUST_POWER;//刚上电，模式设为刚上电模式
+ 213   1              LED_Brightness_TypeDef=LED_HIGH;//亮度默认为高
+ 214   1              Alarm1_TypeDef.AlarmWorkMode=ALARM_BEEP; //自己加的为闹钟响闹模式为beep模式，方便写程序，也防止使用者在设
+             -置闹钟
+ 215   1                                                                      //时没有选择模式，那就选择默认是beep模式
+ 216   1              sys_Volume = 8;//默认系统音量为8级
+ 217   1      }
+ 218          
+ 219          /*******************************************************************************
+ 220           * 函数原型：
+ 221           * 输入参数：
+ 222           * 输出参数：
+ 223           * 函数功能：
+ 224           * 返回值说明：
+ 225           * 创建日期：
+ 226           * 创建人：
+ 227           * 修改日期
+ 228           * 修改人：
+ 229           * 第N次修改：
+ 230           * 修改原因：
+ 231           * 备注：
+ 232           *******************************************************************************/
+ 233          void app_main(void)
+ 234          {
+ 235   1              PowerON_Reset();
+ 236   1              while(1)
+ 237   1              {
+ 238   2                      if(AppTick1ms)
+ 239   2                      {
+ 240   3                              AppTick1ms=0;
+ 241   3                      }
+ 242   2                      if(AppTick0)
+ 243   2                      {
+ 244   3                              AppTick0=0;
+ 245   3                              KeyScan();
+ 246   3                              KeyComMsg();
+ 247   3                      }
+ 248   2                      if(AppTick1)
+ 249   2                      {
+ 250   3                              AppTick1=0;
+ 251   3                              
+ 252   3                      }
+ 253   2                      if(AppTick2)
+ 254   2                      {
+C51 COMPILER V9.00   APP_MAIN                                                              11/09/2018 13:58:08 PAGE 7   
 
- 239                          {
- 240                                  AppTick4=0;
- 241                                  
- 242                          }
- 243                          if(AppTick5)
- 244                          {
- 245                                  AppTick5=0;
- 246                                  Timing_Handle();
- 247                                  Compare_1MinutePorc();
- 248                          }
- 249                          WDT_clear();    
- 250                  }
- 251          }
- 252          
- 253          
- 254          
- 255          
- 256          
- 257          
- 258          
- 259          
- 260          
- 261          
+ 255   3                              AppTick2=0;
+ 256   3                              
+ 257   3                      }
+ 258   2                      if(AppTick3)
+ 259   2                      {
+ 260   3                              AppTick3=0;
+ 261   3                              
+ 262   3                      }
+ 263   2                      if(AppTick4)
+ 264   2                      {
+ 265   3                              AppTick4=0;
+ 266   3                              
+ 267   3                      }
+ 268   2                      if(AppTick5)
+ 269   2                      {
+ 270   3                              AppTick5=0;
+ 271   3                              Timing_Handle();
+ 272   3                              Compare_1MinutePorc();
+ 273   3                      }
+ 274   2                      WDT_clear();    
+ 275   2              }
+ 276   1      }
+ 277          
+ 278          
+ 279          
+ 280          
+ 281          
+ 282          
+ 283          
+ 284          
+ 285          
+ 286          
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    253    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =     14    ----
+   BIT SIZE         =     11    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  54 WARNING(S),  0 ERROR(S)

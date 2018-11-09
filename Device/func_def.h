@@ -9,6 +9,7 @@ void LCD_init();              	// initialize LCD
 void Timer0_init();           	// initialize Timer0
 void Timer3_init();           	// initialize Timer3
 void UART_init();             	// initialize UART interface
+void UART_Def_Init()
 void UART_write(unsigned char dat);	// write UART
 unsigned char UART_read();    	// read UART
 void WDT_init();              	// initialize Watch-dog timer

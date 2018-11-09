@@ -32,28 +32,40 @@
 /*************************/
 enum
 {
-	K_SNOOZE_PAUSE=1,
-	K_VOLINC		,
-	K_TIME_DIM		,
-	K_NEXT			,
-	K_ALARM			,
-	K_VOLDEC		,
-	K_BT			,
-	K_PREV			,
+	K_SNOOZE_DIMMER=1,//贪睡按键
+	K_VOLINC		 ,//音量加 
+	K_PLAY_PAUSE	 ,//暂停/播放
+	K_NEXT			 ,//下一曲
+	K_ALARM			 ,//闹钟
+	K_VOLDEC		 ,//音量减
+	K_BT			 ,//蓝牙
+	K_PREV			 ,//上一曲
+	K_AL_SNOOZE      ,//组合键-闹钟和贪睡-同时2s-时间设置(不是闹钟时间设置)，
+	K_AL_VOLINC      ,//组合键-闹钟和音量加-同时2s-RTC时间加一小时，表示开启夏令时
+	K_AL_VOLDEC      ,//组合键-闹钟和音量减-同时2s-RTC时间减一小时，表示关闭夏令时
 };//按键功能
 
 typedef enum
 {
 	FLAG_KEYSET_OFF 			   = 0,
-	FLAG_KEYSET_JUST_POWER_LONG_TIME  ,//长按time标志，其他按键设置小时
-	FLAG_KEYSET_JUST_POWER_SHORT_TIME ,//短按time标志，其他按键设置分钟
-	//FLAG_KEYSET_IN_TIME_SHORT_TIME_DIM,//走时模式短按time标志，调整亮度
-	FLAG_KEYSET_LONG_ALARM_HOUR		  ,//走时模式长按ALARM标志，其他按键设置小时
-	FLAG_KEYSET_SHORT_ALARM_MINUTE	  ,//(走时模式)继续短按ALARM，其他按键设置分钟
-	FLAG_KEYSET_SHORT_ALARM_ALMODE	  ,//(走时模式)继续短按ALARM，其他按键设置响闹模式
-	FLAG_KEYSET_SHORT_ALARM_CONFIRMSET,//(走时模式)继续短按ALARM,缺人设置或不动作30s自动保存并返回走时模式，
-									   //响闹时间为60min
+	FLAG_KEYSET_SETTIME_HOUR		  ,//(走时模式)长按ALARM键和SNOZE键，进入时间设置模式的小时设置，接着再次
+	FLAG_KEYSET_SETTIME_MINUTE		  ,//短按ALARM键，设置分钟，再次短按确认时间或者30s不动作自动保存，并返回
+	//FLAG_KEYSET_SETTIME_CONFIRMSET	  ,//走时模式
+	FLAG_KEYSET_SHORT_ALARM_HOUR	  ,//(走时模式)短按ALARM按键，进入设置闹钟时间模式，并开启闹钟功能，再次短
+	FLAG_KEYSET_SHORT_ALARM_MINUTE	  ,//按ALARM键，进入设置分钟模式，再次短按ALARM键，选择响闹模式，第四次短
+	FLAG_KEYSET_SHORT_ALARM_ALWORKMODE,//按ALARM键，确实闹钟时间设置，或者不动作30s自动保存，并返回走时模式
+	//FLAG_KEYSET_SHORT_ALARM_CONFIRMSET,//
 }FLAG_KEYSET_TypeDef;
+
+typedef struct
+{
+	uint8_t  temp_RTC_Hour;
+	uint8_t  temp_RTC_Minute;
+	uint8_t  temp_RTC_Second;
+
+	uint8_t  Flag_Confirm_30Sec;//短按ALARM键确认设置或不动作30s自动保存，(为1是确认闹钟设置标
+								//志位),为2是30s计时标志位，
+}TIME_TEMP_TypeDef;
 
 /****************************/
 /*标志位定义flags definetion*/
@@ -83,7 +95,8 @@ void KeyComMsg(void);
 /*********************************/
 /*外部调用_类型定义byte definition*/
 /*********************************/
-extern FLAG_KEYSET_TypeDef  TYPE_Flag_KSet;//按键的功能设置标志
+extern FLAG_KEYSET_TypeDef  FlagKSet_TypeDef;//按键的功能设置标志
+extern TIME_TEMP_TypeDef    Time_Temp_TypeDef;//设置时间时才把设置的时间先付给这个，然后确认了再赋值到gRTC_xx;
 /************************************/
 /*外部调用_标志位定义flags definetion*/
 /************************************/

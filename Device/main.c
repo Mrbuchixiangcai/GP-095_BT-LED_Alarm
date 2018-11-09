@@ -127,16 +127,37 @@ void Timer3_init()
 	T3CR |= 0x01;   	// clear counter
 }
 
+bit  enUart = 0;
 void UART_init()
 {
 	// initialize UART interface
 	// UART : 9615bps N 8 1
-	UARTCR2 = 0x02; 	// activate UART
-	UARTCR1 = 0x06; 	// bit count, parity
-	UARTCR2 |= 0xEC;	// interrupt, speed
-	UARTCR3 = 0x00; 	// stop bit
-	UARTBD = 0x67;  	// baud rate
-	IE1 |= 0x18;    	// enable UART interrupt
+	if (!enUart)
+	{
+		UARTCR2  = 0x02; 	// activate UART
+		UARTCR1  = 0x06; 	// bit count, parity
+		UARTCR2 |= 0xEC;	// interrupt, speed
+		UARTCR3  = 0x00; 	// stop bit
+		UARTBD   = 0x67;  	// baud rate
+		IE1     |= 0x18;    // enable UART interrupt
+	}
+	enUart = 1;
+}
+
+void UART_Def_Init()
+{
+	// initialize UART interface
+	// UART : 9615bps N 8 1
+	if (enUart)
+	{
+		UARTCR2  = 0x00; 	// activate UART
+		UARTCR1  = 0x00; 	// bit count, parity
+		UARTCR2 |= 0x00;	// interrupt, speed
+		UARTCR3  = 0x00; 	// stop bit
+		UARTBD   = 0x00;  	// baud rate
+		IE1     &= (~0x18); // enable UART interrupt
+	}
+	enUart = 0;
 }
 
 void UART_write(unsigned char dat)

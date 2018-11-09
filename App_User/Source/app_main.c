@@ -10,25 +10,30 @@
 /*************************/
 /*类型定义byte definition*/
 /*************************/
-PLAY_MODE_TypeDef  TYPE_Play_Mode;
-ALRAM_TypeDef  TYPE_Alarm1;
+PLAY_MODE_TypeDef  PlayMode_TypeDef;
+CONTROL_COMMAND_TypeDef Ctrl_Com_TypeDef;
 
 /****************************/
 /*标志位定义flags definetion*/
 /****************************/
-bit  AppTick0;
-bit  AppTick1;
-bit  AppTick2;
-bit  AppTick3;
-bit  AppTick4;
-bit  AppTick5;
-bit  AppTick1ms;
+bit   AppTick0;
+bit   AppTick1;
+bit   AppTick2;
+bit   AppTick3;
+bit   AppTick4;
+bit   AppTick5;
+bit   AppTick1ms;
+
+BOOL  gb12HourDisp;
+BOOL  gb0_5s;
+BOOL  gbUser_AdjClk;
+BOOL  gbHalfSecond;
 
 /*****************************/
 /*变量定义variable definition*/
 /*****************************/
 uint8_t  idata cntAppTick;
-bit		 	   gbHalfSecong;
+bit		 	   gbHalfSecond;
 uint8_t  idata gRTC_Sec;//RTC数据 
 uint8_t  idata gRTC_Sec_bk;
 uint8_t  idata gRTC_Minute;
@@ -37,8 +42,16 @@ uint8_t  idata gRTC_Hour;
 uint8_t  idata gRTC_Hour_bk;
 uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
 uint8_t  idata gRTC_Week; //一周7天
-uint8_t  idata sys_Volume;
+uint8_t  idata sys_Volume;//系统音量
+uint8_t  idata sys_Cmd;//命令
+uint8_t  idata sys_Name;
 uint16_t idata timeCnt_30Sec;//短按ALARM键缺人设置或不动作30s自动保存，30s计时
+
+u8       idata cntNoFlash;
+u8		 idata AlarmingType;//闹钟时开启还是关闭，用Alarm1_TypeDef.Alarm_OnOFF代替
+u8		 idata Alarm1Mode;//用Alarm1_TypeDef.Alarm_Mode代替了
+u8			   gZone;
+u8			   dispStatus;
 
 /**************************/
 /*数组定义array definition*/
@@ -75,9 +88,9 @@ void Compare_1MinutePorc(void)
 		if(gRTC_Minute!=gRTC_Minute_bk)
 		{
 			gRTC_Minute_bk=gRTC_Minute;
-			if((TYPE_Alarm1.enable == 1) && (gRTC_Hour == TYPE_Alarm1.hour) && (gRTC_Minute == TYPE_Alarm1.minute))
+			if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (gRTC_Hour == Alarm1_TypeDef.hour) && (gRTC_Minute == Alarm1_TypeDef.minute))
 			{
-				if(TYPE_Alarm1.Alarm_Mode==ALARM_BT)
+				if(Alarm1_TypeDef.AlarmWorkMode==ALARM_BT)
 				{
 					
 				}
@@ -117,19 +130,32 @@ void Compare_1MinutePorc(void)
  *******************************************************************************/
 void Timing_Handle(void)
 {
-	if (TYPE_Alarm1.Flag_Confirm_TimeCnt_30Sec == 2)
+	if (Time_Temp_TypeDef.Flag_Confirm_30Sec == 2)
 	{
 		timeCnt_30Sec++;
 		if (timeCnt_30Sec >= 3000)
 		{
-			TYPE_Alarm1.Flag_Confirm_TimeCnt_30Sec = 0;
+			Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;
+			FlagKSet_TypeDef = FLAG_KEYSET_OFF;
 			timeCnt_30Sec = 0;
-			TYPE_Alarm1.hour = TYPE_Alarm1.tempHour;//30s计时结束把设定的闹钟时间赋给与RTC比对的闹钟变量
-			TYPE_Alarm1.minute = TYPE_Alarm1.tempMinute;
+			gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour; //30s计时结束把设定的临时RTC时间付给一直在运行的RTC时间
+			gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
 		}
 	}
-	else
-		timeCnt_30Sec = 0;
+	else if (Alarm1_TypeDef.Flag_Confirm_30Sec == 2)
+	{
+		timeCnt_30Sec++;
+		if (timeCnt_30Sec >= 3000)
+		{
+			Alarm1_TypeDef.Flag_Confirm_30Sec = 0;
+			FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+			timeCnt_30Sec = 0;
+			Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//30s计时结束把设定的闹钟时间赋给与RTC比对的闹钟变量
+			Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
+		}
+	}
+	//else
+	//	timeCnt_30Sec = 0;
 }
 
 /*******************************************************************************
@@ -185,10 +211,11 @@ void Sys_Tick(void)
  *******************************************************************************/
 void PowerON_Reset(void)
 {
-	TYPE_Play_Mode=PLAY_JUST_POWER;//刚上电，模式设为刚上电模式
-	TYPE_LED_Brightness=LED_HIGH;//亮度默认为高
-	TYPE_Alarm1.Alarm_Mode=ALARM_BEEP; //自己加的为闹钟响闹模式为beep模式，方便写程序，也防止使用者在设置闹钟
+	PlayMode_TypeDef=PLAY_JUST_POWER;//刚上电，模式设为刚上电模式
+	LED_Brightness_TypeDef=LED_HIGH;//亮度默认为高
+	Alarm1_TypeDef.AlarmWorkMode=ALARM_BEEP; //自己加的为闹钟响闹模式为beep模式，方便写程序，也防止使用者在设置闹钟
 								//时没有选择模式，那就选择默认是beep模式
+	sys_Volume = 8;//默认系统音量为8级
 }
 
 /*******************************************************************************

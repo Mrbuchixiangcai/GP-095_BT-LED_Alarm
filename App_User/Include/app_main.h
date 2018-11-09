@@ -5,14 +5,13 @@
 #define __APP_MAIN_H__
 
 //宏定义macro definition//
-#define uint8_t  unsigned char
-#define uint16_t unsigned int
 
 /*******************/
 /*头文件header file*/
 /*******************/
 #include "app_main.h"
 #include "MC96F6508A.h"
+#include "user_define.h"
 #include "func_def.h"
 #include "led_mode.h"
 #include "bt_mode.h"
@@ -21,6 +20,28 @@
 /************************/
 /*宏定义macro definition*/
 /************************/
+#define SET_BEEP(a)			if(a)				\  //设置蜂鸣器响还是不响
+								P0 |= 0x04;		\
+							else				\
+								P0 &= (~0x04);
+#define SET_LED_RED(a)		if(a)				\  //
+								P5 |= 0x10;		\
+							else                \
+								P5 &= (~0x10);
+#define BT_SET_LED_BLUE(a)  if(a)				\  //蓝牙开机，检测到蓝牙信号后，就设置输出1
+								P5 |= 0x08;		\
+							else				\
+								P5 &= (~0x08);
+
+#define TF_CARD_DET()     (P0&0x01)    //检测TF卡是否插入
+#define BT_MUTE_DET()     (P6&0x02)    //P62,检测蓝牙是否发出mute信号,1为不静音
+#define BT_LED_RED_DET()  (P0&0x08)    //P03,检测蓝牙是否发出红色LED信号
+#define BT_LED_BLUE_DET() (P5&0x20)    //P55,检测蓝牙是否开启，如果开启，就从另一个端口输出一个Blue LED
+
+#define BT_SET_POWER()	  do{P6 |=  (0x01);}while(0)//P60,使能蓝牙，如果使能了使三极管导通，蓝牙芯片上电
+#define BT_CLR_POWER()	  do{P6 &= (~0x01);}while(0)
+#define __DE_MUTE()		  do{P0 |= ( 0x02);}while(0)//解mute
+#define __EN_MUTE()		  do{P0 &= (~0x02);}while(0)//mute
 
 /*************************/
 /*类型定义byte definition*/
@@ -35,27 +56,32 @@ typedef enum
 	//PLAY_IN_TIME_TF_CARD,
 }PLAY_MODE_TypeDef;
 
+enum
+{
+	DISP_CLK  = 0,
+	DISP_AL1,
+	ADJ_CLK,
+	ADJ_ZONE,
+	ADJ_ALARM1,
+	ALARM1_DISP,
+	ADJ_ALARM1_MIN,
+	ADJ_ALARM1_HOUR,
+	ADJ_ALARM1_MODE,
+	DISP_VOL,
+	DISP_SLEEP,
+	POWER_OFF_DISP,
+};
+
 typedef enum
 {
-	ALARM_BT  =1,
-	ALARM_BEEP  ,
-}ALARM_MODE_TypeDef;//闹钟响闹模式选择的声音来源，是蓝牙还是beep
-
-typedef struct
-{
-	uint8_t  enable;	//闹钟总开关
-	uint8_t  week;	
-	uint8_t  hour;  //判断此变量的值，通过LED显示出来，也可以直接对此变量进行设置
-	uint8_t  minute;//判断此变量的值，通过LED显示出来，也可以直接对此变量进行设置
-	uint8_t  tempHour;  //因为设置闹钟有个确认设置(虽然作用不大),所以需要有个临时变量作为中间值，等
-	uint8_t  tempMinute;//到缺人设置或者30s后自动确认再把tempXxx这几个变量赋给闹钟的最后设定时间
-	uint8_t  runing; 
-	uint8_t  cntTimer;	
-	uint8_t  Flag_Confirm_TimeCnt_30Sec;//短按ALARM键确认设置或不动作30s自动保存，(为1是确认闹钟设置标
-										//志位),为2是30s计时标志位，
-	ALARM_MODE_TypeDef  Alarm_Mode;
-}ALRAM_TypeDef;
-
+	CTRL_NONE = 0,
+	CTRL_VOL0,
+	CTRL_VOL15,
+	CTRL_PAUSE,
+	CTRL_PALY,
+	CTRL_PREV,
+	CTRL_NEXT,
+}CONTROL_COMMAND_TypeDef;
 
 /****************************/
 /*标志位定义flags definetion*/
@@ -85,13 +111,16 @@ void Sys_Tick(void);
 /*********************************/
 /*外部调用_类型定义byte definition*/
 /*********************************/
-extern PLAY_MODE_TypeDef  TYPE_Play_Mode;
-extern ALRAM_TypeDef  TYPE_Alarm1;
+extern PLAY_MODE_TypeDef  PlayMode_TypeDef;
+extern CONTROL_COMMAND_TypeDef Ctrl_Com_TypeDef;
 
 /************************************/
 /*外部调用_标志位定义flags definetion*/
 /************************************/
-
+extern BOOL  gb12HourDisp;
+extern BOOL  gb0_5s;
+extern BOOL  gbUser_AdjClk;
+extern BOOL  gbHalfSecond;
 /*************************************/
 /*外部调用_变量定义variable definition*/
 /*************************************/
@@ -106,6 +135,10 @@ extern uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
 extern uint8_t  idata gRTC_Week; 
 extern uint8_t  idata sys_Volume;
 extern uint16_t idata timeCnt_30Sec;
+
+extern u8       idata cntNoFlash;
+extern u8			  gZone;
+extern u8			  dispStatus;
 /**********************************/
 /*外部调用_数组定义array definition*/
 /**********************************/

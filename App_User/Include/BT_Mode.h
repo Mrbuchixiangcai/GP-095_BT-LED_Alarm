@@ -15,6 +15,13 @@
 /*************************/
 /*类型定义byte definition*/
 /*************************/
+typedef enum
+{
+	MUSIC_OFF = 0,
+	MUSIC_BT,
+	MUSIC_TF,
+}MUSIC_MODE_TypeDef;
+
 enum
 {
 	BT_NONE    = 0,
@@ -23,11 +30,11 @@ enum
 	BT_PREV       ,//上一曲
 	BT_NEXT       ,//下一曲
 	BT_PAIR       ,//配对
-	BT_PAIR_EXT   ,//退出配对
+	//BT_PAIR_EXT   ,//退出配对
 	BT_LINK_BACK  ,//回连
 	BT_POWER_DOWN ,//关机
 	BT_DISCONN    ,//断开连接
-	BT_CLEAR_LIST ,//断开连接
+	//BT_CLEAR_LIST ,//断开连接
 	BT_VOL	      ,//音量
 };
 
@@ -75,7 +82,7 @@ typedef enum
 /*********************************/
 /*外部调用_类型定义byte definition*/
 /*********************************/
-
+extern MUSIC_MODE_TypeDef Music_Mode_TypeDef;
 /************************************/
 /*外部调用_标志位定义flags definetion*/
 /************************************/

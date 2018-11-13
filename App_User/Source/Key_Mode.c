@@ -29,6 +29,7 @@ uint8_t  cntKeylong;
 uint8_t  KeyCurValueBK;//现在按键备份
 uint8_t  KeyCurValue;//按键现在值
 uint8_t  KeyLastValue;//按键上一次的值
+
 /**************************/
 /*数组定义array definition*/
 /**************************/

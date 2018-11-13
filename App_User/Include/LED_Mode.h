@@ -123,12 +123,21 @@
 
 #define S_NC  7
 #define S_A   0		//  AAAAA
-#define S_B   4		// F     B
-#define S_C   5		// F     B
-#define S_D   6		//  GGGGG
-#define S_E   3		// E     C
-#define S_F   1		// E     C
-#define S_G   2		//  DDDDD
+#define S_B   1		// F     B
+#define S_C   2		// F     B
+#define S_D   3		//  GGGGG
+#define S_E   4		// E     C
+#define S_F   5		// E     C
+#define S_G   6		//  DDDDD
+
+//#define S_NC  7
+//#define S_A   0		//  AAAAA
+//#define S_B   4		// F     B
+//#define S_C   5		// F     B
+//#define S_D   6		//  GGGGG
+//#define S_E   3		// E     C
+//#define S_F   1		// E     C
+//#define S_G   2		//  DDDDD
 
 #define DIG_0   (1<<S_A)|(1<<S_B)|(1<<S_C)|(1<<S_D)|(1<<S_E)|(1<<S_F)  //0是6个段，上面的是对应的端口
 #define DIG_1            (1<<S_B)|(1<<S_C)

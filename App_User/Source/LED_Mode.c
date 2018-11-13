@@ -28,20 +28,22 @@ u8 bdata lcd_BitRam0;
 u8 bdata lcd_BitRam1;
 
 sbit  gblcd_buz1   = lcd_BitRam0 ^ 0;
-sbit  gblcd_radio1 = lcd_BitRam0 ^ 1;
+sbit  gblcd_al     = lcd_BitRam0 ^ 1;//原来是gblcd_radio1
 sbit  gblcd_buz2   = lcd_BitRam0 ^ 2;
 sbit  gblcd_radio2 = lcd_BitRam0 ^ 3;
-sbit  gblcd_dot    = lcd_BitRam0 ^ 4;
-sbit  gblcd_colon  = lcd_BitRam0 ^ 5;
-sbit  gblcd_sleep  = lcd_BitRam0 ^ 6;
+sbit  gblcd_dot    = lcd_BitRam0 ^ 4;//
+sbit  gblcd_colon  = lcd_BitRam0 ^ 5;//
+sbit  gblcd_sleep  = lcd_BitRam0 ^ 6;//
 sbit  gblcd_aux    = lcd_BitRam0 ^ 7;
-sbit  gblcd_am     = lcd_BitRam1 ^ 0;
-sbit  gblcd_pm     = lcd_BitRam1 ^ 1;
+sbit  gblcd_am     = lcd_BitRam1 ^ 0;//
+sbit  gblcd_pm     = lcd_BitRam1 ^ 1;//
 sbit  gblcd_fm     = lcd_BitRam1 ^ 2;
 sbit  gblcd_mw     = lcd_BitRam1 ^ 3;
 sbit  gblcd_mhz    = lcd_BitRam1 ^ 4;
 sbit  gblcd_khz    = lcd_BitRam1 ^ 5;
 sbit  gblcd_five   = lcd_BitRam1 ^ 6;
+sbit  gblcd_bt	   = lcd_BitRam1 ^ 7;
+//                                                                                                                                                                                                                                           sbit  gblcd_al	   = lcd_BitRam1 ^ 7; //al:alarm
 /*****************************/
 /*变量定义variable definition*/
 /*****************************/
@@ -53,11 +55,9 @@ u8		 dispStatusNum;//cntDispStatus;
 /**************************/
 code u8 dispCode_Arr[]=  //arr:array
 {
-	DIG_0,DIG_1,DIG_2,DIG_3,DIG_4,DIG_5,DIG_6,DIG_7,DIG_8,DIG_9,DIG_NONE,
-	CH_a,CH_b,CH_c,CH_d,CH_h,CH_l,
-	CH_n,CH_o,CH_r,CH_t,CH_u,CH_y,
-	CH_A,CH_C,CH_E,CH_F,CH_G,CH_H,CH_I,CH_J,CH_L,
-	CH_N,CH_O,CH_P,CH_S,CH_U,CH__,
+	DIG_0,DIG_1,DIG_2,DIG_3,DIG_4,DIG_5,DIG_6,DIG_7,DIG_8,DIG_9,DIG_NONE,		//数字
+	CH_a,CH_b,CH_c,CH_d,CH_h,CH_l,CH_n,CH_o,CH_r,CH_t,CH_u,CH_y,				//小写字母
+	CH_A,CH_C,CH_E,CH_F,CH_G,CH_H,CH_I,CH_J,CH_L,CH_N,CH_O,CH_P,CH_S,CH_U,CH__,	//大写字母
 };
 
 /******************************/
@@ -73,7 +73,7 @@ code u8 dispCode_Arr[]=  //arr:array
  * 函数原型：
  * 输入参数：
  * 输出参数：
- * 函数功能：
+ * 函数功能：把要更新的值赋给DIG_NUMx，
  * 返回值说明：
  * 创建日期：
  * 创建人：
@@ -81,11 +81,13 @@ code u8 dispCode_Arr[]=  //arr:array
  * 修改人：
  * 第N次修改：
  * 修改原因：
- * 备注：
+ * 备注：把要更新的值赋给DIG_NUMx，然后相当于赋值给了dispBuff[x]，dispBuff被调用
+ *		 在Led_Buffer[i] = dispCode_Arr[dispBuff[i]]这里被赋给个Led_Buffer,
+ *		 Led_Buffer会被与上一次调用Led_Buffer时判断，，然后置位相应的LED端口。
  *******************************************************************************/
 void DisplayNum12(u8 dat)
 {
-	DIG_NUM1 = (dat / 10);
+	DIG_NUM1 = (dat / 10); //相当于赋值给了dispBuff[0]，最后判断是否与对应的LED，
 	DIG_NUM2 = (dat % 10);
 	if (!DIG_NUM1)
 		DIG_NUM1 = eD_NONE;
@@ -163,18 +165,18 @@ void Display_HH_MM(u8 hh_mm_TypeDef)
 			tmpMinute = Alarm1_TypeDef.minute;
 			break;
 	}
-	if (gb12HourDisp)
+	if (gb12HourDisp)//12小时制显示
 	{
 		if (tmpHour < 12)  //如果小于12则是凌晨0点到11:59，为上午
 		{
-			gblcd_am = 1;
+			gblcd_am = 1;  //标志位为1，设置对应的LED是否亮起
 		}
 		else
 		{
-			gblcd_pm = 1; //如果大于12则是12:00到23:59，为下午
+			gblcd_pm = 1; //如果大于12则是12:00到23:59，为下午//标志位为1，设置对应的LED是否亮起
 			tmpHour -= 12;//因为是12小时制，所以下午的时间也是12小时制显示，要减12
 		}
-		if (tmpHour == 0) //
+		if (tmpHour == 0) //零点是显示12的，中午12点也是显示12的
 		{
 			tmpHour = 12;
 		}
@@ -238,7 +240,9 @@ void Display_SetAlarm1(void)
  * 修改人：
  * 第N次修改：
  * 修改原因：
- * 备注：
+ * 备注：之所以gb0_5s大于0时才能进入if代码，是因为这个是设置RTC，要每隔0.5s闪烁，
+ *       而cntNoFlash()是要常亮，比如在设置时时间在闪，但是要按下加或者减时要常
+ *		 亮1是，这样让设置的人看到，所以要gb0_5s为大于0和常亮时进入
  *******************************************************************************/
 void Display_SetRTC(void)
 {
@@ -355,15 +359,15 @@ void Display_Off(void)
  * 修改原因：
  * 备注：
  *******************************************************************************/
-void Display_AllFlag(void)
+void Display_Al1Flag(void)
 {
 	if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BEEP)//闹钟响时的工作模式，
-		gblcd_buz1 = 1;
+		gblcd_buz1 = 1;//闹钟响时工作铃声为beep
 	else if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BT)
 	{
 		if ((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (Alarm1_TypeDef.AlarmSnooze == ALARM_SNOOZE_OFF))
 		{
-
+			gblcd_bt = 1;//如果是蓝牙就显示蓝牙或者连接到蓝牙
 		}
 	}
 }
@@ -413,7 +417,7 @@ void UpdateDisplay(u8 dispStatus)
  * 函数原型：
  * 输入参数：
  * 输出参数：
- * 函数功能：
+ * 函数功能：各种显示标志，比如两点(xx：xx)，buzz，am，pm
  * 返回值说明：
  * 创建日期：
  * 创建人：
@@ -431,8 +435,8 @@ void Display_Flag(void)
 	{
 		if (dispStatus == ADJ_ALARM1)
 		{
-			if ((gb0_5s) || (NoFlash()))
-				Display_AllFlag();
+			if ((gb0_5s) || (NoFlash())) //NoFlash()不闪烁
+				Display_Al1Flag();
 		}
 	}
 }
@@ -459,7 +463,11 @@ void Display(void)
 		ClearDisplayBuff(); //清除显示缓存
 		UpdateDisplay(dispStatus);
 		Display_Flag();
-		
+		for (cnt = 0; cnt < 4; cnt++)
+		{
+			Led_Buffer[i] = dispCode_Arr[dispBuff[i]];
+		}
+		Display_LED();
 	}
 }
 

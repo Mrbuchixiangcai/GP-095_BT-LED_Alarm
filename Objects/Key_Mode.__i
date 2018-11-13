@@ -1,1 +1,0 @@
-"App_User\Source\Key_Mode.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Device;.\App_User\Include) DEBUG OBJECTEXTEND PRINT(.\Listings\Key_Mode.lst) OBJECT(.\Objects\Key_Mode.obj)

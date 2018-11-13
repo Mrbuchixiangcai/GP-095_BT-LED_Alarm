@@ -28,6 +28,7 @@ BOOL  gb12HourDisp;
 BOOL  gb0_5s;
 BOOL  gbUser_AdjClk;
 BOOL  gbHalfSecond;
+BOOL  gbTestMode;
 
 /*****************************/
 /*变量定义variable definition*/

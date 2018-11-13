@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 1   
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE LED_MODE
@@ -12,6 +12,11 @@ line level    source
    2          /*头文件header file*/
    3          /*******************/
    4          #include "app_main.h"
+*** ERROR C132 IN LINE 13 OF .\DEVICE\FUNC_DEF.H: '_UART_write': not in formal parameter list
+*** ERROR C132 IN LINE 14 OF .\DEVICE\FUNC_DEF.H: 'UART_read': not in formal parameter list
+*** ERROR C132 IN LINE 15 OF .\DEVICE\FUNC_DEF.H: 'WDT_init': not in formal parameter list
+*** ERROR C132 IN LINE 16 OF .\DEVICE\FUNC_DEF.H: 'WDT_clear': not in formal parameter list
+*** ERROR C132 IN LINE 17 OF .\DEVICE\FUNC_DEF.H: 'WT_init': not in formal parameter list
 *** WARNING C329 IN LINE 16 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
              -D_MODE.H: single-line comment contains line-continuation
 *** WARNING C329 IN LINE 17 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
@@ -57,13 +62,13 @@ line level    source
 *** WARNING C329 IN LINE 57 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
              -D_MODE.H: single-line comment contains line-continuation
 *** WARNING C329 IN LINE 60 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 2   
+
              -D_MODE.H: single-line comment contains line-continuation
 *** WARNING C329 IN LINE 61 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
              -D_MODE.H: single-line comment contains line-continuation
 *** WARNING C329 IN LINE 64 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
              -D_MODE.H: single-line comment contains line-continuation
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 2   
-
 *** WARNING C329 IN LINE 65 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
              -D_MODE.H: single-line comment contains line-continuation
 *** WARNING C329 IN LINE 68 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
@@ -121,13 +126,29 @@ line level    source
 *** WARNING C329 IN LINE 120 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
              -ED_MODE.H: single-line comment contains line-continuation
 *** WARNING C329 IN LINE 121 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 3   
+
              -ED_MODE.H: single-line comment contains line-continuation
+*** ERROR C127 IN LINE 272 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
+             -_MODE.H: 'LED_BRIGHTNESS_TypeDef': invalid storage class
+*** ERROR C127 IN LINE 279 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
+             -_MODE.H: 'ALARM_WORK_MODE_TypeDef': invalid storage class
+*** ERROR C127 IN LINE 285 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
+             -_MODE.H: 'ALARM_ONOFF_TypeDef': invalid storage class
+*** ERROR C127 IN LINE 291 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
+             -_MODE.H: 'ALARM_SNOOZE_TypeDef': invalid storage class
+*** ERROR C127 IN LINE 297 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
+             -_MODE.H: 'ALARM_RING_TIMER_TypeDef': invalid storage class
+*** ERROR C127 IN LINE 303 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
+             -_MODE.H: 'ALARM_RING_RUN_TypeDef': invalid storage class
+*** ERROR C141 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
+             -_MODE.H: syntax error near 'ALARM_ONOFF_TypeDef'
+*** ERROR C129 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
+             -_MODE.H: missing ';' before 'Alarm_OnOff'
    5          
    6          /************************/
    7          /*宏定义macro definition*/
    8          /************************/
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 3   
-
    9          u8 dispBuff[5];
   10          #define DIG_NUM1 dispBuff[0]
   11          #define DIG_NUM2 dispBuff[1]
@@ -164,418 +185,418 @@ line level    source
   42          sbit  gblcd_mhz    = lcd_BitRam1 ^ 4;
   43          sbit  gblcd_khz    = lcd_BitRam1 ^ 5;
   44          sbit  gblcd_five   = lcd_BitRam1 ^ 6;
-  45          /*****************************/
-  46          /*变量定义variable definition*/
-  47          /*****************************/
-  48          u8               dispStatusNum;//cntDispStatus;
-  49          
+  45          sbit  gblcd_bt     = lcd_BitRam1 ^ 7;
+  46          /*****************************/
+  47          /*变量定义variable definition*/
+  48          /*****************************/
+  49          u8               dispStatusNum;//cntDispStatus;
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 4   
+
   50          
-  51          /**************************/
-  52          /*数组定义array definition*/
-  53          /**************************/
-  54          code u8 dispCode_Arr[]=  //arr:array
-  55          {
-  56                  DIG_0,DIG_1,DIG_2,DIG_3,DIG_4,DIG_5,DIG_6,DIG_7,DIG_8,DIG_9,DIG_NONE,
-  57                  CH_a,CH_b,CH_c,CH_d,CH_h,CH_l,
-  58                  CH_n,CH_o,CH_r,CH_t,CH_u,CH_y,
-  59                  CH_A,CH_C,CH_E,CH_F,CH_G,CH_H,CH_I,CH_J,CH_L,
-  60                  CH_N,CH_O,CH_P,CH_S,CH_U,CH__,
-  61          };
-  62          
-  63          /******************************/
-  64          /*函数声明Function declaration*/
-  65          /******************************/
-  66          
-  67          /*****************************/
-  68          /*函数定义function definetion*/
-  69          /*****************************/
+  51          
+  52          /**************************/
+  53          /*数组定义array definition*/
+  54          /**************************/
+  55          code u8 dispCode_Arr[]=  //arr:array
+  56          {
+  57                  DIG_0,DIG_1,DIG_2,DIG_3,DIG_4,DIG_5,DIG_6,DIG_7,DIG_8,DIG_9,DIG_NONE,           //数字
+  58                  CH_a,CH_b,CH_c,CH_d,CH_h,CH_l,CH_n,CH_o,CH_r,CH_t,CH_u,CH_y,                            //小写字母
+  59                  CH_A,CH_C,CH_E,CH_F,CH_G,CH_H,CH_I,CH_J,CH_L,CH_N,CH_O,CH_P,CH_S,CH_U,CH__,     //大写字母
+  60          };
+  61          
+  62          /******************************/
+  63          /*函数声明Function declaration*/
+  64          /******************************/
+  65          
+  66          /*****************************/
+  67          /*函数定义function definetion*/
+  68          /*****************************/
+  69          
   70          
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 4   
+  71          /*******************************************************************************
+  72           * 函数原型：
+  73           * 输入参数：
+  74           * 输出参数：
+  75           * 函数功能：
+  76           * 返回值说明：
+  77           * 创建日期：
+  78           * 创建人：
+  79           * 修改日期
+  80           * 修改人：
+  81           * 第N次修改：
+  82           * 修改原因：
+  83           * 备注：
+  84           *******************************************************************************/
+  85          void DisplayNum12(u8 dat)
+  86          {
+  87                  DIG_NUM1 = (dat / 10);
+  88                  DIG_NUM2 = (dat % 10);
+  89                  if (!DIG_NUM1)
+  90                          DIG_NUM1 = eD_NONE;
+  91          }
+  92          
+  93          /*******************************************************************************
+  94           * 函数原型：
+  95           * 输入参数：
+  96           * 输出参数：
+  97           * 函数功能：
+  98           * 返回值说明：
+  99           * 创建日期：
+ 100           * 创建人：
+ 101           * 修改日期
+ 102           * 修改人：
+ 103           * 第N次修改：
+ 104           * 修改原因：
+ 105           * 备注：
+ 106           *******************************************************************************/
+ 107          void DisplayNum34(u8 dat)
+ 108          {
+ 109                  DIG_NUM3 = (dat / 10);
+ 110                  DIG_NUM4 = (dat % 10);
+ 111          }
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 5   
 
-  71          
-  72          /*******************************************************************************
-  73           * 函数原型：
-  74           * 输入参数：
-  75           * 输出参数：
-  76           * 函数功能：
-  77           * 返回值说明：
-  78           * 创建日期：
-  79           * 创建人：
-  80           * 修改日期
-  81           * 修改人：
-  82           * 第N次修改：
-  83           * 修改原因：
-  84           * 备注：
-  85           *******************************************************************************/
-  86          void DisplayNum12(u8 dat)
-  87          {
-  88   1              DIG_NUM1 = (dat / 10);
-  89   1              DIG_NUM2 = (dat % 10);
-  90   1              if (!DIG_NUM1)
-  91   1                      DIG_NUM1 = eD_NONE;
-  92   1      }
-  93          
-  94          /*******************************************************************************
-  95           * 函数原型：
-  96           * 输入参数：
-  97           * 输出参数：
-  98           * 函数功能：
-  99           * 返回值说明：
- 100           * 创建日期：
- 101           * 创建人：
- 102           * 修改日期
- 103           * 修改人：
- 104           * 第N次修改：
- 105           * 修改原因：
- 106           * 备注：
- 107           *******************************************************************************/
- 108          void DisplayNum34(u8 dat)
- 109          {
- 110   1              DIG_NUM3 = (dat / 10);
- 111   1              DIG_NUM4 = (dat % 10);
- 112   1      }
- 113          
- 114          /*******************************************************************************
- 115           * 函数原型：
- 116           * 输入参数：
- 117           * 输出参数：
- 118           * 函数功能：
- 119           * 返回值说明：
- 120           * 创建日期：
- 121           * 创建人：
- 122           * 修改日期
- 123           * 修改人：
- 124           * 第N次修改：
- 125           * 修改原因：
- 126           * 备注：
- 127           *******************************************************************************/
- 128          BOOL NoFlash(void)
- 129          {
- 130   1              if (cntNoFlash != 0)
- 131   1              {
- 132   2                      //cntNoFlash--;
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 5   
+ 112          
+ 113          /*******************************************************************************
+ 114           * 函数原型：
+ 115           * 输入参数：
+ 116           * 输出参数：
+ 117           * 函数功能：
+ 118           * 返回值说明：
+ 119           * 创建日期：
+ 120           * 创建人：
+ 121           * 修改日期
+ 122           * 修改人：
+ 123           * 第N次修改：
+ 124           * 修改原因：
+ 125           * 备注：
+ 126           *******************************************************************************/
+ 127          BOOL NoFlash(void)
+ 128          {
+ 129                  if (cntNoFlash != 0)
+ 130                  {
+ 131                          //cntNoFlash--;
+ 132                          return 1;
+ 133                  }
+ 134                  return 0;
+ 135          }
+ 136          
+ 137          /*******************************************************************************
+ 138           * 函数原型：
+ 139           * 输入参数：
+ 140           * 输出参数：
+ 141           * 函数功能：
+ 142           * 返回值说明：
+ 143           * 创建日期：
+ 144           * 创建人：
+ 145           * 修改日期
+ 146           * 修改人：
+ 147           * 第N次修改：
+ 148           * 修改原因：
+ 149           * 备注：
+ 150           *******************************************************************************/
+ 151          void Display_HH_MM(u8 hh_mm_TypeDef)
+ 152          {
+ 153                  u8  tmpHour, tmpMinute;
+ 154                  switch (hh_mm_TypeDef)
+ 155                  {
+ 156                          case eDS_RTC:
+ 157                                  tmpHour=gRTC_Hour;
+ 158                                  tmpMinute=gRTC_Minute;
+ 159                                  break;
+ 160                          case eDS_AL1:
+ 161                                  tmpHour = Alarm1_TypeDef.hour;
+ 162                                  tmpMinute = Alarm1_TypeDef.minute;
+ 163                                  break;
+ 164                  }
+ 165                  if (gb12HourDisp)
+ 166                  {
+ 167                          if (tmpHour < 12)  //如果小于12则是凌晨0点到11:59，为上午
+ 168                          {
+ 169                                  gblcd_am = 1;
+ 170                          }
+ 171                          else
+ 172                          {
+ 173                                  gblcd_pm = 1; //如果大于12则是12:00到23:59，为下午
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 6   
 
- 133   2                      return 1;
- 134   2              }
- 135   1              return 0;
- 136   1      }
- 137          
- 138          /*******************************************************************************
- 139           * 函数原型：
- 140           * 输入参数：
- 141           * 输出参数：
- 142           * 函数功能：
- 143           * 返回值说明：
- 144           * 创建日期：
- 145           * 创建人：
- 146           * 修改日期
- 147           * 修改人：
- 148           * 第N次修改：
- 149           * 修改原因：
- 150           * 备注：
- 151           *******************************************************************************/
- 152          void Display_HH_MM(u8 hh_mm_TypeDef)
- 153          {
- 154   1              u8  tmpHour, tmpMinute;
- 155   1              switch (hh_mm_TypeDef)
- 156   1              {
- 157   2                      case eDS_RTC:
- 158   2                              tmpHour=gRTC_Hour;
- 159   2                              tmpMinute=gRTC_Minute;
- 160   2                              break;
- 161   2                      case eDS_AL1:
- 162   2                              tmpHour = Alarm1_TypeDef.hour;
- 163   2                              tmpMinute = Alarm1_TypeDef.minute;
- 164   2                              break;
- 165   2              }
- 166   1              if (gb12HourDisp)
- 167   1              {
- 168   2                      if (tmpHour < 12)  //如果小于12则是凌晨0点到11:59，为上午
- 169   2                      {
- 170   3                              gblcd_am = 1;
- 171   3                      }
- 172   2                      else
- 173   2                      {
- 174   3                              gblcd_pm = 1; //如果大于12则是12:00到23:59，为下午
- 175   3                              tmpHour -= 12;//因为是12小时制，所以下午的时间也是12小时制显示，要减12
- 176   3                      }
- 177   2                      if (tmpHour == 0) //
- 178   2                      {
- 179   3                              tmpHour = 12;
- 180   3                      }
- 181   2                      DisplayNum12(tmpHour);
- 182   2                      DisplayNum34(tmpMinute);
- 183   2              }
- 184   1      }
- 185          
- 186          /*******************************************************************************
- 187           * 函数原型：
- 188           * 输入参数：
- 189           * 输出参数：
- 190           * 函数功能：
- 191           * 返回值说明：
- 192           * 创建日期：
- 193           * 创建人：
- 194           * 修改日期
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 6   
+ 174                                  tmpHour -= 12;//因为是12小时制，所以下午的时间也是12小时制显示，要减12
+ 175                          }
+ 176                          if (tmpHour == 0) //
+ 177                          {
+ 178                                  tmpHour = 12;
+ 179                          }
+ 180                          DisplayNum12(tmpHour);
+ 181                          DisplayNum34(tmpMinute);
+ 182                  }
+ 183          }
+ 184          
+ 185          /*******************************************************************************
+ 186           * 函数原型：
+ 187           * 输入参数：
+ 188           * 输出参数：
+ 189           * 函数功能：
+ 190           * 返回值说明：
+ 191           * 创建日期：
+ 192           * 创建人：
+ 193           * 修改日期
+ 194           * 修改人：
+ 195           * 第N次修改：
+ 196           * 修改原因：
+ 197           * 备注：
+ 198           *******************************************************************************/
+ 199          void Display_ALarm1(void)
+ 200          {
+ 201                  gblcd_colon = 1;
+ 202                  Display_HH_MM(eDS_AL1);
+ 203          }
+ 204          
+ 205          /*******************************************************************************
+ 206           * 函数原型：
+ 207           * 输入参数：
+ 208           * 输出参数：
+ 209           * 函数功能：
+ 210           * 返回值说明：
+ 211           * 创建日期：
+ 212           * 创建人：
+ 213           * 修改日期
+ 214           * 修改人：
+ 215           * 第N次修改：
+ 216           * 修改原因：
+ 217           * 备注：
+ 218           *******************************************************************************/
+ 219          void Display_SetAlarm1(void)
+ 220          {
+ 221                  if ((gb0_5s) || (NoFlash()))
+ 222                  {
+ 223                          gblcd_colon = 1;
+ 224                          Display_HH_MM(eDS_AL1);
+ 225                  }
+ 226          }
+ 227          
+ 228          /*******************************************************************************
+ 229           * 函数原型：
+ 230           * 输入参数：
+ 231           * 输出参数：
+ 232           * 函数功能：
+ 233           * 返回值说明：
+ 234           * 创建日期：
+ 235           * 创建人：
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 7   
 
- 195           * 修改人：
- 196           * 第N次修改：
- 197           * 修改原因：
- 198           * 备注：
- 199           *******************************************************************************/
- 200          void Display_ALarm1(void)
- 201          {
- 202   1              gblcd_colon = 1;
- 203   1              Display_HH_MM(eDS_AL1);
- 204   1      }
- 205          
- 206          /*******************************************************************************
- 207           * 函数原型：
- 208           * 输入参数：
- 209           * 输出参数：
- 210           * 函数功能：
- 211           * 返回值说明：
- 212           * 创建日期：
- 213           * 创建人：
- 214           * 修改日期
- 215           * 修改人：
- 216           * 第N次修改：
- 217           * 修改原因：
- 218           * 备注：
- 219           *******************************************************************************/
- 220          void Display_SetAlarm1(void)
- 221          {
- 222   1              if ((gb0_5s) || (NoFlash()))
- 223   1              {
- 224   2                      gblcd_colon = 1;
- 225   2                      Display_HH_MM(eDS_AL1);
- 226   2              }
- 227   1      }
- 228          
- 229          /*******************************************************************************
- 230           * 函数原型：
- 231           * 输入参数：
- 232           * 输出参数：
- 233           * 函数功能：
- 234           * 返回值说明：
- 235           * 创建日期：
- 236           * 创建人：
- 237           * 修改日期
- 238           * 修改人：
- 239           * 第N次修改：
- 240           * 修改原因：
- 241           * 备注：
- 242           *******************************************************************************/
- 243          void Display_SetRTC(void)
- 244          {
- 245   1              if ((gb0_5s) || (NoFlash()))
- 246   1              {
- 247   2                      gblcd_colon = 1;
- 248   2                      Display_HH_MM(eDS_RTC);
- 249   2              }
- 250   1      }
- 251          
- 252          /*******************************************************************************
- 253           * 函数原型：
- 254           * 输入参数：
- 255           * 输出参数：
- 256           * 函数功能：
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 7   
+ 236           * 修改日期
+ 237           * 修改人：
+ 238           * 第N次修改：
+ 239           * 修改原因：
+ 240           * 备注：
+ 241           *******************************************************************************/
+ 242          void Display_SetRTC(void)
+ 243          {
+ 244                  if ((gb0_5s) || (NoFlash()))
+ 245                  {
+ 246                          gblcd_colon = 1;
+ 247                          Display_HH_MM(eDS_RTC);
+ 248                  }
+ 249          }
+ 250          
+ 251          /*******************************************************************************
+ 252           * 函数原型：
+ 253           * 输入参数：
+ 254           * 输出参数：
+ 255           * 函数功能：
+ 256           * 返回值说明：
+ 257           * 创建日期：
+ 258           * 创建人：
+ 259           * 修改日期
+ 260           * 修改人：
+ 261           * 第N次修改：
+ 262           * 修改原因：
+ 263           * 备注：
+ 264           *******************************************************************************/
+ 265          void Display_RTC(void)
+ 266          {
+ 267                  if ((!gbUser_AdjClk) || (gbHalfSecond))
+ 268                  {
+ 269                          gblcd_colon = 1;
+ 270                          Display_HH_MM(eDS_RTC);
+ 271                  }
+ 272          }
+ 273          
+ 274          /*******************************************************************************
+ 275           * 函数原型：
+ 276           * 输入参数：
+ 277           * 输出参数：
+ 278           * 函数功能：
+ 279           * 返回值说明：
+ 280           * 创建日期：
+ 281           * 创建人：
+ 282           * 修改日期
+ 283           * 修改人：
+ 284           * 第N次修改：
+ 285           * 修改原因：
+ 286           * 备注：
+ 287           *******************************************************************************/
+ 288          void Display_Zone(void) //什么意思
+ 289          {
+ 290                  if ((gb0_5s) || (NoFlash()))
+ 291                  {
+ 292                          DisplayNum34(gZone);
+ 293                  }
+ 294          }
+ 295          
+ 296          /*******************************************************************************
+ 297           * 函数原型：
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 8   
 
- 257           * 返回值说明：
- 258           * 创建日期：
- 259           * 创建人：
- 260           * 修改日期
- 261           * 修改人：
- 262           * 第N次修改：
- 263           * 修改原因：
- 264           * 备注：
- 265           *******************************************************************************/
- 266          void Display_RTC(void)
- 267          {
- 268   1              if ((!gbUser_AdjClk) || (gbHalfSecond))
- 269   1              {
- 270   2                      gblcd_colon = 1;
- 271   2                      Display_HH_MM(eDS_RTC);
- 272   2              }
- 273   1      }
- 274          
- 275          /*******************************************************************************
- 276           * 函数原型：
- 277           * 输入参数：
- 278           * 输出参数：
- 279           * 函数功能：
- 280           * 返回值说明：
- 281           * 创建日期：
- 282           * 创建人：
- 283           * 修改日期
- 284           * 修改人：
- 285           * 第N次修改：
- 286           * 修改原因：
- 287           * 备注：
- 288           *******************************************************************************/
- 289          void Display_Zone(void) //什么意思
- 290          {
- 291   1              if ((gb0_5s) || (NoFlash()))
- 292   1              {
- 293   2                      DisplayNum34(gZone);
- 294   2              }
- 295   1      }
- 296          
- 297          /*******************************************************************************
- 298           * 函数原型：
- 299           * 输入参数：
- 300           * 输出参数：
- 301           * 函数功能：清除显示缓存
- 302           * 返回值说明：
- 303           * 创建日期：
- 304           * 创建人：
- 305           * 修改日期
- 306           * 修改人：
- 307           * 第N次修改：
- 308           * 修改原因：
- 309           * 备注：
- 310           *******************************************************************************/
- 311          void ClearDisplayBuff(void)
- 312          {
- 313   1              u8  clearCnt;
- 314   1              for (clearCnt = 0; clearCnt < 5; clearCnt++)
- 315   1              {
- 316   2                      dispBuff[clearCnt] = eD_NONE;
- 317   2              }
- 318   1              lcd_BitRam0 = 0;
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 8   
+ 298           * 输入参数：
+ 299           * 输出参数：
+ 300           * 函数功能：清除显示缓存
+ 301           * 返回值说明：
+ 302           * 创建日期：
+ 303           * 创建人：
+ 304           * 修改日期
+ 305           * 修改人：
+ 306           * 第N次修改：
+ 307           * 修改原因：
+ 308           * 备注：
+ 309           *******************************************************************************/
+ 310          void ClearDisplayBuff(void)
+ 311          {
+ 312                  u8  clearCnt;
+ 313                  for (clearCnt = 0; clearCnt < 5; clearCnt++)
+ 314                  {
+ 315                          dispBuff[clearCnt] = eD_NONE;
+ 316                  }
+ 317                  lcd_BitRam0 = 0;
+ 318                  lcd_BitRam1 = 0;
+ 319          }
+ 320          
+ 321          /*******************************************************************************
+ 322           * 函数原型：
+ 323           * 输入参数：
+ 324           * 输出参数：
+ 325           * 函数功能：
+ 326           * 返回值说明：
+ 327           * 创建日期：
+ 328           * 创建人：
+ 329           * 修改日期
+ 330           * 修改人：
+ 331           * 第N次修改：
+ 332           * 修改原因：
+ 333           * 备注：
+ 334           *******************************************************************************/
+ 335          void Display_Off(void)
+ 336          {
+ 337                  DIG_NUM1 = eD_NONE;
+ 338                  DIG_NUM2 = eD_O;
+ 339                  DIG_NUM3 = eD_F;
+ 340                  DIG_NUM4 = eD_F;
+ 341          }
+ 342          
+ 343          /*******************************************************************************
+ 344           * 函数原型：
+ 345           * 输入参数：
+ 346           * 输出参数：
+ 347           * 函数功能：
+ 348           * 返回值说明：
+ 349           * 创建日期：
+ 350           * 创建人：
+ 351           * 修改日期
+ 352           * 修改人：
+ 353           * 第N次修改：
+ 354           * 修改原因：
+ 355           * 备注：
+ 356           *******************************************************************************/
+ 357          void Display_AllFlag(void)
+ 358          {
+ 359                  if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BEEP)//闹钟响时的工作模式，
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 9   
 
- 319   1              lcd_BitRam1 = 0;
- 320   1      }
- 321          
- 322          /*******************************************************************************
- 323           * 函数原型：
- 324           * 输入参数：
- 325           * 输出参数：
- 326           * 函数功能：
- 327           * 返回值说明：
- 328           * 创建日期：
- 329           * 创建人：
- 330           * 修改日期
- 331           * 修改人：
- 332           * 第N次修改：
- 333           * 修改原因：
- 334           * 备注：
- 335           *******************************************************************************/
- 336          void Display_Off(void)
- 337          {
- 338   1              DIG_NUM1 = eD_NONE;
- 339   1              DIG_NUM2 = eD_O;
- 340   1              DIG_NUM3 = eD_F;
- 341   1              DIG_NUM4 = eD_F;
- 342   1      }
- 343          
- 344          /*******************************************************************************
- 345           * 函数原型：
- 346           * 输入参数：
- 347           * 输出参数：
- 348           * 函数功能：
- 349           * 返回值说明：
- 350           * 创建日期：
- 351           * 创建人：
- 352           * 修改日期
- 353           * 修改人：
- 354           * 第N次修改：
- 355           * 修改原因：
- 356           * 备注：
- 357           *******************************************************************************/
- 358          void Display_AllFlag(void)
- 359          {
- 360   1              if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BEEP)//闹钟响时的工作模式，
- 361   1                      gblcd_buz1 = 1;
- 362   1              else if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BT)
- 363   1              {
- 364   2                      if ((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (Alarm1_TypeDef.AlarmSnooze == ALARM_SNOOZE_OFF))
- 365   2                      {
- 366   3      
- 367   3                      }
- 368   2              }
- 369   1      }
- 370          
- 371          /*******************************************************************************
- 372           * 函数原型：
- 373           * 输入参数：
- 374           * 输出参数：
- 375           * 函数功能：
- 376           * 返回值说明：
- 377           * 创建日期：
- 378           * 创建人：
- 379           * 修改日期
- 380           * 修改人：
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 9   
+ 360                          gblcd_buz1 = 1;
+ 361                  else if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BT)
+ 362                  {
+ 363                          if ((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (Alarm1_TypeDef.AlarmSnooze == ALARM_SNOOZE_OFF))
+ 364                          {
+ 365                                  gblcd_bt = 1;//如果是蓝牙连接就置蓝牙标志，
+ 366                          }
+ 367                  }
+ 368          }
+ 369          
+ 370          /*******************************************************************************
+ 371           * 函数原型：
+ 372           * 输入参数：
+ 373           * 输出参数：
+ 374           * 函数功能：
+ 375           * 返回值说明：
+ 376           * 创建日期：
+ 377           * 创建人：
+ 378           * 修改日期
+ 379           * 修改人：
+ 380           * 第N次修改：
+ 381           * 修改原因：
+ 382           * 备注：
+ 383           *******************************************************************************/
+ 384          void UpdateDisplay(u8 dispStatus)
+ 385          {
+ 386                  switch (dispStatus)
+ 387                  {
+ 388                          case DISP_AL1:
+ 389                                  Display_ALarm1();   
+ 390                                  break;
+ 391                          case ADJ_CLK:
+ 392                                  Display_SetRTC(); //设置RTC时的显示
+ 393                                  break;
+ 394                          case ADJ_ZONE:
+ 395                                  Display_Zone();
+ 396                                  break; 
+ 397                          case ADJ_ALARM1:
+ 398                                  Display_SetAlarm1(); //设置闹钟时的显示
+ 399                                  break; 
+ 400                          case POWER_OFF_DISP:
+ 401                                  Display_Off();
+ 402                                  break; 
+ 403                          default:
+ 404                                  Display_RTC();    //RTC走时状态显示
+ 405                                  break;
+ 406                  }
+ 407                  if (cntNoFlash != 0)
+ 408                          cntNoFlash--;
+ 409          }
+ 410          
+ 411          /*******************************************************************************
+ 412           * 函数原型：
+ 413           * 输入参数：
+ 414           * 输出参数：
+ 415           * 函数功能：
+ 416           * 返回值说明：
+ 417           * 创建日期：
+ 418           * 创建人：
+ 419           * 修改日期
+ 420           * 修改人：
+ 421           * 第N次修改：
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 10  
 
- 381           * 第N次修改：
- 382           * 修改原因：
- 383           * 备注：
- 384           *******************************************************************************/
- 385          void UpdateDisplay(u8 dispStatus)
- 386          {
- 387   1              switch (dispStatus)
- 388   1              {
- 389   2                      case DISP_AL1:
- 390   2                              Display_ALarm1();   
- 391   2                              break;
- 392   2                      case ADJ_CLK:
- 393   2                              Display_SetRTC(); //设置RTC时的显示
- 394   2                              break;
- 395   2                      case ADJ_ZONE:
- 396   2                              Display_Zone();
- 397   2                              break; 
- 398   2                      case ADJ_ALARM1:
- 399   2                              Display_SetAlarm1(); //设置闹钟时的显示
- 400   2                              break; 
- 401   2                      case POWER_OFF_DISP:
- 402   2                              Display_Off();
- 403   2                              break; 
- 404   2                      default:
- 405   2                              Display_RTC();    //RTC走时状态显示
- 406   2                              break;
- 407   2              }
- 408   1              if (cntNoFlash != 0)
- 409   1                      cntNoFlash--;
- 410   1      }
- 411          
- 412          /*******************************************************************************
- 413           * 函数原型：
- 414           * 输入参数：
- 415           * 输出参数：
- 416           * 函数功能：
- 417           * 返回值说明：
- 418           * 创建日期：
- 419           * 创建人：
- 420           * 修改日期
- 421           * 修改人：
- 422           * 第N次修改：
- 423           * 修改原因：
- 424           * 备注：
+ 422           * 修改原因：
+ 423           * 备注：(dispStatus == ADJ_ALARM1)这个是显示状态，如果等于这个就是开始显示，闪
+ 424           *       或者显示，只是显示
  425           *******************************************************************************/
  426          void Display_Flag(void)
  427          {
- 428   1              if (dispStatus == ADJ_CLK)
- 429   1                      return;
- 430   1              if ((dispStatus == ADJ_ALARM1) || (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
- 431   1              {
- 432   2                      if (dispStatus == ADJ_ALARM1)
- 433   2                      {
- 434   3                              if ((gb0_5s) || (NoFlash()))
- 435   3                                      Display_AllFlag();
- 436   3                      }
- 437   2              }
- 438   1      }
+ 428                  if (dispStatus == ADJ_CLK)
+ 429                          return;
+ 430                  if ((dispStatus == ADJ_ALARM1) || (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
+ 431                  {
+ 432                          if (dispStatus == ADJ_ALARM1)
+ 433                          {
+ 434                                  if ((gb0_5s) || (NoFlash())) //NoFlash()不闪烁
+ 435                                          Display_AllFlag();
+ 436                          }
+ 437                  }
+ 438          }
  439          
  440          /*******************************************************************************
  441           * 函数原型：
  442           * 输入参数：
-C51 COMPILER V9.00   LED_MODE                                                              11/09/2018 13:59:03 PAGE 10  
-
  443           * 输出参数：
  444           * 函数功能：
  445           * 返回值说明：
@@ -589,46 +610,39 @@ line level    source
  453           *******************************************************************************/
  454          void Display(void)
  455          {
- 456   1              u8  cnt;
- 457   1              if ((gbUser_AdjClk) || (dispStatusNum))
- 458   1              {
- 459   2                      ClearDisplayBuff(); //清除显示缓存
- 460   2                      UpdateDisplay(dispStatus);
- 461   2                      Display_Flag();
- 462   2                      
- 463   2              }
- 464   1      }
-*** WARNING C280 IN LINE 456 OF APP_USER\SOURCE\LED_MODE.C: 'cnt': unreferenced local variable
- 465          
- 466           /*******************************************************************************
- 467            * 函数原型：
- 468            * 输入参数：
- 469            * 输出参数：
- 470            * 函数功能：
- 471            * 返回值说明：
- 472            * 创建日期：
- 473            * 创建人：
- 474            * 修改日期
- 475            * 修改人：
- 476            * 第N次修改：
- 477            * 修改原因：
- 478            * 备注：
- 479            *******************************************************************************/
- 480          
- 481          
- 482          
- 483          
+ 456                  u8  cnt;
+ 457                  if ((gbUser_AdjClk) || (dispStatusNum))
+ 458                  {
+ 459                          ClearDisplayBuff(); //清除显示缓存
+ 460                          UpdateDisplay(dispStatus);
+ 461                          Display_Flag();
+ 462                          for (cnt = 0; cnt < 4; cnt++)
+ 463                          {
+ 464                                  Led_Buffer[i] = dispCode_Arr[dispBuff[i]];
+ 465                          }
+ 466                          Display_LED();
+ 467                  }
+ 468          }
+ 469          
+ 470           /*******************************************************************************
+ 471            * 函数原型：
+ 472            * 输入参数：
+ 473            * 输出参数：
+ 474            * 函数功能：
+ 475            * 返回值说明：
+ 476            * 创建日期：
+ 477            * 创建人：
+ 478            * 修改日期
+ 479            * 修改人：
+ 480            * 第N次修改：
+ 481            * 修改原因：
+ 482            * 备注：
+ 483            *******************************************************************************/
+C51 COMPILER V9.00   LED_MODE                                                              11/12/2018 10:19:35 PAGE 11  
 
+ 484          
+ 485          
+ 486          
+ 487          
 
-MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    315    ----
-   CONSTANT SIZE    =     38    ----
-   XDATA SIZE       =   ----    ----
-   PDATA SIZE       =   ----    ----
-   DATA SIZE        =     20       1
-   IDATA SIZE       =   ----    ----
-   BIT SIZE         =      1    ----
-END OF MODULE INFORMATION.
-
-
-C51 COMPILATION COMPLETE.  55 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  54 WARNING(S),  13 ERROR(S)

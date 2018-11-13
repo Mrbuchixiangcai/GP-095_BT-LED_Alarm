@@ -121,6 +121,7 @@ extern BOOL  gb12HourDisp;
 extern BOOL  gb0_5s;
 extern BOOL  gbUser_AdjClk;
 extern BOOL  gbHalfSecond;
+extern BOOL  gbTestMode;
 /*************************************/
 /*外部调用_变量定义variable definition*/
 /*************************************/

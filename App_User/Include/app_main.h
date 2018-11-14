@@ -11,24 +11,27 @@
 /*******************/
 #include "app_main.h"
 #include "MC96F6508A.h"
-#include "user_define.h"
 #include "func_def.h"
+#include "user_define.h"
 #include "led_mode.h"
 #include "bt_mode.h"
 #include "key_mode.h"
+#include "led_drive.h"
 
 /************************/
 /*宏定义macro definition*/
 /************************/
-#define SET_BEEP(a)			if(a)				\  //设置蜂鸣器响还是不响
+//设置蜂鸣器响还是不响
+#define SET_BEEP(a)			if(a)				\  
 								P0 |= 0x04;		\
 							else				\
 								P0 &= (~0x04);
-#define SET_LED_RED(a)		if(a)				\  //
+#define SET_LED_RED(a)		if(a)				\  
 								P5 |= 0x10;		\
 							else                \
 								P5 &= (~0x10);
-#define BT_SET_LED_BLUE(a)  if(a)				\  //蓝牙开机，检测到蓝牙信号后，就设置输出1
+//蓝牙开机，检测到蓝牙信号后，就设置输出1
+#define BT_SET_LED_BLUE(a)  if(a)				\  
 								P5 |= 0x08;		\
 							else				\
 								P5 &= (~0x08);
@@ -58,17 +61,29 @@ typedef enum
 
 enum
 {
-	DISP_CLK  = 0,
+	DISP_CLK = 0,
 	DISP_AL1,
+	DISP_AL2,
 	ADJ_CLK,
 	ADJ_ZONE,
+	ADJ_YEAR,
+	ADJ_DATE,
 	ADJ_ALARM1,
+	ADJ_ALARM2,
 	ALARM1_DISP,
+	ALARM2_DISP,
 	ADJ_ALARM1_MIN,
+	ADJ_ALARM2_MIN,
 	ADJ_ALARM1_HOUR,
+	ADJ_ALARM2_HOUR,
 	ADJ_ALARM1_MODE,
+	ADJ_ALARM2_MODE,
 	DISP_VOL,
-	DISP_SLEEP,
+	DISP_SLP,
+	DISP_AUX,
+	DISP_RADIO,
+	DISP_GET_MEN,
+	DISP_SAVE_MEN,
 	POWER_OFF_DISP,
 };
 
@@ -82,6 +97,34 @@ typedef enum
 	CTRL_PREV,
 	CTRL_NEXT,
 }CONTROL_COMMAND_TypeDef;
+
+#define   CNT_DELAY__15ms625        1    
+#define   CNT_DELAY__31ms25         2    
+#define   CNT_DELAY__62ms5          4   
+#define   CNT_DELAY__78ms125        5 
+#define   CNT_DELAY__93ms75         6 
+#define   CNT_DELAY__109ms375       7      
+#define   CNT_DELAY__125ms          8   
+#define   CNT_DELAY__156ms25        10   
+#define   CNT_DELAY__187ms5         12   
+#define   CNT_DELAY__250ms          16  
+#define   CNT_DELAY__359ms375       23   
+#define   CNT_DELAY__500ms          32   
+#define   CNT_DELAY_1000MS          64  
+#define   CNT_DELAY_1500MS          96 
+#define   CNT_DELAY_2000MS         128  
+#define   CNT_DELAY_2500MS         160
+#define   CNT_DELAY_3000MS         192  
+#define   CNT_DELAY_4000MS         255   
+
+#define   CNT_VOL__500ms           1 
+#define   CNT_VOL__1000ms          2 
+#define   CNT_VOL__1500ms          3 
+#define   CNT_VOL__2000ms          4 
+#define   CNT_VOL__2500ms          5 
+#define   CNT_VOL__3000ms          6 
+#define   CNT_VOL__3500ms          7 
+#define   CNT_VOL__4000ms          8 
 
 /****************************/
 /*标志位定义flags definetion*/
@@ -98,8 +141,8 @@ typedef enum
 /******************************/
 /*函数声明Function declaration*/
 /******************************/
-void app_main(void);
-void Sys_Tick(void);
+//void app_main(void);
+//void Sys_Tick(void);
 /*****************************/
 /*函数定义function definetion*/
 /*****************************/
@@ -134,12 +177,16 @@ extern uint8_t  idata gRTC_Hour;
 extern uint8_t  idata gRTC_Hour_bk;
 extern uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
 extern uint8_t  idata gRTC_Week; 
-extern uint8_t  idata sys_Volume;
+extern uint8_t  idata Snooze_Hour;//贪睡小时时间
+extern uint8_t  idata Snooze_Minute;//贪睡分钟时间
+extern uint8_t  idata sysVolume;
 extern uint16_t idata timeCnt_30Sec;
 
-extern u8       idata cntNoFlash;
-extern u8			  gZone;
-extern u8			  dispStatus;
+extern uint8_t  idata cntNoFlash;
+extern uint8_t		  gZone;
+extern uint8_t    	  dispStatus;
+extern uint8_t  idata cntAlarm;
+extern int 			  testINT;
 /**********************************/
 /*外部调用_数组定义array definition*/
 /**********************************/
@@ -147,12 +194,12 @@ extern u8			  dispStatus;
 /**************************************/
 /*外部调用_函数声明Function declaration*/
 /**************************************/
-//extern void app_main(void);
-//extern void Sys_Tick(void);
+extern void app_main(void);
+extern void Sys_Tick(void);
 /*************************************/
 /*外部调用_函数定义function definetion*/
 /*************************************/
-
+extern void UART_Def_Init();
 
 
 

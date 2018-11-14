@@ -1,0 +1,261 @@
+C51 COMPILER V9.00   LED_DRIVE                                                             11/14/2018 15:34:59 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE LED_DRIVE
+OBJECT MODULE PLACED IN .\Objects\LED_Drive.obj
+COMPILER INVOKED BY: D:\ProgramFiles\Keil_v5\C51\BIN\C51.EXE App_User\Source\LED_Drive.c OPTIMIZE(8,SPEED) BROWSE INCDIR
+                    -(.\Device;.\App_User\Include) DEBUG OBJECTEXTEND PRINT(.\Listings\LED_Drive.lst) OBJECT(.\Objects\LED_Drive.obj)
+
+line level    source
+
+   1          /*******************/
+   2          /*头文件header file*/
+   3          /*******************/
+   4          #include "app_main.h"
+   5          /************************/
+   6          /*宏定义macro definition*/
+   7          /************************/
+   8          
+   9          /*************************/
+  10          /*类型定义byte definition*/
+  11          /*************************/
+  12          
+  13          /****************************/
+  14          /*标志位定义flags definetion*/
+  15          /****************************/
+  16          
+  17          /*****************************/
+  18          /*变量定义variable definition*/
+  19          /*****************************/
+  20          uint8_t  Led_Buffer[4];
+  21          uint8_t  Led_Buffer_Copy[6];
+  22          /**************************/
+  23          /*数组定义array definition*/
+  24          /**************************/
+  25          
+  26          /******************************/
+  27          /*函数声明Function declaration*/
+  28          /******************************/
+  29          
+  30          /*****************************/
+  31          /*函数定义function definetion*/
+  32          /*****************************/
+  33          /*******************************************************************************
+  34           * 函数原型：
+  35           * 输入参数：
+  36           * 输出参数：
+  37           * 函数功能：
+  38           * 返回值说明：
+  39           * 创建日期：
+  40           * 创建人：
+  41           * 修改日期
+  42           * 修改人：
+  43           * 第N次修改：
+  44           * 修改原因：
+  45           * 备注：
+  46           * //  AAAAA
+  47           * // F     B
+  48           * // F     B
+  49           * //  GGGGG
+  50           * // E     C
+  51           * // E     C
+  52           * //  DDDDD
+  53           *******************************************************************************/
+  54          void Display_LED(void)
+C51 COMPILER V9.00   LED_DRIVE                                                             11/14/2018 15:34:59 PAGE 2   
+
+  55          {
+  56   1              if (gbTestMode)//GP-095没有测试模式
+  57   1              {
+  58   2                      Led_Buffer[0] = 0xff;
+  59   2                      Led_Buffer[1] = 0xff;
+  60   2                      Led_Buffer[2] = 0xff;
+  61   2                      Led_Buffer[3] = 0xff;
+  62   2              }
+  63   1              if (Led_Buffer_Copy[0] != Led_Buffer[0])
+  64   1              {
+  65   2                      if (Led_Buffer[0] & 0x10)  //1b:7段数码管中'b'的位段，如果Led_Buffer[0]=0x30,那就是“1”
+  66   2                              __SET_1B();
+  67   2                      else
+  68   2                              __CLR_1B();
+  69   2                      if (Led_Buffer[0] & 0x20)  //1c:7段数码管中'c'的位段
+  70   2                              __SET_1C();
+  71   2                      else
+  72   2                              __CLR_1C();
+  73   2                      Led_Buffer_Copy[0] = Led_Buffer[0];
+  74   2              }
+  75   1              if (Led_Buffer_Copy[1] != Led_Buffer[1])
+  76   1              {
+  77   2                      if (Led_Buffer[1] & 0x01)  //a:7段数码管中'a'的位段，如果Led_Buffer[0]=
+  78   2                              __SET_2A();
+  79   2                      else
+  80   2                              __CLR_2A();
+  81   2                      if (Led_Buffer[1] & 0x02)  //b:7段数码管中'b'的位段
+  82   2                              __SET_2B();
+  83   2                      else
+  84   2                              __CLR_2B();
+  85   2                      if (Led_Buffer[1] & 0x04)  //c
+  86   2                              __SET_2C();
+  87   2                      else
+  88   2                              __CLR_2C();
+  89   2                      if (Led_Buffer[1] & 0x08)  //d
+  90   2                              __SET_2D();
+  91   2                      else
+  92   2                              __CLR_2D();
+  93   2                      if (Led_Buffer[1] & 0x10)  //e
+  94   2                              __SET_2E();
+  95   2                      else
+  96   2                              __CLR_2E();
+  97   2                      if (Led_Buffer[1] & 0x20)  //f
+  98   2                              __SET_2F();
+  99   2                      else
+ 100   2                              __CLR_2F();
+ 101   2                      if (Led_Buffer[1] & 0x40)  //g
+ 102   2                              __SET_2G();
+ 103   2                      else
+ 104   2                              __CLR_2G();
+ 105   2                      Led_Buffer_Copy[1] = Led_Buffer[1];
+ 106   2              }
+ 107   1              if (Led_Buffer_Copy[2] != Led_Buffer[2])
+ 108   1              {
+ 109   2                      if (Led_Buffer[2] & 0x01)  //a:7段数码管中'a'的位段，如果Led_Buffer[0]=
+ 110   2                              __SET_3A();
+ 111   2                      else
+ 112   2                              __CLR_3A();
+ 113   2                      if (Led_Buffer[2] & 0x02)  //b:7段数码管中'b'的位段
+ 114   2                              __SET_3B();
+ 115   2                      else
+ 116   2                              __CLR_3B();
+C51 COMPILER V9.00   LED_DRIVE                                                             11/14/2018 15:34:59 PAGE 3   
+
+ 117   2                      if (Led_Buffer[2] & 0x04)  //c
+ 118   2                              __SET_3C();
+ 119   2                      else
+ 120   2                              __CLR_3C();
+ 121   2                      if (Led_Buffer[2] & 0x08)  //d
+ 122   2                              __SET_3D();
+ 123   2                      else
+ 124   2                              __CLR_3D();
+ 125   2                      if (Led_Buffer[2] & 0x10)  //e
+ 126   2                              __SET_3E();
+ 127   2                      else
+ 128   2                              __CLR_3E();
+ 129   2                      if (Led_Buffer[2] & 0x20)  //f
+ 130   2                              __SET_3F();
+ 131   2                      else
+ 132   2                              __CLR_3F();
+ 133   2                      if (Led_Buffer[2] & 0x40)  //g
+ 134   2                              __SET_3G();
+ 135   2                      else
+ 136   2                              __CLR_3G();
+ 137   2                      Led_Buffer_Copy[2] = Led_Buffer[2];
+ 138   2              }
+ 139   1              if (Led_Buffer_Copy[3] != Led_Buffer[3])
+ 140   1              {
+ 141   2                      if (Led_Buffer[3] & 0x01)  //a:7段数码管中'a'的位段，如果Led_Buffer[0]=
+ 142   2                              __SET_4A();
+ 143   2                      else
+ 144   2                              __CLR_4A();
+ 145   2                      if (Led_Buffer[3] & 0x02)  //b:7段数码管中'b'的位段
+ 146   2                              __SET_4B();
+ 147   2                      else
+ 148   2                              __CLR_4B();
+ 149   2                      if (Led_Buffer[3] & 0x04)  //c
+ 150   2                              __SET_4C();
+ 151   2                      else
+ 152   2                              __CLR_4C();
+ 153   2                      if (Led_Buffer[3] & 0x08)  //d
+ 154   2                              __SET_4D();
+ 155   2                      else
+ 156   2                              __CLR_4D();
+ 157   2                      if (Led_Buffer[3] & 0x10)  //e
+ 158   2                              __SET_4E();
+ 159   2                      else
+ 160   2                              __CLR_4E();
+ 161   2                      if (Led_Buffer[3] & 0x20)  //f
+ 162   2                              __SET_4F();
+ 163   2                      else
+ 164   2                              __CLR_4F();
+ 165   2                      if (Led_Buffer[3] & 0x40)  //g
+ 166   2                              __SET_4G();
+ 167   2                      else
+ 168   2                              __CLR_4G();
+ 169   2                      Led_Buffer_Copy[3] = Led_Buffer[3];
+ 170   2              }
+ 171   1              if (lcd_BitRam0 != Led_Buffer_Copy[4])
+ 172   1              {
+ 173   2                      if (lcd_BitRam0 & 0x01)  //buzz响
+ 174   2                              __SET_BEEP();
+ 175   2                      else
+ 176   2                              __CLR_BEEP();
+ 177   2                      if (lcd_BitRam0 & 0x10)  //dot:点，
+ 178   2                      {
+C51 COMPILER V9.00   LED_DRIVE                                                             11/14/2018 15:34:59 PAGE 4   
+
+ 179   3                              __SET_COL1();
+ 180   3                              __SET_COL2();
+ 181   3                      }
+ 182   2                      else
+ 183   2                      {
+ 184   3                              __CLR_COL1();
+ 185   3                              __CLR_COL2();
+ 186   3                      }
+ 187   2                      if (lcd_BitRam0 & 0x40)
+ 188   2                      {
+ 189   3                              //睡眠
+ 190   3                      }
+ 191   2                      else
+ 192   2                      {
+ 193   3                              //解除睡眠
+ 194   3                      }
+ 195   2                      Led_Buffer_Copy[4] = Led_Buffer[4];
+ 196   2              }
+ 197   1              if (lcd_BitRam1 != Led_Buffer_Copy[5])
+ 198   1              {
+ 199   2                      if (lcd_BitRam1 & 0x01)  //am亮
+ 200   2                              __SET_AM();//
+ 201   2                      else
+ 202   2                      {
+ 203   3      
+ 204   3                      }
+ 205   2                      if (lcd_BitRam1 & 0x02)  //pm亮
+ 206   2                              __SET_PM();
+ 207   2                      else
+ 208   2                      {
+ 209   3      
+ 210   3                      }
+ 211   2                      Led_Buffer_Copy[5] = Led_Buffer[5];
+ 212   2              }
+ 213   1      }
+ 214          
+ 215          
+ 216          
+ 217          
+ 218          
+ 219          
+ 220          
+ 221          
+ 222          
+ 223          
+ 224          
+ 225          
+ 226          
+ 227          
+ 228          
+ 229          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    417    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.00   LED_DRIVE                                                             11/14/2018 15:34:59 PAGE 5   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

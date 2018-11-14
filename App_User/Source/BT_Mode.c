@@ -42,18 +42,18 @@ uint8_t  idata uart1_RX_Timeout;
 uint8_t  xdata uart1_TransmitBuffer[UART1_LEN_BUFFER];
 uint8_t  xdata uart1_ReceiveBuffer_A[UART1_LEN_BUFFER];
 uint8_t  xdata uart1_ReceiveBuffer_B[UART1_LEN_BUFFER];
-char  code BT_Command_Tab[][8]= //用于改变歌曲时发送给wifi的第几首歌
+char  code BT_Command_Tab[][9]= //用于改变歌曲时发送给wifi的第几首歌
 {
-	"     \r\n",//NONE
-	"COM+PA\r\n",//BT_PALY
-	"COM+PU\r\n",//BT_PAUSE
-	"COM+PV\r\n",//BT_PREV
-	"COM+PN\r\n",//BT_NEXT
-	"COM+PR\r\n",//BT_PARIR
+	"      \r\n ",//NONE
+	"COM+PA\r\n ",//BT_PALY
+	"COM+PU\r\n ",//BT_PAUSE
+	"COM+PV\r\n ",//BT_PREV
+	"COM+PN\r\n ",//BT_NEXT
+	"COM+PR\r\n ",//BT_PARIR
 	//"COM+\r\n",//BT_PARIR_EXT
-	"COM+AC\r\n",//BT_LINK_BACK
+	"COM+AC\r\n ",//BT_LINK_BACK
 	"COM+PWD\r\n",//BT_POWER_DOWN
-	"COM+DC\r\n",//BT_DISCONN
+	"COM+DC\r\n ",//BT_DISCONN
 	//"COM+\r\n",//BT_CLEAR_LIST
 	"COM+V00\r\n",//音量
 	"COM+V01\r\n",
@@ -133,7 +133,7 @@ void BT_Send_CMD(uint8_t cmd)
 	if(cmd<BT_VOL)
 		Uart1Transmit_SendString(&BT_Command_Tab[cmd][0]);
 	else
-		Uart1Transmit_SendString(&BT_Command_Tab[BT_VOL+bt_VOL_Send_Tab[sys_Volume]][0]);
+		Uart1Transmit_SendString(&BT_Command_Tab[BT_VOL+bt_VOL_Send_Tab[sysVolume]][0]);
 }
  
  /*******************************************************************************
@@ -180,7 +180,7 @@ void BlueMode_Receive(void)
 			{
 				Flag_BT_Play = 1;//蓝牙正在播放
 			}
-			if ((BT_CMD[3] == '') && (BT_CMD[4] == ''))
+			if ((BT_CMD[3] == ' ') && (BT_CMD[4] == ' '))
 			{
 				Flag_BT_Play = 1;//蓝牙正在播放
 			}
@@ -210,41 +210,41 @@ void BlueMode_Handle(void) //接收到的数据信息/状态进行处理
 	BlueMode_Receive();
 	if (Music_Mode_TypeDef == MUSIC_BT)
 	{
-		if (BT_Work == 0)//初始化蓝牙
+		if (Flag_BT_work == 0)//初始化蓝牙
 		{
 			cntMuteBT = 0;
-			Flag_BT_Conn = 0;
+			Flag_BT_Connect = 0;
 			Flag_BT_Play = 0;
-			btVolume = ~sys_Volume;
+			btVolume = ~sysVolume;
 			BT_Step_TypeDef = BT_STEP_START;
 		}
-		BT_Work = 1;
+		Flag_BT_work = 1;
 		switch (BT_Step_TypeDef)
 		{
 			case BT_STEP_START:
 				__EN_MUTE();//先静音
 				BT_Step_TypeDef++;
 				break;
-			case BT_STEP_INITI1
+			case BT_STEP_INITI1:
 				UART_Def_Init(); //先清除串口初始化
 				BT_CLR_POWER();  //先使蓝牙芯片断电
 				BT_Step_TypeDef++;
 				break;
-			case BT_STEP_INITI2
+			case BT_STEP_INITI2:
 				BT_Step_TypeDef++;
 				break;
-			case BT_STEP_INITI3
+			case BT_STEP_INITI3:
 				BT_SET_POWER();  //让蓝牙上电
 				BT_Step_TypeDef++;
 				break;
-			case BT_STEP_INITI4
+			case BT_STEP_INITI4:
 				UART_init(); //初始化串口
 				BT_Step_TypeDef++;
 				break;
 			default:
 				if (sysVolume != btVolume)
 				{
-					btVolume != sysVolume;
+					btVolume = sysVolume;
 					BT_Send_CMD(BT_VOL); //串口发送音量信息到蓝牙端
 				}
 				else if (bt_cmd)
@@ -270,29 +270,29 @@ void BlueMode_Handle(void) //接收到的数据信息/状态进行处理
 	}
 	else
 	{
-		if (BT_Work == 1)
+		if (Flag_BT_work == 1)
 		{
 			cntMuteBT = 0;
 			BT_Step_TypeDef = BT_STEP_START;
 		}
-		BT_Work = 0;
+		Flag_BT_work = 0;
 		switch (BT_Step_TypeDef)
 		{
 			case BT_STEP_START:
 				__EN_MUTE();//先静音
 				BT_Step_TypeDef++;
 				break;
-			case BT_STEP_INITI1
+			case BT_STEP_INITI1:
 				BT_Step_TypeDef++;
 				break;
-			case BT_STEP_INITI2
+			case BT_STEP_INITI2:
 				BT_Step_TypeDef++;
 				break;
-			case BT_STEP_INITI3
+			case BT_STEP_INITI3:
 				BT_SET_POWER();  //让蓝牙上电
 				BT_Step_TypeDef++;
 				break;
-			case BT_STEP_INITI4
+			case BT_STEP_INITI4:
 				BT_Step_TypeDef++;
 				break;
 			default:

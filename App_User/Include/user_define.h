@@ -25,6 +25,8 @@ typedef unsigned 	   char uint8_t;
 typedef unsigned 	   int  uint16_t;
 typedef unsigned long  int  uint32_t;
 #define NULL  0
+
+
 /*************************/
 /*类型定义byte definition*/
 /*************************/

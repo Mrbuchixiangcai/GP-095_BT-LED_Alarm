@@ -60,70 +60,150 @@ uint8_t  KeyLastValue;//按键上一次的值
  *******************************************************************************/
 uint8_t  Matrix_Buttons(void)
 {
-	uint8_t  readData1,readData2;
-	uint8_t  keyValue;
-	keyValue=0;//如果没有按键按下就是返回0
-	 
-	/*******************************************************************************
-	*功能："P1=0x2F(0010_1111)"先赋值给P1口，P15为1，P14为0，输入端(P10-P13)为1，然
-	* 后再读P1口电平(P1&0x0F)，并把高四位都清0(P1&0x0F，假如这时候P10被按下，那读到
-	* 的P1口电平为0x0E(0000_1110),然后与0x0F(0000_1111)异或得到0x01(0000_0001),
-	* readData1的范围为1、2、4、8，keyValue的范围为1~9,9是组合键。
-	*******************************************************************************/
-	P1=0x2F;			
-	readData1=(P1&0x0F)^0x0F;
-	switch(readData1)
-	{
-		case 1:
-			keyValue=1; //K_SNOOZE_DIMMER
-			break;
-		case 2:
-			keyValue=2; //VOL+
-			break;
-		case 4:
-			keyValue=3; //K_PLAY_PAUSE
-			break;
-		case 8:
-			keyValue=4; //NEXT
-			break;
-		default:
-			break;
-	}
-	/*******************************************************************************
-	*功能："P1=0x1F(0001_1111)"先赋值给P1口，P15为0，P14为1，输入端(P10-P13)为1，然
-	* 后再读P1口电平(P1&0x0F)，并把高四位都清0(P1&0x0F，假如这时候P11被按下，那读到
-	* 的P1口电平为0x0D(0000_1101),然后与0x0F(0000_1111)异或得到0x02(0000_0010),
-	* readData2的范围为1、2、4、8，keyValue的范围为1~9，9是组合键。
-	*******************************************************************************/
-	P1=0x1F;
-	readData2=(P1&0x0F)^0x0F;
-	switch(readData2)
-	{
-		case 1:
-			keyValue=5; //ALARM
-			if (keyValue == 1)//为1说明刚才alarm键被按下，因为每次调用这个函数都会初始化
-			{				  //keyValue，所以不会是上次调用函数留下的值
-				keyValue = 9;  //K_AL_SNOOZE
-			}
-			else if (keyValue == 1)
-				keyValue = 10; //K_AL_VOLINC,
-			break;
-		case 2:
-			keyValue=6; //VOL-
-			break;
-		case 4:
-			keyValue=7; //BT
-			break;
-		case 8:
-			keyValue=8; //PREV
-			break;
-		case 0x0C:
-			keyValue = 11; //K_AL_VOLDEC,
-		default:
-			break;
-	}
-	 
-	return keyValue;
+  uint8_t tmp1=0;	
+  uint8_t tmp2=0;		
+  if((P1&0x0F)!=0x0F)	
+  {
+   P1|=0X20;  
+   P1|=0X20; 
+   P1|=0X20; 
+   P1|=0X20;
+   tmp1=P1&0x0F;	  
+   P1&=~0X30; 
+   P1|=0X10;  
+   P1|=0X10; 
+   P1|=0X10;	
+   P1|=0X10; 
+   tmp2=P1&0x0F;		  
+  }
+  P1&=~0X30;
+  if((tmp1==0x0E)&&(tmp2==0x0F))
+  {
+	return 1; //K_SNOOZE_DIMMER
+  }
+  if((tmp1==0x0D)&&(tmp2==0x0F))
+  {
+	return 2; //K_VOLINC
+  }
+  if((tmp1==0x0B)&&(tmp2==0x0F))
+  {
+	return 3; //K_PLAY_PAUSE
+  }
+  if((tmp1==0x07)&&(tmp2==0x0F))
+  {
+	return 4; //K_NEXT
+  }
+  if((tmp1==0x0F)&&(tmp2==0x0E))
+  {
+	return 5; //K_ALARM
+  }
+  if((tmp1==0x0F)&&(tmp2==0x0D))
+  {
+	return 6; //K_VOLDEC
+  }
+  if((tmp1==0x0F)&&(tmp2==0x0B))
+  {
+	return 7; //K_BT
+  }
+  if((tmp1==0x0F)&&(tmp2==0x07))
+  {
+	return 8; //K_PREV
+  }
+  if((tmp1==0x0E)&&(tmp2==0x0E))
+  {
+	return 9; //K_AL_SNOOZE
+  }
+  if((tmp1==0x0D)&&(tmp2==0x0E))
+  {
+	return 10; //K_AL_VOLINC
+  }
+  if((tmp1==0x0F)&&(tmp2==0x0C))
+  {
+	return 11; //K_AL_VOLDEC
+  }
+	return 0;   
+//	uint8_t  readData1=0;
+//	uint8_t  readData2=0;
+//	uint8_t  temp_ReakData1=0;
+//	uint8_t  temp_ReakData2=0;
+//	uint8_t  scanKeyValue;
+//	scanKeyValue=0;//如果没有按键按下就是返回0
+//	 
+//	/*******************************************************************************
+//	*功能："P1=0x2F(0010_1111)"先赋值给P1口，P15为1，P14为0，输入端(P10-P13)为1，然
+//	* 后再读P1口电平(P1&0x0F)，并把高四位都清0(P1&0x0F，假如这时候P10被按下，那读到
+//	* 的P1口电平为0x0E(0000_1110),然后与0x0F(0000_1111)异或得到0x01(0000_0001),
+//	* readData1的范围为1、2、4、8，scanKeyValue的范围为1~9,9是组合键。
+////	*******************************************************************************/
+////	P1=0x2F;			
+////	readData1=(P1&0x0F)^0x0F;
+//	if((P1&0x0F)!=0x0F)
+//	{
+//		readData1=P1;
+//		P1=0x2F;
+//		temp_ReakData1=(P1&0x2F)^0x0F;
+//		switch(temp_ReakData1)
+//		{
+//			case 0x21:
+//				scanKeyValue=1; //K_SNOOZE_DIMMER
+//				break;
+//			case 0x22:
+//				scanKeyValue=2; //VOL+(实际VOL-)
+//				break;
+//			case 0x24:
+//				scanKeyValue=3; //K_PLAY_PAUSE
+//				break;
+//			case 0x28:
+//				scanKeyValue=4; //NEXT
+//				break;
+//			default:
+//				break;
+//		}
+//	}
+//	/*******************************************************************************
+//	*功能："P1=0x1F(0001_1111)"先赋值给P1口，P15为0，P14为1，输入端(P10-P13)为1，然
+//	* 后再读P1口电平(P1&0x0F)，并把高四位都清0(P1&0x0F，假如这时候P11被按下，那读到
+//	* 的P1口电平为0x0D(0000_1101),然后与0x0F(0000_1111)异或得到0x02(0000_0010),
+//	* readData2的范围为1、2、4、8，scanKeyValue的范围为1~9，9是组合键。
+//	*******************************************************************************/
+////	P1=0x1F;
+////	readData2=(P1&0x0F)^0x0F;
+//	if((P1&0x0F)!=0x0F)
+//	{
+//		readData2=P1;
+//		P1=0x1F;
+//		temp_ReakData2=(P1&0x1F)^0x0F;
+//		switch(temp_ReakData2)
+//		{
+//			case 0x11:
+////				if (scanKeyValue == 1)//为1说明刚才alarm键被按下，因为每次调用这个函数都会初始化
+////				{				  	  //keyValue，所以不会是上次调用函数留下的值
+////					scanKeyValue = 9; //K_AL_SNOOZE//ALARM+SNOOZE
+////				}
+////				else if (scanKeyValue == 2)
+////					scanKeyValue = 10;//K_AL_VOLINC,//ALARM+VOLINC
+////				else
+//					scanKeyValue=5; //ALARM
+//				break;
+//			case 0x12:
+//				scanKeyValue=6; //VOL-
+//				break;
+//			case 0x14:
+//				scanKeyValue=7; //BT
+//				break;
+//			case 0x18:
+//				scanKeyValue=8; //PREV
+//				break;
+//			case 0x0C:
+//				scanKeyValue = 11; //K_AL_VOLDEC,
+//			default:
+//				break;
+//		}
+//	}
+//	readData1=0;
+//	readData2=0;
+//	P1=0x0F;
+//	return scanKeyValue;
 }
 
 /*******************************************************************************
@@ -278,7 +358,7 @@ void KeyComMsg(void)
 		{
 			case KU(K_SNOOZE_DIMMER)://短按
 			{//Alarm_Ring_Run
-				if (Alarm1_TypeDef.Alarm_Ring_Run == ALARM_RING_RUN_ON)
+				if (Alarm1_TypeDef.Alarm_RingRun == ALARM_RING_RUN_ON)
 				{
 					Alarm1_TypeDef.Alarm_Snooze = ALARM_SNOOZE_ON;//进入贪睡模式，为9分钟
 				}
@@ -331,21 +411,21 @@ void KeyComMsg(void)
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
-					if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BEEP)
+					if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)
 					{
-						Alarm1_TypeDef.AlarmWorkMode = ALARM_BT;
+						Alarm1_TypeDef.Alarm_WorkMode = ALARM_BT;
 					}
 					else
 					{
-						Alarm1_TypeDef.AlarmWorkMode = ALARM_BEEP;
+						Alarm1_TypeDef.Alarm_WorkMode = ALARM_BEEP;
 					}
 					timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
 				}
 				else//在蓝牙或TF状态下，音量功能
 				{
-					if (sys_Volume < 15)
+					if (sysVolume < 15)
 					{
-						sys_Volume++;
+						sysVolume++;
 					}
 				}
 
@@ -459,21 +539,21 @@ void KeyComMsg(void)
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
-					if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BEEP)
+					if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)
 					{
-						Alarm1_TypeDef.AlarmWorkMode = ALARM_BT;
+						Alarm1_TypeDef.Alarm_WorkMode = ALARM_BT;
 					}
 					else
 					{
-						Alarm1_TypeDef.AlarmWorkMode = ALARM_BEEP;
+						Alarm1_TypeDef.Alarm_WorkMode = ALARM_BEEP;
 					}
 					timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
 				}
 				else//在蓝牙或TF状态下，音量功能
 				{
-					if (sys_Volume > 0)
+					if (sysVolume > 0)
 					{
-						sys_Volume--;
+						sysVolume--;
 					}
 				}
 
@@ -542,6 +622,7 @@ void KeyComMsg(void)
 				break;
 			}
 		}
+		testINT=KeyValue;
 	}
 }
 

@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   BT_MODE                                                               11/12/2018 10:19:36 PAGE 1   
+C51 COMPILER V9.00   BT_MODE                                                               11/14/2018 15:34:58 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE BT_MODE
@@ -12,139 +12,6 @@ line level    source
    2          /*头文件header file*/
    3          /*******************/
    4          #include "app_main.h"
-*** ERROR C132 IN LINE 13 OF .\DEVICE\FUNC_DEF.H: '_UART_write': not in formal parameter list
-*** ERROR C132 IN LINE 14 OF .\DEVICE\FUNC_DEF.H: 'UART_read': not in formal parameter list
-*** ERROR C132 IN LINE 15 OF .\DEVICE\FUNC_DEF.H: 'WDT_init': not in formal parameter list
-*** ERROR C132 IN LINE 16 OF .\DEVICE\FUNC_DEF.H: 'WDT_clear': not in formal parameter list
-*** ERROR C132 IN LINE 17 OF .\DEVICE\FUNC_DEF.H: 'WT_init': not in formal parameter list
-*** WARNING C329 IN LINE 16 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 17 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 20 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 21 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 24 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 25 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 28 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 29 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 32 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 33 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 36 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 37 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 40 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 41 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 44 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 45 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 48 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 49 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 52 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 53 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 56 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 57 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 60 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-C51 COMPILER V9.00   BT_MODE                                                               11/12/2018 10:19:36 PAGE 2   
-
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 61 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 64 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 65 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 68 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 69 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 72 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 73 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 76 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 77 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 80 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 81 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 84 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 85 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 88 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 89 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 92 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 93 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 96 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 97 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 100 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 101 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 104 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 105 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 108 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 109 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 112 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 113 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 116 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 117 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 120 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 121 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-C51 COMPILER V9.00   BT_MODE                                                               11/12/2018 10:19:36 PAGE 3   
-
-             -ED_MODE.H: single-line comment contains line-continuation
-*** ERROR C127 IN LINE 272 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'LED_BRIGHTNESS_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 279 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_WORK_MODE_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 285 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_ONOFF_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 291 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_SNOOZE_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 297 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_RING_TIMER_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 303 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_RING_RUN_TypeDef': invalid storage class
-*** ERROR C141 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: syntax error near 'ALARM_ONOFF_TypeDef'
-*** ERROR C129 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: missing ';' before 'Alarm_OnOff'
    5          
    6          /************************/
    7          /*宏定义macro definition*/
@@ -185,20 +52,20 @@ line level    source
   42          uint8_t  xdata uart1_TransmitBuffer[UART1_LEN_BUFFER];
   43          uint8_t  xdata uart1_ReceiveBuffer_A[UART1_LEN_BUFFER];
   44          uint8_t  xdata uart1_ReceiveBuffer_B[UART1_LEN_BUFFER];
-  45          char  code BT_Command_Tab[][8]= //用于改变歌曲时发送给wifi的第几首歌
+  45          char  code BT_Command_Tab[][9]= //用于改变歌曲时发送给wifi的第几首歌
   46          {
-  47                  "     \r\n",//NONE
-  48                  "COM+PA\r\n",//BT_PALY
-  49                  "COM+PU\r\n",//BT_PAUSE
-C51 COMPILER V9.00   BT_MODE                                                               11/12/2018 10:19:36 PAGE 4   
-
-  50                  "COM+PV\r\n",//BT_PREV
-  51                  "COM+PN\r\n",//BT_NEXT
-  52                  "COM+PR\r\n",//BT_PARIR
+  47                  "      \r\n ",//NONE
+  48                  "COM+PA\r\n ",//BT_PALY
+  49                  "COM+PU\r\n ",//BT_PAUSE
+  50                  "COM+PV\r\n ",//BT_PREV
+  51                  "COM+PN\r\n ",//BT_NEXT
+  52                  "COM+PR\r\n ",//BT_PARIR
   53                  //"COM+\r\n",//BT_PARIR_EXT
-  54                  "COM+AC\r\n",//BT_LINK_BACK
+  54                  "COM+AC\r\n ",//BT_LINK_BACK
+C51 COMPILER V9.00   BT_MODE                                                               11/14/2018 15:34:58 PAGE 2   
+
   55                  "COM+PWD\r\n",//BT_POWER_DOWN
-  56                  "COM+DC\r\n",//BT_DISCONN
+  56                  "COM+DC\r\n ",//BT_DISCONN
   57                  //"COM+\r\n",//BT_CLEAR_LIST
   58                  "COM+V00\r\n",//音量
   59                  "COM+V01\r\n",
@@ -241,26 +108,26 @@ line level    source
   96           *******************************************************************************/
   97           void Uart1Transmit_SendString(char *str)
   98           {
-  99                   uint8_t  i;
- 100                   while(uart1_EnableSend);
- 101                   for(i=0;i<UART1_LEN_BUFFER;i++)
- 102                   {
- 103                          uart1_TransmitBuffer[i]=0;
- 104                   }
- 105                   for(i=0;*str!='\0';i++)
- 106                   {
- 107                           uart1_TransmitBuffer[i]=*str;
- 108                           str++;
- 109                   }
- 110                   uart1_TX_Pointer=0;
- 111                   uart1_EnableSend=1;
-C51 COMPILER V9.00   BT_MODE                                                               11/12/2018 10:19:36 PAGE 5   
-
- 112                   UARTDR=uart1_TransmitBuffer[uart1_TX_Pointer++];
- 113           }
+  99   1               uint8_t  i;
+ 100   1               while(uart1_EnableSend);
+ 101   1               for(i=0;i<UART1_LEN_BUFFER;i++)
+ 102   1               {
+ 103   2                      uart1_TransmitBuffer[i]=0;
+ 104   2               }
+ 105   1               for(i=0;*str!='\0';i++)
+ 106   1               {
+ 107   2                       uart1_TransmitBuffer[i]=*str;
+ 108   2                       str++;
+ 109   2               }
+ 110   1               uart1_TX_Pointer=0;
+ 111   1               uart1_EnableSend=1;
+ 112   1               UARTDR=uart1_TransmitBuffer[uart1_TX_Pointer++];
+ 113   1       }
  114           
  115           
  116           /*******************************************************************************
+C51 COMPILER V9.00   BT_MODE                                                               11/14/2018 15:34:58 PAGE 3   
+
  117           * 函数原型：
  118           * 输入参数：
  119           * 输出参数：
@@ -276,12 +143,12 @@ line level    source
  129           *******************************************************************************/
  130          void BT_Send_CMD(uint8_t cmd)
  131          {
- 132                  uint8_t  code bt_VOL_Send_Tab[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
- 133                  if(cmd<BT_VOL)
- 134                          Uart1Transmit_SendString(&BT_Command_Tab[cmd][0]);
- 135                  else
- 136                          Uart1Transmit_SendString(&BT_Command_Tab[BT_VOL+bt_VOL_Send_Tab[sys_Volume]][0]);
- 137          }
+ 132   1              uint8_t  code bt_VOL_Send_Tab[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+ 133   1              if(cmd<BT_VOL)
+ 134   1                      Uart1Transmit_SendString(&BT_Command_Tab[cmd][0]);
+ 135   1              else
+ 136   1                      Uart1Transmit_SendString(&BT_Command_Tab[BT_VOL+bt_VOL_Send_Tab[sysVolume]][0]);
+ 137   1      }
  138           
  139           /*******************************************************************************
  140           * 函数原型：
@@ -299,46 +166,46 @@ line level    source
  152           *******************************************************************************/
  153          void BlueMode_Receive(void)
  154          {
- 155                  uint8_t  i;
- 156                  char *BT_CMD;
- 157                  if((Flag_UART1_RX_Finish_A) || (Flag_UART1_RX_Finish_B))
- 158                  {
- 159                          if(Flag_UART1_RX_Finish_A)
- 160                          {
- 161                                  Flag_UART1_RX_Finish_A=0;
- 162                                  BT_CMD=uart1_ReceiveBuffer_A;
- 163                          }
- 164                          else 
- 165                          {
- 166                                  Flag_UART1_RX_Finish_B=0;
- 167                                  BT_CMD=uart1_ReceiveBuffer_B;
- 168                          }
- 169                          if((BT_CMD[0] == 'B') && (BT_CMD[1] == 'T'))
- 170                          {
- 171                                  if ((BT_CMD[3] == 'C') && (BT_CMD[4] == 'N'))
- 172                                  {
- 173                                          Flag_BT_Connect = 1;
-C51 COMPILER V9.00   BT_MODE                                                               11/12/2018 10:19:36 PAGE 6   
+ 155   1              uint8_t  i;
+ 156   1              char *BT_CMD;
+ 157   1              if((Flag_UART1_RX_Finish_A) || (Flag_UART1_RX_Finish_B))
+ 158   1              {
+ 159   2                      if(Flag_UART1_RX_Finish_A)
+ 160   2                      {
+ 161   3                              Flag_UART1_RX_Finish_A=0;
+ 162   3                              BT_CMD=uart1_ReceiveBuffer_A;
+ 163   3                      }
+ 164   2                      else 
+ 165   2                      {
+ 166   3                              Flag_UART1_RX_Finish_B=0;
+ 167   3                              BT_CMD=uart1_ReceiveBuffer_B;
+ 168   3                      }
+ 169   2                      if((BT_CMD[0] == 'B') && (BT_CMD[1] == 'T'))
+ 170   2                      {
+ 171   3                              if ((BT_CMD[3] == 'C') && (BT_CMD[4] == 'N'))
+ 172   3                              {
+ 173   4                                      Flag_BT_Connect = 1;
+ 174   4                              }
+ 175   3                              //else if ((BT_CMD[3] == '') && (BT_CMD[4] == ''))//没有断开状态发送给MCU
+ 176   3                              //{
+ 177   3                              //      Flag_BT_Connect = 0;
+ 178   3                              //}
+C51 COMPILER V9.00   BT_MODE                                                               11/14/2018 15:34:58 PAGE 4   
 
- 174                                  }
- 175                                  //else if ((BT_CMD[3] == '') && (BT_CMD[4] == ''))//没有断开状态发送给MCU
- 176                                  //{
- 177                                  //      Flag_BT_Connect = 0;
- 178                                  //}
- 179                                  if ((BT_CMD[3] == 'P') && (BT_CMD[4] == 'A'))
- 180                                  {
- 181                                          Flag_BT_Play = 1;//蓝牙正在播放
- 182                                  }
- 183                                  if ((BT_CMD[3] == '') && (BT_CMD[4] == ''))
- 184                                  {
- 185                                          Flag_BT_Play = 1;//蓝牙正在播放
- 186                                  }
- 187                          }
- 188                          
- 189                          for(i=0;i<UART1_LEN_BUFFER;i++)
- 190                                  BT_CMD[i]=0;
- 191                  }
- 192          }
+ 179   3                              if ((BT_CMD[3] == 'P') && (BT_CMD[4] == 'A'))
+ 180   3                              {
+ 181   4                                      Flag_BT_Play = 1;//蓝牙正在播放
+ 182   4                              }
+ 183   3                              if ((BT_CMD[3] == ' ') && (BT_CMD[4] == ' '))
+ 184   3                              {
+ 185   4                                      Flag_BT_Play = 1;//蓝牙正在播放
+ 186   4                              }
+ 187   3                      }
+ 188   2                      
+ 189   2                      for(i=0;i<UART1_LEN_BUFFER;i++)
+ 190   2                              BT_CMD[i]=0;
+ 191   2              }
+ 192   1      }
  193           
  194           /*******************************************************************************
  195           * 函数原型：
@@ -356,103 +223,103 @@ line level    source
  207           *******************************************************************************/
  208          void BlueMode_Handle(void) //接收到的数据信息/状态进行处理
  209          {
- 210                  BlueMode_Receive();
- 211                  if (Music_Mode_TypeDef == MUSIC_BT)
- 212                  {
- 213                          if (BT_Work == 0)//初始化蓝牙
- 214                          {
- 215                                  cntMuteBT = 0;
- 216                                  Flag_BT_Conn = 0;
- 217                                  Flag_BT_Play = 0;
- 218                                  btVolume = ~sys_Volume;
- 219                                  BT_Step_TypeDef = BT_STEP_START;
- 220                          }
- 221                          BT_Work = 1;
- 222                          switch (BT_Step_TypeDef)
- 223                          {
- 224                                  case BT_STEP_START:
- 225                                          __EN_MUTE();//先静音
- 226                                          BT_Step_TypeDef++;
- 227                                          break;
- 228                                  case BT_STEP_INITI1
- 229                                          UART_Def_Init(); //先清除串口初始化
- 230                                          BT_CLR_POWER();  //先使蓝牙芯片断电
- 231                                          BT_Step_TypeDef++;
- 232                                          break;
- 233                                  case BT_STEP_INITI2
- 234                                          BT_Step_TypeDef++;
- 235                                          break;
-C51 COMPILER V9.00   BT_MODE                                                               11/12/2018 10:19:36 PAGE 7   
+ 210   1              BlueMode_Receive();
+ 211   1              if (Music_Mode_TypeDef == MUSIC_BT)
+ 212   1              {
+ 213   2                      if (Flag_BT_work == 0)//初始化蓝牙
+ 214   2                      {
+ 215   3                              cntMuteBT = 0;
+ 216   3                              Flag_BT_Connect = 0;
+ 217   3                              Flag_BT_Play = 0;
+ 218   3                              btVolume = ~sysVolume;
+ 219   3                              BT_Step_TypeDef = BT_STEP_START;
+ 220   3                      }
+ 221   2                      Flag_BT_work = 1;
+ 222   2                      switch (BT_Step_TypeDef)
+ 223   2                      {
+ 224   3                              case BT_STEP_START:
+ 225   3                                      __EN_MUTE();//先静音
+ 226   3                                      BT_Step_TypeDef++;
+ 227   3                                      break;
+ 228   3                              case BT_STEP_INITI1:
+ 229   3                                      UART_Def_Init(); //先清除串口初始化
+ 230   3                                      BT_CLR_POWER();  //先使蓝牙芯片断电
+ 231   3                                      BT_Step_TypeDef++;
+ 232   3                                      break;
+ 233   3                              case BT_STEP_INITI2:
+ 234   3                                      BT_Step_TypeDef++;
+ 235   3                                      break;
+ 236   3                              case BT_STEP_INITI3:
+ 237   3                                      BT_SET_POWER();  //让蓝牙上电
+ 238   3                                      BT_Step_TypeDef++;
+ 239   3                                      break;
+ 240   3                              case BT_STEP_INITI4:
+C51 COMPILER V9.00   BT_MODE                                                               11/14/2018 15:34:58 PAGE 5   
 
- 236                                  case BT_STEP_INITI3
- 237                                          BT_SET_POWER();  //让蓝牙上电
- 238                                          BT_Step_TypeDef++;
- 239                                          break;
- 240                                  case BT_STEP_INITI4
- 241                                          UART_init(); //初始化串口
- 242                                          BT_Step_TypeDef++;
- 243                                          break;
- 244                                  default:
- 245                                          if (sysVolume != btVolume)
- 246                                          {
- 247                                                  btVolume != sysVolume;
- 248                                                  BT_Send_CMD(BT_VOL); //串口发送音量信息到蓝牙端
- 249                                          }
- 250                                          else if (bt_cmd)
- 251                                          {
- 252                                                  BT_Send_CMD(bt_cmd);
- 253                                                  bt_cmd = BT_NONE;  //清零
- 254                                          }
- 255                                          if (BT_MUTE_DET()) //检测蓝牙是否发出静音命令
- 256                                          {
- 257                                                  if (cntMuteBT > 5)
- 258                                                  {
- 259                                                          __DE_MUTE(); //解除静音
- 260                                                  }
- 261                                                  else
- 262                                                          cntMuteBT++;
- 263                                          }
- 264                                          else
- 265                                          {
- 266                                                  __EN_MUTE(); //静音
- 267                                          }
- 268                                          break;
- 269                          }
- 270                  }
- 271                  else
- 272                  {
- 273                          if (BT_Work == 1)
- 274                          {
- 275                                  cntMuteBT = 0;
- 276                                  BT_Step_TypeDef = BT_STEP_START;
- 277                          }
- 278                          BT_Work = 0;
- 279                          switch (BT_Step_TypeDef)
- 280                          {
- 281                                  case BT_STEP_START:
- 282                                          __EN_MUTE();//先静音
- 283                                          BT_Step_TypeDef++;
- 284                                          break;
- 285                                  case BT_STEP_INITI1
- 286                                          BT_Step_TypeDef++;
- 287                                          break;
- 288                                  case BT_STEP_INITI2
- 289                                          BT_Step_TypeDef++;
- 290                                          break;
- 291                                  case BT_STEP_INITI3
- 292                                          BT_SET_POWER();  //让蓝牙上电
- 293                                          BT_Step_TypeDef++;
- 294                                          break;
- 295                                  case BT_STEP_INITI4
- 296                                          BT_Step_TypeDef++;
- 297                                          break;
-C51 COMPILER V9.00   BT_MODE                                                               11/12/2018 10:19:36 PAGE 8   
+ 241   3                                      UART_init(); //初始化串口
+ 242   3                                      BT_Step_TypeDef++;
+ 243   3                                      break;
+ 244   3                              default:
+ 245   3                                      if (sysVolume != btVolume)
+ 246   3                                      {
+ 247   4                                              btVolume = sysVolume;
+ 248   4                                              BT_Send_CMD(BT_VOL); //串口发送音量信息到蓝牙端
+ 249   4                                      }
+ 250   3                                      else if (bt_cmd)
+ 251   3                                      {
+ 252   4                                              BT_Send_CMD(bt_cmd);
+ 253   4                                              bt_cmd = BT_NONE;  //清零
+ 254   4                                      }
+ 255   3                                      if (BT_MUTE_DET()) //检测蓝牙是否发出静音命令
+ 256   3                                      {
+ 257   4                                              if (cntMuteBT > 5)
+ 258   4                                              {
+ 259   5                                                      __DE_MUTE(); //解除静音
+ 260   5                                              }
+ 261   4                                              else
+ 262   4                                                      cntMuteBT++;
+ 263   4                                      }
+ 264   3                                      else
+ 265   3                                      {
+ 266   4                                              __EN_MUTE(); //静音
+ 267   4                                      }
+ 268   3                                      break;
+ 269   3                      }
+ 270   2              }
+ 271   1              else
+ 272   1              {
+ 273   2                      if (Flag_BT_work == 1)
+ 274   2                      {
+ 275   3                              cntMuteBT = 0;
+ 276   3                              BT_Step_TypeDef = BT_STEP_START;
+ 277   3                      }
+ 278   2                      Flag_BT_work = 0;
+ 279   2                      switch (BT_Step_TypeDef)
+ 280   2                      {
+ 281   3                              case BT_STEP_START:
+ 282   3                                      __EN_MUTE();//先静音
+ 283   3                                      BT_Step_TypeDef++;
+ 284   3                                      break;
+ 285   3                              case BT_STEP_INITI1:
+ 286   3                                      BT_Step_TypeDef++;
+ 287   3                                      break;
+ 288   3                              case BT_STEP_INITI2:
+ 289   3                                      BT_Step_TypeDef++;
+ 290   3                                      break;
+ 291   3                              case BT_STEP_INITI3:
+ 292   3                                      BT_SET_POWER();  //让蓝牙上电
+ 293   3                                      BT_Step_TypeDef++;
+ 294   3                                      break;
+ 295   3                              case BT_STEP_INITI4:
+ 296   3                                      BT_Step_TypeDef++;
+ 297   3                                      break;
+ 298   3                              default:
+ 299   3                                      break;
+ 300   3                      }
+ 301   2              }
+ 302   1      }
+C51 COMPILER V9.00   BT_MODE                                                               11/14/2018 15:34:58 PAGE 6   
 
- 298                                  default:
- 299                                          break;
- 300                          }
- 301                  }
- 302          }
  303           
  304           /*******************************************************************************
  305           * 函数原型：
@@ -475,4 +342,16 @@ line level    source
  322          
  323          
 
-C51 COMPILATION COMPLETE.  54 WARNING(S),  13 ERROR(S)
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    427    ----
+   CONSTANT SIZE    =    250    ----
+   XDATA SIZE       =     24    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       3
+   IDATA SIZE       =      8    ----
+   BIT SIZE         =      7    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

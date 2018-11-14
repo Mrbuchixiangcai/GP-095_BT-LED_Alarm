@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MAIN                                                                  11/12/2018 10:19:33 PAGE 1   
+C51 COMPILER V9.00   MAIN                                                                  11/14/2018 17:28:45 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
@@ -16,474 +16,313 @@ line level    source
    6          // For XDATA variable : V1.041.00 ~
    7          #define         MAIN    1
    8          
-   9          // Generated    : Mon, Nov 05, 2018 (15:44:40)
+   9          // Generated    : Wed, Nov 14, 2018 (10:39:34)
   10          #include        "MC96F6508A.h"
   11          #include        "func_def.h"
-*** ERROR C132 IN LINE 13 OF DEVICE\FUNC_DEF.H: '_UART_write': not in formal parameter list
-*** ERROR C132 IN LINE 14 OF DEVICE\FUNC_DEF.H: 'UART_read': not in formal parameter list
-*** ERROR C132 IN LINE 15 OF DEVICE\FUNC_DEF.H: 'WDT_init': not in formal parameter list
-*** ERROR C132 IN LINE 16 OF DEVICE\FUNC_DEF.H: 'WDT_clear': not in formal parameter list
-*** ERROR C132 IN LINE 17 OF DEVICE\FUNC_DEF.H: 'WT_init': not in formal parameter list
   12          #include    "app_main.h"
-*** ERROR C127 IN LINE 14 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'BOOL': invalid storage class
-*** ERROR C127 IN LINE 15 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'uchar': invalid storage class
-*** ERROR C127 IN LINE 16 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'BYTE': invalid storage class
-*** ERROR C127 IN LINE 17 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'WORD': invalid storage class
-*** ERROR C127 IN LINE 18 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 's8': invalid storage class
-*** ERROR C127 IN LINE 19 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 's16': invalid storage class
-*** ERROR C127 IN LINE 20 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 's32': invalid storage class
-*** ERROR C127 IN LINE 21 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'u8': invalid storage class
-*** ERROR C127 IN LINE 22 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'u16': invalid storage class
-*** ERROR C127 IN LINE 23 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'u32': invalid storage class
-*** ERROR C127 IN LINE 24 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'uint8_t': invalid storage class
-*** ERROR C127 IN LINE 25 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'uint16_t': invalid storage class
-*** ERROR C127 IN LINE 26 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\USER
-             -_DEFINE.H: 'uint32_t': invalid storage class
-*** ERROR C132 IN LINE 5 OF DEVICE\FUNC_DEF.H: 'port_init': not in formal parameter list
-*** ERROR C132 IN LINE 6 OF DEVICE\FUNC_DEF.H: 'clock_init': not in formal parameter list
-*** ERROR C132 IN LINE 7 OF DEVICE\FUNC_DEF.H: 'KeyINT_init': not in formal parameter list
-*** ERROR C132 IN LINE 8 OF DEVICE\FUNC_DEF.H: 'LCD_init': not in formal parameter list
-*** ERROR C132 IN LINE 9 OF DEVICE\FUNC_DEF.H: 'Timer0_init': not in formal parameter list
-*** ERROR C132 IN LINE 10 OF DEVICE\FUNC_DEF.H: 'Timer3_init': not in formal parameter list
-*** ERROR C132 IN LINE 11 OF DEVICE\FUNC_DEF.H: 'UART_init': not in formal parameter list
-*** ERROR C132 IN LINE 13 OF DEVICE\FUNC_DEF.H: 'UART_Def_Init': not in formal parameter list
-*** ERROR C141 IN LINE 13 OF DEVICE\FUNC_DEF.H: syntax error near 'void'
-*** ERROR C132 IN LINE 13 OF DEVICE\FUNC_DEF.H: '_UART_write': not in formal parameter list
-*** ERROR C132 IN LINE 14 OF DEVICE\FUNC_DEF.H: 'UART_read': not in formal parameter list
-C51 COMPILER V9.00   MAIN                                                                  11/12/2018 10:19:33 PAGE 2   
-
-*** ERROR C132 IN LINE 15 OF DEVICE\FUNC_DEF.H: 'WDT_init': not in formal parameter list
-*** ERROR C132 IN LINE 16 OF DEVICE\FUNC_DEF.H: 'WDT_clear': not in formal parameter list
-*** ERROR C132 IN LINE 17 OF DEVICE\FUNC_DEF.H: 'WT_init': not in formal parameter list
-*** WARNING C329 IN LINE 16 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 17 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 20 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 21 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 24 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 25 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 28 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 29 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 32 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 33 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 36 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 37 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 40 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 41 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 44 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 45 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 48 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 49 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 52 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 53 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 56 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 57 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 60 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 61 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 64 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 65 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 68 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 69 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 72 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 73 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-C51 COMPILER V9.00   MAIN                                                                  11/12/2018 10:19:33 PAGE 3   
-
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 76 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 77 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 80 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 81 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 84 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 85 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 88 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 89 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 92 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 93 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 96 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 97 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 100 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 101 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 104 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 105 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 108 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 109 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 112 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 113 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 116 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 117 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 120 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 121 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** ERROR C127 IN LINE 272 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'LED_BRIGHTNESS_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 279 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_WORK_MODE_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 285 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_ONOFF_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 291 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_SNOOZE_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 297 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_RING_TIMER_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 303 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_RING_RUN_TypeDef': invalid storage class
-*** ERROR C141 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-C51 COMPILER V9.00   MAIN                                                                  11/12/2018 10:19:33 PAGE 4   
-
-             -_MODE.H: syntax error near 'ALARM_ONOFF_TypeDef'
-*** ERROR C129 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7、GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: missing ';' before 'Alarm_OnOff'
-  13          
+  13          int testINT;
   14          void main()
   15          {
-  16                  cli();                  // disable INT. during peripheral setting
-  17                  port_init();            // initialize ports
-  18                  clock_init();           // initialize operation clock
-  19                  KeyINT_init();          // initialize KEY interrupt
-  20                  LCD_init();             // initialize LCD
-  21                  Timer0_init();          // initialize Timer0
-  22                  Timer3_init();          // initialize Timer3
-  23                  UART_init();            // initialize UART interface
-  24                  WDT_init();             // initialize Watch-dog timer
-  25                  WT_init();              // initialize Watch timer
-  26                  sei();                  // enable INT.
-  27                  
-  28                  // TODO: add your main code here
-  29                  app_main();
-  30                  while(1);
-  31          }
-  32          
-  33          //======================================================
-  34          // interrupt routines
-  35          //======================================================
-  36          
-  37          void INT_UART_Rx() interrupt 9
-  38          {
-  39                  // UART Rx interrupt
-  40                  // TODO: add your code here
-  41          }
-  42          
-  43          void INT_UART_Tx() interrupt 10
-  44          {
-  45                  // UART Tx interrupt
-  46                  // TODO: add your code here
-  47          }
-  48          
-  49          void INT_Timer0() interrupt 13
-  50          {
-  51                  // Timer0 interrupt
-  52                  // TODO: add your code here
-  53                  Sys_Tick();
-  54          }
-  55          
-  56          void INT_WT() interrupt 20
-  57          {
-  58                  // Watch timer interrupt
-  59                  // TODO: add your code here
-  60                  //这里变量gbHalfSecong的意思为半秒，是因为这个函数中断一次为0.5秒，
-  61                  gbHalfSecong=(!gbHalfSecong);
-  62                  if(gbHalfSecong)
-  63                  {
-  64                          if(++gRTC_Sec>59)
-  65                          {
-  66                                  gRTC_Sec=0;
-  67                                  if(++gRTC_Minute>59)
-  68                                  {
-  69                                          gRTC_Minute=0;
-  70                                          if(++gRTC_Hour>23)
-  71                                          {
-C51 COMPILER V9.00   MAIN                                                                  11/12/2018 10:19:33 PAGE 5   
+  16   1              cli();                  // disable INT. during peripheral setting
+  17   1              port_init();            // initialize ports
+  18   1              clock_init();           // initialize operation clock
+  19   1              LCD_init();             // initialize LCD
+  20   1              Timer0_init();          // initialize Timer0
+  21   1              Timer3_init();          // initialize Timer3
+  22   1              //UART_init();          // initialize UART interface
+  23   1              //WDT_init();           // initialize Watch-dog timer//从Program Size（编译时显示的"Program Size:
+  24   1                                                      // data=95.0 xdata=25 code=3244"(这个大小是现在注释的时候的)）可以看出
+  25   1                                                      //，程序在data开辟了大量的数据（95 Byte），在启动代码中会执行对data的
+  26   1                                                      //初始化，由于开启了(如果)看门狗,同时由于定义的data很大，在启动代码中
+  27   1                                                      //执行初始化时间远远超过了喂狗时间，所以导致执行启动代码的过程中看门狗
+  28   1                                                      //复位，一直进不了主程序，关不了狗，程序就一直复位，无限循环，会一直停
+  29   1                                                      //在"?C_STARTUP:     LJMP    STARTUP1"这里。【大部分(好的)程序员会在
+  30   1                                                      //main函数(这里是app_main函数)的第一句话才把看门狗打开】
+  31   1                                                      //参考网址：http://blog.sina.com.cn/s/blog_69d693150101ddk6.html
+  32   1                                                      //所以把看门狗打开放在了PowerON_Reset()函数中
+  33   1              WT_init();              // initialize Watch timer
+  34   1              sei();                  // enable INT.
+  35   1              
+  36   1              // TODO: add your main code here
+  37   1              app_main();
+  38   1              while(1);
+  39   1      }
+  40          
+  41          //======================================================
+  42          // interrupt routines
+  43          //======================================================
+  44          
+  45          void INT_UART_Rx() interrupt 9
+  46          {
+  47   1              // UART Rx interrupt
+  48   1              // TODO: add your code here
+  49   1      
+  50   1      }
+  51          
+  52          void INT_UART_Tx() interrupt 10
+  53          {
+  54   1              // UART Tx interrupt
+C51 COMPILER V9.00   MAIN                                                                  11/14/2018 17:28:45 PAGE 2   
 
-  72                                                  gRTC_Hour=0;
-  73                                                  gRTC_Week<<=1;
-  74                                                  if(gRTC_Week==0x80)//如果移位之后等于0x80，说明是第8次移位，这时候就是
-  75                                                          gRTC_Week=0x01;//周一，所以赋值为0x01。
-  76                                          }
-  77                                  }
-  78                          }
-  79                  }
-  80          }
-  81          
-  82          //======================================================
-  83          // peripheral setting routines
-  84          //======================================================
-  85          
-  86          unsigned char UART_read()
-  87          {
-  88                  unsigned char dat;
-  89                  
-  90                  while(!(UARTST & 0x20));        // wait
-  91                  dat = UARTDR;           // read
-  92                  return  dat;
-  93          }
-  94          
-  95          void KeyINT_init()
-  96          {
-  97                  // initialize KEY interrupt
-  98                  KPOL1 = 0x05;           // edge : KEY INT.7~4
-  99                  KPOL0 = 0x55;           // edge : KEY INT.3~0
- 100          }
- 101          
- 102          void LCD_init()
- 103          {
- 104                  // initialize LCD
- 105                  // Frame freq. = 16.000000Hz
- 106                  LCDCRH = 0x00;          // LCD control High
- 107                  LCDCRL = 0x00;          // LCD control Low
- 108                  LCDCCR = 0x00;          // LCD Contrast control
- 109          }
- 110          
- 111          void Timer0_init()
- 112          {
- 113                  // initialize Timer0
- 114                  // 8bit timer, period = 1.008000mS
- 115                  T0CR = 0x92;            // timer setting
- 116                  T0DR = 0x7D;            // period count
- 117                  IE2 |= 0x02;            // Enable Timer0 interrupt
- 118                  T0CR |= 0x01;           // clear counter
- 119          }
- 120          
- 121          void Timer3_init()
- 122          {
- 123                  // initialize Timer3
- 124                  // 8bit timer, period = 0.050000mS
- 125                  T3DR = 0x18;            // period count
- 126                  T3CR = 0x8A;            // timer setting
- 127                  T3CR |= 0x01;           // clear counter
- 128          }
- 129          
- 130          bit  enUart = 0;
- 131          void UART_init()
- 132          {
- 133                  // initialize UART interface
-C51 COMPILER V9.00   MAIN                                                                  11/12/2018 10:19:33 PAGE 6   
+  55   1              // TODO: add your code here
+  56   1      
+  57   1      }
+  58          
+  59          void INT_Timer0() interrupt 13
+  60          {
+  61   1              // Timer0 interrupt
+  62   1              // TODO: add your code here
+  63   1              Sys_Tick();
+  64   1      
+  65   1      }
+  66          
+  67          void INT_Timer3() interrupt 16
+  68          {
+  69   1              // Timer3 interrupt
+  70   1              // TODO: add your code here
+  71   1      
+  72   1      }
+  73          
+  74          void INT_WT() interrupt 20
+  75          {
+  76   1              // Watch timer interrupt
+  77   1              // TODO: add your code here
+  78   1      
+  79   1      }
+  80          
+  81          //======================================================
+  82          // peripheral setting routines
+  83          //======================================================
+  84          
+  85          unsigned char UART_read()
+  86          {
+  87   1              unsigned char dat;
+  88   1              
+  89   1              while(!(UARTST & 0x20));        // wait
+  90   1              dat = UARTDR;           // read
+  91   1              return  dat;
+  92   1      }
+  93          
+  94          void LCD_init()
+  95          {
+  96   1              // initialize LCD
+  97   1              // Frame freq. = 16.000000Hz
+  98   1              LCDCRH = 0x00;          // LCD control High
+  99   1              LCDCRL = 0x00;          // LCD control Low
+ 100   1              LCDCCR = 0x00;          // LCD Contrast control
+ 101   1      }
+ 102          
+ 103          void Timer0_init()
+ 104          {
+ 105   1              // initialize Timer0
+ 106   1              // 8bit timer, period = 1.000000mS
+ 107   1              T0CR = 0x92;            // timer setting
+ 108   1              T0DR = 0x7C;            // period count
+ 109   1              IE2 |= 0x02;            // Enable Timer0 interrupt
+ 110   1              T0CR |= 0x01;           // clear counter
+ 111   1      }
+ 112          
+ 113          void Timer3_init()
+ 114          {
+ 115   1              // initialize Timer3
+ 116   1              // 8bit timer, period = 1.000000mS
+C51 COMPILER V9.00   MAIN                                                                  11/14/2018 17:28:45 PAGE 3   
 
- 134                  // UART : 9615bps N 8 1
- 135                  if (!enUart)
- 136                  {
- 137                          UARTCR2  = 0x02;        // activate UART
- 138                          UARTCR1  = 0x06;        // bit count, parity
- 139                          UARTCR2 |= 0xEC;        // interrupt, speed
- 140                          UARTCR3  = 0x00;        // stop bit
- 141                          UARTBD   = 0x67;        // baud rate
- 142                          IE1     |= 0x18;    // enable UART interrupt
- 143                  }
- 144                  enUart = 1;
- 145          }
- 146          
- 147          void UART_Def_Init()
- 148          {
- 149                  // initialize UART interface
- 150                  // UART : 9615bps N 8 1
- 151                  if (enUart)
- 152                  {
- 153                          UARTCR2  = 0x00;        // activate UART
- 154                          UARTCR1  = 0x00;        // bit count, parity
- 155                          UARTCR2 |= 0x00;        // interrupt, speed
- 156                          UARTCR3  = 0x00;        // stop bit
- 157                          UARTBD   = 0x00;        // baud rate
- 158                          IE1     &= (~0x18); // enable UART interrupt
- 159                  }
- 160                  enUart = 0;
- 161          }
- 162          
- 163          void UART_write(unsigned char dat)
- 164          {
- 165                  while(!(UARTST & 0x80));        // wait
- 166                  UARTDR = dat;           // write
- 167          }
- 168          
- 169          void WDT_clear()
- 170          {
- 171                  WDTCR |= 0x20;          // Clear Watch-dog timer
- 172          }
- 173          
- 174          void WDT_init()
- 175          {
- 176                  // initialize Watch-dog timer
- 177                  WDTDR = 0x01;           // period
- 178                  WDTCR = 0xC0;           // setting
- 179                  //WDTCR |= 0x02;        // Use WDTRC
- 180                  WDT_clear();
- 181          }
- 182          
- 183          void WT_init()
- 184          {
- 185                  // initialize Watch timer
- 186                  WTCR = 0x88;            // setting
- 187                  WTDR = 0x01;            // set duty
- 188                  WTDR = 0x81;            // clear WT
- 189                  IE3 |= 0x04;            // Enable WT interrupt
- 190          }
- 191          
- 192          void clock_init()
- 193          {
- 194                  // internal RC clock (16.000000MHz)
- 195                  OSCCR = 0x28;           // Set Int. OSC
-C51 COMPILER V9.00   MAIN                                                                  11/12/2018 10:19:33 PAGE 7   
+ 117   1              T3DR = 0x7C;            // period count
+ 118   1              T3CR = 0x8E;            // timer setting
+ 119   1              IE2 |= 0x10;            // Enable Timer3 interrupt
+ 120   1              T3CR |= 0x01;           // clear counter
+ 121   1      }
+ 122          
+ 123          bit  enUart=0;
+ 124          void UART_init()
+ 125          {
+ 126   1              // initialize UART interface
+ 127   1              // UART : 9615bps N 8 1
+ 128   1              if(!enUart)
+ 129   1              {
+ 130   2                      UARTCR2  = 0x02;        // activate UART
+ 131   2                      UARTCR1  = 0x06;        // bit count, parity
+ 132   2                      UARTCR2 |= 0xEC;        // interrupt, speed
+ 133   2                      UARTCR3  = 0x00;        // stop bit
+ 134   2                      UARTBD   = 0x67;        // baud rate
+ 135   2                      IE1     |= 0x18;        // enable UART interrupt
+ 136   2              }
+ 137   1              enUart=1;
+ 138   1      }
+ 139          
+ 140          void UART_Def_Init()
+ 141          {
+ 142   1              // initialize UART interface
+ 143   1              // UART : 9615bps N 8 1
+ 144   1              if(enUart)
+ 145   1              {
+ 146   2                      UARTCR2  = 0x00;        // activate UART
+ 147   2                      UARTCR1  = 0x00;        // bit count, parity
+ 148   2                      UARTCR2 |= 0x00;        // interrupt, speed
+ 149   2                      UARTCR3  = 0x00;        // stop bit
+ 150   2                      UARTBD   = 0x00;        // baud rate
+ 151   2                      IE1     &=~0x18;    // disable UART interrupt
+ 152   2              }
+ 153   1              enUart=0;
+ 154   1      }
+ 155          
+ 156          void UART_write(unsigned char dat)
+ 157          {
+ 158   1              while(!(UARTST & 0x80));        // wait
+ 159   1              UARTDR = dat;           // write
+ 160   1      }
+ 161          
+ 162          void WDT_clear()
+ 163          {
+ 164   1              WDTCR |= 0x20;          // Clear Watch-dog timer
+ 165   1      }
+ 166          
+ 167          void WDT_init()
+ 168          {
+ 169   1              // initialize Watch-dog timer
+ 170   1              WDTDR = 0x01;           // period
+ 171   1              WDTCR = 0xC0;           // setting
+ 172   1              //WDTCR |= 0x02;        // Use WDTRC
+ 173   1              WDT_clear();
+ 174   1      }
+ 175          
+ 176          void WT_init()
+ 177          {
+ 178   1              // initialize Watch timer
+C51 COMPILER V9.00   MAIN                                                                  11/14/2018 17:28:45 PAGE 4   
 
- 196                  SCCR = 0x00;            // Use Int. OSC
- 197          }
- 198          
- 199          void port_init()
- 200          {
- 201                  // initialize ports
- 202                  //   1 : P13      in  
- 203                  //   2 : P14      out 
- 204                  //   3 : P15      out 
- 205                  //   8 : P60      out 
- 206                  //   9 : P61      out 
- 207                  //  11 : SXIN     out 
- 208                  //  12 : SXOUT    out 
- 209                  //  14 : P20      out 
- 210                  //  15 : P21      out 
- 211                  //  16 : P22      out 
- 212                  //  17 : P23      out 
- 213                  //  18 : P24      out 
- 214                  //  19 : P25      out 
- 215                  //  20 : P26      out 
- 216                  //  21 : P27      out 
- 217                  //  22 : P30      out 
- 218                  //  23 : P31      out 
- 219                  //  24 : P32      out 
- 220                  //  25 : P33      out 
- 221                  //  26 : P34      out 
- 222                  //  27 : P35      out 
- 223                  //  28 : P36      out 
- 224                  //  29 : P37      out 
- 225                  //  30 : P40      out 
- 226                  //  31 : P41      out 
- 227                  //  32 : P42      out 
- 228                  //  33 : P43      out 
- 229                  //  34 : P44      out 
- 230                  //  35 : P45      out 
- 231                  //  36 : P46      out 
- 232                  //  37 : P47      out 
- 233                  //  38 : P50      out 
- 234                  //  39 : P51      out 
- 235                  //  40 : P52      out 
- 236                  //  41 : P53      out BT_RED_OUTPUT
- 237                  //  42 : P54      out BT_RED_OUTPUT
- 238                  //  43 : P55      out BT_BLUE_INPUT
- 239                  //  44 : TXD      out 
- 240                  //  45 : RXD      in  
- 241                  //  46 : P00      in  
- 242                  //  47 : P01      out 
- 243                  //  48 : P02      out 
- 244                  //  49 : P03      out BT_RED_INPUT
- 245                  //  50 : P10      in  
- 246                  //  51 : P11      in  
- 247                  //  52 : P12      in  
- 248                  P0IO = 0xFE;            // direction
- 249                  P0PU = 0x00;            // pullup
- 250                  P0OD = 0x00;            // open drain
- 251                  P0DB = 0x00;            // bit7~6(debounce clock), bit1~0=P01~00 debounce
- 252                  P0   = 0x00;            // port initial value
- 253          
- 254                  P1IO = 0xF0;            // direction
- 255                  P1PU = 0x3F;            // pullup
- 256                  P1OD = 0x00;            // open drain
- 257                  P1DB = 0x00;            // P17~10 debounce
-C51 COMPILER V9.00   MAIN                                                                  11/12/2018 10:19:33 PAGE 8   
+ 179   1              WTCR = 0x80;            // setting
+ 180   1              WTDR = 0x01;            // set duty
+ 181   1              WTDR = 0x81;            // clear WT
+ 182   1              IE3 |= 0x04;            // Enable WT interrupt
+ 183   1      }
+ 184          
+ 185          void clock_init()
+ 186          {
+ 187   1              // internal RC clock (16.000000MHz)
+ 188   1              OSCCR = 0x28;           // Set Int. OSC
+ 189   1              SCCR  = 0x00;           // Use Int. OSC
+ 190   1      //      // external clock//外部时钟源配置
+ 191   1      //      OSCCR = 0x0A;           // Enable int. 1MHz and Ext. OSC
+ 192   1      //      BITCR = 0x09;           // Set waiting time : 16ms@1MHz
+ 193   1      //      while((BITCR & 0x80) == 0);     // Ext. OSC stabilizing time
+ 194   1      //      SCCR = 0x01;            // Change to Ext. OSC
+ 195   1      //      OSCCR |= 0x04;          // Disable Int. OSC
+ 196   1      }
+ 197          
+ 198          void port_init()
+ 199          {
+ 200   1              // initialize ports
+ 201   1              //   1 : P13      in  
+ 202   1              //   2 : P14      out 
+ 203   1              //   3 : P15      out 
+ 204   1              //   8 : P60      out 
+ 205   1              //   9 : P61      in  
+ 206   1              //  10 : P62      in  
+ 207   1              //  11 : SXIN     in  
+ 208   1              //  12 : SXOUT    out 
+ 209   1              //  14 : P20      out 
+ 210   1              //  15 : P21      out 
+ 211   1              //  16 : P22      out 
+ 212   1              //  17 : P23      out 
+ 213   1              //  18 : P24      out 
+ 214   1              //  19 : P25      out 
+ 215   1              //  20 : P26      out 
+ 216   1              //  21 : P27      out 
+ 217   1              //  22 : P30      out 
+ 218   1              //  23 : P31      out 
+ 219   1              //  24 : P32      out 
+ 220   1              //  25 : P33      out 
+ 221   1              //  26 : P34      out 
+ 222   1              //  27 : P35      out 
+ 223   1              //  28 : P36      out 
+ 224   1              //  29 : P37      out 
+ 225   1              //  30 : P40      out 
+ 226   1              //  31 : P41      out 
+ 227   1              //  32 : P42      out 
+ 228   1              //  33 : P43      out 
+ 229   1              //  34 : P44      out 
+ 230   1              //  35 : P45      out 
+ 231   1              //  36 : P46      out 
+ 232   1              //  37 : P47      out 
+ 233   1              //  38 : P50      out 
+ 234   1              //  39 : P51      out 
+ 235   1              //  40 : P52      out 
+ 236   1              //  41 : P53      out 
+ 237   1              //  42 : P54      out 
+ 238   1              //  43 : P55      in  
+ 239   1              //  44 : TXD      out 
+ 240   1              //  45 : RXD      in  
+C51 COMPILER V9.00   MAIN                                                                  11/14/2018 17:28:45 PAGE 5   
 
- 258                  P1   = 0x00;            // port initial value
- 259          
- 260                  P2IO = 0xFF;            // direction
- 261                  P2PU = 0xFF;            // pullup
- 262                  P2OD = 0x00;            // open drain
- 263                  P2   = 0x00;            // port initial value
- 264          
- 265                  P3IO = 0xFF;            // direction
- 266                  P3PU = 0xFF;            // pullup
- 267                  P3OD = 0x00;            // open drain
- 268                  P3   = 0x00;            // port initial value
- 269          
- 270                  P4IO = 0xFF;            // direction
- 271                  P4PU = 0xFF;            // pullup
- 272                  P4OD = 0x00;            // open drain
- 273                  P4   = 0x00;            // port initial value
- 274          
- 275                  P5IO = 0x7F;            // direction
- 276                  P5PU = 0x00;            // pullup
- 277                  P5OD = 0x00;            // open drain
- 278                  P5   = 0x00;            // port initial value
- 279          
- 280                  P6IO = 0xFF;            // direction
- 281                  P6PU = 0x01;            // pullup
- 282                  P6OD = 0x00;            // open drain
- 283                  P6   = 0x00;            // port initial value
- 284          
- 285                  // Set port functions
- 286                  P0FSR = 0x00;           // P0 selection
- 287                  P2FSR = 0x00;           // P2 selection
- 288                  P3FSR = 0x00;           // P3 selection
- 289                  P4FSR = 0x00;           // P4 selection
- 290                  P5FSRH = 0x18;          // P5 selection High
- 291                  P5FSRL = 0x00;          // P5 selection Low
- 292                  P6FSR = 0x0C;           // P6 selection
- 293          }
+ 241   1              //  46 : P00      in  
+ 242   1              //  47 : P01      out 
+ 243   1              //  48 : P02      out 
+ 244   1              //  49 : P03      in  
+ 245   1              //  50 : P10      in  
+ 246   1              //  51 : P11      in  
+ 247   1              //  52 : P12      in  
+ 248   1              P0IO = 0xF6;            // direction
+ 249   1              P0PU = 0x00;            // pullup
+ 250   1              P0OD = 0x00;            // open drain
+ 251   1              P0DB = 0x00;            // bit7~6(debounce clock), bit1~0=P01~00 debounce
+ 252   1              P0   = 0x00;            // port initial value
+ 253   1      
+ 254   1              P1IO = 0xF0;            // direction
+ 255   1              P1PU = 0x0F;            // pullup
+ 256   1              P1OD = 0x00;            // open drain
+ 257   1              P1DB = 0x00;            // P17~10 debounce
+ 258   1              P1   = 0x00;            // port initial value
+ 259   1      
+ 260   1              P2IO = 0xFF;            // direction
+ 261   1              P2PU = 0x00;            // pullup
+ 262   1              P2OD = 0x00;            // open drain
+ 263   1              P2   = 0x00;            // port initial value
+ 264   1      
+ 265   1              P3IO = 0xFF;            // direction
+ 266   1              P3PU = 0x00;            // pullup
+ 267   1              P3OD = 0x00;            // open drain
+ 268   1              P3   = 0x00;            // port initial value
+ 269   1      
+ 270   1              P4IO = 0xFF;            // direction
+ 271   1              P4PU = 0x00;            // pullup
+ 272   1              P4OD = 0x00;            // open drain
+ 273   1              P4   = 0x00;            // port initial value
+ 274   1      
+ 275   1              P5IO = 0x5F;            // direction
+ 276   1              P5PU = 0x00;            // pullup
+ 277   1              P5OD = 0x00;            // open drain
+ 278   1              P5   = 0x00;            // port initial value
+ 279   1      
+ 280   1              P6IO = 0xF1;            // direction
+ 281   1              P6PU = 0x00;            // pullup
+ 282   1              P6OD = 0x00;            // open drain
+ 283   1              P6   = 0x00;            // port initial value
+ 284   1      
+ 285   1              // Set port functions
+ 286   1              P0FSR = 0x00;           // P0 selection
+ 287   1              P2FSR = 0x00;           // P2 selection
+ 288   1              P3FSR = 0x00;           // P3 selection
+ 289   1              P4FSR = 0x00;           // P4 selection
+ 290   1              P5FSRH = 0x18;          // P5 selection High
+ 291   1              P5FSRL = 0x00;          // P5 selection Low
+ 292   1              P6FSR = 0x0C;           // P6 selection
+ 293   1      }
  294          
 
-C51 COMPILATION COMPLETE.  54 WARNING(S),  40 ERROR(S)
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    303    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+C51 COMPILER V9.00   MAIN                                                                  11/14/2018 17:28:45 PAGE 6   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

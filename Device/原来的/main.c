@@ -6,20 +6,21 @@
 // For XDATA variable : V1.041.00 ~
 #define		MAIN	1
 
-// Generated    : Wed, Nov 14, 2018 (10:39:34)
+// Generated    : Mon, Nov 05, 2018 (15:44:40)
 #include	"MC96F6508A.h"
 #include	"func_def.h"
 #include    "app_main.h"
-int testINT;
+
 void main()
 {
 	cli();          	// disable INT. during peripheral setting
 	port_init();    	// initialize ports
 	clock_init();   	// initialize operation clock
+	KeyINT_init();  	// initialize KEY interrupt
 	LCD_init();     	// initialize LCD
 	Timer0_init();  	// initialize Timer0
 	Timer3_init();  	// initialize Timer3
-	//UART_init();    	// initialize UART interface
+	UART_init();    	// initialize UART interface
 	//WDT_init();     	// initialize Watch-dog timer//从Program Size（编译时显示的"Program Size:
 						// data=95.0 xdata=25 code=3244"(这个大小是现在注释的时候的)）可以看出
 						//，程序在data开辟了大量的数据（95 Byte），在启动代码中会执行对data的
@@ -46,14 +47,12 @@ void INT_UART_Rx() interrupt 9
 {
 	// UART Rx interrupt
 	// TODO: add your code here
-
 }
 
 void INT_UART_Tx() interrupt 10
 {
 	// UART Tx interrupt
 	// TODO: add your code here
-
 }
 
 void INT_Timer0() interrupt 13
@@ -61,21 +60,32 @@ void INT_Timer0() interrupt 13
 	// Timer0 interrupt
 	// TODO: add your code here
 	Sys_Tick();
-
-}
-
-void INT_Timer3() interrupt 16
-{
-	// Timer3 interrupt
-	// TODO: add your code here
-
 }
 
 void INT_WT() interrupt 20
 {
 	// Watch timer interrupt
 	// TODO: add your code here
-
+	//这里变量gbHalfSecong的意思为半秒，是因为这个函数中断一次为0.5秒，
+	gbHalfSecong=(!gbHalfSecong);
+	if(gbHalfSecong)
+	{
+		if(++gRTC_Sec>59)
+		{
+			gRTC_Sec=0;
+			if(++gRTC_Minute>59)
+			{
+				gRTC_Minute=0;
+				if(++gRTC_Hour>23)
+				{
+					gRTC_Hour=0;
+					gRTC_Week<<=1;
+					if(gRTC_Week==0x80)//如果移位之后等于0x80，说明是第8次移位，这时候就是
+						gRTC_Week=0x01;//周一，所以赋值为0x01。
+				}
+			}
+		}
+	}
 }
 
 //======================================================
@@ -91,6 +101,13 @@ unsigned char UART_read()
 	return	dat;
 }
 
+void KeyINT_init()
+{
+	// initialize KEY interrupt
+	KPOL1 = 0x05;   	// edge : KEY INT.7~4
+	KPOL0 = 0x55;   	// edge : KEY INT.3~0
+}
+
 void LCD_init()
 {
 	// initialize LCD
@@ -103,54 +120,53 @@ void LCD_init()
 void Timer0_init()
 {
 	// initialize Timer0
-	// 8bit timer, period = 1.000000mS
-	T0CR = 0x92;    	// timer setting
-	T0DR = 0x7C;    	// period count
-	IE2 |= 0x02;    	// Enable Timer0 interrupt
+	// 8bit timer, period = 1.008000mS
+	T0CR  = 0x92;    	// timer setting
+	T0DR  = 0x7D;    	// period count
+	IE2  |= 0x02;    	// Enable Timer0 interrupt
 	T0CR |= 0x01;   	// clear counter
 }
 
 void Timer3_init()
 {
 	// initialize Timer3
-	// 8bit timer, period = 1.000000mS
-	T3DR = 0x7C;    	// period count
-	T3CR = 0x8E;    	// timer setting
-	IE2 |= 0x10;    	// Enable Timer3 interrupt
+	// 8bit timer, period = 0.050000mS
+	T3DR = 0x18;    	// period count
+	T3CR = 0x8A;    	// timer setting
 	T3CR |= 0x01;   	// clear counter
 }
 
-bit  enUart=0;
+bit  enUart = 0;
 void UART_init()
 {
 	// initialize UART interface
 	// UART : 9615bps N 8 1
-	if(!enUart)
+	if (!enUart)
 	{
 		UARTCR2  = 0x02; 	// activate UART
 		UARTCR1  = 0x06; 	// bit count, parity
 		UARTCR2 |= 0xEC;	// interrupt, speed
 		UARTCR3  = 0x00; 	// stop bit
 		UARTBD   = 0x67;  	// baud rate
-		IE1     |= 0x18;    	// enable UART interrupt
+		IE1     |= 0x18;    // enable UART interrupt
 	}
-	enUart=1;
+	enUart = 1;
 }
 
 void UART_Def_Init()
 {
 	// initialize UART interface
 	// UART : 9615bps N 8 1
-	if(enUart)
+	if (enUart)
 	{
 		UARTCR2  = 0x00; 	// activate UART
-		UARTCR1  = 0x00;	// bit count, parity
+		UARTCR1  = 0x00; 	// bit count, parity
 		UARTCR2 |= 0x00;	// interrupt, speed
 		UARTCR3  = 0x00; 	// stop bit
 		UARTBD   = 0x00;  	// baud rate
-		IE1     &=~0x18;    // disable UART interrupt
+		IE1     &= (~0x18); // disable UART interrupt
 	}
-	enUart=0;
+	enUart = 0;
 }
 
 void UART_write(unsigned char dat)
@@ -176,7 +192,7 @@ void WDT_init()
 void WT_init()
 {
 	// initialize Watch timer
-	WTCR = 0x80;    	// setting
+	WTCR = 0x88;    	// setting
 	WTDR = 0x01;    	// set duty
 	WTDR = 0x81;    	// clear WT
 	IE3 |= 0x04;    	// Enable WT interrupt
@@ -186,13 +202,15 @@ void clock_init()
 {
 	// internal RC clock (16.000000MHz)
 	OSCCR = 0x28;   	// Set Int. OSC
-	SCCR  = 0x00;    	// Use Int. OSC
-//	// external clock//外部时钟源配置
-//	OSCCR = 0x0A;   	// Enable int. 1MHz and Ext. OSC
-//	BITCR = 0x09;   	// Set waiting time : 16ms@1MHz
-//	while((BITCR & 0x80) == 0);	// Ext. OSC stabilizing time
-//	SCCR = 0x01;    	// Change to Ext. OSC
-//	OSCCR |= 0x04;  	// Disable Int. OSC
+	SCCR = 0x00;		// Use Int. OSC
+
+	// external clock
+//	OSCCR = 0x0A;		// Enable int. 1MHz and Ext. OSC
+//	BITCR = 0x09;		// Set waiting time : 16ms@1MHz
+//	while ((BITCR & 0x80) == 0)
+//		;		   // Ext. OSC stabilizing time
+//	SCCR = 0x01;   // Change to Ext. OSC
+//	OSCCR |= 0x04; // Disable Int. OSC
 }
 
 void port_init()
@@ -202,9 +220,8 @@ void port_init()
 	//   2 : P14      out 
 	//   3 : P15      out 
 	//   8 : P60      out 
-	//   9 : P61      in  
-	//  10 : P62      in  
-	//  11 : SXIN     in  
+	//   9 : P61      out 
+	//  11 : SXIN     out 
 	//  12 : SXOUT    out 
 	//  14 : P20      out 
 	//  15 : P21      out 
@@ -233,52 +250,52 @@ void port_init()
 	//  38 : P50      out 
 	//  39 : P51      out 
 	//  40 : P52      out 
-	//  41 : P53      out 
-	//  42 : P54      out 
-	//  43 : P55      in  
+	//  41 : P53      out BT_RED_OUTPUT
+	//  42 : P54      out BT_RED_OUTPUT
+	//  43 : P55      out BT_BLUE_INPUT
 	//  44 : TXD      out 
 	//  45 : RXD      in  
 	//  46 : P00      in  
 	//  47 : P01      out 
 	//  48 : P02      out 
-	//  49 : P03      in  
+	//  49 : P03      out BT_RED_INPUT
 	//  50 : P10      in  
 	//  51 : P11      in  
 	//  52 : P12      in  
-	P0IO = 0xF6;    	// direction
+	P0IO = 0xFE;    	// direction
 	P0PU = 0x00;    	// pullup
 	P0OD = 0x00;    	// open drain
 	P0DB = 0x00;    	// bit7~6(debounce clock), bit1~0=P01~00 debounce
 	P0   = 0x00;    	// port initial value
 
 	P1IO = 0xF0;    	// direction
-	P1PU = 0x0F;    	// pullup
+	P1PU = 0x3F;    	// pullup
 	P1OD = 0x00;    	// open drain
 	P1DB = 0x00;    	// P17~10 debounce
 	P1   = 0x00;    	// port initial value
 
 	P2IO = 0xFF;    	// direction
-	P2PU = 0x00;    	// pullup
+	P2PU = 0xFF;    	// pullup
 	P2OD = 0x00;    	// open drain
 	P2   = 0x00;    	// port initial value
 
 	P3IO = 0xFF;    	// direction
-	P3PU = 0x00;    	// pullup
+	P3PU = 0xFF;    	// pullup
 	P3OD = 0x00;    	// open drain
 	P3   = 0x00;    	// port initial value
 
 	P4IO = 0xFF;    	// direction
-	P4PU = 0x00;    	// pullup
+	P4PU = 0xFF;    	// pullup
 	P4OD = 0x00;    	// open drain
 	P4   = 0x00;    	// port initial value
 
-	P5IO = 0x5F;    	// direction
+	P5IO = 0x7F;    	// direction
 	P5PU = 0x00;    	// pullup
 	P5OD = 0x00;    	// open drain
 	P5   = 0x00;    	// port initial value
 
-	P6IO = 0xF1;    	// direction
-	P6PU = 0x00;    	// pullup
+	P6IO = 0xFF;    	// direction
+	P6PU = 0x01;    	// pullup
 	P6OD = 0x00;    	// open drain
 	P6   = 0x00;    	// port initial value
 

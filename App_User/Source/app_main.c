@@ -29,6 +29,10 @@ BOOL  gb0_5s;
 BOOL  gbUser_AdjClk;
 BOOL  gbHalfSecond;
 BOOL  gbTestMode;
+BOOL  gbSnoozeEnable;
+BOOL  gbPowerOn;
+BOOL  gbSleepEnable;
+
 
 /*****************************/
 /*变量定义variable definition*/
@@ -43,16 +47,22 @@ uint8_t  idata gRTC_Hour;
 uint8_t  idata gRTC_Hour_bk;
 uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
 uint8_t  idata gRTC_Week; //一周7天
-uint8_t  idata sys_Volume;//系统音量
+uint8_t  idata Snooze_Hour;//贪睡小时时间
+uint8_t  idata Snooze_Minute;//贪睡分钟时间
+uint8_t  idata sysVolume;//系统音量
 uint8_t  idata sys_Cmd;//命令
 uint8_t  idata sys_Name;
 uint16_t idata timeCnt_30Sec;//短按ALARM键缺人设置或不动作30s自动保存，30s计时
 
-u8       idata cntNoFlash;
-u8		 idata AlarmingType;//闹钟时开启还是关闭，用Alarm1_TypeDef.Alarm_OnOFF代替
-u8		 idata Alarm1Mode;//用Alarm1_TypeDef.Alarm_Mode代替了
-u8			   gZone;
-u8			   dispStatus;
+uint8_t  idata cntAlarm;
+uint8_t  idata cntSleep;
+uint8_t  idata sleepTimeSet;
+uint8_t  idata cntNoFlash;
+uint8_t  idata AlarmingType;//闹钟时开启还是关闭，用Alarm1_TypeDef.Alarm_OnOFF代替
+uint8_t	 idata Alarm1Mode;//用Alarm1_TypeDef.Alarm_Mode代替了
+uint8_t		   gZone;
+uint8_t		   dispStatus;
+uint8_t	 idata cnt0_5s;//通过这个变量的计数来对gb0_5s的状态连续取反，每次取反0.5s
 
 /**************************/
 /*数组定义array definition*/
@@ -65,6 +75,167 @@ u8			   dispStatus;
 /*****************************/
 /*函数定义function definetion*/
 /*****************************/
+/*******************************************************************************
+ * 函数原型：
+ * 输入参数：
+ * 输出参数：
+ * 函数功能：把显示状态清零
+ * 返回值说明：
+ * 创建日期：
+ * 创建人：
+ * 修改日期
+ * 修改人：
+ * 第N次修改：
+ * 修改原因：
+ * 备注：
+ *******************************************************************************/
+void ClearDisplayStatus(void)
+{
+	dispStatus = 0;
+	cntDispStatus = 0;
+}
+
+ /*******************************************************************************
+  * 函数原型：
+  * 输入参数：
+  * 输出参数：
+  * 函数功能：睡眠唤醒之后清除相关标志位和计数什么的变量
+  * 返回值说明：
+  * 创建日期：
+  * 创建人：
+  * 修改日期
+  * 修改人：
+  * 第N次修改：
+  * 修改原因：
+  * 备注：
+  *******************************************************************************/
+void Clear_Sleep(void)
+{
+	cntSleep = 0;
+	sleepTimeSet = 0;
+	gbSleepEnable = 0;
+}
+
+  /*******************************************************************************
+   * 函数原型：
+   * 输入参数：
+   * 输出参数：
+   * 函数功能：退出显示状态
+   * 返回值说明：
+   * 创建日期：
+   * 创建人：
+   * 修改日期
+   * 修改人：
+   * 第N次修改：
+   * 修改原因：
+   * 备注：
+   *******************************************************************************/
+void DisplayStatusExit(void)
+{
+	if (cntDispStatus)
+	{
+		if (++cnt0_5s >= cDISP_DELAY__500ms)//计数到500ms就进入
+		{
+			cnt0_5s = 0;
+			gb0_5s = ~gb0_5s;
+		}
+		if (--cntDispStatus == 0)
+		{
+			switch (dispStatus)
+			{
+				case DISP_CLK:
+					break;
+				case DISP_GET_MEN:
+					SetDisplayState10s(DISP_RADIO);
+					break;
+				default:
+					cntDispStatus = cDISP_DELAY__62ms5;
+					dispStatus = DISP_CLK;
+					break;
+			}
+		}
+	}
+}
+
+/*******************************************************************************
+* 函数原型：
+* 输入参数：
+* 输出参数：
+* 函数功能：
+* 返回值说明：
+* 创建日期：
+* 创建人：
+* 修改日期
+* 修改人：
+* 第N次修改：
+* 修改原因：
+* 备注：
+*******************************************************************************/
+void Snooze_9Min(void)
+{
+	uint8_t cnt;
+	Snooze_Hour = gRTC_Hour;//把现在RTC时间赋给贪睡时间这样再计数9分钟再与RTC时间对比
+	Snooze_Minute = gRTC_Minute;
+	for (cnt = 0; cnt < 9; cnt++)//这里之所以进行9次if判断
+	{
+		if (++Snooze_Minute >= 60)
+		{
+			Snooze_Minute = 0;
+			if (++Snooze_Hour >= 24)
+			{
+				Snooze_Hour = 0;
+			}
+		}
+	}
+}
+
+/*******************************************************************************
+* 函数原型：
+* 输入参数：
+* 输出参数：
+* 函数功能：闹钟响时按下SNOOZE(贪睡)按键，继续贪睡9分钟
+* 返回值说明：
+* 创建日期：
+* 创建人：
+* 修改日期
+* 修改人：
+* 第N次修改：
+* 修改原因：
+* 备注：
+*******************************************************************************/
+void SnoozeEnable(void)
+{
+	if (!gbSnoozeEnable)
+	{
+		if (cntAlarm)
+		{
+			//__enMute();
+			gbPowerOn = 0;
+			Snooze_9Min();
+			SetDisplayState10s(DISP_CLK);
+			//BuzzEventPorc(eAL_AL_IDLE);//这个函数还没有写呢
+			gbSnoozeEnable = 1;//贪睡标志位置1，启动贪睡
+		}
+	}
+}
+
+/*******************************************************************************
+* 函数原型：
+* 输入参数：
+* 输出参数：
+* 函数功能：
+* 返回值说明：
+* 创建日期：
+* 创建人：
+* 修改日期
+* 修改人：
+* 第N次修改：
+* 修改原因：
+* 备注：
+*******************************************************************************/
+
+
+
 /*******************************************************************************
  * 函数原型：
  * 输入参数：
@@ -86,12 +257,12 @@ void Compare_1MinutePorc(void)
 	{
 		gRTC_Sec_bk=gRTC_Sec;
 		
-		if(gRTC_Minute!=gRTC_Minute_bk)
+		if(gRTC_Minute!=gRTC_Minute_bk)//分钟
 		{
 			gRTC_Minute_bk=gRTC_Minute;
 			if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (gRTC_Hour == Alarm1_TypeDef.hour) && (gRTC_Minute == Alarm1_TypeDef.minute))
 			{
-				if(Alarm1_TypeDef.AlarmWorkMode==ALARM_BT)
+				if(Alarm1_TypeDef.Alarm_WorkMode==ALARM_BT)
 				{
 					
 				}
@@ -101,7 +272,7 @@ void Compare_1MinutePorc(void)
 				}
 			}
 				
-			if(gRTC_Hour!=gRTC_Hour_bk)
+			if(gRTC_Hour!=gRTC_Hour_bk)//小时
 			{
 				gRTC_Hour_bk=gRTC_Hour_bk;
 				gRTC_Hour_bk_24++;
@@ -212,11 +383,26 @@ void Sys_Tick(void)
  *******************************************************************************/
 void PowerON_Reset(void)
 {
+	//WDT_init();     	// initialize Watch-dog timer
 	PlayMode_TypeDef=PLAY_JUST_POWER;//刚上电，模式设为刚上电模式
 	LED_Brightness_TypeDef=LED_HIGH;//亮度默认为高
-	Alarm1_TypeDef.AlarmWorkMode=ALARM_BEEP; //自己加的为闹钟响闹模式为beep模式，方便写程序，也防止使用者在设置闹钟
+	Alarm1_TypeDef.Alarm_WorkMode=ALARM_BEEP; //自己加的为闹钟响闹模式为beep模式，方便写程序，也防止使用者在设置闹钟
 								//时没有选择模式，那就选择默认是beep模式
-	sys_Volume = 8;//默认系统音量为8级
+	sysVolume = 8;//默认系统音量为8级
+	cntNoFlash = 0;
+	gbUser_AdjClk = 0;
+	gb12HourDisp = 1;
+	gbHalfSecond = 1;
+	gRTC_Sec = 0;
+	gRTC_Minute = 0;
+	gRTC_Hour = 0;
+	gZone = 2;
+//	Alarm1Mode = ALARM_NONE;
+//	Alarm2Mode = ALARM_NONE;
+//	AlarmingType = ALARM_OFF;
+
+	gbPowerOn = 0;
+	//WDT_clear();
 }
 
 /*******************************************************************************
@@ -238,43 +424,57 @@ void app_main(void)
 	PowerON_Reset();
 	while(1)
 	{
-		if(AppTick1ms)
-		{
-			AppTick1ms=0;
-		}
-		if(AppTick0)
-		{
-			AppTick0=0;
-			KeyScan();
-			KeyComMsg();
-		}
-		if(AppTick1)
-		{
-			AppTick1=0;
-			
-		}
-		if(AppTick2)
-		{
-			AppTick2=0;
-			
-		}
-		if(AppTick3)
-		{
-			AppTick3=0;
-			
-		}
-		if(AppTick4)
-		{
-			AppTick4=0;
-			
-		}
-		if(AppTick5)
-		{
-			AppTick5=0;
-			Timing_Handle();
-			Compare_1MinutePorc();
-		}
-		WDT_clear();	
+		SET_BEEP(1);
+		SET_LED_RED(1);
+		BT_SET_LED_BLUE(1);
+		__SET_1B(1);
+		__SET_1C(1);
+		__SET_2A(1);
+		__SET_2B(1);
+		__SET_2C(1);
+		__SET_2D(1);
+		__SET_2E(1);
+		__SET_2F(1);
+		__SET_2G(1);
+		
+		
+//		if(AppTick1ms)
+//		{
+//			AppTick1ms=0;
+//		}
+//		if(AppTick0)
+//		{
+//			AppTick0=0;
+//			KeyScan();
+//			KeyComMsg();
+//		}
+//		if(AppTick1)
+//		{
+//			AppTick1=0;
+//			
+//		}
+//		if(AppTick2)
+//		{
+//			AppTick2=0;
+//			
+//		}
+//		if(AppTick3)
+//		{
+//			AppTick3=0;
+//			Display();
+//		}
+//		if(AppTick4)
+//		{
+//			AppTick4=0;
+//			
+//		}
+//		if(AppTick5)
+//		{
+//			AppTick5=0;
+//			Timing_Handle();
+//			Compare_1MinutePorc();
+//		}
+//		//WDT_clear();	
 	}
 }
 

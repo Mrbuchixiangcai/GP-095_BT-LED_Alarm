@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 1   
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE KEY_MODE
@@ -12,139 +12,6 @@ line level    source
    2          /*Í·ÎÄ¼þheader file*/
    3          /*******************/
    4          #include "app_main.h"
-*** ERROR C132 IN LINE 13 OF .\DEVICE\FUNC_DEF.H: '_UART_write': not in formal parameter list
-*** ERROR C132 IN LINE 14 OF .\DEVICE\FUNC_DEF.H: 'UART_read': not in formal parameter list
-*** ERROR C132 IN LINE 15 OF .\DEVICE\FUNC_DEF.H: 'WDT_init': not in formal parameter list
-*** ERROR C132 IN LINE 16 OF .\DEVICE\FUNC_DEF.H: 'WDT_clear': not in formal parameter list
-*** ERROR C132 IN LINE 17 OF .\DEVICE\FUNC_DEF.H: 'WT_init': not in formal parameter list
-*** WARNING C329 IN LINE 16 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 17 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 20 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 21 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 24 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 25 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 28 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 29 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 32 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 33 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 36 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 37 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 40 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 41 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 44 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 45 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 48 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 49 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 52 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 53 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 56 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 57 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 60 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 2   
-
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 61 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 64 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 65 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 68 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 69 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 72 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 73 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 76 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 77 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 80 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 81 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 84 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 85 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 88 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 89 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 92 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 93 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 96 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 97 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 100 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 101 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 104 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 105 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 108 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 109 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 112 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 113 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 116 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 117 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 120 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 121 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 3   
-
-             -ED_MODE.H: single-line comment contains line-continuation
-*** ERROR C127 IN LINE 272 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'LED_BRIGHTNESS_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 279 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_WORK_MODE_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 285 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_ONOFF_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 291 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_SNOOZE_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 297 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_RING_TIMER_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 303 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_RING_RUN_TypeDef': invalid storage class
-*** ERROR C141 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: syntax error near 'ALARM_ONOFF_TypeDef'
-*** ERROR C129 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: missing ';' before 'Alarm_OnOff'
    5          
    6          /************************/
    7          /*ºê¶¨Òåmacro definition*/
@@ -190,13 +57,13 @@ line level    source
   47           * Êä³ö²ÎÊý£º
   48           * º¯Êý¹¦ÄÜ£º
   49           * ·µ»ØÖµËµÃ÷£º
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 4   
-
   50           * ´´½¨ÈÕÆÚ£º
   51           * ´´½¨ÈË£º
   52           * ÐÞ¸ÄÈÕÆÚ
   53           * ÐÞ¸ÄÈË£º
   54           * µÚN´ÎÐÞ¸Ä£º
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 2   
+
   55           * ÐÞ¸ÄÔ­Òò£º
   56           * ±¸×¢£º"P1=0x2F(0010_1111)"ÏÈ¸³Öµ¸øP1¿Ú£¬P15Îª1£¬P14Îª0£¬ÊäÈë¶Ë(P10-P13)Îª1£¬
   57           * È»ºóÔÙ¶ÁP1¿ÚµçÆ½(P1&0x0F)£¬²¢°Ñ¸ßËÄÎ»¶¼Çå0£¬¼ÙÈçÕâÊ±ºòP10±»°´ÏÂ£¬ÄÇ¶Áµ½µÄP1
@@ -205,564 +72,661 @@ line level    source
   60           *******************************************************************************/
   61          uint8_t  Matrix_Buttons(void)
   62          {
-  63                  uint8_t  readData1,readData2;
-  64                  uint8_t  keyValue;
-  65                  keyValue=0;//Èç¹ûÃ»ÓÐ°´¼ü°´ÏÂ¾ÍÊÇ·µ»Ø0
-  66                   
-  67                  /*******************************************************************************
-  68                  *¹¦ÄÜ£º"P1=0x2F(0010_1111)"ÏÈ¸³Öµ¸øP1¿Ú£¬P15Îª1£¬P14Îª0£¬ÊäÈë¶Ë(P10-P13)Îª1£¬È»
-  69                  * ºóÔÙ¶ÁP1¿ÚµçÆ½(P1&0x0F)£¬²¢°Ñ¸ßËÄÎ»¶¼Çå0(P1&0x0F£¬¼ÙÈçÕâÊ±ºòP10±»°´ÏÂ£¬ÄÇ¶Áµ½
-  70                  * µÄP1¿ÚµçÆ½Îª0x0E(0000_1110),È»ºóÓë0x0F(0000_1111)Òì»òµÃµ½0x01(0000_0001),
-  71                  * readData1µÄ·¶Î§Îª1¡¢2¡¢4¡¢8£¬keyValueµÄ·¶Î§Îª1~9,9ÊÇ×éºÏ¼ü¡£
-  72                  *******************************************************************************/
-  73                  P1=0x2F;                        
-  74                  readData1=(P1&0x0F)^0x0F;
-  75                  switch(readData1)
-  76                  {
-  77                          case 1:
-  78                                  keyValue=1; //K_SNOOZE_DIMMER
-  79                                  break;
-  80                          case 2:
-  81                                  keyValue=2; //VOL+
-  82                                  break;
-  83                          case 4:
-  84                                  keyValue=3; //K_PLAY_PAUSE
-  85                                  break;
-  86                          case 8:
-  87                                  keyValue=4; //NEXT
-  88                                  break;
-  89                          default:
-  90                                  break;
-  91                  }
-  92                  /*******************************************************************************
-  93                  *¹¦ÄÜ£º"P1=0x1F(0001_1111)"ÏÈ¸³Öµ¸øP1¿Ú£¬P15Îª0£¬P14Îª1£¬ÊäÈë¶Ë(P10-P13)Îª1£¬È»
-  94                  * ºóÔÙ¶ÁP1¿ÚµçÆ½(P1&0x0F)£¬²¢°Ñ¸ßËÄÎ»¶¼Çå0(P1&0x0F£¬¼ÙÈçÕâÊ±ºòP11±»°´ÏÂ£¬ÄÇ¶Áµ½
-  95                  * µÄP1¿ÚµçÆ½Îª0x0D(0000_1101),È»ºóÓë0x0F(0000_1111)Òì»òµÃµ½0x02(0000_0010),
-  96                  * readData2µÄ·¶Î§Îª1¡¢2¡¢4¡¢8£¬keyValueµÄ·¶Î§Îª1~9£¬9ÊÇ×éºÏ¼ü¡£
-  97                  *******************************************************************************/
-  98                  P1=0x1F;
-  99                  readData2=(P1&0x0F)^0x0F;
- 100                  switch(readData2)
- 101                  {
- 102                          case 1:
- 103                                  keyValue=5; //ALARM
- 104                                  if (keyValue == 1)//Îª1ËµÃ÷¸Õ²Åalarm¼ü±»°´ÏÂ£¬ÒòÎªÃ¿´Îµ÷ÓÃÕâ¸öº¯Êý¶¼»á³õÊ¼»¯
- 105                                  {                                 //keyValue£¬ËùÒÔ²»»áÊÇÉÏ´Îµ÷ÓÃº¯ÊýÁôÏÂµÄÖµ
- 106                                          keyValue = 9;  //K_AL_SNOOZE
- 107                                  }
- 108                                  else if (keyValue == 1)
- 109                                          keyValue = 10; //K_AL_VOLINC,
- 110                                  break;
- 111                          case 2:
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 5   
+  63   1        uint8_t tmp1=0;       
+  64   1        uint8_t tmp2=0;               
+  65   1        if((P1&0x0F)!=0x0F)   
+  66   1        {
+  67   2         P1|=0X20;  
+  68   2         P1|=0X20; 
+  69   2         P1|=0X20; 
+  70   2         P1|=0X20;
+  71   2         tmp1=P1&0x0F;          
+  72   2         P1&=~0X30; 
+  73   2         P1|=0X10;  
+  74   2         P1|=0X10; 
+  75   2         P1|=0X10;    
+  76   2         P1|=0X10; 
+  77   2         tmp2=P1&0x0F;                  
+  78   2        }
+  79   1        P1&=~0X30;
+  80   1        if((tmp1==0x0E)&&(tmp2==0x0F))
+  81   1        {
+  82   2              return 1; //K_SNOOZE_DIMMER
+  83   2        }
+  84   1        if((tmp1==0x0D)&&(tmp2==0x0F))
+  85   1        {
+  86   2              return 2; //K_VOLINC
+  87   2        }
+  88   1        if((tmp1==0x0B)&&(tmp2==0x0F))
+  89   1        {
+  90   2              return 3; //K_PLAY_PAUSE
+  91   2        }
+  92   1        if((tmp1==0x07)&&(tmp2==0x0F))
+  93   1        {
+  94   2              return 4; //K_NEXT
+  95   2        }
+  96   1        if((tmp1==0x0F)&&(tmp2==0x0E))
+  97   1        {
+  98   2              return 5; //K_ALARM
+  99   2        }
+ 100   1        if((tmp1==0x0F)&&(tmp2==0x0D))
+ 101   1        {
+ 102   2              return 6; //K_VOLDEC
+ 103   2        }
+ 104   1        if((tmp1==0x0F)&&(tmp2==0x0B))
+ 105   1        {
+ 106   2              return 7; //K_BT
+ 107   2        }
+ 108   1        if((tmp1==0x0F)&&(tmp2==0x07))
+ 109   1        {
+ 110   2              return 8; //K_PREV
+ 111   2        }
+ 112   1        if((tmp1==0x0E)&&(tmp2==0x0E))
+ 113   1        {
+ 114   2              return 9; //K_AL_SNOOZE
+ 115   2        }
+ 116   1        if((tmp1==0x0D)&&(tmp2==0x0E))
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 3   
 
- 112                                  keyValue=6; //VOL-
- 113                                  break;
- 114                          case 4:
- 115                                  keyValue=7; //BT
- 116                                  break;
- 117                          case 8:
- 118                                  keyValue=8; //PREV
- 119                                  break;
- 120                          case 0x0C:
- 121                                  keyValue = 11; //K_AL_VOLDEC,
- 122                          default:
- 123                                  break;
- 124                  }
- 125                   
- 126                  return keyValue;
- 127          }
- 128          
- 129          /*******************************************************************************
- 130           * º¯ÊýÔ­ÐÍ£º
- 131           * ÊäÈë²ÎÊý£º
- 132           * Êä³ö²ÎÊý£º
- 133           * º¯Êý¹¦ÄÜ£º
- 134           * ·µ»ØÖµËµÃ÷£º
- 135           * ´´½¨ÈÕÆÚ£º
- 136           * ´´½¨ÈË£º
- 137           * ÐÞ¸ÄÈÕÆÚ
- 138           * ÐÞ¸ÄÈË£º
- 139           * µÚN´ÎÐÞ¸Ä£º
- 140           * ÐÞ¸ÄÔ­Òò£º
- 141           * ±¸×¢£º
- 142           *******************************************************************************/
- 143          uint8_t GetKeyValue(void) 
- 144          {
- 145                  uint8_t  keyNum;
- 146                  keyNum=Matrix_Buttons();
- 147                  return keyNum; //·µ»Ø°´¼ü
- 148          }
- 149          
- 150          /*******************************************************************************
- 151           * º¯ÊýÔ­ÐÍ£º
- 152           * ÊäÈë²ÎÊý£º
- 153           * Êä³ö²ÎÊý£º
- 154           * º¯Êý¹¦ÄÜ£º
- 155           * ·µ»ØÖµËµÃ÷£º
- 156           * ´´½¨ÈÕÆÚ£º
- 157           * ´´½¨ÈË£º
- 158           * ÐÞ¸ÄÈÕÆÚ
- 159           * ÐÞ¸ÄÈË£º
- 160           * µÚN´ÎÐÞ¸Ä£º
- 161           * ÐÞ¸ÄÔ­Òò£º
- 162           * ±¸×¢£º
- 163           *******************************************************************************/
- 164          void KeyEventPorc(uint8_t KeyTmp) //±»µ÷ÓÃÊ±½ÓÊÕµÄÊÇGetKeyValue()µÄ·µ»ØÖµ  Ò»°ã¹Ì¶¨£¬²»¸ü¸Ä
- 165          {
- 166                  gbKeyPress=0;
- 167                  if(KeyCurValue!=KeyTmp) //Õâ¸öifÓï¾äÊÇÈ¥¶¶£¬»á±»Ö´ÐÐÁ½´Î£¬µÚÈý´Î½øÀ´Ê±Ö±½ÓÌø¹ý
- 168                  {//KeyTmpÎªÁÙÊ±Öµ£¬
- 169                          if(KeyCurValueBK!=KeyTmp)
- 170                                  KeyCurValueBK=KeyTmp;
- 171                          else //µÚ¶þ´Î½øÀ´Ê±Ö´ÐÐÕâÒ»Ìõ
- 172                                  KeyCurValue=KeyTmp; //
- 173                          return;
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 6   
+ 117   1        {
+ 118   2              return 10; //K_AL_VOLINC
+ 119   2        }
+ 120   1        if((tmp1==0x0F)&&(tmp2==0x0C))
+ 121   1        {
+ 122   2              return 11; //K_AL_VOLDEC
+ 123   2        }
+ 124   1              return 0;   
+ 125   1      //      uint8_t  readData1=0;
+ 126   1      //      uint8_t  readData2=0;
+ 127   1      //      uint8_t  temp_ReakData1=0;
+ 128   1      //      uint8_t  temp_ReakData2=0;
+ 129   1      //      uint8_t  scanKeyValue;
+ 130   1      //      scanKeyValue=0;//Èç¹ûÃ»ÓÐ°´¼ü°´ÏÂ¾ÍÊÇ·µ»Ø0
+ 131   1      //       
+ 132   1      //      /*******************************************************************************
+ 133   1      //      *¹¦ÄÜ£º"P1=0x2F(0010_1111)"ÏÈ¸³Öµ¸øP1¿Ú£¬P15Îª1£¬P14Îª0£¬ÊäÈë¶Ë(P10-P13)Îª1£¬È»
+ 134   1      //      * ºóÔÙ¶ÁP1¿ÚµçÆ½(P1&0x0F)£¬²¢°Ñ¸ßËÄÎ»¶¼Çå0(P1&0x0F£¬¼ÙÈçÕâÊ±ºòP10±»°´ÏÂ£¬ÄÇ¶Áµ½
+ 135   1      //      * µÄP1¿ÚµçÆ½Îª0x0E(0000_1110),È»ºóÓë0x0F(0000_1111)Òì»òµÃµ½0x01(0000_0001),
+ 136   1      //      * readData1µÄ·¶Î§Îª1¡¢2¡¢4¡¢8£¬scanKeyValueµÄ·¶Î§Îª1~9,9ÊÇ×éºÏ¼ü¡£
+ 137   1      ////    *******************************************************************************/
+ 138   1      ////    P1=0x2F;                        
+ 139   1      ////    readData1=(P1&0x0F)^0x0F;
+ 140   1      //      if((P1&0x0F)!=0x0F)
+ 141   1      //      {
+ 142   1      //              readData1=P1;
+ 143   1      //              P1=0x2F;
+ 144   1      //              temp_ReakData1=(P1&0x2F)^0x0F;
+ 145   1      //              switch(temp_ReakData1)
+ 146   1      //              {
+ 147   1      //                      case 0x21:
+ 148   1      //                              scanKeyValue=1; //K_SNOOZE_DIMMER
+ 149   1      //                              break;
+ 150   1      //                      case 0x22:
+ 151   1      //                              scanKeyValue=2; //VOL+(Êµ¼ÊVOL-)
+ 152   1      //                              break;
+ 153   1      //                      case 0x24:
+ 154   1      //                              scanKeyValue=3; //K_PLAY_PAUSE
+ 155   1      //                              break;
+ 156   1      //                      case 0x28:
+ 157   1      //                              scanKeyValue=4; //NEXT
+ 158   1      //                              break;
+ 159   1      //                      default:
+ 160   1      //                              break;
+ 161   1      //              }
+ 162   1      //      }
+ 163   1      //      /*******************************************************************************
+ 164   1      //      *¹¦ÄÜ£º"P1=0x1F(0001_1111)"ÏÈ¸³Öµ¸øP1¿Ú£¬P15Îª0£¬P14Îª1£¬ÊäÈë¶Ë(P10-P13)Îª1£¬È»
+ 165   1      //      * ºóÔÙ¶ÁP1¿ÚµçÆ½(P1&0x0F)£¬²¢°Ñ¸ßËÄÎ»¶¼Çå0(P1&0x0F£¬¼ÙÈçÕâÊ±ºòP11±»°´ÏÂ£¬ÄÇ¶Áµ½
+ 166   1      //      * µÄP1¿ÚµçÆ½Îª0x0D(0000_1101),È»ºóÓë0x0F(0000_1111)Òì»òµÃµ½0x02(0000_0010),
+ 167   1      //      * readData2µÄ·¶Î§Îª1¡¢2¡¢4¡¢8£¬scanKeyValueµÄ·¶Î§Îª1~9£¬9ÊÇ×éºÏ¼ü¡£
+ 168   1      //      *******************************************************************************/
+ 169   1      ////    P1=0x1F;
+ 170   1      ////    readData2=(P1&0x0F)^0x0F;
+ 171   1      //      if((P1&0x0F)!=0x0F)
+ 172   1      //      {
+ 173   1      //              readData2=P1;
+ 174   1      //              P1=0x1F;
+ 175   1      //              temp_ReakData2=(P1&0x1F)^0x0F;
+ 176   1      //              switch(temp_ReakData2)
+ 177   1      //              {
+ 178   1      //                      case 0x11:
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 4   
 
- 174                  }
- 175                  if(KeyCurValue==KeyLastValue)
- 176                  {
- 177                          if((KeyLastValue==0) || (cntKeyLoop==0))
- 178                                  return;
- 179                          if(--cntKeyLoop==0) //Õâ¸öÔÚµÚ¶þ´Î½øKeyEventPorc()º¯Êý£¨µÚÒ»´Î½ø¡°if(KeyCurValue==KeyLastValue)¡±Ö®Ç°£©Ê
+ 179   1      ////                            if (scanKeyValue == 1)//Îª1ËµÃ÷¸Õ²Åalarm¼ü±»°´ÏÂ£¬ÒòÎªÃ¿´Îµ÷ÓÃÕâ¸öº¯Êý¶¼»á³õÊ¼»¯
+ 180   1      ////                            {                                         //keyValue£¬ËùÒÔ²»»áÊÇÉÏ´Îµ÷ÓÃº¯ÊýÁôÏÂµÄÖµ
+ 181   1      ////                                    scanKeyValue = 9; //K_AL_SNOOZE//ALARM+SNOOZE
+ 182   1      ////                            }
+ 183   1      ////                            else if (scanKeyValue == 2)
+ 184   1      ////                                    scanKeyValue = 10;//K_AL_VOLINC,//ALARM+VOLINC
+ 185   1      ////                            else
+ 186   1      //                                      scanKeyValue=5; //ALARM
+ 187   1      //                              break;
+ 188   1      //                      case 0x12:
+ 189   1      //                              scanKeyValue=6; //VOL-
+ 190   1      //                              break;
+ 191   1      //                      case 0x14:
+ 192   1      //                              scanKeyValue=7; //BT
+ 193   1      //                              break;
+ 194   1      //                      case 0x18:
+ 195   1      //                              scanKeyValue=8; //PREV
+ 196   1      //                              break;
+ 197   1      //                      case 0x0C:
+ 198   1      //                              scanKeyValue = 11; //K_AL_VOLDEC,
+ 199   1      //                      default:
+ 200   1      //                              break;
+ 201   1      //              }
+ 202   1      //      }
+ 203   1      //      readData1=0;
+ 204   1      //      readData2=0;
+ 205   1      //      P1=0x0F;
+ 206   1      //      return scanKeyValue;
+ 207   1      }
+ 208          
+ 209          /*******************************************************************************
+ 210           * º¯ÊýÔ­ÐÍ£º
+ 211           * ÊäÈë²ÎÊý£º
+ 212           * Êä³ö²ÎÊý£º
+ 213           * º¯Êý¹¦ÄÜ£º
+ 214           * ·µ»ØÖµËµÃ÷£º
+ 215           * ´´½¨ÈÕÆÚ£º
+ 216           * ´´½¨ÈË£º
+ 217           * ÐÞ¸ÄÈÕÆÚ
+ 218           * ÐÞ¸ÄÈË£º
+ 219           * µÚN´ÎÐÞ¸Ä£º
+ 220           * ÐÞ¸ÄÔ­Òò£º
+ 221           * ±¸×¢£º
+ 222           *******************************************************************************/
+ 223          uint8_t GetKeyValue(void) 
+ 224          {
+ 225   1              uint8_t  keyNum;
+ 226   1              keyNum=Matrix_Buttons();
+ 227   1              return keyNum; //·µ»Ø°´¼ü
+ 228   1      }
+ 229          
+ 230          /*******************************************************************************
+ 231           * º¯ÊýÔ­ÐÍ£º
+ 232           * ÊäÈë²ÎÊý£º
+ 233           * Êä³ö²ÎÊý£º
+ 234           * º¯Êý¹¦ÄÜ£º
+ 235           * ·µ»ØÖµËµÃ÷£º
+ 236           * ´´½¨ÈÕÆÚ£º
+ 237           * ´´½¨ÈË£º
+ 238           * ÐÞ¸ÄÈÕÆÚ
+ 239           * ÐÞ¸ÄÈË£º
+ 240           * µÚN´ÎÐÞ¸Ä£º
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 5   
+
+ 241           * ÐÞ¸ÄÔ­Òò£º
+ 242           * ±¸×¢£º
+ 243           *******************************************************************************/
+ 244          void KeyEventPorc(uint8_t KeyTmp) //±»µ÷ÓÃÊ±½ÓÊÕµÄÊÇGetKeyValue()µÄ·µ»ØÖµ  Ò»°ã¹Ì¶¨£¬²»¸ü¸Ä
+ 245          {
+ 246   1              gbKeyPress=0;
+ 247   1              if(KeyCurValue!=KeyTmp) //Õâ¸öifÓï¾äÊÇÈ¥¶¶£¬»á±»Ö´ÐÐÁ½´Î£¬µÚÈý´Î½øÀ´Ê±Ö±½ÓÌø¹ý
+ 248   1              {//KeyTmpÎªÁÙÊ±Öµ£¬
+ 249   2                      if(KeyCurValueBK!=KeyTmp)
+ 250   2                              KeyCurValueBK=KeyTmp;
+ 251   2                      else //µÚ¶þ´Î½øÀ´Ê±Ö´ÐÐÕâÒ»Ìõ
+ 252   2                              KeyCurValue=KeyTmp; //
+ 253   2                      return;
+ 254   2              }
+ 255   1              if(KeyCurValue==KeyLastValue)
+ 256   1              {
+ 257   2                      if((KeyLastValue==0) || (cntKeyLoop==0))
+ 258   2                              return;
+ 259   2                      if(--cntKeyLoop==0) //Õâ¸öÔÚµÚ¶þ´Î½øKeyEventPorc()º¯Êý£¨µÚÒ»´Î½ø¡°if(KeyCurValue==KeyLastValue)¡±Ö®Ç°£©Ê
              -±±»ÏÂÃæ¸³ÖµÎª5
- 180                          { //cntKeyLoopÎª5¾ÍÊÇ50msÊ±¼ä
- 181                                  KeyValue=KeyLastValue; //·À¶¶Ö®ºó°ÑÈ·¶¨µÄ°´¼ü¸³Öµ¸øKeyValue
- 182                                  if(gbKeyNone==0)
- 183                                          gbKeyPress=1;
- 184                                  switch(KeyEvent)
- 185                                  {
- 186                                          case 0:
- 187                                                  KeyEvent=1;
- 188                                                  KeyValue |= K_D;
- 189                                                  cntKeyLoop=cKEY_HOLD;
- 190                                                  break;
- 191                                          case 1:
- 192                                                  KeyEvent=2;
- 193                                                  KeyValue |= K_H;
- 194                                                  cntKeyLoop=cKEY_RATE_VOL;
- 195                                                  break;
- 196                                                  case 2:
- 197                                          case 3:
- 198                                                  KeyEvent=3;
- 199                                                  KeyValue |= K_R;
- 200                                                  cntKeyLoop=cKEY_RATE_VOL;
- 201                                                  if(cntKeylong<250)
- 202                                                          cntKeylong++;
- 203                                                  break;
- 204                                  }
- 205                          }
- 206                  }
- 207                  else
- 208                  {
- 209                          if(KeyLastValue)
- 210                          {
- 211                                  KeyValue=KeyLastValue;
- 212                                  if(gbKeyNone==0)
- 213                                          gbKeyPress=1;
- 214                                  switch(KeyEvent)
- 215                                  {
- 216                                          case 1:KeyValue |= K_U; break;
- 217                                          case 2:KeyValue |= K_LU;break;
- 218                                          case 3:KeyValue |= K_LU;break;
- 219                                  }
- 220                                  KeyEvent=0;
- 221                          }
- 222                          else
- 223                          {
- 224                                  gbKeyNone=0;
- 225                                  cntKeylong=0;
- 226                          }
- 227                          cntKeyLoop=cKEY_CLICK;
- 228                          KeyLastValue=KeyCurValue;
- 229                  }
- 230          }
- 231          
- 232          /*******************************************************************************
- 233           * º¯ÊýÔ­ÐÍ£º
- 234           * ÊäÈë²ÎÊý£º
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 7   
+ 260   2                      { //cntKeyLoopÎª5¾ÍÊÇ50msÊ±¼ä
+ 261   3                              KeyValue=KeyLastValue; //·À¶¶Ö®ºó°ÑÈ·¶¨µÄ°´¼ü¸³Öµ¸øKeyValue
+ 262   3                              if(gbKeyNone==0)
+ 263   3                                      gbKeyPress=1;
+ 264   3                              switch(KeyEvent)
+ 265   3                              {
+ 266   4                                      case 0:
+ 267   4                                              KeyEvent=1;
+ 268   4                                              KeyValue |= K_D;
+ 269   4                                              cntKeyLoop=cKEY_HOLD;
+ 270   4                                              break;
+ 271   4                                      case 1:
+ 272   4                                              KeyEvent=2;
+ 273   4                                              KeyValue |= K_H;
+ 274   4                                              cntKeyLoop=cKEY_RATE_VOL;
+ 275   4                                              break;
+ 276   4                                              case 2:
+ 277   4                                      case 3:
+ 278   4                                              KeyEvent=3;
+ 279   4                                              KeyValue |= K_R;
+ 280   4                                              cntKeyLoop=cKEY_RATE_VOL;
+ 281   4                                              if(cntKeylong<250)
+ 282   4                                                      cntKeylong++;
+ 283   4                                              break;
+ 284   4                              }
+ 285   3                      }
+ 286   2              }
+ 287   1              else
+ 288   1              {
+ 289   2                      if(KeyLastValue)
+ 290   2                      {
+ 291   3                              KeyValue=KeyLastValue;
+ 292   3                              if(gbKeyNone==0)
+ 293   3                                      gbKeyPress=1;
+ 294   3                              switch(KeyEvent)
+ 295   3                              {
+ 296   4                                      case 1:KeyValue |= K_U; break;
+ 297   4                                      case 2:KeyValue |= K_LU;break;
+ 298   4                                      case 3:KeyValue |= K_LU;break;
+ 299   4                              }
+ 300   3                              KeyEvent=0;
+ 301   3                      }
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 6   
 
- 235           * Êä³ö²ÎÊý£º
- 236           * º¯Êý¹¦ÄÜ£º
- 237           * ·µ»ØÖµËµÃ÷£º
- 238           * ´´½¨ÈÕÆÚ£º
- 239           * ´´½¨ÈË£º
- 240           * ÐÞ¸ÄÈÕÆÚ
- 241           * ÐÞ¸ÄÈË£º
- 242           * µÚN´ÎÐÞ¸Ä£º
- 243           * ÐÞ¸ÄÔ­Òò£º
- 244           * ±¸×¢£º
- 245           *******************************************************************************/
- 246          void KeyScan(void) //±»Ö÷º¯Êýµ÷ÓÃ
- 247          {
- 248                  KeyEventPorc(GetKeyValue());
- 249          }
- 250           
- 251           /*******************************************************************************
- 252           * º¯ÊýÔ­ÐÍ£º
- 253           * ÊäÈë²ÎÊý£º
- 254           * Êä³ö²ÎÊý£º
- 255           * º¯Êý¹¦ÄÜ£º
- 256           * ·µ»ØÖµËµÃ÷£º
- 257           * ´´½¨ÈÕÆÚ£º
- 258           * ´´½¨ÈË£º
- 259           * ÐÞ¸ÄÈÕÆÚ
- 260           * ÐÞ¸ÄÈË£º
- 261           * µÚN´ÎÐÞ¸Ä£º
- 262           * ÐÞ¸ÄÔ­Òò£º
- 263           * ±¸×¢£º2.¡¢³¤°´¡°TIME¡±¼ü2S£¬Ð¡Ê±×Ö·ûÉÁË¸£¬¶Ì°´¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±µÝ¼õ£¬³¤°´
- 264           * ¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±¿ìËÙµÝ¼õ£»¶Ì°´¡°VOL+/NEXT¡±¼ü£¬Ð¡Ê±µÝÔö£¬³¤°´¡°VOL+/NEXT¡±¼ü£¬
- 265           * Ð¡Ê±¿ìËÙµÝÔö¡£
- 266           * 3¡¢¶Ì°´¡°TIME¡±¼ü£¬·Ö×Ö·ûÉÁË¸£¬¶Ì°´¡°VOL-/PREV¡±¼ü£¬·ÖÎ»ÊýµÝ¼õ£¬³¤°´¡°VOL-/PREV¡±¼ü£¬
- 267           * ·ÖÎ»Êý¿ìËÙµÝ¼õ£»¶Ì°´¡°VOL+/NEXT¡±¼ü£¬·ÖÎ»ÊýµÝÔö£¬³¤°´¡°VOL+/NEXT¡±¼ü£¬·ÖÎ»Êý¿ìËÙµÝ
- 268           * Ôö¡£
- 269           * 4¡¢ÔÚ×ßÊ±Ä£Ê½ÏÂ£¬¶Ì°´¡°TIME/DIM¡±¼ü£¬µ÷ÕûÏÔÊ¾ÁÁ¶È£¬¿ÉÑ­»·µ÷Õû¸ß¡¢ÖÐ¡¢µÍÁÁ£¨Ä¬ÈÏ
- 270           * Îª¸ßÁÁ£©
- 271           *******************************************************************************/
- 272          void KeyComMsg(void) 
- 273          {
- 274                  if(gbKeyPress)
- 275                  { 
- 276                          //Flag_data_bk=1;//Êý¾Ý¸Ä±äÊ±±¸·Ý
- 277                          switch(KeyValue)
- 278                          {
- 279                                  case KU(K_SNOOZE_DIMMER)://¶Ì°´
- 280                                  {//Alarm_Ring_Run
- 281                                          if (Alarm1_TypeDef.Alarm_Ring_Run == ALARM_RING_RUN_ON)
- 282                                          {
- 283                                                  Alarm1_TypeDef.Alarm_Snooze = ALARM_SNOOZE_ON;//½øÈëÌ°Ë¯Ä£Ê½£¬Îª9·ÖÖÓ
- 284                                          }
- 285                                          else//Õý³£×ßÊ±Ä£Ê½ÏÂ£¬¶Ì°´SNOOZE¼ü£¬µ÷½ÚLEDÆ½ÁÁ¶È£¬¿ÉÑ­»·µ÷½Ú¸ß¡¢ÖÐ¡¢µÍÁÁ¶È(Ä¬ÈÏÎª¸ß)
- 286                                          {
- 287                                                  LED_Brightness_TypeDef--;
- 288                                                  if (LED_Brightness_TypeDef == LED_TURN_OFF)//ÈýµµÑ­»·
- 289                                                          LED_Brightness_TypeDef = LED_HIGH;
- 290                                          }
- 291                                          break;
- 292                                  }
- 293                                  case KH(K_SNOOZE_DIMMER)://³¤°´
- 294                                  {
- 295                                          
- 296                                          break;
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 8   
+ 302   2                      else
+ 303   2                      {
+ 304   3                              gbKeyNone=0;
+ 305   3                              cntKeylong=0;
+ 306   3                      }
+ 307   2                      cntKeyLoop=cKEY_CLICK;
+ 308   2                      KeyLastValue=KeyCurValue;
+ 309   2              }
+ 310   1      }
+ 311          
+ 312          /*******************************************************************************
+ 313           * º¯ÊýÔ­ÐÍ£º
+ 314           * ÊäÈë²ÎÊý£º
+ 315           * Êä³ö²ÎÊý£º
+ 316           * º¯Êý¹¦ÄÜ£º
+ 317           * ·µ»ØÖµËµÃ÷£º
+ 318           * ´´½¨ÈÕÆÚ£º
+ 319           * ´´½¨ÈË£º
+ 320           * ÐÞ¸ÄÈÕÆÚ
+ 321           * ÐÞ¸ÄÈË£º
+ 322           * µÚN´ÎÐÞ¸Ä£º
+ 323           * ÐÞ¸ÄÔ­Òò£º
+ 324           * ±¸×¢£º
+ 325           *******************************************************************************/
+ 326          void KeyScan(void) //±»Ö÷º¯Êýµ÷ÓÃ
+ 327          {
+ 328   1              KeyEventPorc(GetKeyValue());
+ 329   1      }
+ 330           
+ 331           /*******************************************************************************
+ 332           * º¯ÊýÔ­ÐÍ£º
+ 333           * ÊäÈë²ÎÊý£º
+ 334           * Êä³ö²ÎÊý£º
+ 335           * º¯Êý¹¦ÄÜ£º
+ 336           * ·µ»ØÖµËµÃ÷£º
+ 337           * ´´½¨ÈÕÆÚ£º
+ 338           * ´´½¨ÈË£º
+ 339           * ÐÞ¸ÄÈÕÆÚ
+ 340           * ÐÞ¸ÄÈË£º
+ 341           * µÚN´ÎÐÞ¸Ä£º
+ 342           * ÐÞ¸ÄÔ­Òò£º
+ 343           * ±¸×¢£º2.¡¢³¤°´¡°TIME¡±¼ü2S£¬Ð¡Ê±×Ö·ûÉÁË¸£¬¶Ì°´¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±µÝ¼õ£¬³¤°´
+ 344           * ¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±¿ìËÙµÝ¼õ£»¶Ì°´¡°VOL+/NEXT¡±¼ü£¬Ð¡Ê±µÝÔö£¬³¤°´¡°VOL+/NEXT¡±¼ü£¬
+ 345           * Ð¡Ê±¿ìËÙµÝÔö¡£
+ 346           * 3¡¢¶Ì°´¡°TIME¡±¼ü£¬·Ö×Ö·ûÉÁË¸£¬¶Ì°´¡°VOL-/PREV¡±¼ü£¬·ÖÎ»ÊýµÝ¼õ£¬³¤°´¡°VOL-/PREV¡±¼ü£¬
+ 347           * ·ÖÎ»Êý¿ìËÙµÝ¼õ£»¶Ì°´¡°VOL+/NEXT¡±¼ü£¬·ÖÎ»ÊýµÝÔö£¬³¤°´¡°VOL+/NEXT¡±¼ü£¬·ÖÎ»Êý¿ìËÙµÝ
+ 348           * Ôö¡£
+ 349           * 4¡¢ÔÚ×ßÊ±Ä£Ê½ÏÂ£¬¶Ì°´¡°TIME/DIM¡±¼ü£¬µ÷ÕûÏÔÊ¾ÁÁ¶È£¬¿ÉÑ­»·µ÷Õû¸ß¡¢ÖÐ¡¢µÍÁÁ£¨Ä¬ÈÏ
+ 350           * Îª¸ßÁÁ£©
+ 351           *******************************************************************************/
+ 352          void KeyComMsg(void) 
+ 353          {
+ 354   1              if(gbKeyPress)
+ 355   1              { 
+ 356   2                      //Flag_data_bk=1;//Êý¾Ý¸Ä±äÊ±±¸·Ý
+ 357   2                      switch(KeyValue)
+ 358   2                      {
+ 359   3                              case KU(K_SNOOZE_DIMMER)://¶Ì°´
+ 360   3                              {//Alarm_Ring_Run
+ 361   4                                      if (Alarm1_TypeDef.Alarm_RingRun == ALARM_RING_RUN_ON)
+ 362   4                                      {
+ 363   5                                              Alarm1_TypeDef.Alarm_Snooze = ALARM_SNOOZE_ON;//½øÈëÌ°Ë¯Ä£Ê½£¬Îª9·ÖÖÓ
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 7   
 
- 297                                  }
- 298                                  case KU(K_VOLINC): //¶Ì°´//ÒôÁ¿¼Ó 
- 299                                  case KR(K_VOLINC): //³¤°´//ÒôÁ¿¼Ó
- 300                                  {
- 301                                          //³¤°´¡°VOL+/NEXT¡±¼ü£¬Ð¡Ê±¿ìËÙµÝÔö¡£
- 302                                          //³¤°´¡°VOL+/NEXT¡±¼ü£¬·ÖÖÓÎ»Êý¿ìËÙµÝÔö¡£
- 303                                          if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
- 304                                          {
- 305                                                  if (Time_Temp_TypeDef.temp_RTC_Hour < 12)
- 306                                                  {
- 307                                                          Time_Temp_TypeDef.temp_RTC_Hour++;
- 308                                                  }
- 309                                          }
- 310                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
- 311                                          {
- 312                                                  if (Time_Temp_TypeDef.temp_RTC_Minute < 59)
- 313                                                  {
- 314                                                          Time_Temp_TypeDef.temp_RTC_Minute++;
- 315                                                  }
- 316                                                  timeCnt_30Sec = 0;//¿ªÆôÁË²»¶¯×÷30s×Ô¶¯±£´æ£¬ÕâÀï¶¯×÷ÁË£¬ËùÒÔÖØÐÂÖÃ0
- 317                                          }
- 318                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
+ 364   5                                      }
+ 365   4                                      else//Õý³£×ßÊ±Ä£Ê½ÏÂ£¬¶Ì°´SNOOZE¼ü£¬µ÷½ÚLEDÆ½ÁÁ¶È£¬¿ÉÑ­»·µ÷½Ú¸ß¡¢ÖÐ¡¢µÍÁÁ¶È(Ä¬ÈÏÎª¸ß)
+ 366   4                                      {
+ 367   5                                              LED_Brightness_TypeDef--;
+ 368   5                                              if (LED_Brightness_TypeDef == LED_TURN_OFF)//ÈýµµÑ­»·
+ 369   5                                                      LED_Brightness_TypeDef = LED_HIGH;
+ 370   5                                      }
+ 371   4                                      break;
+ 372   4                              }
+ 373   3                              case KH(K_SNOOZE_DIMMER)://³¤°´
+ 374   3                              {
+ 375   4                                      
+ 376   4                                      break;
+ 377   4                              }
+ 378   3                              case KU(K_VOLINC): //¶Ì°´//ÒôÁ¿¼Ó 
+ 379   3                              case KR(K_VOLINC): //³¤°´//ÒôÁ¿¼Ó
+ 380   3                              {
+ 381   4                                      //³¤°´¡°VOL+/NEXT¡±¼ü£¬Ð¡Ê±¿ìËÙµÝÔö¡£
+ 382   4                                      //³¤°´¡°VOL+/NEXT¡±¼ü£¬·ÖÖÓÎ»Êý¿ìËÙµÝÔö¡£
+ 383   4                                      if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
+ 384   4                                      {
+ 385   5                                              if (Time_Temp_TypeDef.temp_RTC_Hour < 12)
+ 386   5                                              {
+ 387   6                                                      Time_Temp_TypeDef.temp_RTC_Hour++;
+ 388   6                                              }
+ 389   5                                      }
+ 390   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
+ 391   4                                      {
+ 392   5                                              if (Time_Temp_TypeDef.temp_RTC_Minute < 59)
+ 393   5                                              {
+ 394   6                                                      Time_Temp_TypeDef.temp_RTC_Minute++;
+ 395   6                                              }
+ 396   5                                              timeCnt_30Sec = 0;//¿ªÆôÁË²»¶¯×÷30s×Ô¶¯±£´æ£¬ÕâÀï¶¯×÷ÁË£¬ËùÒÔÖØÐÂÖÃ0
+ 397   5                                      }
+ 398   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
              -))
- 319                                          {
- 320                                                  if (Alarm1_TypeDef.tempHour < 12)
- 321                                                  {
- 322                                                          Alarm1_TypeDef.tempHour++;
- 323                                                  }
- 324                                          }
- 325                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
+ 399   4                                      {
+ 400   5                                              if (Alarm1_TypeDef.tempHour < 12)
+ 401   5                                              {
+ 402   6                                                      Alarm1_TypeDef.tempHour++;
+ 403   6                                              }
+ 404   5                                      }
+ 405   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
              -ON))
- 326                                          {
- 327                                                  if (Alarm1_TypeDef.tempMinute < 59)
- 328                                                  {
- 329                                                          Alarm1_TypeDef.tempMinute++;
- 330                                                  }
- 331                                          }
- 332                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
+ 406   4                                      {
+ 407   5                                              if (Alarm1_TypeDef.tempMinute < 59)
+ 408   5                                              {
+ 409   6                                                      Alarm1_TypeDef.tempMinute++;
+ 410   6                                              }
+ 411   5                                      }
+ 412   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
              -ARM_ON))
- 333                                          {
- 334                                                  if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BEEP)
- 335                                                  {
- 336                                                          Alarm1_TypeDef.AlarmWorkMode = ALARM_BT;
- 337                                                  }
- 338                                                  else
- 339                                                  {
- 340                                                          Alarm1_TypeDef.AlarmWorkMode = ALARM_BEEP;
- 341                                                  }
- 342                                                  timeCnt_30Sec = 0;//¿ªÆôÁË²»¶¯×÷30s×Ô¶¯±£´æ£¬ÕâÀï¶¯×÷ÁË£¬ËùÒÔÖØÐÂÖÃ0
- 343                                          }
- 344                                          else//ÔÚÀ¶ÑÀ»òTF×´Ì¬ÏÂ£¬ÒôÁ¿¹¦ÄÜ
- 345                                          {
- 346                                                  if (sys_Volume < 15)
- 347                                                  {
- 348                                                          sys_Volume++;
- 349                                                  }
- 350                                          }
- 351          
- 352                                          break;
- 353                                  }
- 354                                  case KU(K_PLAY_PAUSE): //¶Ì°´//¶Ì°´·ÖÖÓ×Ö·ûÉÁË¸£¬
- 355                                  {                                       
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 9   
+ 413   4                                      {
+ 414   5                                              if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)
+ 415   5                                              {
+ 416   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BT;
+ 417   6                                              }
+ 418   5                                              else
+ 419   5                                              {
+ 420   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BEEP;
+ 421   6                                              }
+ 422   5                                              timeCnt_30Sec = 0;//¿ªÆôÁË²»¶¯×÷30s×Ô¶¯±£´æ£¬ÕâÀï¶¯×÷ÁË£¬ËùÒÔÖØÐÂÖÃ0
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 8   
 
- 356                                          if (Music_Mode_TypeDef > MUSIC_OFF)//ÔÚÀ¶ÑÀºÍTF¿¨Ä£Ê½
- 357                                          {
- 358                                                  Ctrl_Com_TypeDef = CTRL_NEXT;
- 359                                          }
- 360                                          break;
- 361                                  }
- 362                                  case KR(K_PLAY_PAUSE): //¼ÆÊ±
- 363                                  {
- 364                                          
- 365                                          break;
- 366                                  }
- 367                                  case KU(K_NEXT): //¶Ì°´
- 368                                  case KR(K_NEXT): //³¤°´
- 369                                  {
- 370                                          
- 371                                          break;
- 372                                  }
- 373                                  case KU(K_ALARM): //¶Ì°´//ÄÖÖÓ
- 374                                  {
- 375                                          /* ÉèÖÃRTCÊ±¼ä */
- 376                                          if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR)
- 377                                          {
- 378                                                  //ÔÚ³¤°´ALARM¼üºÍSNOOZE¼ü½øÈëÉèÖÃÊ±¼äÄ£Ê½-Ð¡Ê±ÉèÖÃ£¬ÔÚ¶Ì°´ALARM¼üÉèÖÃ·ÖÖÓÊ±¼ä
- 379                                                  FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_MINUTE;
- 380                                                  Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//¶Ì°´ALARM¼üÈ·ÈÏÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬(Îª1ÊÇÈ·
- 381                                                                                                                             //ÈÏÄÖÖÓÉèÖÃ±êÖ¾Î»),Îª2ÊÇ30s¼ÆÊ±±êÖ¾Î»£¬
- 382                                                  timeCnt_30Sec = 0;//Ð£×¼£¬ÒÔ·ÀÒÔÇ°ÉèÖÃµÄÊ±¼ä»òÕßÆäËû¹¦ÄÜÊ¹ÓÃÊ±timeCnt_30SecÓÐ´óÓÚ0µÄÖµ
- 383                                          }
- 384                                          else if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE)
- 385                                          {
- 386                                                  //ÔÚ³¤°´ALARM¼üºÍSNOOZE¼ü½øÈëÉèÖÃÊ±¼äÄ£Ê½-Ð¡Ê±ÉèÖÃ£¬ÔÚ¶Ì°´ALARM¼üÉèÖÃ·ÖÖÓÊ±¼ä
- 387                                                  //ÔÚ¶Ì°´ALRM¼üÈ·ÈÏÊ±¼äÉèÖÃ£¬»òÕßÔÚ½øÈë·ÖÖÓÉèÖÃÊ±¼äÖ®ºó²»¶¯×÷30s¼´×Ô¶¯±£´æ
- 388                                                  FlagKSet_TypeDef = FLAG_KEYSET_OFF;
- 389                                                  gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour;
- 390                                                  gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
- 391                                                  //Time_Temp_TypeDef.Flag_Confirm_30Sec = 1;//¶Ì°´ALARM¼üÈ·ÈÏÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬(Îª1ÊÇÈ·
- 392                                                                                                                                   //ÈÏÄÖÖÓÉèÖÃ±êÖ¾Î»),Îª2ÊÇ30s¼ÆÊ±±êÖ¾Î»£¬
- 393                                          }
- 394          
- 395                                          /* ÉèÖÃÄÖÖÓÊ±¼ä */
- 396                                          if ((PlayMode_TypeDef == PLAY_IN_TIME) && (FlagKSet_TypeDef == FLAG_KEYSET_OFF))
- 397                                          {
- 398                                                  //Ö»ÓÐÔÚ×ßÊ±ºÍÃ»ÓÐÆäËûÉèÖÃÄ£Ê½ÏÂ(±ÈÈçÊ±¼äÉèÖÃ£¬ÒòÎª¶Ì°´ALARMÓÐÆäËû¹¦ÄÜ)£¬²Å»á½øÈë´Ëif¹¦ÄÜ
- 399                                                  //ÉèÖÃÄÔÖÐÊ±¼ä²¢¿ªÆôÄÖÖÓ
- 400                                                  FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_HOUR;
- 401                                                  Alarm1_TypeDef.Alarm_OnOff = ALARM_ON;
- 402                                                  Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//µÚ¶þ´Î¿ªÆôÄÖÖÓ£¬²¢ÇÒ²»ÐÞ¸ÄÄÔÖÐÊ±¼ä£¬²»¶¯×÷30s×Ô¶¯±£
- 403                                                                                                                            //´æ£¬(Îª1ÊÇÈ·ÈÏÄÖÖÓÉèÖÃ±êÖ¾Î»)Îª2ÊÇ30s¼ÆÊ±±êÖ¾Î»£¬
- 404                                          }
- 405                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
+ 423   5                                      }
+ 424   4                                      else//ÔÚÀ¶ÑÀ»òTF×´Ì¬ÏÂ£¬ÒôÁ¿¹¦ÄÜ
+ 425   4                                      {
+ 426   5                                              if (sysVolume < 15)
+ 427   5                                              {
+ 428   6                                                      sysVolume++;
+ 429   6                                              }
+ 430   5                                      }
+ 431   4      
+ 432   4                                      break;
+ 433   4                              }
+ 434   3                              case KU(K_PLAY_PAUSE): //¶Ì°´//¶Ì°´·ÖÖÓ×Ö·ûÉÁË¸£¬
+ 435   3                              {                                       
+ 436   4                                      if (Music_Mode_TypeDef > MUSIC_OFF)//ÔÚÀ¶ÑÀºÍTF¿¨Ä£Ê½
+ 437   4                                      {
+ 438   5                                              Ctrl_Com_TypeDef = CTRL_NEXT;
+ 439   5                                      }
+ 440   4                                      break;
+ 441   4                              }
+ 442   3                              case KR(K_PLAY_PAUSE): //¼ÆÊ±
+ 443   3                              {
+ 444   4                                      
+ 445   4                                      break;
+ 446   4                              }
+ 447   3                              case KU(K_NEXT): //¶Ì°´
+ 448   3                              case KR(K_NEXT): //³¤°´
+ 449   3                              {
+ 450   4                                      
+ 451   4                                      break;
+ 452   4                              }
+ 453   3                              case KU(K_ALARM): //¶Ì°´//ÄÖÖÓ
+ 454   3                              {
+ 455   4                                      /* ÉèÖÃRTCÊ±¼ä */
+ 456   4                                      if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR)
+ 457   4                                      {
+ 458   5                                              //ÔÚ³¤°´ALARM¼üºÍSNOOZE¼ü½øÈëÉèÖÃÊ±¼äÄ£Ê½-Ð¡Ê±ÉèÖÃ£¬ÔÚ¶Ì°´ALARM¼üÉèÖÃ·ÖÖÓÊ±¼ä
+ 459   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_MINUTE;
+ 460   5                                              Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//¶Ì°´ALARM¼üÈ·ÈÏÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬(Îª1ÊÇÈ·
+ 461   5                                                                                                                         //ÈÏÄÖÖÓÉèÖÃ±êÖ¾Î»),Îª2ÊÇ30s¼ÆÊ±±êÖ¾Î»£¬
+ 462   5                                              timeCnt_30Sec = 0;//Ð£×¼£¬ÒÔ·ÀÒÔÇ°ÉèÖÃµÄÊ±¼ä»òÕßÆäËû¹¦ÄÜÊ¹ÓÃÊ±timeCnt_30SecÓÐ´óÓÚ0µÄÖµ
+ 463   5                                      }
+ 464   4                                      else if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE)
+ 465   4                                      {
+ 466   5                                              //ÔÚ³¤°´ALARM¼üºÍSNOOZE¼ü½øÈëÉèÖÃÊ±¼äÄ£Ê½-Ð¡Ê±ÉèÖÃ£¬ÔÚ¶Ì°´ALARM¼üÉèÖÃ·ÖÖÓÊ±¼ä
+ 467   5                                              //ÔÚ¶Ì°´ALRM¼üÈ·ÈÏÊ±¼äÉèÖÃ£¬»òÕßÔÚ½øÈë·ÖÖÓÉèÖÃÊ±¼äÖ®ºó²»¶¯×÷30s¼´×Ô¶¯±£´æ
+ 468   5                                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 469   5                                              gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour;
+ 470   5                                              gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
+ 471   5                                              //Time_Temp_TypeDef.Flag_Confirm_30Sec = 1;//¶Ì°´ALARM¼üÈ·ÈÏÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬(Îª1ÊÇÈ·
+ 472   5                                                                                                                               //ÈÏÄÖÖÓÉèÖÃ±êÖ¾Î»),Îª2ÊÇ30s¼ÆÊ±±êÖ¾Î»£¬
+ 473   5                                      }
+ 474   4      
+ 475   4                                      /* ÉèÖÃÄÖÖÓÊ±¼ä */
+ 476   4                                      if ((PlayMode_TypeDef == PLAY_IN_TIME) && (FlagKSet_TypeDef == FLAG_KEYSET_OFF))
+ 477   4                                      {
+ 478   5                                              //Ö»ÓÐÔÚ×ßÊ±ºÍÃ»ÓÐÆäËûÉèÖÃÄ£Ê½ÏÂ(±ÈÈçÊ±¼äÉèÖÃ£¬ÒòÎª¶Ì°´ALARMÓÐÆäËû¹¦ÄÜ)£¬²Å»á½øÈë´Ëif¹¦ÄÜ
+ 479   5                                              //ÉèÖÃÄÔÖÐÊ±¼ä²¢¿ªÆôÄÖÖÓ
+ 480   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_HOUR;
+ 481   5                                              Alarm1_TypeDef.Alarm_OnOff = ALARM_ON;
+ 482   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//µÚ¶þ´Î¿ªÆôÄÖÖÓ£¬²¢ÇÒ²»ÐÞ¸ÄÄÔÖÐÊ±¼ä£¬²»¶¯×÷30s×Ô¶¯±£
+ 483   5                                                                                                                        //´æ£¬(Îª1ÊÇÈ·ÈÏÄÖÖÓÉèÖÃ±êÖ¾Î»)Îª2ÊÇ30s¼ÆÊ±±êÖ¾Î»£¬
+ 484   5                                      }
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 9   
+
+ 485   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
              -))  
- 406                                          {
- 407                                                  FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_MINUTE;
- 408                                                  Alarm1_TypeDef.Flag_Confirm_30Sec = 0;//µÚ¶þ´Î¿ªÆôÄÖÖÓ£¬²¢ÇÒÐÞ¸ÄÄÔÖÐÊ±¼ä£¬°Ñ²»¶¯×÷×Ô¶¯±£´æ¹Ø±Õ
- 409                                                  //timeCnt_30Sec = 0;                                      //²¢Ð£×¼Ê±¼äÎª0
- 410                                          }
- 411                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
+ 486   4                                      {
+ 487   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_MINUTE;
+ 488   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 0;//µÚ¶þ´Î¿ªÆôÄÖÖÓ£¬²¢ÇÒÐÞ¸ÄÄÔÖÐÊ±¼ä£¬°Ñ²»¶¯×÷×Ô¶¯±£´æ¹Ø±Õ
+ 489   5                                              //timeCnt_30Sec = 0;                                      //²¢Ð£×¼Ê±¼äÎª0
+ 490   5                                      }
+ 491   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
              -ON))
- 412                                          {
- 413                                                  FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_ALWORKMODE;
- 414                                                  Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//¶Ì°´ALARM¼üÈ·ÈÏÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬(Îª1
- 415                                                                                                                            //ÊÇÈ·ÈÏÄÖÖÓÉèÖÃ±êÖ¾Î»)Îª2ÊÇ30s¼ÆÊ±±êÖ¾Î»£¬
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 10  
-
- 416                                                  timeCnt_30Sec = 0;//Ð£×¼£¬ÒÔ·ÀÒÔÇ°ÉèÖÃµÄÊ±¼ä»òÕßÆäËû¹¦ÄÜÊ¹ÓÃÊ±timeCnt_30SecÓÐ´óÓÚ0µÄÖµ
- 417                                          }
- 418          
- 419                                          break;
- 420                                  }
- 421                                  case KH(K_ALARM): //³¤°´//ÄÖÖÓ
- 422                                  {
- 423                                          
- 424                                          break;
- 425                                  }
- 426                                  case KU(K_VOLDEC): //¶Ì°´//ÒôÁ¿¼õ
- 427                                  case KR(K_VOLDEC): //³¤°´//ÒôÁ¿¼õ
- 428                                  {
- 429                                          //³¤°´¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±¿ìËÙµÝ¼õ£»
- 430                                          //³¤°´¡°VOL-/PREV¡±¼ü£¬·ÖÖÓÎ»Êý¿ìËÙµÝ¼õ£»
- 431                                          if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
- 432                                          {
- 433                                                  if (Time_Temp_TypeDef.temp_RTC_Hour > 0)
- 434                                                  {
- 435                                                          Time_Temp_TypeDef.temp_RTC_Hour--;
- 436                                                  }
- 437                                          }
- 438                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
- 439                                          {
- 440                                                  if (Time_Temp_TypeDef.temp_RTC_Minute > 0)
- 441                                                  {
- 442                                                          Time_Temp_TypeDef.temp_RTC_Minute--;
- 443                                                  }
- 444                                                  timeCnt_30Sec = 0;//¿ªÆôÁË²»¶¯×÷30s×Ô¶¯±£´æ£¬ÕâÀï¶¯×÷ÁË£¬ËùÒÔÖØÐÂÖÃ0
- 445                                          }
- 446                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
+ 492   4                                      {
+ 493   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_ALWORKMODE;
+ 494   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//¶Ì°´ALARM¼üÈ·ÈÏÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬(Îª1
+ 495   5                                                                                                                        //ÊÇÈ·ÈÏÄÖÖÓÉèÖÃ±êÖ¾Î»)Îª2ÊÇ30s¼ÆÊ±±êÖ¾Î»£¬
+ 496   5                                              timeCnt_30Sec = 0;//Ð£×¼£¬ÒÔ·ÀÒÔÇ°ÉèÖÃµÄÊ±¼ä»òÕßÆäËû¹¦ÄÜÊ¹ÓÃÊ±timeCnt_30SecÓÐ´óÓÚ0µÄÖµ
+ 497   5                                      }
+ 498   4      
+ 499   4                                      break;
+ 500   4                              }
+ 501   3                              case KH(K_ALARM): //³¤°´//ÄÖÖÓ
+ 502   3                              {
+ 503   4                                      
+ 504   4                                      break;
+ 505   4                              }
+ 506   3                              case KU(K_VOLDEC): //¶Ì°´//ÒôÁ¿¼õ
+ 507   3                              case KR(K_VOLDEC): //³¤°´//ÒôÁ¿¼õ
+ 508   3                              {
+ 509   4                                      //³¤°´¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±¿ìËÙµÝ¼õ£»
+ 510   4                                      //³¤°´¡°VOL-/PREV¡±¼ü£¬·ÖÖÓÎ»Êý¿ìËÙµÝ¼õ£»
+ 511   4                                      if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
+ 512   4                                      {
+ 513   5                                              if (Time_Temp_TypeDef.temp_RTC_Hour > 0)
+ 514   5                                              {
+ 515   6                                                      Time_Temp_TypeDef.temp_RTC_Hour--;
+ 516   6                                              }
+ 517   5                                      }
+ 518   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
+ 519   4                                      {
+ 520   5                                              if (Time_Temp_TypeDef.temp_RTC_Minute > 0)
+ 521   5                                              {
+ 522   6                                                      Time_Temp_TypeDef.temp_RTC_Minute--;
+ 523   6                                              }
+ 524   5                                              timeCnt_30Sec = 0;//¿ªÆôÁË²»¶¯×÷30s×Ô¶¯±£´æ£¬ÕâÀï¶¯×÷ÁË£¬ËùÒÔÖØÐÂÖÃ0
+ 525   5                                      }
+ 526   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
              -))
- 447                                          {
- 448                                                  if (Alarm1_TypeDef.tempHour > 0)
- 449                                                  {
- 450                                                          Alarm1_TypeDef.tempHour--;
- 451                                                  }
- 452                                          }
- 453                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
+ 527   4                                      {
+ 528   5                                              if (Alarm1_TypeDef.tempHour > 0)
+ 529   5                                              {
+ 530   6                                                      Alarm1_TypeDef.tempHour--;
+ 531   6                                              }
+ 532   5                                      }
+ 533   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
              -ON))
- 454                                          {
- 455                                                  if (Alarm1_TypeDef.tempMinute > 0)
- 456                                                  {
- 457                                                          Alarm1_TypeDef.tempMinute--;
- 458                                                  }
- 459                                          }
- 460                                          else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
+ 534   4                                      {
+ 535   5                                              if (Alarm1_TypeDef.tempMinute > 0)
+ 536   5                                              {
+ 537   6                                                      Alarm1_TypeDef.tempMinute--;
+ 538   6                                              }
+ 539   5                                      }
+ 540   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
              -ARM_ON))
- 461                                          {
- 462                                                  if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BEEP)
- 463                                                  {
- 464                                                          Alarm1_TypeDef.AlarmWorkMode = ALARM_BT;
- 465                                                  }
- 466                                                  else
- 467                                                  {
- 468                                                          Alarm1_TypeDef.AlarmWorkMode = ALARM_BEEP;
- 469                                                  }
- 470                                                  timeCnt_30Sec = 0;//¿ªÆôÁË²»¶¯×÷30s×Ô¶¯±£´æ£¬ÕâÀï¶¯×÷ÁË£¬ËùÒÔÖØÐÂÖÃ0
- 471                                          }
- 472                                          else//ÔÚÀ¶ÑÀ»òTF×´Ì¬ÏÂ£¬ÒôÁ¿¹¦ÄÜ
- 473                                          {
- 474                                                  if (sys_Volume > 0)
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 11  
+ 541   4                                      {
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 10  
 
- 475                                                  {
- 476                                                          sys_Volume--;
- 477                                                  }
- 478                                          }
- 479          
- 480                                          break;
- 481                                  }
- 482                                  case KU(K_BT): //¶Ì°´
- 483                                  {
- 484                                          //¶Ì°´¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±µÝ¼õ£¬
- 485                                          //¶Ì°´¡°VOL-/PREV¡±¼ü£¬·ÖÖÓÎ»ÊýµÝ¼õ£¬
- 486                                          if (Music_Mode_TypeDef != MUSIC_BT)
- 487                                          {
- 488                                                  Music_Mode_TypeDef = MUSIC_BT;
- 489                                          }
- 490                                          break;
- 491                                  }
- 492                                  case KH(K_BT): //³¤°´
- 493                                  {
- 494                                          //³¤°´¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±¿ìËÙµÝ¼õ£»
- 495                                          //³¤°´¡°VOL-/PREV¡±¼ü£¬·ÖÖÓÎ»Êý¿ìËÙµÝ¼õ£»
- 496                                          break;
- 497                                  }
- 498                                  case KU(K_PREV): //¶Ì°´
- 499                                  case KR(K_PREV): //³¤°´
- 500                                  {
- 501                                          if (Music_Mode_TypeDef > MUSIC_OFF)//ÔÚÀ¶ÑÀºÍTF¿¨Ä£Ê½
- 502                                          {
- 503                                                  Ctrl_Com_TypeDef = CTRL_PREV;
- 504                                          }
- 505                                          break;
- 506                                  }
- 507                                  case KU(K_AL_SNOOZE): //¶Ì°´
- 508                                  {
- 509          
- 510                                          break;
- 511                                  }
- 512                                  case KR(K_AL_SNOOZE): //³¤°´
- 513                                  {
- 514                                          if (PlayMode_TypeDef == PLAY_IN_TIME)
- 515                                          {
- 516                                                  if (cntKeylong == 10)//2s
- 517                                                  {
- 518                                                          //³¤°´ALARMºÍSNOOZE¼ü2s½øÈëÊ±¼äÉèÖÃÄ£Ê½-Ð¡ÊÂÉèÖÃ
- 519                                                          FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_HOUR;
- 520                                                  }
- 521                                          }
- 522                                          break;
- 523                                  }
- 524                                  case KU(K_AL_VOLINC): //¶Ì°´
- 525                                  case KR(K_AL_VOLINC): //³¤°´
- 526                                  {
- 527                                          if (PlayMode_TypeDef == PLAY_IN_TIME)
- 528                                          {
- 529                                                  if (cntKeylong == 10)//2s
- 530                                                          gRTC_Hour = gRTC_Hour + 1;//×éºÏ¼ü-ÄÖÖÓºÍÒôÁ¿¼Ó-Í¬Ê±2s-RTCÊ±¼ä¼ÓÒ»Ð¡Ê±£¬±íÊ¾¿ªÆôÏÄÁîÊ±
- 531                                          }
- 532                                          break;
- 533                                  }
- 534                                  case KU(K_AL_VOLDEC): //¶Ì°´
- 535                                  case KR(K_AL_VOLDEC): //³¤°´
- 536                                  {
-C51 COMPILER V9.00   KEY_MODE                                                              11/12/2018 10:19:34 PAGE 12  
+ 542   5                                              if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)
+ 543   5                                              {
+ 544   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BT;
+ 545   6                                              }
+ 546   5                                              else
+ 547   5                                              {
+ 548   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BEEP;
+ 549   6                                              }
+ 550   5                                              timeCnt_30Sec = 0;//¿ªÆôÁË²»¶¯×÷30s×Ô¶¯±£´æ£¬ÕâÀï¶¯×÷ÁË£¬ËùÒÔÖØÐÂÖÃ0
+ 551   5                                      }
+ 552   4                                      else//ÔÚÀ¶ÑÀ»òTF×´Ì¬ÏÂ£¬ÒôÁ¿¹¦ÄÜ
+ 553   4                                      {
+ 554   5                                              if (sysVolume > 0)
+ 555   5                                              {
+ 556   6                                                      sysVolume--;
+ 557   6                                              }
+ 558   5                                      }
+ 559   4      
+ 560   4                                      break;
+ 561   4                              }
+ 562   3                              case KU(K_BT): //¶Ì°´
+ 563   3                              {
+ 564   4                                      //¶Ì°´¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±µÝ¼õ£¬
+ 565   4                                      //¶Ì°´¡°VOL-/PREV¡±¼ü£¬·ÖÖÓÎ»ÊýµÝ¼õ£¬
+ 566   4                                      if (Music_Mode_TypeDef != MUSIC_BT)
+ 567   4                                      {
+ 568   5                                              Music_Mode_TypeDef = MUSIC_BT;
+ 569   5                                      }
+ 570   4                                      break;
+ 571   4                              }
+ 572   3                              case KH(K_BT): //³¤°´
+ 573   3                              {
+ 574   4                                      //³¤°´¡°VOL-/PREV¡±¼ü£¬Ð¡Ê±¿ìËÙµÝ¼õ£»
+ 575   4                                      //³¤°´¡°VOL-/PREV¡±¼ü£¬·ÖÖÓÎ»Êý¿ìËÙµÝ¼õ£»
+ 576   4                                      break;
+ 577   4                              }
+ 578   3                              case KU(K_PREV): //¶Ì°´
+ 579   3                              case KR(K_PREV): //³¤°´
+ 580   3                              {
+ 581   4                                      if (Music_Mode_TypeDef > MUSIC_OFF)//ÔÚÀ¶ÑÀºÍTF¿¨Ä£Ê½
+ 582   4                                      {
+ 583   5                                              Ctrl_Com_TypeDef = CTRL_PREV;
+ 584   5                                      }
+ 585   4                                      break;
+ 586   4                              }
+ 587   3                              case KU(K_AL_SNOOZE): //¶Ì°´
+ 588   3                              {
+ 589   4      
+ 590   4                                      break;
+ 591   4                              }
+ 592   3                              case KR(K_AL_SNOOZE): //³¤°´
+ 593   3                              {
+ 594   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
+ 595   4                                      {
+ 596   5                                              if (cntKeylong == 10)//2s
+ 597   5                                              {
+ 598   6                                                      //³¤°´ALARMºÍSNOOZE¼ü2s½øÈëÊ±¼äÉèÖÃÄ£Ê½-Ð¡ÊÂÉèÖÃ
+ 599   6                                                      FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_HOUR;
+ 600   6                                              }
+ 601   5                                      }
+ 602   4                                      break;
+ 603   4                              }
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 11  
 
- 537                                          if (PlayMode_TypeDef == PLAY_IN_TIME)
- 538                                          {
- 539                                                  if (cntKeylong == 10)//2s
- 540                                                          gRTC_Hour = gRTC_Hour - 1;//×éºÏ¼ü-ÄÖÖÓºÍÒôÁ¿¼õ-Í¬Ê±2s-RTCÊ±¼ä¼õÒ»Ð¡Ê±£¬±íÊ¾¹Ø±ÕÏÄÁîÊ±
- 541                                          }
- 542                                          break;
- 543                                  }
- 544                          }
- 545                  }
- 546          }
- 547          
- 548          
- 549          
- 550          
- 551           
- 552           /*******************************************************************************
- 553           * º¯ÊýÔ­ÐÍ£º
- 554           * ÊäÈë²ÎÊý£º
- 555           * Êä³ö²ÎÊý£º
- 556           * º¯Êý¹¦ÄÜ£º
- 557           * ·µ»ØÖµËµÃ÷£º
- 558           * ´´½¨ÈÕÆÚ£º
- 559           * ´´½¨ÈË£º
- 560           * ÐÞ¸ÄÈÕÆÚ
- 561           * ÐÞ¸ÄÈË£º
- 562           * µÚN´ÎÐÞ¸Ä£º
- 563           * ÐÞ¸ÄÔ­Òò£º
- 564           * ±¸×¢£º
- 565           *******************************************************************************/
- 566           
- 567           
- 568           /*******************************************************************************
- 569           * º¯ÊýÔ­ÐÍ£º
- 570           * ÊäÈë²ÎÊý£º
- 571           * Êä³ö²ÎÊý£º
- 572           * º¯Êý¹¦ÄÜ£º
- 573           * ·µ»ØÖµËµÃ÷£º
- 574           * ´´½¨ÈÕÆÚ£º
- 575           * ´´½¨ÈË£º
- 576           * ÐÞ¸ÄÈÕÆÚ
- 577           * ÐÞ¸ÄÈË£º
- 578           * µÚN´ÎÐÞ¸Ä£º
- 579           * ÐÞ¸ÄÔ­Òò£º
- 580           * ±¸×¢£º
- 581           *******************************************************************************/
- 582          
- 583          
- 584          
- 585          
- 586          
- 587          
- 588          
- 589          
- 590          
- 591          
- 592          
- 593          
- 594          
- 595          
- 596          
+ 604   3                              case KU(K_AL_VOLINC): //¶Ì°´
+ 605   3                              case KR(K_AL_VOLINC): //³¤°´
+ 606   3                              {
+ 607   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
+ 608   4                                      {
+ 609   5                                              if (cntKeylong == 10)//2s
+ 610   5                                                      gRTC_Hour = gRTC_Hour + 1;//×éºÏ¼ü-ÄÖÖÓºÍÒôÁ¿¼Ó-Í¬Ê±2s-RTCÊ±¼ä¼ÓÒ»Ð¡Ê±£¬±íÊ¾¿ªÆôÏÄÁîÊ±
+ 611   5                                      }
+ 612   4                                      break;
+ 613   4                              }
+ 614   3                              case KU(K_AL_VOLDEC): //¶Ì°´
+ 615   3                              case KR(K_AL_VOLDEC): //³¤°´
+ 616   3                              {
+ 617   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
+ 618   4                                      {
+ 619   5                                              if (cntKeylong == 10)//2s
+ 620   5                                                      gRTC_Hour = gRTC_Hour - 1;//×éºÏ¼ü-ÄÖÖÓºÍÒôÁ¿¼õ-Í¬Ê±2s-RTCÊ±¼ä¼õÒ»Ð¡Ê±£¬±íÊ¾¹Ø±ÕÏÄÁîÊ±
+ 621   5                                      }
+ 622   4                                      break;
+ 623   4                              }
+ 624   3                      }
+ 625   2                      testINT=KeyValue;
+ 626   2              }
+ 627   1      }
+ 628          
+ 629          
+ 630          
+ 631          
+ 632           
+ 633           /*******************************************************************************
+ 634           * º¯ÊýÔ­ÐÍ£º
+ 635           * ÊäÈë²ÎÊý£º
+ 636           * Êä³ö²ÎÊý£º
+ 637           * º¯Êý¹¦ÄÜ£º
+ 638           * ·µ»ØÖµËµÃ÷£º
+ 639           * ´´½¨ÈÕÆÚ£º
+ 640           * ´´½¨ÈË£º
+ 641           * ÐÞ¸ÄÈÕÆÚ
+ 642           * ÐÞ¸ÄÈË£º
+ 643           * µÚN´ÎÐÞ¸Ä£º
+ 644           * ÐÞ¸ÄÔ­Òò£º
+ 645           * ±¸×¢£º
+ 646           *******************************************************************************/
+ 647           
+ 648           
+ 649           /*******************************************************************************
+ 650           * º¯ÊýÔ­ÐÍ£º
+ 651           * ÊäÈë²ÎÊý£º
+ 652           * Êä³ö²ÎÊý£º
+ 653           * º¯Êý¹¦ÄÜ£º
+ 654           * ·µ»ØÖµËµÃ÷£º
+ 655           * ´´½¨ÈÕÆÚ£º
+ 656           * ´´½¨ÈË£º
+ 657           * ÐÞ¸ÄÈÕÆÚ
+ 658           * ÐÞ¸ÄÈË£º
+ 659           * µÚN´ÎÐÞ¸Ä£º
+ 660           * ÐÞ¸ÄÔ­Òò£º
+ 661           * ±¸×¢£º
+ 662           *******************************************************************************/
+ 663          
+ 664          
+ 665          
+C51 COMPILER V9.00   KEY_MODE                                                              11/14/2018 17:46:02 PAGE 12  
 
-C51 COMPILATION COMPLETE.  54 WARNING(S),  13 ERROR(S)
+ 666          
+ 667          
+ 668          
+ 669          
+ 670          
+ 671          
+ 672          
+ 673          
+ 674          
+ 675          
+ 676          
+ 677          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    873    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

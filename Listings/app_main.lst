@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   APP_MAIN                                                              11/12/2018 10:19:34 PAGE 1   
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE APP_MAIN
@@ -12,139 +12,6 @@ line level    source
    2          /*Í·ÎÄ¼þheader file*/
    3          /*******************/
    4          #include "app_main.h"
-*** ERROR C132 IN LINE 13 OF .\DEVICE\FUNC_DEF.H: '_UART_write': not in formal parameter list
-*** ERROR C132 IN LINE 14 OF .\DEVICE\FUNC_DEF.H: 'UART_read': not in formal parameter list
-*** ERROR C132 IN LINE 15 OF .\DEVICE\FUNC_DEF.H: 'WDT_init': not in formal parameter list
-*** ERROR C132 IN LINE 16 OF .\DEVICE\FUNC_DEF.H: 'WDT_clear': not in formal parameter list
-*** ERROR C132 IN LINE 17 OF .\DEVICE\FUNC_DEF.H: 'WT_init': not in formal parameter list
-*** WARNING C329 IN LINE 16 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 17 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 20 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 21 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 24 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 25 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 28 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 29 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 32 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 33 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 36 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 37 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 40 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 41 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 44 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 45 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 48 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 49 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 52 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 53 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 56 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 57 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 60 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-C51 COMPILER V9.00   APP_MAIN                                                              11/12/2018 10:19:34 PAGE 2   
-
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 61 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 64 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 65 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 68 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 69 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 72 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 73 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 76 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 77 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 80 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 81 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 84 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 85 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 88 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 89 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 92 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 93 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 96 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 97 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LE
-             -D_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 100 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 101 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 104 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 105 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 108 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 109 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 112 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 113 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 116 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 117 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 120 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-             -ED_MODE.H: single-line comment contains line-continuation
-*** WARNING C329 IN LINE 121 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\L
-C51 COMPILER V9.00   APP_MAIN                                                              11/12/2018 10:19:34 PAGE 3   
-
-             -ED_MODE.H: single-line comment contains line-continuation
-*** ERROR C127 IN LINE 272 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'LED_BRIGHTNESS_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 279 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_WORK_MODE_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 285 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_ONOFF_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 291 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_SNOOZE_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 297 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_RING_TIMER_TypeDef': invalid storage class
-*** ERROR C127 IN LINE 303 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: 'ALARM_RING_RUN_TypeDef': invalid storage class
-*** ERROR C141 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: syntax error near 'ALARM_ONOFF_TypeDef'
-*** ERROR C129 IN LINE 308 OF \HOMEWORK\KEIL5\PROJECT\PROJECT.COMPANY\7¡¢GP-095\GP-095_BT-LED_ALARM\APP_USER\INCLUDE\LED
-             -_MODE.H: missing ';' before 'Alarm_OnOff'
    5          
    6          /************************/
    7          /*ºê¶¨Òåmacro definition*/
@@ -172,273 +39,502 @@ line level    source
   29          BOOL  gbUser_AdjClk;
   30          BOOL  gbHalfSecond;
   31          BOOL  gbTestMode;
-  32          
-  33          /*****************************/
-  34          /*±äÁ¿¶¨Òåvariable definition*/
-  35          /*****************************/
-  36          uint8_t  idata cntAppTick;
-  37          bit                        gbHalfSecond;
-  38          uint8_t  idata gRTC_Sec;//RTCÊý¾Ý 
-  39          uint8_t  idata gRTC_Sec_bk;
-  40          uint8_t  idata gRTC_Minute;
-  41          uint8_t  idata gRTC_Minute_bk;
-  42          uint8_t  idata gRTC_Hour;
-  43          uint8_t  idata gRTC_Hour_bk;
-  44          uint8_t  xdata gRTC_Hour_bk_24;//¼ÆÊý24Ð¡Ê±
-  45          uint8_t  idata gRTC_Week; //Ò»ÖÜ7Ìì
-  46          uint8_t  idata sys_Volume;//ÏµÍ³ÒôÁ¿
-  47          uint8_t  idata sys_Cmd;//ÃüÁî
-  48          uint8_t  idata sys_Name;
-  49          uint16_t idata timeCnt_30Sec;//¶Ì°´ALARM¼üÈ±ÈËÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬30s¼ÆÊ±
-C51 COMPILER V9.00   APP_MAIN                                                              11/12/2018 10:19:34 PAGE 4   
+  32          BOOL  gbSnoozeEnable;
+  33          BOOL  gbPowerOn;
+  34          BOOL  gbSleepEnable;
+  35          
+  36          
+  37          /*****************************/
+  38          /*±äÁ¿¶¨Òåvariable definition*/
+  39          /*****************************/
+  40          uint8_t  idata cntAppTick;
+  41          bit                        gbHalfSecond;
+  42          uint8_t  idata gRTC_Sec;//RTCÊý¾Ý 
+  43          uint8_t  idata gRTC_Sec_bk;
+  44          uint8_t  idata gRTC_Minute;
+  45          uint8_t  idata gRTC_Minute_bk;
+  46          uint8_t  idata gRTC_Hour;
+  47          uint8_t  idata gRTC_Hour_bk;
+  48          uint8_t  xdata gRTC_Hour_bk_24;//¼ÆÊý24Ð¡Ê±
+  49          uint8_t  idata gRTC_Week; //Ò»ÖÜ7Ìì
+  50          uint8_t  idata Snooze_Hour;//Ì°Ë¯Ð¡Ê±Ê±¼ä
+  51          uint8_t  idata Snooze_Minute;//Ì°Ë¯·ÖÖÓÊ±¼ä
+  52          uint8_t  idata sysVolume;//ÏµÍ³ÒôÁ¿
+  53          uint8_t  idata sys_Cmd;//ÃüÁî
+  54          uint8_t  idata sys_Name;
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 2   
 
-  50          
-  51          u8       idata cntNoFlash;
-  52          u8               idata AlarmingType;//ÄÖÖÓÊ±¿ªÆô»¹ÊÇ¹Ø±Õ£¬ÓÃAlarm1_TypeDef.Alarm_OnOFF´úÌæ
-  53          u8               idata Alarm1Mode;//ÓÃAlarm1_TypeDef.Alarm_Mode´úÌæÁË
-  54          u8                         gZone;
-  55          u8                         dispStatus;
+  55          uint16_t idata timeCnt_30Sec;//¶Ì°´ALARM¼üÈ±ÈËÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬30s¼ÆÊ±
   56          
-  57          /**************************/
-  58          /*Êý×é¶¨Òåarray definition*/
-  59          /**************************/
-  60          
-  61          /******************************/
-  62          /*º¯ÊýÉùÃ÷Function declaration*/
-  63          /******************************/
-  64          
-  65          /*****************************/
-  66          /*º¯Êý¶¨Òåfunction definetion*/
-  67          /*****************************/
-  68          /*******************************************************************************
-  69           * º¯ÊýÔ­ÐÍ£º
-  70           * ÊäÈë²ÎÊý£º
-  71           * Êä³ö²ÎÊý£º
-  72           * º¯Êý¹¦ÄÜ£ºÊ±¼ä±È½Ï£¬°ÑRTCÊ±¼äÓëÄ³¸ö¶¨Ê±Ê±¼ä±È½Ï£¬±ÈÈçÄÖÖÓ
-  73           * ·µ»ØÖµËµÃ÷£º
-  74           * ´´½¨ÈÕÆÚ£º
-  75           * ´´½¨ÈË£º
-  76           * ÐÞ¸ÄÈÕÆÚ
-  77           * ÐÞ¸ÄÈË£º
-  78           * µÚN´ÎÐÞ¸Ä£º
-  79           * ÐÞ¸ÄÔ­Òò£º
-  80           * ±¸×¢£º
-  81           *******************************************************************************/
-  82          void Compare_1MinutePorc(void)
-  83          {
-  84                  //static uint8_t  cntSetVolume; //´Ë±äÁ¿Ö»ÔÚÉÏµçÊ±³õÊ¼»¯Ò»´Î£¬ÔÙµ÷ÓÃ´Ëº¯ÊýÊ±²»»áÖ´ÐÐ´ËÓï¾ä
-  85                  if(gRTC_Sec!=gRTC_Sec_bk)
-  86                  {
-  87                          gRTC_Sec_bk=gRTC_Sec;
-  88                          
-  89                          if(gRTC_Minute!=gRTC_Minute_bk)
-  90                          {
-  91                                  gRTC_Minute_bk=gRTC_Minute;
-  92                                  if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (gRTC_Hour == Alarm1_TypeDef.hour) && (gRTC_Minute == Al
-             -arm1_TypeDef.minute))
-  93                                  {
-  94                                          if(Alarm1_TypeDef.AlarmWorkMode==ALARM_BT)
-  95                                          {
-  96                                                  
-  97                                          }
-  98                                          else
-  99                                          {
- 100          
- 101                                          }
- 102                                  }
- 103                                          
- 104                                  if(gRTC_Hour!=gRTC_Hour_bk)
- 105                                  {
- 106                                          gRTC_Hour_bk=gRTC_Hour_bk;
- 107                                          gRTC_Hour_bk_24++;
- 108                                          if(gRTC_Hour_bk_24>=24)
- 109                                          {
- 110                                                  gRTC_Hour_bk_24=0;
-C51 COMPILER V9.00   APP_MAIN                                                              11/12/2018 10:19:34 PAGE 5   
+  57          uint8_t  idata cntAlarm;
+  58          uint8_t  idata cntSleep;
+  59          uint8_t  idata sleepTimeSet;
+  60          uint8_t  idata cntNoFlash;
+  61          uint8_t  idata AlarmingType;//ÄÖÖÓÊ±¿ªÆô»¹ÊÇ¹Ø±Õ£¬ÓÃAlarm1_TypeDef.Alarm_OnOFF´úÌæ
+  62          uint8_t  idata Alarm1Mode;//ÓÃAlarm1_TypeDef.Alarm_Mode´úÌæÁË
+  63          uint8_t            gZone;
+  64          uint8_t            dispStatus;
+  65          uint8_t  idata cnt0_5s;//Í¨¹ýÕâ¸ö±äÁ¿µÄ¼ÆÊýÀ´¶Ôgb0_5sµÄ×´Ì¬Á¬ÐøÈ¡·´£¬Ã¿´ÎÈ¡·´0.5s
+  66          
+  67          /**************************/
+  68          /*Êý×é¶¨Òåarray definition*/
+  69          /**************************/
+  70          
+  71          /******************************/
+  72          /*º¯ÊýÉùÃ÷Function declaration*/
+  73          /******************************/
+  74          
+  75          /*****************************/
+  76          /*º¯Êý¶¨Òåfunction definetion*/
+  77          /*****************************/
+  78          /*******************************************************************************
+  79           * º¯ÊýÔ­ÐÍ£º
+  80           * ÊäÈë²ÎÊý£º
+  81           * Êä³ö²ÎÊý£º
+  82           * º¯Êý¹¦ÄÜ£º°ÑÏÔÊ¾×´Ì¬ÇåÁã
+  83           * ·µ»ØÖµËµÃ÷£º
+  84           * ´´½¨ÈÕÆÚ£º
+  85           * ´´½¨ÈË£º
+  86           * ÐÞ¸ÄÈÕÆÚ
+  87           * ÐÞ¸ÄÈË£º
+  88           * µÚN´ÎÐÞ¸Ä£º
+  89           * ÐÞ¸ÄÔ­Òò£º
+  90           * ±¸×¢£º
+  91           *******************************************************************************/
+  92          void ClearDisplayStatus(void)
+  93          {
+  94   1              dispStatus = 0;
+  95   1              cntDispStatus = 0;
+  96   1      }
+  97          
+  98           /*******************************************************************************
+  99            * º¯ÊýÔ­ÐÍ£º
+ 100            * ÊäÈë²ÎÊý£º
+ 101            * Êä³ö²ÎÊý£º
+ 102            * º¯Êý¹¦ÄÜ£ºË¯Ãß»½ÐÑÖ®ºóÇå³ýÏà¹Ø±êÖ¾Î»ºÍ¼ÆÊýÊ²Ã´µÄ±äÁ¿
+ 103            * ·µ»ØÖµËµÃ÷£º
+ 104            * ´´½¨ÈÕÆÚ£º
+ 105            * ´´½¨ÈË£º
+ 106            * ÐÞ¸ÄÈÕÆÚ
+ 107            * ÐÞ¸ÄÈË£º
+ 108            * µÚN´ÎÐÞ¸Ä£º
+ 109            * ÐÞ¸ÄÔ­Òò£º
+ 110            * ±¸×¢£º
+ 111            *******************************************************************************/
+ 112          void Clear_Sleep(void)
+ 113          {
+ 114   1              cntSleep = 0;
+ 115   1              sleepTimeSet = 0;
+ 116   1              gbSleepEnable = 0;
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 3   
 
- 111                                                  
- 112                                          }
- 113                                  }
- 114                          }
- 115                  }
- 116          }
- 117          
- 118          /*******************************************************************************
- 119           * º¯ÊýÔ­ÐÍ£º
- 120           * ÊäÈë²ÎÊý£º
- 121           * Êä³ö²ÎÊý£º
- 122           * º¯Êý¹¦ÄÜ£ºÆäËû³ÌÐòÐèÒªÓÃµ½µÄ¼ÆÊ±·ÅÔÚÕâÀï½øÐÐ
- 123           * ·µ»ØÖµËµÃ÷£º
- 124           * ´´½¨ÈÕÆÚ£º
- 125           * ´´½¨ÈË£º
- 126           * ÐÞ¸ÄÈÕÆÚ
- 127           * ÐÞ¸ÄÈË£º
- 128           * µÚN´ÎÐÞ¸Ä£º
- 129           * ÐÞ¸ÄÔ­Òò£º
- 130           * ±¸×¢£º
- 131           *******************************************************************************/
- 132          void Timing_Handle(void)
- 133          {
- 134                  if (Time_Temp_TypeDef.Flag_Confirm_30Sec == 2)
- 135                  {
- 136                          timeCnt_30Sec++;
- 137                          if (timeCnt_30Sec >= 3000)
- 138                          {
- 139                                  Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;
- 140                                  FlagKSet_TypeDef = FLAG_KEYSET_OFF;
- 141                                  timeCnt_30Sec = 0;
- 142                                  gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour; //30s¼ÆÊ±½áÊø°ÑÉè¶¨µÄÁÙÊ±RTCÊ±¼ä¸¶¸øÒ»Ö±ÔÚÔËÐÐµÄRTCÊ±¼ä
- 143                                  gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
- 144                          }
- 145                  }
- 146                  else if (Alarm1_TypeDef.Flag_Confirm_30Sec == 2)
- 147                  {
- 148                          timeCnt_30Sec++;
- 149                          if (timeCnt_30Sec >= 3000)
- 150                          {
- 151                                  Alarm1_TypeDef.Flag_Confirm_30Sec = 0;
- 152                                  FlagKSet_TypeDef = FLAG_KEYSET_OFF;
- 153                                  timeCnt_30Sec = 0;
- 154                                  Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//30s¼ÆÊ±½áÊø°ÑÉè¶¨µÄÄÖÖÓÊ±¼ä¸³¸øÓëRTC±È¶ÔµÄÄÖÖÓ±äÁ¿
- 155                                  Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
- 156                          }
- 157                  }
- 158                  //else
- 159                  //      timeCnt_30Sec = 0;
- 160          }
- 161          
- 162          /*******************************************************************************
- 163           * º¯ÊýÔ­ÐÍ£º
- 164           * ÊäÈë²ÎÊý£º
- 165           * Êä³ö²ÎÊý£º
- 166           * º¯Êý¹¦ÄÜ£º
- 167           * ·µ»ØÖµËµÃ÷£º
- 168           * ´´½¨ÈÕÆÚ£º
- 169           * ´´½¨ÈË£º
- 170           * ÐÞ¸ÄÈÕÆÚ
- 171           * ÐÞ¸ÄÈË£º
- 172           * µÚN´ÎÐÞ¸Ä£º
-C51 COMPILER V9.00   APP_MAIN                                                              11/12/2018 10:19:34 PAGE 6   
+ 117   1      }
+ 118          
+ 119            /*******************************************************************************
+ 120             * º¯ÊýÔ­ÐÍ£º
+ 121             * ÊäÈë²ÎÊý£º
+ 122             * Êä³ö²ÎÊý£º
+ 123             * º¯Êý¹¦ÄÜ£ºÍË³öÏÔÊ¾×´Ì¬
+ 124             * ·µ»ØÖµËµÃ÷£º
+ 125             * ´´½¨ÈÕÆÚ£º
+ 126             * ´´½¨ÈË£º
+ 127             * ÐÞ¸ÄÈÕÆÚ
+ 128             * ÐÞ¸ÄÈË£º
+ 129             * µÚN´ÎÐÞ¸Ä£º
+ 130             * ÐÞ¸ÄÔ­Òò£º
+ 131             * ±¸×¢£º
+ 132             *******************************************************************************/
+ 133          void DisplayStatusExit(void)
+ 134          {
+ 135   1              if (cntDispStatus)
+ 136   1              {
+ 137   2                      if (++cnt0_5s >= cDISP_DELAY__500ms)//¼ÆÊýµ½500ms¾Í½øÈë
+ 138   2                      {
+ 139   3                              cnt0_5s = 0;
+ 140   3                              gb0_5s = ~gb0_5s;
+ 141   3                      }
+ 142   2                      if (--cntDispStatus == 0)
+ 143   2                      {
+ 144   3                              switch (dispStatus)
+ 145   3                              {
+ 146   4                                      case DISP_CLK:
+ 147   4                                              break;
+ 148   4                                      case DISP_GET_MEN:
+ 149   4                                              SetDisplayState10s(DISP_RADIO);
+ 150   4                                              break;
+ 151   4                                      default:
+ 152   4                                              cntDispStatus = cDISP_DELAY__62ms5;
+ 153   4                                              dispStatus = DISP_CLK;
+ 154   4                                              break;
+ 155   4                              }
+ 156   3                      }
+ 157   2              }
+ 158   1      }
+ 159          
+ 160          /*******************************************************************************
+ 161          * º¯ÊýÔ­ÐÍ£º
+ 162          * ÊäÈë²ÎÊý£º
+ 163          * Êä³ö²ÎÊý£º
+ 164          * º¯Êý¹¦ÄÜ£º
+ 165          * ·µ»ØÖµËµÃ÷£º
+ 166          * ´´½¨ÈÕÆÚ£º
+ 167          * ´´½¨ÈË£º
+ 168          * ÐÞ¸ÄÈÕÆÚ
+ 169          * ÐÞ¸ÄÈË£º
+ 170          * µÚN´ÎÐÞ¸Ä£º
+ 171          * ÐÞ¸ÄÔ­Òò£º
+ 172          * ±¸×¢£º
+ 173          *******************************************************************************/
+ 174          void Snooze_9Min(void)
+ 175          {
+ 176   1              uint8_t cnt;
+ 177   1              Snooze_Hour = gRTC_Hour;//°ÑÏÖÔÚRTCÊ±¼ä¸³¸øÌ°Ë¯Ê±¼äÕâÑùÔÙ¼ÆÊý9·ÖÖÓÔÙÓëRTCÊ±¼ä¶Ô±È
+ 178   1              Snooze_Minute = gRTC_Minute;
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 4   
 
- 173           * ÐÞ¸ÄÔ­Òò£º
- 174           * ±¸×¢£º
- 175           *******************************************************************************/
- 176          void Sys_Tick(void)
- 177          {
- 178                  AppTick1ms=1;
- 179                  if(cntAppTick==0)
- 180                          AppTick0=1;
- 181                  if(cntAppTick==1)
- 182                          AppTick1=1;
- 183                  if(cntAppTick==2)
- 184                          AppTick2=1;
- 185                  if(cntAppTick==3)
- 186                          AppTick3=1;
- 187                  if(cntAppTick==4)
- 188                          AppTick4=1;
- 189                  if(cntAppTick==5)
- 190                          AppTick5=1;
- 191                  if(cntAppTick==6)
- 192                  {
- 193                  
- 194                  }
- 195                  if(++cntAppTick>=10)
- 196                          cntAppTick=0;
- 197          }
- 198          
- 199          /*******************************************************************************
- 200           * º¯ÊýÔ­ÐÍ£º
- 201           * ÊäÈë²ÎÊý£º
- 202           * Êä³ö²ÎÊý£º
- 203           * º¯Êý¹¦ÄÜ£º
- 204           * ·µ»ØÖµËµÃ÷£º
- 205           * ´´½¨ÈÕÆÚ£º
- 206           * ´´½¨ÈË£º
- 207           * ÐÞ¸ÄÈÕÆÚ
- 208           * ÐÞ¸ÄÈË£º
- 209           * µÚN´ÎÐÞ¸Ä£º
- 210           * ÐÞ¸ÄÔ­Òò£º
- 211           * ±¸×¢£º
- 212           *******************************************************************************/
- 213          void PowerON_Reset(void)
- 214          {
- 215                  PlayMode_TypeDef=PLAY_JUST_POWER;//¸ÕÉÏµç£¬Ä£Ê½ÉèÎª¸ÕÉÏµçÄ£Ê½
- 216                  LED_Brightness_TypeDef=LED_HIGH;//ÁÁ¶ÈÄ¬ÈÏÎª¸ß
- 217                  Alarm1_TypeDef.AlarmWorkMode=ALARM_BEEP; //×Ô¼º¼ÓµÄÎªÄÖÖÓÏìÄÖÄ£Ê½ÎªbeepÄ£Ê½£¬·½±ãÐ´³ÌÐò£¬Ò²·ÀÖ¹Ê¹ÓÃÕßÔÚÉè
-             -ÖÃÄÖÖÓ
- 218                                                                          //Ê±Ã»ÓÐÑ¡ÔñÄ£Ê½£¬ÄÇ¾ÍÑ¡ÔñÄ¬ÈÏÊÇbeepÄ£Ê½
- 219                  sys_Volume = 8;//Ä¬ÈÏÏµÍ³ÒôÁ¿Îª8¼¶
- 220          }
+ 179   1              for (cnt = 0; cnt < 9; cnt++)//ÕâÀïÖ®ËùÒÔ½øÐÐ9´ÎifÅÐ¶Ï
+ 180   1              {
+ 181   2                      if (++Snooze_Minute >= 60)
+ 182   2                      {
+ 183   3                              Snooze_Minute = 0;
+ 184   3                              if (++Snooze_Hour >= 24)
+ 185   3                              {
+ 186   4                                      Snooze_Hour = 0;
+ 187   4                              }
+ 188   3                      }
+ 189   2              }
+ 190   1      }
+ 191          
+ 192          /*******************************************************************************
+ 193          * º¯ÊýÔ­ÐÍ£º
+ 194          * ÊäÈë²ÎÊý£º
+ 195          * Êä³ö²ÎÊý£º
+ 196          * º¯Êý¹¦ÄÜ£ºÄÖÖÓÏìÊ±°´ÏÂSNOOZE(Ì°Ë¯)°´¼ü£¬¼ÌÐøÌ°Ë¯9·ÖÖÓ
+ 197          * ·µ»ØÖµËµÃ÷£º
+ 198          * ´´½¨ÈÕÆÚ£º
+ 199          * ´´½¨ÈË£º
+ 200          * ÐÞ¸ÄÈÕÆÚ
+ 201          * ÐÞ¸ÄÈË£º
+ 202          * µÚN´ÎÐÞ¸Ä£º
+ 203          * ÐÞ¸ÄÔ­Òò£º
+ 204          * ±¸×¢£º
+ 205          *******************************************************************************/
+ 206          void SnoozeEnable(void)
+ 207          {
+ 208   1              if (!gbSnoozeEnable)
+ 209   1              {
+ 210   2                      if (cntAlarm)
+ 211   2                      {
+ 212   3                              //__enMute();
+ 213   3                              gbPowerOn = 0;
+ 214   3                              Snooze_9Min();
+ 215   3                              SetDisplayState10s(DISP_CLK);
+ 216   3                              //BuzzEventPorc(eAL_AL_IDLE);//Õâ¸öº¯Êý»¹Ã»ÓÐÐ´ÄØ
+ 217   3                              gbSnoozeEnable = 1;//Ì°Ë¯±êÖ¾Î»ÖÃ1£¬Æô¶¯Ì°Ë¯
+ 218   3                      }
+ 219   2              }
+ 220   1      }
  221          
  222          /*******************************************************************************
- 223           * º¯ÊýÔ­ÐÍ£º
- 224           * ÊäÈë²ÎÊý£º
- 225           * Êä³ö²ÎÊý£º
- 226           * º¯Êý¹¦ÄÜ£º
- 227           * ·µ»ØÖµËµÃ÷£º
- 228           * ´´½¨ÈÕÆÚ£º
- 229           * ´´½¨ÈË£º
- 230           * ÐÞ¸ÄÈÕÆÚ
- 231           * ÐÞ¸ÄÈË£º
- 232           * µÚN´ÎÐÞ¸Ä£º
- 233           * ÐÞ¸ÄÔ­Òò£º
-C51 COMPILER V9.00   APP_MAIN                                                              11/12/2018 10:19:34 PAGE 7   
+ 223          * º¯ÊýÔ­ÐÍ£º
+ 224          * ÊäÈë²ÎÊý£º
+ 225          * Êä³ö²ÎÊý£º
+ 226          * º¯Êý¹¦ÄÜ£º
+ 227          * ·µ»ØÖµËµÃ÷£º
+ 228          * ´´½¨ÈÕÆÚ£º
+ 229          * ´´½¨ÈË£º
+ 230          * ÐÞ¸ÄÈÕÆÚ
+ 231          * ÐÞ¸ÄÈË£º
+ 232          * µÚN´ÎÐÞ¸Ä£º
+ 233          * ÐÞ¸ÄÔ­Òò£º
+ 234          * ±¸×¢£º
+ 235          *******************************************************************************/
+ 236          
+ 237          
+ 238          
+ 239          /*******************************************************************************
+ 240           * º¯ÊýÔ­ÐÍ£º
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 5   
 
- 234           * ±¸×¢£º
- 235           *******************************************************************************/
- 236          void app_main(void)
- 237          {
- 238                  PowerON_Reset();
- 239                  while(1)
- 240                  {
- 241                          if(AppTick1ms)
- 242                          {
- 243                                  AppTick1ms=0;
- 244                          }
- 245                          if(AppTick0)
- 246                          {
- 247                                  AppTick0=0;
- 248                                  KeyScan();
- 249                                  KeyComMsg();
- 250                          }
- 251                          if(AppTick1)
- 252                          {
- 253                                  AppTick1=0;
- 254                                  
- 255                          }
- 256                          if(AppTick2)
- 257                          {
- 258                                  AppTick2=0;
- 259                                  
- 260                          }
- 261                          if(AppTick3)
- 262                          {
- 263                                  AppTick3=0;
- 264                                  
- 265                          }
- 266                          if(AppTick4)
- 267                          {
- 268                                  AppTick4=0;
- 269                                  
- 270                          }
- 271                          if(AppTick5)
- 272                          {
- 273                                  AppTick5=0;
- 274                                  Timing_Handle();
- 275                                  Compare_1MinutePorc();
- 276                          }
- 277                          WDT_clear();    
- 278                  }
- 279          }
- 280          
- 281          
- 282          
- 283          
- 284          
- 285          
- 286          
- 287          
+ 241           * ÊäÈë²ÎÊý£º
+ 242           * Êä³ö²ÎÊý£º
+ 243           * º¯Êý¹¦ÄÜ£ºÊ±¼ä±È½Ï£¬°ÑRTCÊ±¼äÓëÄ³¸ö¶¨Ê±Ê±¼ä±È½Ï£¬±ÈÈçÄÖÖÓ
+ 244           * ·µ»ØÖµËµÃ÷£º
+ 245           * ´´½¨ÈÕÆÚ£º
+ 246           * ´´½¨ÈË£º
+ 247           * ÐÞ¸ÄÈÕÆÚ
+ 248           * ÐÞ¸ÄÈË£º
+ 249           * µÚN´ÎÐÞ¸Ä£º
+ 250           * ÐÞ¸ÄÔ­Òò£º
+ 251           * ±¸×¢£º
+ 252           *******************************************************************************/
+ 253          void Compare_1MinutePorc(void)
+ 254          {
+ 255   1              //static uint8_t  cntSetVolume; //´Ë±äÁ¿Ö»ÔÚÉÏµçÊ±³õÊ¼»¯Ò»´Î£¬ÔÙµ÷ÓÃ´Ëº¯ÊýÊ±²»»áÖ´ÐÐ´ËÓï¾ä
+ 256   1              if(gRTC_Sec!=gRTC_Sec_bk)
+ 257   1              {
+ 258   2                      gRTC_Sec_bk=gRTC_Sec;
+ 259   2                      
+ 260   2                      if(gRTC_Minute!=gRTC_Minute_bk)//·ÖÖÓ
+ 261   2                      {
+ 262   3                              gRTC_Minute_bk=gRTC_Minute;
+ 263   3                              if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (gRTC_Hour == Alarm1_TypeDef.hour) && (gRTC_Minute == Al
+             -arm1_TypeDef.minute))
+ 264   3                              {
+ 265   4                                      if(Alarm1_TypeDef.Alarm_WorkMode==ALARM_BT)
+ 266   4                                      {
+ 267   5                                              
+ 268   5                                      }
+ 269   4                                      else
+ 270   4                                      {
+ 271   5      
+ 272   5                                      }
+ 273   4                              }
+ 274   3                                      
+ 275   3                              if(gRTC_Hour!=gRTC_Hour_bk)//Ð¡Ê±
+ 276   3                              {
+ 277   4                                      gRTC_Hour_bk=gRTC_Hour_bk;
+ 278   4                                      gRTC_Hour_bk_24++;
+ 279   4                                      if(gRTC_Hour_bk_24>=24)
+ 280   4                                      {
+ 281   5                                              gRTC_Hour_bk_24=0;
+ 282   5                                              
+ 283   5                                      }
+ 284   4                              }
+ 285   3                      }
+ 286   2              }
+ 287   1      }
  288          
- 289          
+ 289          /*******************************************************************************
+ 290           * º¯ÊýÔ­ÐÍ£º
+ 291           * ÊäÈë²ÎÊý£º
+ 292           * Êä³ö²ÎÊý£º
+ 293           * º¯Êý¹¦ÄÜ£ºÆäËû³ÌÐòÐèÒªÓÃµ½µÄ¼ÆÊ±·ÅÔÚÕâÀï½øÐÐ
+ 294           * ·µ»ØÖµËµÃ÷£º
+ 295           * ´´½¨ÈÕÆÚ£º
+ 296           * ´´½¨ÈË£º
+ 297           * ÐÞ¸ÄÈÕÆÚ
+ 298           * ÐÞ¸ÄÈË£º
+ 299           * µÚN´ÎÐÞ¸Ä£º
+ 300           * ÐÞ¸ÄÔ­Òò£º
+ 301           * ±¸×¢£º
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 6   
 
-C51 COMPILATION COMPLETE.  54 WARNING(S),  13 ERROR(S)
+ 302           *******************************************************************************/
+ 303          void Timing_Handle(void)
+ 304          {
+ 305   1              if (Time_Temp_TypeDef.Flag_Confirm_30Sec == 2)
+ 306   1              {
+ 307   2                      timeCnt_30Sec++;
+ 308   2                      if (timeCnt_30Sec >= 3000)
+ 309   2                      {
+ 310   3                              Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;
+ 311   3                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 312   3                              timeCnt_30Sec = 0;
+ 313   3                              gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour; //30s¼ÆÊ±½áÊø°ÑÉè¶¨µÄÁÙÊ±RTCÊ±¼ä¸¶¸øÒ»Ö±ÔÚÔËÐÐµÄRTCÊ±¼ä
+ 314   3                              gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
+ 315   3                      }
+ 316   2              }
+ 317   1              else if (Alarm1_TypeDef.Flag_Confirm_30Sec == 2)
+ 318   1              {
+ 319   2                      timeCnt_30Sec++;
+ 320   2                      if (timeCnt_30Sec >= 3000)
+ 321   2                      {
+ 322   3                              Alarm1_TypeDef.Flag_Confirm_30Sec = 0;
+ 323   3                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 324   3                              timeCnt_30Sec = 0;
+ 325   3                              Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//30s¼ÆÊ±½áÊø°ÑÉè¶¨µÄÄÖÖÓÊ±¼ä¸³¸øÓëRTC±È¶ÔµÄÄÖÖÓ±äÁ¿
+ 326   3                              Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
+ 327   3                      }
+ 328   2              }
+ 329   1              //else
+ 330   1              //      timeCnt_30Sec = 0;
+ 331   1      }
+ 332          
+ 333          /*******************************************************************************
+ 334           * º¯ÊýÔ­ÐÍ£º
+ 335           * ÊäÈë²ÎÊý£º
+ 336           * Êä³ö²ÎÊý£º
+ 337           * º¯Êý¹¦ÄÜ£º
+ 338           * ·µ»ØÖµËµÃ÷£º
+ 339           * ´´½¨ÈÕÆÚ£º
+ 340           * ´´½¨ÈË£º
+ 341           * ÐÞ¸ÄÈÕÆÚ
+ 342           * ÐÞ¸ÄÈË£º
+ 343           * µÚN´ÎÐÞ¸Ä£º
+ 344           * ÐÞ¸ÄÔ­Òò£º
+ 345           * ±¸×¢£º
+ 346           *******************************************************************************/
+ 347          void Sys_Tick(void)
+ 348          {
+ 349   1              AppTick1ms=1;
+ 350   1              if(cntAppTick==0)
+ 351   1                      AppTick0=1;
+ 352   1              if(cntAppTick==1)
+ 353   1                      AppTick1=1;
+ 354   1              if(cntAppTick==2)
+ 355   1                      AppTick2=1;
+ 356   1              if(cntAppTick==3)
+ 357   1                      AppTick3=1;
+ 358   1              if(cntAppTick==4)
+ 359   1                      AppTick4=1;
+ 360   1              if(cntAppTick==5)
+ 361   1                      AppTick5=1;
+ 362   1              if(cntAppTick==6)
+ 363   1              {
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 7   
+
+ 364   2              
+ 365   2              }
+ 366   1              if(++cntAppTick>=10)
+ 367   1                      cntAppTick=0;
+ 368   1      }
+ 369          
+ 370          /*******************************************************************************
+ 371           * º¯ÊýÔ­ÐÍ£º
+ 372           * ÊäÈë²ÎÊý£º
+ 373           * Êä³ö²ÎÊý£º
+ 374           * º¯Êý¹¦ÄÜ£º
+ 375           * ·µ»ØÖµËµÃ÷£º
+ 376           * ´´½¨ÈÕÆÚ£º
+ 377           * ´´½¨ÈË£º
+ 378           * ÐÞ¸ÄÈÕÆÚ
+ 379           * ÐÞ¸ÄÈË£º
+ 380           * µÚN´ÎÐÞ¸Ä£º
+ 381           * ÐÞ¸ÄÔ­Òò£º
+ 382           * ±¸×¢£º
+ 383           *******************************************************************************/
+ 384          void PowerON_Reset(void)
+ 385          {
+ 386   1              //WDT_init();           // initialize Watch-dog timer
+ 387   1              PlayMode_TypeDef=PLAY_JUST_POWER;//¸ÕÉÏµç£¬Ä£Ê½ÉèÎª¸ÕÉÏµçÄ£Ê½
+ 388   1              LED_Brightness_TypeDef=LED_HIGH;//ÁÁ¶ÈÄ¬ÈÏÎª¸ß
+ 389   1              Alarm1_TypeDef.Alarm_WorkMode=ALARM_BEEP; //×Ô¼º¼ÓµÄÎªÄÖÖÓÏìÄÖÄ£Ê½ÎªbeepÄ£Ê½£¬·½±ãÐ´³ÌÐò£¬Ò²·ÀÖ¹Ê¹ÓÃÕßÔÚÉ
+             -èÖÃÄÖÖÓ
+ 390   1                                                                      //Ê±Ã»ÓÐÑ¡ÔñÄ£Ê½£¬ÄÇ¾ÍÑ¡ÔñÄ¬ÈÏÊÇbeepÄ£Ê½
+ 391   1              sysVolume = 8;//Ä¬ÈÏÏµÍ³ÒôÁ¿Îª8¼¶
+ 392   1              cntNoFlash = 0;
+ 393   1              gbUser_AdjClk = 0;
+ 394   1              gb12HourDisp = 1;
+ 395   1              gbHalfSecond = 1;
+ 396   1              gRTC_Sec = 0;
+ 397   1              gRTC_Minute = 0;
+ 398   1              gRTC_Hour = 0;
+ 399   1              gZone = 2;
+ 400   1      //      Alarm1Mode = ALARM_NONE;
+ 401   1      //      Alarm2Mode = ALARM_NONE;
+ 402   1      //      AlarmingType = ALARM_OFF;
+ 403   1      
+ 404   1              gbPowerOn = 0;
+ 405   1              //WDT_clear();
+ 406   1      }
+ 407          
+ 408          /*******************************************************************************
+ 409           * º¯ÊýÔ­ÐÍ£º
+ 410           * ÊäÈë²ÎÊý£º
+ 411           * Êä³ö²ÎÊý£º
+ 412           * º¯Êý¹¦ÄÜ£º
+ 413           * ·µ»ØÖµËµÃ÷£º
+ 414           * ´´½¨ÈÕÆÚ£º
+ 415           * ´´½¨ÈË£º
+ 416           * ÐÞ¸ÄÈÕÆÚ
+ 417           * ÐÞ¸ÄÈË£º
+ 418           * µÚN´ÎÐÞ¸Ä£º
+ 419           * ÐÞ¸ÄÔ­Òò£º
+ 420           * ±¸×¢£º
+ 421           *******************************************************************************/
+ 422          void app_main(void)
+ 423          {
+ 424   1              PowerON_Reset();
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 8   
+
+ 425   1              while(1)
+ 426   1              {
+ 427   2                      SET_BEEP(1);
+ 428   2                      SET_LED_RED(1);
+ 429   2                      BT_SET_LED_BLUE(1);
+ 430   2                      __SET_1B(1);
+*** WARNING C307 IN LINE 430 OF App_User\Source\app_main.c: macro '__SET_1B': parameter count mismatch
+ 431   2                      __SET_1C(1);
+*** WARNING C307 IN LINE 431 OF App_User\Source\app_main.c: macro '__SET_1C': parameter count mismatch
+ 432   2                      __SET_2A(1);
+*** WARNING C307 IN LINE 432 OF App_User\Source\app_main.c: macro '__SET_2A': parameter count mismatch
+ 433   2                      __SET_2B(1);
+*** WARNING C307 IN LINE 433 OF App_User\Source\app_main.c: macro '__SET_2B': parameter count mismatch
+ 434   2                      __SET_2C(1);
+*** WARNING C307 IN LINE 434 OF App_User\Source\app_main.c: macro '__SET_2C': parameter count mismatch
+ 435   2                      __SET_2D(1);
+*** WARNING C307 IN LINE 435 OF App_User\Source\app_main.c: macro '__SET_2D': parameter count mismatch
+ 436   2                      __SET_2E(1);
+*** WARNING C307 IN LINE 436 OF App_User\Source\app_main.c: macro '__SET_2E': parameter count mismatch
+ 437   2                      __SET_2F(1);
+*** WARNING C307 IN LINE 437 OF App_User\Source\app_main.c: macro '__SET_2F': parameter count mismatch
+ 438   2                      __SET_2G(1);
+*** WARNING C307 IN LINE 438 OF App_User\Source\app_main.c: macro '__SET_2G': parameter count mismatch
+ 439   2                      
+ 440   2                      
+ 441   2      //              if(AppTick1ms)
+ 442   2      //              {
+ 443   2      //                      AppTick1ms=0;
+ 444   2      //              }
+ 445   2      //              if(AppTick0)
+ 446   2      //              {
+ 447   2      //                      AppTick0=0;
+ 448   2      //                      KeyScan();
+ 449   2      //                      KeyComMsg();
+ 450   2      //              }
+ 451   2      //              if(AppTick1)
+ 452   2      //              {
+ 453   2      //                      AppTick1=0;
+ 454   2      //                      
+ 455   2      //              }
+ 456   2      //              if(AppTick2)
+ 457   2      //              {
+ 458   2      //                      AppTick2=0;
+ 459   2      //                      
+ 460   2      //              }
+ 461   2      //              if(AppTick3)
+ 462   2      //              {
+ 463   2      //                      AppTick3=0;
+ 464   2      //                      Display();
+ 465   2      //              }
+ 466   2      //              if(AppTick4)
+ 467   2      //              {
+ 468   2      //                      AppTick4=0;
+ 469   2      //                      
+ 470   2      //              }
+ 471   2      //              if(AppTick5)
+ 472   2      //              {
+ 473   2      //                      AppTick5=0;
+ 474   2      //                      Timing_Handle();
+ 475   2      //                      Compare_1MinutePorc();
+ 476   2      //              }
+ 477   2      //              //WDT_clear();  
+C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 9   
+
+ 478   2              }
+ 479   1      }
+ 480          
+ 481          
+ 482          
+ 483          
+ 484          
+ 485          
+ 486          
+ 487          
+ 488          
+ 489          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    378    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =     22    ----
+   BIT SIZE         =     15    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  9 WARNING(S),  0 ERROR(S)

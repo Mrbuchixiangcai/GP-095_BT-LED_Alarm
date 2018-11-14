@@ -11,12 +11,12 @@
 /************************/
 /*宏定义macro definition*/
 /************************/
-#define	 K_D  		(1<<5) //
-#define	 K_U  		(2<<5) //短按
-#define	 K_H  		(3<<5) //长按保持 hold
-#define	 K_R  		(4<<5) //连击
-#define	 K_L  		(5<<5) //长按
-#define	 K_LU  		(6<<5) //超长按
+#define	 K_D  		(1<<5) //0010_0000(0x20)
+#define	 K_U  		(2<<5) //0100_0000(0x40)//短按
+#define	 K_H  		(3<<5) //0110_0000(0x60)//长按保持 hold
+#define	 K_R  		(4<<5) //1000_0000(0x80)//连击
+#define	 K_L  		(5<<5) //1010_0000(0xA0)//长按
+#define	 K_LU  		(6<<5) //1100_0000(0xC0)//超长按
 #define	 KD(x)  	(x|K_D)
 #define	 KU(x)  	(x|K_U)
 #define	 KH(x)  	(x|K_H)
@@ -32,7 +32,8 @@
 /*************************/
 enum
 {
-	K_SNOOZE_DIMMER=1,//贪睡按键
+	K_NC			 ,
+	K_SNOOZE_DIMMER  ,//贪睡按键
 	K_VOLINC		 ,//音量加 
 	K_PLAY_PAUSE	 ,//暂停/播放
 	K_NEXT			 ,//下一曲

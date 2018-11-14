@@ -47,7 +47,7 @@ sbit  gblcd_bt	   = lcd_BitRam1 ^ 7;
 /*****************************/
 /*变量定义variable definition*/
 /*****************************/
-u8		 dispStatusNum;//cntDispStatus;
+uint8_t        cntDispStatus;
 
 
 /**************************/
@@ -361,11 +361,11 @@ void Display_Off(void)
  *******************************************************************************/
 void Display_Al1Flag(void)
 {
-	if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BEEP)//闹钟响时的工作模式，
+	if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)//闹钟响时的工作模式，
 		gblcd_buz1 = 1;//闹钟响时工作铃声为beep
-	else if (Alarm1_TypeDef.AlarmWorkMode == ALARM_BT)
+	else if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BT)
 	{
-		if ((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (Alarm1_TypeDef.AlarmSnooze == ALARM_SNOOZE_OFF))
+		if ((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (Alarm1_TypeDef.Alarm_Snooze == ALARM_SNOOZE_OFF))
 		{
 			gblcd_bt = 1;//如果是蓝牙就显示蓝牙或者连接到蓝牙
 		}
@@ -386,7 +386,7 @@ void Display_Al1Flag(void)
  * 修改原因：
  * 备注：
  *******************************************************************************/
-void UpdateDisplay(u8 dispStatus)
+void UpdateDisplay(void)
 {
 	switch (dispStatus)
 	{
@@ -458,14 +458,14 @@ void Display_Flag(void)
 void Display(void)
 {
 	u8  cnt;
-	if ((gbUser_AdjClk) || (dispStatusNum))
+	if ((gbUser_AdjClk) || (cntDispStatus))
 	{
 		ClearDisplayBuff(); //清除显示缓存
-		UpdateDisplay(dispStatus);
+		UpdateDisplay();
 		Display_Flag();
 		for (cnt = 0; cnt < 4; cnt++)
 		{
-			Led_Buffer[i] = dispCode_Arr[dispBuff[i]];
+			Led_Buffer[cnt] = dispCode_Arr[dispBuff[cnt]];
 		}
 		Display_LED();
 	}
@@ -475,7 +475,7 @@ void Display(void)
   * 函数原型：
   * 输入参数：
   * 输出参数：
-  * 函数功能：
+  * 函数功能：只显示某一个标志位，其他的不显示，所以在端口输出哪里是"^"异或符号
   * 返回值说明：
   * 创建日期：
   * 创建人：
@@ -485,6 +485,50 @@ void Display(void)
   * 修改原因：
   * 备注：
   *******************************************************************************/
+void Display_OnlyFlag(void)
+{
+	if ((gbUser_AdjClk) || (cntDispStatus))
+		return;
+	if (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON)
+	{
+		Display_Al1Flag();//调用闹钟1显示标志函数
+		if (gblcd_buz1)
+		{
+			//这里还没有写，不知道用不用,也不是很懂意思
+		}
+		if (gblcd_bt)
+		{
+			//这里还没有写，不知道用不用,也不是很懂意思
+		}
+	}
+
+}
+
+
+
+  /*******************************************************************************
+   * 函数原型：
+   * 输入参数：
+   * 输出参数：
+   * 函数功能：设置显示状态为10s
+   * 返回值说明：
+   * 创建日期：
+   * 创建人：
+   * 修改日期
+   * 修改人：
+   * 第N次修改：
+   * 修改原因：
+   * 备注：
+   *******************************************************************************/
+void SetDisplayState10s(uint8_t status)
+{
+	dispStatus = status;
+	cntDispStatus = cDISP_DELAY_10SEC;
+}
+
+
+
+
 
 
 

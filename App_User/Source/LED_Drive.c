@@ -131,7 +131,7 @@ void Display_LED(void)
 		else
 			__CLR_3F();
 		if (Led_Buffer[2] & 0x40)  //g
-			__SET_3();
+			__SET_3G();
 		else
 			__CLR_3G();
 		Led_Buffer_Copy[2] = Led_Buffer[2];
@@ -155,7 +155,7 @@ void Display_LED(void)
 		else
 			__CLR_4D();
 		if (Led_Buffer[3] & 0x10)  //e
-			__SET_4();
+			__SET_4E();
 		else
 			__CLR_4E();
 		if (Led_Buffer[3] & 0x20)  //f

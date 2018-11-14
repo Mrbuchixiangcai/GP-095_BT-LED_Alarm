@@ -1,0 +1,1 @@
+"App_User\Source\BT_Mode.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Device;.\App_User\Include) DEBUG OBJECTEXTEND PRINT(.\Listings\BT_Mode.lst) OBJECT(.\Objects\BT_Mode.obj)

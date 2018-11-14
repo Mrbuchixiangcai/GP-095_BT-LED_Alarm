@@ -11,116 +11,6 @@
 /************************/
 /*∫Í∂®“Âmacro definition*/
 /************************/
-
-//#define AL1(a)			if (a)			\  //P20 //ƒ÷÷”LEDœ‘ æ
-//							P2|=0x01;   \
-//						else			\
-//							P2&=~0x01;
-//#define PM(a)			if (a)			\  //P21 //AM/PM LEDœ‘ æ
-//							P2|=0x02;   \
-//						else			\
-//							P2&=~0x02;
-//#define HOUR_BIT1_C(a)	if (a)			\  //P22 // ±÷”µƒ–° ±Œªµƒ ÆŒªLEDœ‘ æ
-//							P2|=0x04;   \
-//						else			\
-//							P2&=~0x04;
-//#define HOUR_BIT1_B(a)	if (a)			\  //P23
-//							P2|=0x08;   \
-//						else			\
-//							P2&=~0x08;
-//#define HOUR_BIT2_A(a)	if (a)			\  //P24 // ±÷”µƒ–° ±Œªµƒ∏ˆŒªLEDœ‘ æ
-//							P2|=0x10;   \
-//						else			\
-//							P2&=~0x10;
-//#define HOUR_BIT2_B(a)	if (a)			\  //P25
-//							P2|=0x20;   \
-//						else			\
-//							P2&=~0x20;
-//#define HOUR_BIT2_C(a)	if (a)			\  //P26
-//							P2|=0x40;   \
-//						else			\
-//							P2&=~0x40;
-//#define HOUR_BIT2_D(a)	if (a)			\  //P27
-//							P2|=0x80;   \
-//						else			\
-//							P2&=~0x80;
-//#define HOUR_BIT2_E(a)	if (a)			\  //P30
-//							P3|=0x01;   \
-//						else			\
-//							P3&=~0x01;
-//#define HOUR_BIT2_F(a)	if (a)			\  //P31
-//							P3|=0x02;   \
-//						else			\
-//							P3&=~0x02;
-//#define HOUR_BIT2_G(a)	if (a)			\  //P32
-//							P3|=0x04;   \
-//						else			\
-//							P3&=~0x04;
-//#define COL1(a)			if (a)			\  //P33 // ±º‰œ‘ æ÷–"xx£∫xx"µƒ¡Ωµ„
-//							P3|=0x08;   \
-//						else			\
-//							P3&=~0x08;
-//#define COL2(a)			if (a)			\  //P34 // ±º‰œ‘ æ÷–"xx£∫xx"µƒ¡Ωµ„
-//							P3|=0x10;   \
-//						else			\
-//							P3&=~0x10;
-//#define MIN_BIT1_A(a)	if (a)			\  //P35 // ±÷”µƒ∑÷÷”Œªµƒ ÆŒªLEDœ‘ æ
-//							P3|=0x20;   \
-//						else			\
-//							P3&=~0x20;
-//#define MIN_BIT1_B(a)	if (a)			\  //P36
-//							P3|=0x40;   \
-//						else			\
-//							P3&=~0x40;
-//#define MIN_BIT1_C(a)	if (a)			\  //P37
-//							P3|=0x80;   \
-//						else			\
-//							P3&=~0x80;
-//#define MIN_BIT1_D(a)	if (a)			\  //P40
-//							P4|=0x01;   \
-//						else			\
-//							P4&=~0x01;
-//#define MIN_BIT1_E(a)	if (a)			\  //P41
-//							P4|=0x02;   \
-//						else			\
-//							P4&=~0x02;
-//#define MIN_BIT1_F(a)	if (a)			\  //P42
-//							P4|=0x04;   \
-//						else			\
-//							P4&=~0x04;
-//#define MIN_BIT1_G(a)	if (a)			\  //P43
-//							P4|=0x08;   \
-//						else			\
-//							P4&=~0x08;
-//#define MIN_BIT2_A(a)	if (a)			\  //P44 // ±÷”µƒ∑÷÷”Œªµƒ∏ˆŒªLEDœ‘ æ
-//							P4|=0x10;   \
-//						else			\
-//							P4&=~0x10;
-//#define MIN_BIT2_B(a)	if (a)			\  //P45
-//							P4|=0x20;   \
-//						else			\
-//							P4&=~0x20;
-//#define MIN_BIT2_C(a)	if (a)			\  //P46
-//							P4|=0x40;   \
-//						else			\
-//							P4&=~0x40;
-//#define MIN_BIT2_D(a)	if (a)			\  //P47
-//							P4|=0x80;   \
-//						else			\
-//							P4&=~0x80;
-//#define MIN_BIT2_E(a)	if (a)			\  //P50
-//							P5|=0x01;   \
-//						else			\
-//							P5&=~0x01;
-//#define MIN_BIT2_F(a)	if (a)			\  //P51
-//							P5|=0x02;   \
-//						else			\
-//							P5&=~0x02;
-//#define MIN_BIT2_G(a)	if (a)			\  //P52
-//							P5|=0x04;   \
-//						else			\
-//							P5&=~0x04;
-
 #define S_NC  7
 #define S_A   0		//  AAAAA
 #define S_B   1		// F     B
@@ -327,6 +217,7 @@ typedef struct
 	ALARM_WORK_MODE_TypeDef Alarm_WorkMode;
 	ALARM_SNOOZE_TypeDef Alarm_Snooze;
 }ALRAM_TypeDef;
+
 /****************************/
 /*±Í÷æŒª∂®“Âflags definetion*/
 /****************************/
@@ -342,7 +233,8 @@ typedef struct
 /******************************/
 /*∫Ø ˝…˘√˜Function declaration*/
 /******************************/
-
+void Display(void);
+void SetDisplayState10s(uint8_t status);
 /*****************************/
 /*∫Ø ˝∂®“Âfunction definetion*/
 /*****************************/
@@ -360,7 +252,8 @@ extern ALRAM_TypeDef  Alarm1_TypeDef;
 /************************************/
 /*Õ‚≤øµ˜”√_±Í÷æŒª∂®“Âflags definetion*/
 /************************************/
-
+extern u8 bdata lcd_BitRam0;
+extern u8 bdata lcd_BitRam1;
 /*************************************/
 /*Õ‚≤øµ˜”√_±‰¡ø∂®“Âvariable definition*/
 /*************************************/
@@ -369,7 +262,7 @@ extern uint8_t  alarmMinute;//≈–∂œ¥À±‰¡øµƒ÷µ£¨Õ®π˝LEDœ‘ æ≥ˆ¿¥£¨“≤ø…“‘÷±Ω”∂‘¥À±‰¡
 extern uint8_t  alarmHour;
 extern uint8_t  tempAlarmMinute;//“ÚŒ™…Ë÷√ƒ÷÷””–∏ˆ»∑»œ…Ë÷√(À‰»ª◊˜”√≤ª¥Û),À˘“‘–Ë“™”–∏ˆ¡Ÿ ±±‰¡ø◊˜Œ™÷–º‰÷µ£¨µ»
 extern uint8_t  tempAlarmHour;  //µΩ»±»À…Ë÷√ªÚ’ﬂ30s∫Û◊‘∂Ø»∑»œ‘Ÿ∞—tempXxx’‚º∏∏ˆ±‰¡ø∏≥∏¯ƒ÷÷”µƒ◊Ó∫Û…Ë∂® ±º‰
-
+extern uint8_t  cntDispStatus;
 /**********************************/
 /*Õ‚≤øµ˜”√_ ˝◊È∂®“Âarray definition*/
 /**********************************/

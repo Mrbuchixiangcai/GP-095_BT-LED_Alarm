@@ -416,6 +416,11 @@
               <FileType>1</FileType>
               <FilePath>.\App_User\Source\LED_Drive.c</FilePath>
             </File>
+            <File>
+              <FileName>PWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App_User\Source\PWM.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

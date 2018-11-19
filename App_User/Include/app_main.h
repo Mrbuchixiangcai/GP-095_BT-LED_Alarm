@@ -17,6 +17,7 @@
 #include "bt_mode.h"
 #include "key_mode.h"
 #include "led_drive.h"
+#include "PWM.h"
 
 /************************/
 /*宏定义macro definition*/
@@ -26,7 +27,7 @@
 								P0 |= 0x04;		\
 							else				\
 								P0 &= (~0x04);
-#define SET_LED_RED(a)		if(a)				\  
+#define BT_SET_LED_RED(a)		if(a)				\  
 								P5 |= 0x10;		\
 							else                \
 								P5 &= (~0x10);
@@ -41,10 +42,16 @@
 #define BT_LED_RED_DET()  (P0&0x08)    //P03,检测蓝牙是否发出红色LED信号
 #define BT_LED_BLUE_DET() (P5&0x20)    //P55,检测蓝牙是否开启，如果开启，就从另一个端口输出一个Blue LED
 
-#define BT_SET_POWER()	  do{P6 |=  (0x01);}while(0)//P60,使能蓝牙，如果使能了使三极管导通，蓝牙芯片上电
-#define BT_CLR_POWER()	  do{P6 &= (~0x01);}while(0)
-#define __DE_MUTE()		  do{P0 |= ( 0x02);}while(0)//解mute
-#define __EN_MUTE()		  do{P0 &= (~0x02);}while(0)//mute
+#define __BT_SET_POWER()   do{P6 |=  (0x01);}while(0)//P60,使能蓝牙，如果使能了使三极管导通，蓝牙芯片上电
+#define __BT_CLR_POWER()   do{P6 &= (~0x01);}while(0)
+#define __DE_MUTE()		   do{P0 |= ( 0x02);}while(0)//解mute
+#define __EN_MUTE()		   do{P0 &= (~0x02);}while(0)//mute
+#define __BT_SET_LEDBLUE() do{P5 |=  (0x08);}while(0)//蓝牙开机，检测到蓝牙开机信号后，就设置输出1
+#define __BT_CLR_LEDBLUE() do{P5 &= (~0x08);}while(0)//蓝牙关机，检测到蓝牙关机信号后，就设置输出0
+#define __BT_SET_LEDRED()  do{P5 |=  (0x10);}while(0)//TF，就设置输出1
+#define __BT_CLR_LEDRED()  do{P5 &= (~0x10);}while(0)//TF，就设置输出0
+#define __AL1_SET_FLAG()   do{P2 |= (~0x00);}while(0)//P20  闹钟开启，就显示标志
+#define __AL1_CLR_FLAG()   do{P2 &= (~0x00);}while(0)//
 
 /*************************/
 /*类型定义byte definition*/
@@ -65,6 +72,8 @@ enum
 	DISP_AL1,
 	DISP_AL2,
 	ADJ_CLK,
+	ADJ_CLK_HOUR,
+	ADJ_CLK_MIN,
 	ADJ_ZONE,
 	ADJ_YEAR,
 	ADJ_DATE,
@@ -78,6 +87,7 @@ enum
 	ADJ_ALARM2_HOUR,
 	ADJ_ALARM1_MODE,
 	ADJ_ALARM2_MODE,
+	ADJ_ALARM1_WORK,
 	DISP_VOL,
 	DISP_SLP,
 	DISP_AUX,
@@ -165,6 +175,8 @@ extern BOOL  gb0_5s;
 extern BOOL  gbUser_AdjClk;
 extern BOOL  gbHalfSecond;
 extern BOOL  gbTestMode;
+extern uint8_t    	  Flag_DispStatus;
+
 /*************************************/
 /*外部调用_变量定义variable definition*/
 /*************************************/
@@ -175,7 +187,7 @@ extern uint8_t  idata gRTC_Minute;
 extern uint8_t  idata gRTC_Minute_bk;
 extern uint8_t  idata gRTC_Hour;
 extern uint8_t  idata gRTC_Hour_bk;
-extern uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
+extern uint8_t  idata gRTC_Hour_bk_24;//计数24小时
 extern uint8_t  idata gRTC_Week; 
 extern uint8_t  idata Snooze_Hour;//贪睡小时时间
 extern uint8_t  idata Snooze_Minute;//贪睡分钟时间
@@ -184,9 +196,9 @@ extern uint16_t idata timeCnt_30Sec;
 
 extern uint8_t  idata cntNoFlash;
 extern uint8_t		  gZone;
-extern uint8_t    	  dispStatus;
 extern uint8_t  idata cntAlarm;
 extern int 			  testINT;
+extern uint32_t  cntDispStatus;
 /**********************************/
 /*外部调用_数组定义array definition*/
 /**********************************/

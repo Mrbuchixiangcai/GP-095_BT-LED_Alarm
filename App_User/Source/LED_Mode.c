@@ -47,7 +47,6 @@ sbit  gblcd_bt	   = lcd_BitRam1 ^ 7;
 /*****************************/
 /*变量定义variable definition*/
 /*****************************/
-uint8_t        cntDispStatus;
 
 
 /**************************/
@@ -151,18 +150,92 @@ BOOL NoFlash(void)
  * 修改原因：
  * 备注：
  *******************************************************************************/
+void Display_HH(u8 hh_mm_TypeDef)
+{
+	u8  tmpHour;
+	switch (hh_mm_TypeDef)
+	{
+		case eDS_RTC:
+			tmpHour=Time_Temp_TypeDef.temp_RTC_Hour;
+			break;
+		case eDS_AL1:
+			tmpHour = Alarm1_TypeDef.tempHour;
+			break;
+	}
+	if (gb12HourDisp)//12小时制显示
+	{
+		if (tmpHour < 12)  //如果小于12则是凌晨0点到11:59，为上午
+		{
+			gblcd_am = 1;  //标志位为1，设置对应的LED是否亮起
+		}
+		else
+		{
+			gblcd_pm = 1; //如果大于12则是12:00到23:59，为下午//标志位为1，设置对应的LED是否亮起
+			tmpHour -= 12;//因为是12小时制，所以下午的时间也是12小时制显示，要减12
+		}
+		if (tmpHour == 0) //零点是显示12的，中午12点也是显示12的
+		{
+			tmpHour = 12;
+		}
+		DisplayNum12(tmpHour);
+	}
+}
+
+/*******************************************************************************
+ * 函数原型：
+ * 输入参数：
+ * 输出参数：
+ * 函数功能：
+ * 返回值说明：
+ * 创建日期：
+ * 创建人：
+ * 修改日期
+ * 修改人：
+ * 第N次修改：
+ * 修改原因：
+ * 备注：
+ *******************************************************************************/
+void Display_MM(u8 hh_mm_TypeDef)
+{
+	u8  tmpMinute;
+	switch (hh_mm_TypeDef)
+	{
+		case eDS_RTC:
+			tmpMinute=Time_Temp_TypeDef.temp_RTC_Minute;
+			break;
+		case eDS_AL1:
+			tmpMinute = Alarm1_TypeDef.tempMinute;
+			break;
+	}
+	DisplayNum34(tmpMinute);
+}
+
+/*******************************************************************************
+ * 函数原型：
+ * 输入参数：
+ * 输出参数：
+ * 函数功能：
+ * 返回值说明：
+ * 创建日期：
+ * 创建人：
+ * 修改日期
+ * 修改人：
+ * 第N次修改：
+ * 修改原因：
+ * 备注：
+ *******************************************************************************/
 void Display_HH_MM(u8 hh_mm_TypeDef)
 {
 	u8  tmpHour, tmpMinute;
 	switch (hh_mm_TypeDef)
 	{
 		case eDS_RTC:
-			tmpHour=gRTC_Hour;
-			tmpMinute=gRTC_Minute;
+			tmpHour=Time_Temp_TypeDef.temp_RTC_Hour;
+			tmpMinute=Time_Temp_TypeDef.temp_RTC_Minute;
 			break;
 		case eDS_AL1:
-			tmpHour = Alarm1_TypeDef.hour;
-			tmpMinute = Alarm1_TypeDef.minute;
+			tmpHour = Alarm1_TypeDef.tempHour;
+			tmpMinute = Alarm1_TypeDef.tempMinute;
 			break;
 	}
 	if (gb12HourDisp)//12小时制显示
@@ -219,12 +292,140 @@ void Display_ALarm1(void)
  * 修改原因：
  * 备注：
  *******************************************************************************/
+void Display_SetAlarm1_Hour(void)
+{
+	if ((gb0_5s) || (NoFlash()))
+	{
+		gblcd_colon = 1;
+		Display_HH_MM(eDS_AL1);
+	}
+	else
+	{
+		Display_MM(eDS_AL1);//让分钟LED常亮
+	}
+}
+
+/*******************************************************************************
+ * 函数原型：
+ * 输入参数：
+ * 输出参数：
+ * 函数功能：
+ * 返回值说明：
+ * 创建日期：
+ * 创建人：
+ * 修改日期
+ * 修改人：
+ * 第N次修改：
+ * 修改原因：
+ * 备注：
+ *******************************************************************************/
+void Display_SetAlarm1_Min(void)
+{
+	if ((gb0_5s) || (NoFlash()))
+	{
+		gblcd_colon = 1;
+		Display_HH_MM(eDS_AL1);
+	}
+	else
+	{
+		Display_HH(eDS_AL1);//让小时LED常亮
+	}
+}
+
+/*******************************************************************************
+ * 函数原型：
+ * 输入参数：
+ * 输出参数：
+ * 函数功能：
+ * 返回值说明：
+ * 创建日期：
+ * 创建人：
+ * 修改日期
+ * 修改人：
+ * 第N次修改：
+ * 修改原因：
+ * 备注：
+ *******************************************************************************/
+void Display_SetAlarm1_Work(void)
+{
+	Display_HH_MM(eDS_AL1);//让小时LED常亮
+}
+
+/*******************************************************************************
+ * 函数原型：
+ * 输入参数：
+ * 输出参数：
+ * 函数功能：设置闹钟时间显示，这里没有用到，用到的是Display_SetAlarm1_Hour()和
+ * 			 Display_SetAlarm1_Min()
+ * 返回值说明：
+ * 创建日期：
+ * 创建人：
+ * 修改日期
+ * 修改人：
+ * 第N次修改：
+ * 修改原因：
+ * 备注：
+ *******************************************************************************/
 void Display_SetAlarm1(void)
 {
 	if ((gb0_5s) || (NoFlash()))
 	{
 		gblcd_colon = 1;
 		Display_HH_MM(eDS_AL1);
+	}
+}
+
+/*******************************************************************************
+ * 函数原型：
+ * 输入参数：
+ * 输出参数：
+ * 函数功能：
+ * 返回值说明：
+ * 创建日期：
+ * 创建人：
+ * 修改日期
+ * 修改人：
+ * 第N次修改：
+ * 修改原因：
+ * 备注：
+ *******************************************************************************/
+void Display_SetRTC_Hour(void)
+{
+	if ((gb0_5s) || (NoFlash()))
+	{
+		gblcd_colon = 1;
+		Display_HH_MM(eDS_RTC);
+	}
+	else
+	{
+		Display_MM(eDS_RTC);//让分钟LED常亮
+	}
+}
+
+/*******************************************************************************
+ * 函数原型：
+ * 输入参数：
+ * 输出参数：
+ * 函数功能：
+ * 返回值说明：
+ * 创建日期：
+ * 创建人：
+ * 修改日期
+ * 修改人：
+ * 第N次修改：
+ * 修改原因：
+ * 备注：
+ *******************************************************************************/
+void Display_SetRTC_MIN(void)
+{
+	if ((gb0_5s) || (NoFlash()))
+	{
+		gblcd_colon = 1;
+		Display_HH_MM(eDS_RTC);
+	}
+	else
+	{
+		Display_HH(eDS_RTC);//让小时LED常亮
 	}
 }
 
@@ -369,6 +570,8 @@ void Display_Al1Flag(void)
 		{
 			gblcd_bt = 1;//如果是蓝牙就显示蓝牙或者连接到蓝牙
 		}
+		else
+			gblcd_bt = 1;//如果是蓝牙就显示蓝牙或者连接到蓝牙
 	}
 }
 
@@ -388,7 +591,7 @@ void Display_Al1Flag(void)
  *******************************************************************************/
 void UpdateDisplay(void)
 {
-	switch (dispStatus)
+	switch (Flag_DispStatus)
 	{
 		case DISP_AL1:
 			Display_ALarm1();   
@@ -396,12 +599,27 @@ void UpdateDisplay(void)
 		case ADJ_CLK:
 			Display_SetRTC(); //设置RTC时的显示
 			break;
+		case ADJ_CLK_HOUR:
+			Display_SetRTC_Hour();
+			break;
+		case ADJ_CLK_MIN:
+			Display_SetRTC_MIN();
+			break;
 		case ADJ_ZONE:
 			Display_Zone();
 			break; 
 		case ADJ_ALARM1:
-			Display_SetAlarm1(); //设置闹钟时的显示
+			Display_SetAlarm1(); //设置闹钟的显示
+			break;
+		case ADJ_ALARM1_HOUR:
+			Display_SetAlarm1_Hour(); //设置闹钟小时的显示
 			break; 
+		case ADJ_ALARM1_MIN:
+			Display_SetAlarm1_Min(); //设置闹钟分钟的显示
+			break; 
+		case ADJ_ALARM1_WORK:
+			Display_SetAlarm1_Work(); //设置闹钟分钟的显示
+			break;
 		case POWER_OFF_DISP:
 			Display_Off();
 			break; 
@@ -429,16 +647,49 @@ void UpdateDisplay(void)
  *******************************************************************************/
 void Display_Flag(void)
 {
-	if (dispStatus == ADJ_CLK)
+	if (Flag_DispStatus == ADJ_CLK)
 		return;
-	if ((dispStatus == ADJ_ALARM1) || (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
+	if(BT_LED_BLUE_DET())//上电之后会置起与mcu连接的这个端口，mcu检测蓝牙芯片是否置起
 	{
-		if (dispStatus == ADJ_ALARM1)
+		/* 在设置闹钟的工作模式时，选择beep还是bt时，如果选择bt要让蓝牙标志闪烁，所以在这个设置状态下不能设置gblcd_bt */
+		if (FlagKSet_TypeDef != FLAG_KEYSET_SHORT_ALARM_ALWORKMODE)
+		{
+			//
+			gblcd_bt=1;//__BT_SET_LEDRED();//如果检测到蓝牙开机，就置起蓝灯
+		}
+	}
+	if ((Flag_DispStatus == ADJ_ALARM1_WORK) || (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))//显示状态为闹钟，并且开启了闹钟
+	{
+		if (Flag_DispStatus == ADJ_ALARM1_WORK)
 		{
 			if ((gb0_5s) || (NoFlash())) //NoFlash()不闪烁
 				Display_Al1Flag();
 		}
+		else
+		{
+			gblcd_al=1;
+		}
 	}
+}
+
+/*******************************************************************************
+* 函数原型：
+* 输入参数：
+* 输出参数：
+* 函数功能：设置显示状态为10s
+* 返回值说明：
+* 创建日期：
+* 创建人：
+* 修改日期
+* 修改人：
+* 第N次修改：
+* 修改原因：
+* 备注：
+*******************************************************************************/
+void SetDisplayState10s(uint8_t status)
+{
+	Flag_DispStatus = status;
+	cntDispStatus = cDISP_DELAY_10SEC;
 }
 
 /*******************************************************************************
@@ -460,12 +711,12 @@ void Display(void)
 	u8  cnt;
 	if ((gbUser_AdjClk) || (cntDispStatus))
 	{
-		ClearDisplayBuff(); //清除显示缓存
-		UpdateDisplay();
-		Display_Flag();
+		ClearDisplayBuff(); //先清除显示缓存
+		UpdateDisplay();//然后再更新状态显示
+		Display_Flag(); //
 		for (cnt = 0; cnt < 4; cnt++)
 		{
-			Led_Buffer[cnt] = dispCode_Arr[dispBuff[cnt]];
+			Led_Buffer[cnt] = dispCode_Arr[dispBuff[cnt]];//DIG_NUMx(1-4)赋值给dispBuff[]；
 		}
 		Display_LED();
 	}
@@ -506,25 +757,7 @@ void Display_OnlyFlag(void)
 
 
 
-  /*******************************************************************************
-   * 函数原型：
-   * 输入参数：
-   * 输出参数：
-   * 函数功能：设置显示状态为10s
-   * 返回值说明：
-   * 创建日期：
-   * 创建人：
-   * 修改日期
-   * 修改人：
-   * 第N次修改：
-   * 修改原因：
-   * 备注：
-   *******************************************************************************/
-void SetDisplayState10s(uint8_t status)
-{
-	dispStatus = status;
-	cntDispStatus = cDISP_DELAY_10SEC;
-}
+
 
 
 

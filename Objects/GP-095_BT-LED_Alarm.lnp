@@ -4,6 +4,7 @@
 ".\Objects\Key_Mode.obj",
 ".\Objects\LED_Mode.obj",
 ".\Objects\BT_Mode.obj",
-".\Objects\LED_Drive.obj" 
+".\Objects\LED_Drive.obj",
+".\Objects\PWM.obj" 
 TO ".\Objects\GP-095_BT-LED_Alarm" 
 PRINT(".\Listings\GP-095_BT-LED_Alarm.m51") RAMSIZE(256) 

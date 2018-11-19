@@ -33,6 +33,7 @@ BOOL  gbSnoozeEnable;
 BOOL  gbPowerOn;
 BOOL  gbSleepEnable;
 
+uint8_t Flag_DispStatus;
 
 /*****************************/
 /*变量定义variable definition*/
@@ -45,7 +46,7 @@ uint8_t  idata gRTC_Minute;
 uint8_t  idata gRTC_Minute_bk;
 uint8_t  idata gRTC_Hour;
 uint8_t  idata gRTC_Hour_bk;
-uint8_t  xdata gRTC_Hour_bk_24;//计数24小时
+uint8_t  idata gRTC_Hour_bk_24;//计数24小时
 uint8_t  idata gRTC_Week; //一周7天
 uint8_t  idata Snooze_Hour;//贪睡小时时间
 uint8_t  idata Snooze_Minute;//贪睡分钟时间
@@ -61,8 +62,8 @@ uint8_t  idata cntNoFlash;
 uint8_t  idata AlarmingType;//闹钟时开启还是关闭，用Alarm1_TypeDef.Alarm_OnOFF代替
 uint8_t	 idata Alarm1Mode;//用Alarm1_TypeDef.Alarm_Mode代替了
 uint8_t		   gZone;
-uint8_t		   dispStatus;
 uint8_t	 idata cnt0_5s;//通过这个变量的计数来对gb0_5s的状态连续取反，每次取反0.5s
+uint32_t        cntDispStatus;
 
 /**************************/
 /*数组定义array definition*/
@@ -91,7 +92,7 @@ uint8_t	 idata cnt0_5s;//通过这个变量的计数来对gb0_5s的状态连续取反，每次取反0.5
  *******************************************************************************/
 void ClearDisplayStatus(void)
 {
-	dispStatus = 0;
+	Flag_DispStatus = 0;
 	cntDispStatus = 0;
 }
 
@@ -134,14 +135,14 @@ void DisplayStatusExit(void)
 {
 	if (cntDispStatus)
 	{
-		if (++cnt0_5s >= cDISP_DELAY__500ms)//计数到500ms就进入
+		if (++cnt0_5s >= cDISP_DELAY__500ms)//10ms调用一次，计数到500ms就进入
 		{
 			cnt0_5s = 0;
 			gb0_5s = ~gb0_5s;
 		}
 		if (--cntDispStatus == 0)
 		{
-			switch (dispStatus)
+			switch (Flag_DispStatus)
 			{
 				case DISP_CLK:
 					break;
@@ -149,8 +150,8 @@ void DisplayStatusExit(void)
 					SetDisplayState10s(DISP_RADIO);
 					break;
 				default:
-					cntDispStatus = cDISP_DELAY__62ms5;
-					dispStatus = DISP_CLK;
+					cntDispStatus = cDISP_DELAY__60ms;
+					Flag_DispStatus = DISP_CLK;
 					break;
 			}
 		}
@@ -305,7 +306,7 @@ void Timing_Handle(void)
 	if (Time_Temp_TypeDef.Flag_Confirm_30Sec == 2)
 	{
 		timeCnt_30Sec++;
-		if (timeCnt_30Sec >= 3000)
+		if (timeCnt_30Sec >= 3000)//30s
 		{
 			Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;
 			FlagKSet_TypeDef = FLAG_KEYSET_OFF;
@@ -317,13 +318,15 @@ void Timing_Handle(void)
 	else if (Alarm1_TypeDef.Flag_Confirm_30Sec == 2)
 	{
 		timeCnt_30Sec++;
-		if (timeCnt_30Sec >= 3000)
+		if (timeCnt_30Sec >= 3000)//30s
 		{
 			Alarm1_TypeDef.Flag_Confirm_30Sec = 0;
 			FlagKSet_TypeDef = FLAG_KEYSET_OFF;
 			timeCnt_30Sec = 0;
 			Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//30s计时结束把设定的闹钟时间赋给与RTC比对的闹钟变量
 			Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
+			Alarm1_TypeDef.Flag_Again=1;
+			cntDispStatus=0;
 		}
 	}
 	//else
@@ -361,7 +364,10 @@ void Sys_Tick(void)
 		AppTick5=1;
 	if(cntAppTick==6)
 	{
-	
+		if((--uart1_TX_Timeout)==0)//发送超时就清零发送标志位
+			uart1_EnableSend=0;
+		if((--uart1_RX_Timeout)==0)
+			uart1_RX_Pointer=0;
 	}
 	if(++cntAppTick>=10)
 		cntAppTick=0;
@@ -384,13 +390,14 @@ void Sys_Tick(void)
 void PowerON_Reset(void)
 {
 	//WDT_init();     	// initialize Watch-dog timer
-	PlayMode_TypeDef=PLAY_JUST_POWER;//刚上电，模式设为刚上电模式
+	PlayMode_TypeDef=PLAY_IN_TIME;//PLAY_JUST_POWER;//刚上电，模式设为刚上电模式
 	LED_Brightness_TypeDef=LED_HIGH;//亮度默认为高
 	Alarm1_TypeDef.Alarm_WorkMode=ALARM_BEEP; //自己加的为闹钟响闹模式为beep模式，方便写程序，也防止使用者在设置闹钟
 								//时没有选择模式，那就选择默认是beep模式
+	Music_Mode_TypeDef = MUSIC_BT;
 	sysVolume = 8;//默认系统音量为8级
 	cntNoFlash = 0;
-	gbUser_AdjClk = 0;
+	gbUser_AdjClk = 1;
 	gb12HourDisp = 1;
 	gbHalfSecond = 1;
 	gRTC_Sec = 0;
@@ -424,57 +431,43 @@ void app_main(void)
 	PowerON_Reset();
 	while(1)
 	{
-		SET_BEEP(1);
-		SET_LED_RED(1);
-		BT_SET_LED_BLUE(1);
-		__SET_1B(1);
-		__SET_1C(1);
-		__SET_2A(1);
-		__SET_2B(1);
-		__SET_2C(1);
-		__SET_2D(1);
-		__SET_2E(1);
-		__SET_2F(1);
-		__SET_2G(1);
-		
-		
-//		if(AppTick1ms)
-//		{
-//			AppTick1ms=0;
-//		}
-//		if(AppTick0)
-//		{
-//			AppTick0=0;
-//			KeyScan();
-//			KeyComMsg();
-//		}
-//		if(AppTick1)
-//		{
-//			AppTick1=0;
-//			
-//		}
-//		if(AppTick2)
-//		{
-//			AppTick2=0;
-//			
-//		}
-//		if(AppTick3)
-//		{
-//			AppTick3=0;
-//			Display();
-//		}
-//		if(AppTick4)
-//		{
-//			AppTick4=0;
-//			
-//		}
-//		if(AppTick5)
-//		{
-//			AppTick5=0;
-//			Timing_Handle();
-//			Compare_1MinutePorc();
-//		}
-//		//WDT_clear();	
+		if(AppTick1ms)
+		{
+			AppTick1ms=0;
+		}
+		if(AppTick0)
+		{
+			AppTick0=0;
+			KeyScan();
+			KeyComMsg();
+		}
+		if(AppTick1)
+		{
+			AppTick1=0;
+			BlueMode_Handle();
+		}
+		if(AppTick2)
+		{
+			AppTick2=0;
+			
+		}
+		if(AppTick3)
+		{
+			AppTick3=0;
+			Display();
+		}
+		if(AppTick4)
+		{
+			AppTick4=0;
+			DisplayStatusExit();
+		}
+		if(AppTick5)
+		{
+			AppTick5=0;
+			Timing_Handle();
+			Compare_1MinutePorc();
+		}
+		WDT_clear();	
 	}
 }
 

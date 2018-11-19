@@ -174,6 +174,10 @@ void Display_LED(void)
 			__SET_BEEP();
 		else
 			__CLR_BEEP();
+		if (lcd_BitRam0 & 0x02)
+			__AL1_SET_FLAG();
+		else
+			__AL1_CLR_FLAG();
 		if (lcd_BitRam0 & 0x10)  //dot:µã£¬
 		{
 			__SET_COL1();
@@ -208,6 +212,10 @@ void Display_LED(void)
 		{
 
 		}
+		if(lcd_BitRam1&0x80)
+			__BT_SET_LEDBLUE();
+		else
+			__BT_CLR_LEDBLUE();
 		Led_Buffer_Copy[5] = Led_Buffer[5];
 	}
 }

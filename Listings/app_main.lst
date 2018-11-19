@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 1   
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE APP_MAIN
@@ -43,498 +43,482 @@ line level    source
   33          BOOL  gbPowerOn;
   34          BOOL  gbSleepEnable;
   35          
-  36          
-  37          /*****************************/
-  38          /*±äÁ¿¶¨Òåvariable definition*/
-  39          /*****************************/
-  40          uint8_t  idata cntAppTick;
-  41          bit                        gbHalfSecond;
-  42          uint8_t  idata gRTC_Sec;//RTCÊý¾Ý 
-  43          uint8_t  idata gRTC_Sec_bk;
-  44          uint8_t  idata gRTC_Minute;
-  45          uint8_t  idata gRTC_Minute_bk;
-  46          uint8_t  idata gRTC_Hour;
-  47          uint8_t  idata gRTC_Hour_bk;
-  48          uint8_t  xdata gRTC_Hour_bk_24;//¼ÆÊý24Ð¡Ê±
-  49          uint8_t  idata gRTC_Week; //Ò»ÖÜ7Ìì
-  50          uint8_t  idata Snooze_Hour;//Ì°Ë¯Ð¡Ê±Ê±¼ä
-  51          uint8_t  idata Snooze_Minute;//Ì°Ë¯·ÖÖÓÊ±¼ä
-  52          uint8_t  idata sysVolume;//ÏµÍ³ÒôÁ¿
-  53          uint8_t  idata sys_Cmd;//ÃüÁî
-  54          uint8_t  idata sys_Name;
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 2   
+  36          uint8_t Flag_DispStatus;
+  37          
+  38          /*****************************/
+  39          /*±äÁ¿¶¨Òåvariable definition*/
+  40          /*****************************/
+  41          uint8_t  idata cntAppTick;
+  42          bit                        gbHalfSecond;
+  43          uint8_t  idata gRTC_Sec;//RTCÊý¾Ý 
+  44          uint8_t  idata gRTC_Sec_bk;
+  45          uint8_t  idata gRTC_Minute;
+  46          uint8_t  idata gRTC_Minute_bk;
+  47          uint8_t  idata gRTC_Hour;
+  48          uint8_t  idata gRTC_Hour_bk;
+  49          uint8_t  idata gRTC_Hour_bk_24;//¼ÆÊý24Ð¡Ê±
+  50          uint8_t  idata gRTC_Week; //Ò»ÖÜ7Ìì
+  51          uint8_t  idata Snooze_Hour;//Ì°Ë¯Ð¡Ê±Ê±¼ä
+  52          uint8_t  idata Snooze_Minute;//Ì°Ë¯·ÖÖÓÊ±¼ä
+  53          uint8_t  idata sysVolume;//ÏµÍ³ÒôÁ¿
+  54          uint8_t  idata sys_Cmd;//ÃüÁî
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 2   
 
-  55          uint16_t idata timeCnt_30Sec;//¶Ì°´ALARM¼üÈ±ÈËÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬30s¼ÆÊ±
-  56          
-  57          uint8_t  idata cntAlarm;
-  58          uint8_t  idata cntSleep;
-  59          uint8_t  idata sleepTimeSet;
-  60          uint8_t  idata cntNoFlash;
-  61          uint8_t  idata AlarmingType;//ÄÖÖÓÊ±¿ªÆô»¹ÊÇ¹Ø±Õ£¬ÓÃAlarm1_TypeDef.Alarm_OnOFF´úÌæ
-  62          uint8_t  idata Alarm1Mode;//ÓÃAlarm1_TypeDef.Alarm_Mode´úÌæÁË
-  63          uint8_t            gZone;
-  64          uint8_t            dispStatus;
+  55          uint8_t  idata sys_Name;
+  56          uint16_t idata timeCnt_30Sec;//¶Ì°´ALARM¼üÈ±ÈËÉèÖÃ»ò²»¶¯×÷30s×Ô¶¯±£´æ£¬30s¼ÆÊ±
+  57          
+  58          uint8_t  idata cntAlarm;
+  59          uint8_t  idata cntSleep;
+  60          uint8_t  idata sleepTimeSet;
+  61          uint8_t  idata cntNoFlash;
+  62          uint8_t  idata AlarmingType;//ÄÖÖÓÊ±¿ªÆô»¹ÊÇ¹Ø±Õ£¬ÓÃAlarm1_TypeDef.Alarm_OnOFF´úÌæ
+  63          uint8_t  idata Alarm1Mode;//ÓÃAlarm1_TypeDef.Alarm_Mode´úÌæÁË
+  64          uint8_t            gZone;
   65          uint8_t  idata cnt0_5s;//Í¨¹ýÕâ¸ö±äÁ¿µÄ¼ÆÊýÀ´¶Ôgb0_5sµÄ×´Ì¬Á¬ÐøÈ¡·´£¬Ã¿´ÎÈ¡·´0.5s
-  66          
-  67          /**************************/
-  68          /*Êý×é¶¨Òåarray definition*/
-  69          /**************************/
-  70          
-  71          /******************************/
-  72          /*º¯ÊýÉùÃ÷Function declaration*/
-  73          /******************************/
-  74          
-  75          /*****************************/
-  76          /*º¯Êý¶¨Òåfunction definetion*/
-  77          /*****************************/
-  78          /*******************************************************************************
-  79           * º¯ÊýÔ­ÐÍ£º
-  80           * ÊäÈë²ÎÊý£º
-  81           * Êä³ö²ÎÊý£º
-  82           * º¯Êý¹¦ÄÜ£º°ÑÏÔÊ¾×´Ì¬ÇåÁã
-  83           * ·µ»ØÖµËµÃ÷£º
-  84           * ´´½¨ÈÕÆÚ£º
-  85           * ´´½¨ÈË£º
-  86           * ÐÞ¸ÄÈÕÆÚ
-  87           * ÐÞ¸ÄÈË£º
-  88           * µÚN´ÎÐÞ¸Ä£º
-  89           * ÐÞ¸ÄÔ­Òò£º
-  90           * ±¸×¢£º
-  91           *******************************************************************************/
-  92          void ClearDisplayStatus(void)
-  93          {
-  94   1              dispStatus = 0;
-  95   1              cntDispStatus = 0;
-  96   1      }
-  97          
-  98           /*******************************************************************************
-  99            * º¯ÊýÔ­ÐÍ£º
- 100            * ÊäÈë²ÎÊý£º
- 101            * Êä³ö²ÎÊý£º
- 102            * º¯Êý¹¦ÄÜ£ºË¯Ãß»½ÐÑÖ®ºóÇå³ýÏà¹Ø±êÖ¾Î»ºÍ¼ÆÊýÊ²Ã´µÄ±äÁ¿
- 103            * ·µ»ØÖµËµÃ÷£º
- 104            * ´´½¨ÈÕÆÚ£º
- 105            * ´´½¨ÈË£º
- 106            * ÐÞ¸ÄÈÕÆÚ
- 107            * ÐÞ¸ÄÈË£º
- 108            * µÚN´ÎÐÞ¸Ä£º
- 109            * ÐÞ¸ÄÔ­Òò£º
- 110            * ±¸×¢£º
- 111            *******************************************************************************/
- 112          void Clear_Sleep(void)
- 113          {
- 114   1              cntSleep = 0;
- 115   1              sleepTimeSet = 0;
- 116   1              gbSleepEnable = 0;
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 3   
+  66          uint32_t        cntDispStatus;
+  67          
+  68          /**************************/
+  69          /*Êý×é¶¨Òåarray definition*/
+  70          /**************************/
+  71          
+  72          /******************************/
+  73          /*º¯ÊýÉùÃ÷Function declaration*/
+  74          /******************************/
+  75          
+  76          /*****************************/
+  77          /*º¯Êý¶¨Òåfunction definetion*/
+  78          /*****************************/
+  79          /*******************************************************************************
+  80           * º¯ÊýÔ­ÐÍ£º
+  81           * ÊäÈë²ÎÊý£º
+  82           * Êä³ö²ÎÊý£º
+  83           * º¯Êý¹¦ÄÜ£º°ÑÏÔÊ¾×´Ì¬ÇåÁã
+  84           * ·µ»ØÖµËµÃ÷£º
+  85           * ´´½¨ÈÕÆÚ£º
+  86           * ´´½¨ÈË£º
+  87           * ÐÞ¸ÄÈÕÆÚ
+  88           * ÐÞ¸ÄÈË£º
+  89           * µÚN´ÎÐÞ¸Ä£º
+  90           * ÐÞ¸ÄÔ­Òò£º
+  91           * ±¸×¢£º
+  92           *******************************************************************************/
+  93          void ClearDisplayStatus(void)
+  94          {
+  95   1              Flag_DispStatus = 0;
+  96   1              cntDispStatus = 0;
+  97   1      }
+  98          
+  99           /*******************************************************************************
+ 100            * º¯ÊýÔ­ÐÍ£º
+ 101            * ÊäÈë²ÎÊý£º
+ 102            * Êä³ö²ÎÊý£º
+ 103            * º¯Êý¹¦ÄÜ£ºË¯Ãß»½ÐÑÖ®ºóÇå³ýÏà¹Ø±êÖ¾Î»ºÍ¼ÆÊýÊ²Ã´µÄ±äÁ¿
+ 104            * ·µ»ØÖµËµÃ÷£º
+ 105            * ´´½¨ÈÕÆÚ£º
+ 106            * ´´½¨ÈË£º
+ 107            * ÐÞ¸ÄÈÕÆÚ
+ 108            * ÐÞ¸ÄÈË£º
+ 109            * µÚN´ÎÐÞ¸Ä£º
+ 110            * ÐÞ¸ÄÔ­Òò£º
+ 111            * ±¸×¢£º
+ 112            *******************************************************************************/
+ 113          void Clear_Sleep(void)
+ 114          {
+ 115   1              cntSleep = 0;
+ 116   1              sleepTimeSet = 0;
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 3   
 
- 117   1      }
- 118          
- 119            /*******************************************************************************
- 120             * º¯ÊýÔ­ÐÍ£º
- 121             * ÊäÈë²ÎÊý£º
- 122             * Êä³ö²ÎÊý£º
- 123             * º¯Êý¹¦ÄÜ£ºÍË³öÏÔÊ¾×´Ì¬
- 124             * ·µ»ØÖµËµÃ÷£º
- 125             * ´´½¨ÈÕÆÚ£º
- 126             * ´´½¨ÈË£º
- 127             * ÐÞ¸ÄÈÕÆÚ
- 128             * ÐÞ¸ÄÈË£º
- 129             * µÚN´ÎÐÞ¸Ä£º
- 130             * ÐÞ¸ÄÔ­Òò£º
- 131             * ±¸×¢£º
- 132             *******************************************************************************/
- 133          void DisplayStatusExit(void)
- 134          {
- 135   1              if (cntDispStatus)
- 136   1              {
- 137   2                      if (++cnt0_5s >= cDISP_DELAY__500ms)//¼ÆÊýµ½500ms¾Í½øÈë
- 138   2                      {
- 139   3                              cnt0_5s = 0;
- 140   3                              gb0_5s = ~gb0_5s;
- 141   3                      }
- 142   2                      if (--cntDispStatus == 0)
- 143   2                      {
- 144   3                              switch (dispStatus)
- 145   3                              {
- 146   4                                      case DISP_CLK:
- 147   4                                              break;
- 148   4                                      case DISP_GET_MEN:
- 149   4                                              SetDisplayState10s(DISP_RADIO);
- 150   4                                              break;
- 151   4                                      default:
- 152   4                                              cntDispStatus = cDISP_DELAY__62ms5;
- 153   4                                              dispStatus = DISP_CLK;
- 154   4                                              break;
- 155   4                              }
- 156   3                      }
- 157   2              }
- 158   1      }
- 159          
- 160          /*******************************************************************************
- 161          * º¯ÊýÔ­ÐÍ£º
- 162          * ÊäÈë²ÎÊý£º
- 163          * Êä³ö²ÎÊý£º
- 164          * º¯Êý¹¦ÄÜ£º
- 165          * ·µ»ØÖµËµÃ÷£º
- 166          * ´´½¨ÈÕÆÚ£º
- 167          * ´´½¨ÈË£º
- 168          * ÐÞ¸ÄÈÕÆÚ
- 169          * ÐÞ¸ÄÈË£º
- 170          * µÚN´ÎÐÞ¸Ä£º
- 171          * ÐÞ¸ÄÔ­Òò£º
- 172          * ±¸×¢£º
- 173          *******************************************************************************/
- 174          void Snooze_9Min(void)
- 175          {
- 176   1              uint8_t cnt;
- 177   1              Snooze_Hour = gRTC_Hour;//°ÑÏÖÔÚRTCÊ±¼ä¸³¸øÌ°Ë¯Ê±¼äÕâÑùÔÙ¼ÆÊý9·ÖÖÓÔÙÓëRTCÊ±¼ä¶Ô±È
- 178   1              Snooze_Minute = gRTC_Minute;
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 4   
+ 117   1              gbSleepEnable = 0;
+ 118   1      }
+ 119          
+ 120            /*******************************************************************************
+ 121             * º¯ÊýÔ­ÐÍ£º
+ 122             * ÊäÈë²ÎÊý£º
+ 123             * Êä³ö²ÎÊý£º
+ 124             * º¯Êý¹¦ÄÜ£ºÍË³öÏÔÊ¾×´Ì¬
+ 125             * ·µ»ØÖµËµÃ÷£º
+ 126             * ´´½¨ÈÕÆÚ£º
+ 127             * ´´½¨ÈË£º
+ 128             * ÐÞ¸ÄÈÕÆÚ
+ 129             * ÐÞ¸ÄÈË£º
+ 130             * µÚN´ÎÐÞ¸Ä£º
+ 131             * ÐÞ¸ÄÔ­Òò£º
+ 132             * ±¸×¢£º
+ 133             *******************************************************************************/
+ 134          void DisplayStatusExit(void)
+ 135          {
+ 136   1              if (cntDispStatus)
+ 137   1              {
+ 138   2                      if (++cnt0_5s >= cDISP_DELAY__500ms)//10msµ÷ÓÃÒ»´Î£¬¼ÆÊýµ½500ms¾Í½øÈë
+ 139   2                      {
+ 140   3                              cnt0_5s = 0;
+ 141   3                              gb0_5s = ~gb0_5s;
+ 142   3                      }
+ 143   2                      if (--cntDispStatus == 0)
+ 144   2                      {
+ 145   3                              switch (Flag_DispStatus)
+ 146   3                              {
+ 147   4                                      case DISP_CLK:
+ 148   4                                              break;
+ 149   4                                      case DISP_GET_MEN:
+ 150   4                                              SetDisplayState10s(DISP_RADIO);
+ 151   4                                              break;
+ 152   4                                      default:
+ 153   4                                              cntDispStatus = cDISP_DELAY__60ms;
+ 154   4                                              Flag_DispStatus = DISP_CLK;
+ 155   4                                              break;
+ 156   4                              }
+ 157   3                      }
+ 158   2              }
+ 159   1      }
+ 160          
+ 161          /*******************************************************************************
+ 162          * º¯ÊýÔ­ÐÍ£º
+ 163          * ÊäÈë²ÎÊý£º
+ 164          * Êä³ö²ÎÊý£º
+ 165          * º¯Êý¹¦ÄÜ£º
+ 166          * ·µ»ØÖµËµÃ÷£º
+ 167          * ´´½¨ÈÕÆÚ£º
+ 168          * ´´½¨ÈË£º
+ 169          * ÐÞ¸ÄÈÕÆÚ
+ 170          * ÐÞ¸ÄÈË£º
+ 171          * µÚN´ÎÐÞ¸Ä£º
+ 172          * ÐÞ¸ÄÔ­Òò£º
+ 173          * ±¸×¢£º
+ 174          *******************************************************************************/
+ 175          void Snooze_9Min(void)
+ 176          {
+ 177   1              uint8_t cnt;
+ 178   1              Snooze_Hour = gRTC_Hour;//°ÑÏÖÔÚRTCÊ±¼ä¸³¸øÌ°Ë¯Ê±¼äÕâÑùÔÙ¼ÆÊý9·ÖÖÓÔÙÓëRTCÊ±¼ä¶Ô±È
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 4   
 
- 179   1              for (cnt = 0; cnt < 9; cnt++)//ÕâÀïÖ®ËùÒÔ½øÐÐ9´ÎifÅÐ¶Ï
- 180   1              {
- 181   2                      if (++Snooze_Minute >= 60)
- 182   2                      {
- 183   3                              Snooze_Minute = 0;
- 184   3                              if (++Snooze_Hour >= 24)
- 185   3                              {
- 186   4                                      Snooze_Hour = 0;
- 187   4                              }
- 188   3                      }
- 189   2              }
- 190   1      }
- 191          
- 192          /*******************************************************************************
- 193          * º¯ÊýÔ­ÐÍ£º
- 194          * ÊäÈë²ÎÊý£º
- 195          * Êä³ö²ÎÊý£º
- 196          * º¯Êý¹¦ÄÜ£ºÄÖÖÓÏìÊ±°´ÏÂSNOOZE(Ì°Ë¯)°´¼ü£¬¼ÌÐøÌ°Ë¯9·ÖÖÓ
- 197          * ·µ»ØÖµËµÃ÷£º
- 198          * ´´½¨ÈÕÆÚ£º
- 199          * ´´½¨ÈË£º
- 200          * ÐÞ¸ÄÈÕÆÚ
- 201          * ÐÞ¸ÄÈË£º
- 202          * µÚN´ÎÐÞ¸Ä£º
- 203          * ÐÞ¸ÄÔ­Òò£º
- 204          * ±¸×¢£º
- 205          *******************************************************************************/
- 206          void SnoozeEnable(void)
- 207          {
- 208   1              if (!gbSnoozeEnable)
- 209   1              {
- 210   2                      if (cntAlarm)
- 211   2                      {
- 212   3                              //__enMute();
- 213   3                              gbPowerOn = 0;
- 214   3                              Snooze_9Min();
- 215   3                              SetDisplayState10s(DISP_CLK);
- 216   3                              //BuzzEventPorc(eAL_AL_IDLE);//Õâ¸öº¯Êý»¹Ã»ÓÐÐ´ÄØ
- 217   3                              gbSnoozeEnable = 1;//Ì°Ë¯±êÖ¾Î»ÖÃ1£¬Æô¶¯Ì°Ë¯
- 218   3                      }
- 219   2              }
- 220   1      }
- 221          
- 222          /*******************************************************************************
- 223          * º¯ÊýÔ­ÐÍ£º
- 224          * ÊäÈë²ÎÊý£º
- 225          * Êä³ö²ÎÊý£º
- 226          * º¯Êý¹¦ÄÜ£º
- 227          * ·µ»ØÖµËµÃ÷£º
- 228          * ´´½¨ÈÕÆÚ£º
- 229          * ´´½¨ÈË£º
- 230          * ÐÞ¸ÄÈÕÆÚ
- 231          * ÐÞ¸ÄÈË£º
- 232          * µÚN´ÎÐÞ¸Ä£º
- 233          * ÐÞ¸ÄÔ­Òò£º
- 234          * ±¸×¢£º
- 235          *******************************************************************************/
- 236          
+ 179   1              Snooze_Minute = gRTC_Minute;
+ 180   1              for (cnt = 0; cnt < 9; cnt++)//ÕâÀïÖ®ËùÒÔ½øÐÐ9´ÎifÅÐ¶Ï
+ 181   1              {
+ 182   2                      if (++Snooze_Minute >= 60)
+ 183   2                      {
+ 184   3                              Snooze_Minute = 0;
+ 185   3                              if (++Snooze_Hour >= 24)
+ 186   3                              {
+ 187   4                                      Snooze_Hour = 0;
+ 188   4                              }
+ 189   3                      }
+ 190   2              }
+ 191   1      }
+ 192          
+ 193          /*******************************************************************************
+ 194          * º¯ÊýÔ­ÐÍ£º
+ 195          * ÊäÈë²ÎÊý£º
+ 196          * Êä³ö²ÎÊý£º
+ 197          * º¯Êý¹¦ÄÜ£ºÄÖÖÓÏìÊ±°´ÏÂSNOOZE(Ì°Ë¯)°´¼ü£¬¼ÌÐøÌ°Ë¯9·ÖÖÓ
+ 198          * ·µ»ØÖµËµÃ÷£º
+ 199          * ´´½¨ÈÕÆÚ£º
+ 200          * ´´½¨ÈË£º
+ 201          * ÐÞ¸ÄÈÕÆÚ
+ 202          * ÐÞ¸ÄÈË£º
+ 203          * µÚN´ÎÐÞ¸Ä£º
+ 204          * ÐÞ¸ÄÔ­Òò£º
+ 205          * ±¸×¢£º
+ 206          *******************************************************************************/
+ 207          void SnoozeEnable(void)
+ 208          {
+ 209   1              if (!gbSnoozeEnable)
+ 210   1              {
+ 211   2                      if (cntAlarm)
+ 212   2                      {
+ 213   3                              //__enMute();
+ 214   3                              gbPowerOn = 0;
+ 215   3                              Snooze_9Min();
+ 216   3                              SetDisplayState10s(DISP_CLK);
+ 217   3                              //BuzzEventPorc(eAL_AL_IDLE);//Õâ¸öº¯Êý»¹Ã»ÓÐÐ´ÄØ
+ 218   3                              gbSnoozeEnable = 1;//Ì°Ë¯±êÖ¾Î»ÖÃ1£¬Æô¶¯Ì°Ë¯
+ 219   3                      }
+ 220   2              }
+ 221   1      }
+ 222          
+ 223          /*******************************************************************************
+ 224          * º¯ÊýÔ­ÐÍ£º
+ 225          * ÊäÈë²ÎÊý£º
+ 226          * Êä³ö²ÎÊý£º
+ 227          * º¯Êý¹¦ÄÜ£º
+ 228          * ·µ»ØÖµËµÃ÷£º
+ 229          * ´´½¨ÈÕÆÚ£º
+ 230          * ´´½¨ÈË£º
+ 231          * ÐÞ¸ÄÈÕÆÚ
+ 232          * ÐÞ¸ÄÈË£º
+ 233          * µÚN´ÎÐÞ¸Ä£º
+ 234          * ÐÞ¸ÄÔ­Òò£º
+ 235          * ±¸×¢£º
+ 236          *******************************************************************************/
  237          
  238          
- 239          /*******************************************************************************
- 240           * º¯ÊýÔ­ÐÍ£º
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 5   
+ 239          
+ 240          /*******************************************************************************
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 5   
 
- 241           * ÊäÈë²ÎÊý£º
- 242           * Êä³ö²ÎÊý£º
- 243           * º¯Êý¹¦ÄÜ£ºÊ±¼ä±È½Ï£¬°ÑRTCÊ±¼äÓëÄ³¸ö¶¨Ê±Ê±¼ä±È½Ï£¬±ÈÈçÄÖÖÓ
- 244           * ·µ»ØÖµËµÃ÷£º
- 245           * ´´½¨ÈÕÆÚ£º
- 246           * ´´½¨ÈË£º
- 247           * ÐÞ¸ÄÈÕÆÚ
- 248           * ÐÞ¸ÄÈË£º
- 249           * µÚN´ÎÐÞ¸Ä£º
- 250           * ÐÞ¸ÄÔ­Òò£º
- 251           * ±¸×¢£º
- 252           *******************************************************************************/
- 253          void Compare_1MinutePorc(void)
- 254          {
- 255   1              //static uint8_t  cntSetVolume; //´Ë±äÁ¿Ö»ÔÚÉÏµçÊ±³õÊ¼»¯Ò»´Î£¬ÔÙµ÷ÓÃ´Ëº¯ÊýÊ±²»»áÖ´ÐÐ´ËÓï¾ä
- 256   1              if(gRTC_Sec!=gRTC_Sec_bk)
- 257   1              {
- 258   2                      gRTC_Sec_bk=gRTC_Sec;
- 259   2                      
- 260   2                      if(gRTC_Minute!=gRTC_Minute_bk)//·ÖÖÓ
- 261   2                      {
- 262   3                              gRTC_Minute_bk=gRTC_Minute;
- 263   3                              if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (gRTC_Hour == Alarm1_TypeDef.hour) && (gRTC_Minute == Al
+ 241           * º¯ÊýÔ­ÐÍ£º
+ 242           * ÊäÈë²ÎÊý£º
+ 243           * Êä³ö²ÎÊý£º
+ 244           * º¯Êý¹¦ÄÜ£ºÊ±¼ä±È½Ï£¬°ÑRTCÊ±¼äÓëÄ³¸ö¶¨Ê±Ê±¼ä±È½Ï£¬±ÈÈçÄÖÖÓ
+ 245           * ·µ»ØÖµËµÃ÷£º
+ 246           * ´´½¨ÈÕÆÚ£º
+ 247           * ´´½¨ÈË£º
+ 248           * ÐÞ¸ÄÈÕÆÚ
+ 249           * ÐÞ¸ÄÈË£º
+ 250           * µÚN´ÎÐÞ¸Ä£º
+ 251           * ÐÞ¸ÄÔ­Òò£º
+ 252           * ±¸×¢£º
+ 253           *******************************************************************************/
+ 254          void Compare_1MinutePorc(void)
+ 255          {
+ 256   1              //static uint8_t  cntSetVolume; //´Ë±äÁ¿Ö»ÔÚÉÏµçÊ±³õÊ¼»¯Ò»´Î£¬ÔÙµ÷ÓÃ´Ëº¯ÊýÊ±²»»áÖ´ÐÐ´ËÓï¾ä
+ 257   1              if(gRTC_Sec!=gRTC_Sec_bk)
+ 258   1              {
+ 259   2                      gRTC_Sec_bk=gRTC_Sec;
+ 260   2                      
+ 261   2                      if(gRTC_Minute!=gRTC_Minute_bk)//·ÖÖÓ
+ 262   2                      {
+ 263   3                              gRTC_Minute_bk=gRTC_Minute;
+ 264   3                              if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (gRTC_Hour == Alarm1_TypeDef.hour) && (gRTC_Minute == Al
              -arm1_TypeDef.minute))
- 264   3                              {
- 265   4                                      if(Alarm1_TypeDef.Alarm_WorkMode==ALARM_BT)
- 266   4                                      {
- 267   5                                              
- 268   5                                      }
- 269   4                                      else
- 270   4                                      {
- 271   5      
- 272   5                                      }
- 273   4                              }
- 274   3                                      
- 275   3                              if(gRTC_Hour!=gRTC_Hour_bk)//Ð¡Ê±
- 276   3                              {
- 277   4                                      gRTC_Hour_bk=gRTC_Hour_bk;
- 278   4                                      gRTC_Hour_bk_24++;
- 279   4                                      if(gRTC_Hour_bk_24>=24)
- 280   4                                      {
- 281   5                                              gRTC_Hour_bk_24=0;
- 282   5                                              
- 283   5                                      }
- 284   4                              }
- 285   3                      }
- 286   2              }
- 287   1      }
- 288          
- 289          /*******************************************************************************
- 290           * º¯ÊýÔ­ÐÍ£º
- 291           * ÊäÈë²ÎÊý£º
- 292           * Êä³ö²ÎÊý£º
- 293           * º¯Êý¹¦ÄÜ£ºÆäËû³ÌÐòÐèÒªÓÃµ½µÄ¼ÆÊ±·ÅÔÚÕâÀï½øÐÐ
- 294           * ·µ»ØÖµËµÃ÷£º
- 295           * ´´½¨ÈÕÆÚ£º
- 296           * ´´½¨ÈË£º
- 297           * ÐÞ¸ÄÈÕÆÚ
- 298           * ÐÞ¸ÄÈË£º
- 299           * µÚN´ÎÐÞ¸Ä£º
- 300           * ÐÞ¸ÄÔ­Òò£º
- 301           * ±¸×¢£º
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 6   
+ 265   3                              {
+ 266   4                                      if(Alarm1_TypeDef.Alarm_WorkMode==ALARM_BT)
+ 267   4                                      {
+ 268   5                                              
+ 269   5                                      }
+ 270   4                                      else
+ 271   4                                      {
+ 272   5      
+ 273   5                                      }
+ 274   4                              }
+ 275   3                                      
+ 276   3                              if(gRTC_Hour!=gRTC_Hour_bk)//Ð¡Ê±
+ 277   3                              {
+ 278   4                                      gRTC_Hour_bk=gRTC_Hour_bk;
+ 279   4                                      gRTC_Hour_bk_24++;
+ 280   4                                      if(gRTC_Hour_bk_24>=24)
+ 281   4                                      {
+ 282   5                                              gRTC_Hour_bk_24=0;
+ 283   5                                              
+ 284   5                                      }
+ 285   4                              }
+ 286   3                      }
+ 287   2              }
+ 288   1      }
+ 289          
+ 290          /*******************************************************************************
+ 291           * º¯ÊýÔ­ÐÍ£º
+ 292           * ÊäÈë²ÎÊý£º
+ 293           * Êä³ö²ÎÊý£º
+ 294           * º¯Êý¹¦ÄÜ£ºÆäËû³ÌÐòÐèÒªÓÃµ½µÄ¼ÆÊ±·ÅÔÚÕâÀï½øÐÐ
+ 295           * ·µ»ØÖµËµÃ÷£º
+ 296           * ´´½¨ÈÕÆÚ£º
+ 297           * ´´½¨ÈË£º
+ 298           * ÐÞ¸ÄÈÕÆÚ
+ 299           * ÐÞ¸ÄÈË£º
+ 300           * µÚN´ÎÐÞ¸Ä£º
+ 301           * ÐÞ¸ÄÔ­Òò£º
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 6   
 
- 302           *******************************************************************************/
- 303          void Timing_Handle(void)
- 304          {
- 305   1              if (Time_Temp_TypeDef.Flag_Confirm_30Sec == 2)
- 306   1              {
- 307   2                      timeCnt_30Sec++;
- 308   2                      if (timeCnt_30Sec >= 3000)
- 309   2                      {
- 310   3                              Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;
- 311   3                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
- 312   3                              timeCnt_30Sec = 0;
- 313   3                              gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour; //30s¼ÆÊ±½áÊø°ÑÉè¶¨µÄÁÙÊ±RTCÊ±¼ä¸¶¸øÒ»Ö±ÔÚÔËÐÐµÄRTCÊ±¼ä
- 314   3                              gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
- 315   3                      }
- 316   2              }
- 317   1              else if (Alarm1_TypeDef.Flag_Confirm_30Sec == 2)
- 318   1              {
- 319   2                      timeCnt_30Sec++;
- 320   2                      if (timeCnt_30Sec >= 3000)
- 321   2                      {
- 322   3                              Alarm1_TypeDef.Flag_Confirm_30Sec = 0;
- 323   3                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
- 324   3                              timeCnt_30Sec = 0;
- 325   3                              Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//30s¼ÆÊ±½áÊø°ÑÉè¶¨µÄÄÖÖÓÊ±¼ä¸³¸øÓëRTC±È¶ÔµÄÄÖÖÓ±äÁ¿
- 326   3                              Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
- 327   3                      }
- 328   2              }
- 329   1              //else
- 330   1              //      timeCnt_30Sec = 0;
- 331   1      }
- 332          
- 333          /*******************************************************************************
- 334           * º¯ÊýÔ­ÐÍ£º
- 335           * ÊäÈë²ÎÊý£º
- 336           * Êä³ö²ÎÊý£º
- 337           * º¯Êý¹¦ÄÜ£º
- 338           * ·µ»ØÖµËµÃ÷£º
- 339           * ´´½¨ÈÕÆÚ£º
- 340           * ´´½¨ÈË£º
- 341           * ÐÞ¸ÄÈÕÆÚ
- 342           * ÐÞ¸ÄÈË£º
- 343           * µÚN´ÎÐÞ¸Ä£º
- 344           * ÐÞ¸ÄÔ­Òò£º
- 345           * ±¸×¢£º
- 346           *******************************************************************************/
- 347          void Sys_Tick(void)
- 348          {
- 349   1              AppTick1ms=1;
- 350   1              if(cntAppTick==0)
- 351   1                      AppTick0=1;
- 352   1              if(cntAppTick==1)
- 353   1                      AppTick1=1;
- 354   1              if(cntAppTick==2)
- 355   1                      AppTick2=1;
- 356   1              if(cntAppTick==3)
- 357   1                      AppTick3=1;
- 358   1              if(cntAppTick==4)
- 359   1                      AppTick4=1;
- 360   1              if(cntAppTick==5)
- 361   1                      AppTick5=1;
- 362   1              if(cntAppTick==6)
- 363   1              {
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 7   
+ 302           * ±¸×¢£º
+ 303           *******************************************************************************/
+ 304          void Timing_Handle(void)
+ 305          {
+ 306   1              if (Time_Temp_TypeDef.Flag_Confirm_30Sec == 2)
+ 307   1              {
+ 308   2                      timeCnt_30Sec++;
+ 309   2                      if (timeCnt_30Sec >= 3000)//30s
+ 310   2                      {
+ 311   3                              Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;
+ 312   3                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 313   3                              timeCnt_30Sec = 0;
+ 314   3                              gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour; //30s¼ÆÊ±½áÊø°ÑÉè¶¨µÄÁÙÊ±RTCÊ±¼ä¸¶¸øÒ»Ö±ÔÚÔËÐÐµÄRTCÊ±¼ä
+ 315   3                              gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
+ 316   3                      }
+ 317   2              }
+ 318   1              else if (Alarm1_TypeDef.Flag_Confirm_30Sec == 2)
+ 319   1              {
+ 320   2                      timeCnt_30Sec++;
+ 321   2                      if (timeCnt_30Sec >= 3000)//30s
+ 322   2                      {
+ 323   3                              Alarm1_TypeDef.Flag_Confirm_30Sec = 0;
+ 324   3                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 325   3                              timeCnt_30Sec = 0;
+ 326   3                              Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//30s¼ÆÊ±½áÊø°ÑÉè¶¨µÄÄÖÖÓÊ±¼ä¸³¸øÓëRTC±È¶ÔµÄÄÖÖÓ±äÁ¿
+ 327   3                              Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
+ 328   3                              Alarm1_TypeDef.Flag_Again=1;
+ 329   3                              cntDispStatus=0;
+ 330   3                      }
+ 331   2              }
+ 332   1              //else
+ 333   1              //      timeCnt_30Sec = 0;
+ 334   1      }
+ 335          
+ 336          /*******************************************************************************
+ 337           * º¯ÊýÔ­ÐÍ£º
+ 338           * ÊäÈë²ÎÊý£º
+ 339           * Êä³ö²ÎÊý£º
+ 340           * º¯Êý¹¦ÄÜ£º
+ 341           * ·µ»ØÖµËµÃ÷£º
+ 342           * ´´½¨ÈÕÆÚ£º
+ 343           * ´´½¨ÈË£º
+ 344           * ÐÞ¸ÄÈÕÆÚ
+ 345           * ÐÞ¸ÄÈË£º
+ 346           * µÚN´ÎÐÞ¸Ä£º
+ 347           * ÐÞ¸ÄÔ­Òò£º
+ 348           * ±¸×¢£º
+ 349           *******************************************************************************/
+ 350          void Sys_Tick(void)
+ 351          {
+ 352   1              AppTick1ms=1;
+ 353   1              if(cntAppTick==0)
+ 354   1                      AppTick0=1;
+ 355   1              if(cntAppTick==1)
+ 356   1                      AppTick1=1;
+ 357   1              if(cntAppTick==2)
+ 358   1                      AppTick2=1;
+ 359   1              if(cntAppTick==3)
+ 360   1                      AppTick3=1;
+ 361   1              if(cntAppTick==4)
+ 362   1                      AppTick4=1;
+ 363   1              if(cntAppTick==5)
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 7   
 
- 364   2              
- 365   2              }
- 366   1              if(++cntAppTick>=10)
- 367   1                      cntAppTick=0;
- 368   1      }
- 369          
- 370          /*******************************************************************************
- 371           * º¯ÊýÔ­ÐÍ£º
- 372           * ÊäÈë²ÎÊý£º
- 373           * Êä³ö²ÎÊý£º
- 374           * º¯Êý¹¦ÄÜ£º
- 375           * ·µ»ØÖµËµÃ÷£º
- 376           * ´´½¨ÈÕÆÚ£º
- 377           * ´´½¨ÈË£º
- 378           * ÐÞ¸ÄÈÕÆÚ
- 379           * ÐÞ¸ÄÈË£º
- 380           * µÚN´ÎÐÞ¸Ä£º
- 381           * ÐÞ¸ÄÔ­Òò£º
- 382           * ±¸×¢£º
- 383           *******************************************************************************/
- 384          void PowerON_Reset(void)
- 385          {
- 386   1              //WDT_init();           // initialize Watch-dog timer
- 387   1              PlayMode_TypeDef=PLAY_JUST_POWER;//¸ÕÉÏµç£¬Ä£Ê½ÉèÎª¸ÕÉÏµçÄ£Ê½
- 388   1              LED_Brightness_TypeDef=LED_HIGH;//ÁÁ¶ÈÄ¬ÈÏÎª¸ß
- 389   1              Alarm1_TypeDef.Alarm_WorkMode=ALARM_BEEP; //×Ô¼º¼ÓµÄÎªÄÖÖÓÏìÄÖÄ£Ê½ÎªbeepÄ£Ê½£¬·½±ãÐ´³ÌÐò£¬Ò²·ÀÖ¹Ê¹ÓÃÕßÔÚÉ
+ 364   1                      AppTick5=1;
+ 365   1              if(cntAppTick==6)
+ 366   1              {
+ 367   2                      if((--uart1_TX_Timeout)==0)//·¢ËÍ³¬Ê±¾ÍÇåÁã·¢ËÍ±êÖ¾Î»
+ 368   2                              uart1_EnableSend=0;
+ 369   2                      if((--uart1_RX_Timeout)==0)
+ 370   2                              uart1_RX_Pointer=0;
+ 371   2              }
+ 372   1              if(++cntAppTick>=10)
+ 373   1                      cntAppTick=0;
+ 374   1      }
+ 375          
+ 376          /*******************************************************************************
+ 377           * º¯ÊýÔ­ÐÍ£º
+ 378           * ÊäÈë²ÎÊý£º
+ 379           * Êä³ö²ÎÊý£º
+ 380           * º¯Êý¹¦ÄÜ£º
+ 381           * ·µ»ØÖµËµÃ÷£º
+ 382           * ´´½¨ÈÕÆÚ£º
+ 383           * ´´½¨ÈË£º
+ 384           * ÐÞ¸ÄÈÕÆÚ
+ 385           * ÐÞ¸ÄÈË£º
+ 386           * µÚN´ÎÐÞ¸Ä£º
+ 387           * ÐÞ¸ÄÔ­Òò£º
+ 388           * ±¸×¢£º
+ 389           *******************************************************************************/
+ 390          void PowerON_Reset(void)
+ 391          {
+ 392   1              //WDT_init();           // initialize Watch-dog timer
+ 393   1              PlayMode_TypeDef=PLAY_IN_TIME;//PLAY_JUST_POWER;//¸ÕÉÏµç£¬Ä£Ê½ÉèÎª¸ÕÉÏµçÄ£Ê½
+ 394   1              LED_Brightness_TypeDef=LED_HIGH;//ÁÁ¶ÈÄ¬ÈÏÎª¸ß
+ 395   1              Alarm1_TypeDef.Alarm_WorkMode=ALARM_BEEP; //×Ô¼º¼ÓµÄÎªÄÖÖÓÏìÄÖÄ£Ê½ÎªbeepÄ£Ê½£¬·½±ãÐ´³ÌÐò£¬Ò²·ÀÖ¹Ê¹ÓÃÕßÔÚÉ
              -èÖÃÄÖÖÓ
- 390   1                                                                      //Ê±Ã»ÓÐÑ¡ÔñÄ£Ê½£¬ÄÇ¾ÍÑ¡ÔñÄ¬ÈÏÊÇbeepÄ£Ê½
- 391   1              sysVolume = 8;//Ä¬ÈÏÏµÍ³ÒôÁ¿Îª8¼¶
- 392   1              cntNoFlash = 0;
- 393   1              gbUser_AdjClk = 0;
- 394   1              gb12HourDisp = 1;
- 395   1              gbHalfSecond = 1;
- 396   1              gRTC_Sec = 0;
- 397   1              gRTC_Minute = 0;
- 398   1              gRTC_Hour = 0;
- 399   1              gZone = 2;
- 400   1      //      Alarm1Mode = ALARM_NONE;
- 401   1      //      Alarm2Mode = ALARM_NONE;
- 402   1      //      AlarmingType = ALARM_OFF;
- 403   1      
- 404   1              gbPowerOn = 0;
- 405   1              //WDT_clear();
- 406   1      }
- 407          
- 408          /*******************************************************************************
- 409           * º¯ÊýÔ­ÐÍ£º
- 410           * ÊäÈë²ÎÊý£º
- 411           * Êä³ö²ÎÊý£º
- 412           * º¯Êý¹¦ÄÜ£º
- 413           * ·µ»ØÖµËµÃ÷£º
- 414           * ´´½¨ÈÕÆÚ£º
- 415           * ´´½¨ÈË£º
- 416           * ÐÞ¸ÄÈÕÆÚ
- 417           * ÐÞ¸ÄÈË£º
- 418           * µÚN´ÎÐÞ¸Ä£º
- 419           * ÐÞ¸ÄÔ­Òò£º
- 420           * ±¸×¢£º
- 421           *******************************************************************************/
- 422          void app_main(void)
- 423          {
- 424   1              PowerON_Reset();
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 8   
+ 396   1                                                                      //Ê±Ã»ÓÐÑ¡ÔñÄ£Ê½£¬ÄÇ¾ÍÑ¡ÔñÄ¬ÈÏÊÇbeepÄ£Ê½
+ 397   1              Music_Mode_TypeDef = MUSIC_BT;
+ 398   1              sysVolume = 8;//Ä¬ÈÏÏµÍ³ÒôÁ¿Îª8¼¶
+ 399   1              cntNoFlash = 0;
+ 400   1              gbUser_AdjClk = 1;
+ 401   1              gb12HourDisp = 1;
+ 402   1              gbHalfSecond = 1;
+ 403   1              gRTC_Sec = 0;
+ 404   1              gRTC_Minute = 0;
+ 405   1              gRTC_Hour = 0;
+ 406   1              gZone = 2;
+ 407   1      //      Alarm1Mode = ALARM_NONE;
+ 408   1      //      Alarm2Mode = ALARM_NONE;
+ 409   1      //      AlarmingType = ALARM_OFF;
+ 410   1      
+ 411   1              gbPowerOn = 0;
+ 412   1              //WDT_clear();
+ 413   1      }
+ 414          
+ 415          /*******************************************************************************
+ 416           * º¯ÊýÔ­ÐÍ£º
+ 417           * ÊäÈë²ÎÊý£º
+ 418           * Êä³ö²ÎÊý£º
+ 419           * º¯Êý¹¦ÄÜ£º
+ 420           * ·µ»ØÖµËµÃ÷£º
+ 421           * ´´½¨ÈÕÆÚ£º
+ 422           * ´´½¨ÈË£º
+ 423           * ÐÞ¸ÄÈÕÆÚ
+ 424           * ÐÞ¸ÄÈË£º
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 8   
 
- 425   1              while(1)
- 426   1              {
- 427   2                      SET_BEEP(1);
- 428   2                      SET_LED_RED(1);
- 429   2                      BT_SET_LED_BLUE(1);
- 430   2                      __SET_1B(1);
-*** WARNING C307 IN LINE 430 OF App_User\Source\app_main.c: macro '__SET_1B': parameter count mismatch
- 431   2                      __SET_1C(1);
-*** WARNING C307 IN LINE 431 OF App_User\Source\app_main.c: macro '__SET_1C': parameter count mismatch
- 432   2                      __SET_2A(1);
-*** WARNING C307 IN LINE 432 OF App_User\Source\app_main.c: macro '__SET_2A': parameter count mismatch
- 433   2                      __SET_2B(1);
-*** WARNING C307 IN LINE 433 OF App_User\Source\app_main.c: macro '__SET_2B': parameter count mismatch
- 434   2                      __SET_2C(1);
-*** WARNING C307 IN LINE 434 OF App_User\Source\app_main.c: macro '__SET_2C': parameter count mismatch
- 435   2                      __SET_2D(1);
-*** WARNING C307 IN LINE 435 OF App_User\Source\app_main.c: macro '__SET_2D': parameter count mismatch
- 436   2                      __SET_2E(1);
-*** WARNING C307 IN LINE 436 OF App_User\Source\app_main.c: macro '__SET_2E': parameter count mismatch
- 437   2                      __SET_2F(1);
-*** WARNING C307 IN LINE 437 OF App_User\Source\app_main.c: macro '__SET_2F': parameter count mismatch
- 438   2                      __SET_2G(1);
-*** WARNING C307 IN LINE 438 OF App_User\Source\app_main.c: macro '__SET_2G': parameter count mismatch
- 439   2                      
- 440   2                      
- 441   2      //              if(AppTick1ms)
- 442   2      //              {
- 443   2      //                      AppTick1ms=0;
- 444   2      //              }
- 445   2      //              if(AppTick0)
- 446   2      //              {
- 447   2      //                      AppTick0=0;
- 448   2      //                      KeyScan();
- 449   2      //                      KeyComMsg();
- 450   2      //              }
- 451   2      //              if(AppTick1)
- 452   2      //              {
- 453   2      //                      AppTick1=0;
- 454   2      //                      
- 455   2      //              }
- 456   2      //              if(AppTick2)
- 457   2      //              {
- 458   2      //                      AppTick2=0;
- 459   2      //                      
- 460   2      //              }
- 461   2      //              if(AppTick3)
- 462   2      //              {
- 463   2      //                      AppTick3=0;
- 464   2      //                      Display();
- 465   2      //              }
- 466   2      //              if(AppTick4)
- 467   2      //              {
- 468   2      //                      AppTick4=0;
- 469   2      //                      
- 470   2      //              }
- 471   2      //              if(AppTick5)
- 472   2      //              {
- 473   2      //                      AppTick5=0;
- 474   2      //                      Timing_Handle();
- 475   2      //                      Compare_1MinutePorc();
- 476   2      //              }
- 477   2      //              //WDT_clear();  
-C51 COMPILER V9.00   APP_MAIN                                                              11/14/2018 18:08:00 PAGE 9   
-
- 478   2              }
- 479   1      }
+ 425           * µÚN´ÎÐÞ¸Ä£º
+ 426           * ÐÞ¸ÄÔ­Òò£º
+ 427           * ±¸×¢£º
+ 428           *******************************************************************************/
+ 429          void app_main(void)
+ 430          {
+ 431   1              PowerON_Reset();
+ 432   1              while(1)
+ 433   1              {
+ 434   2                      if(AppTick1ms)
+ 435   2                      {
+ 436   3                              AppTick1ms=0;
+ 437   3                      }
+ 438   2                      if(AppTick0)
+ 439   2                      {
+ 440   3                              AppTick0=0;
+ 441   3                              KeyScan();
+ 442   3                              KeyComMsg();
+ 443   3                      }
+ 444   2                      if(AppTick1)
+ 445   2                      {
+ 446   3                              AppTick1=0;
+ 447   3                              BlueMode_Handle();
+ 448   3                      }
+ 449   2                      if(AppTick2)
+ 450   2                      {
+ 451   3                              AppTick2=0;
+ 452   3                              
+ 453   3                      }
+ 454   2                      if(AppTick3)
+ 455   2                      {
+ 456   3                              AppTick3=0;
+ 457   3                              Display();
+ 458   3                      }
+ 459   2                      if(AppTick4)
+ 460   2                      {
+ 461   3                              AppTick4=0;
+ 462   3                              DisplayStatusExit();
+ 463   3                      }
+ 464   2                      if(AppTick5)
+ 465   2                      {
+ 466   3                              AppTick5=0;
+ 467   3                              Timing_Handle();
+ 468   3                              Compare_1MinutePorc();
+ 469   3                      }
+ 470   2                      WDT_clear();    
+ 471   2              }
+ 472   1      }
+ 473          
+ 474          
+ 475          
+ 476          
+ 477          
+ 478          
+ 479          
  480          
  481          
  482          
- 483          
- 484          
- 485          
- 486          
- 487          
- 488          
- 489          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    378    ----
+   CODE SIZE        =    471    ----
+C51 COMPILER V9.00   APP_MAIN                                                              11/19/2018 17:13:52 PAGE 9   
+
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      1    ----
+   XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      4    ----
-   IDATA SIZE       =     22    ----
+   DATA SIZE        =      8    ----
+   IDATA SIZE       =     23    ----
    BIT SIZE         =     15    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  9 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

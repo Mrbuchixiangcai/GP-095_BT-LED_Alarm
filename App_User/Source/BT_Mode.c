@@ -18,7 +18,7 @@ MUSIC_MODE_TypeDef Music_Mode_TypeDef;
 /****************************/
 bit Flag_BT_work;
 bit Flag_BT_Connect;//蓝牙连接标志位
-bit Flag_BT_Play;   //蓝牙播放
+bit Flag_BT_Play;   //蓝牙播放,1是在播放，0是在暂停(停止)
 bit Flag_BT_Pause;  //暂停
 bit Flag_UART1_RX_Finish_A;
 bit Flag_UART1_RX_Finish_B;
@@ -39,9 +39,9 @@ uint8_t  idata uart1_RX_Timeout;
 /**************************/
 /*数组定义array definition*/
 /**************************/
-uint8_t  xdata uart1_TransmitBuffer[UART1_LEN_BUFFER];
-uint8_t  xdata uart1_ReceiveBuffer_A[UART1_LEN_BUFFER];
-uint8_t  xdata uart1_ReceiveBuffer_B[UART1_LEN_BUFFER];
+uint8_t  uart1_TransmitBuffer[UART1_LEN_BUFFER];
+uint8_t  idata uart1_ReceiveBuffer_A[UART1_LEN_BUFFER];
+uint8_t  idata uart1_ReceiveBuffer_B[UART1_LEN_BUFFER];
 char  code BT_Command_Tab[][9]= //用于改变歌曲时发送给wifi的第几首歌
 {
 	"      \r\n ",//NONE
@@ -50,11 +50,9 @@ char  code BT_Command_Tab[][9]= //用于改变歌曲时发送给wifi的第几首歌
 	"COM+PV\r\n ",//BT_PREV
 	"COM+PN\r\n ",//BT_NEXT
 	"COM+PR\r\n ",//BT_PARIR
-	//"COM+\r\n",//BT_PARIR_EXT
 	"COM+AC\r\n ",//BT_LINK_BACK
 	"COM+PWD\r\n",//BT_POWER_DOWN
 	"COM+DC\r\n ",//BT_DISCONN
-	//"COM+\r\n",//BT_CLEAR_LIST
 	"COM+V00\r\n",//音量
 	"COM+V01\r\n",
 	"COM+V02\r\n",
@@ -94,23 +92,23 @@ char  code BT_Command_Tab[][9]= //用于改变歌曲时发送给wifi的第几首歌
  * 修改原因：
  * 备注：
  *******************************************************************************/
- void Uart1Transmit_SendString(char *str)
- {
-	 uint8_t  i;
-	 while(uart1_EnableSend);
-	 for(i=0;i<UART1_LEN_BUFFER;i++)
-	 {
+void Uart1Transmit_SendString(char *str)
+{
+	uint8_t  i;
+	while(uart1_EnableSend);
+	for(i=0;i<UART1_LEN_BUFFER;i++)
+	{
 		uart1_TransmitBuffer[i]=0;
-	 }
-	 for(i=0;*str!='\0';i++)
-	 {
-		 uart1_TransmitBuffer[i]=*str;
-		 str++;
-	 }
-	 uart1_TX_Pointer=0;
-	 uart1_EnableSend=1;
-	 UARTDR=uart1_TransmitBuffer[uart1_TX_Pointer++];
- }
+	}
+	for(i=0;*str!='\0';i++)
+	{
+		uart1_TransmitBuffer[i]=*str;
+		str++;
+	}
+	uart1_TX_Pointer=0;
+	uart1_EnableSend=1;
+	UARTDR=uart1_TransmitBuffer[uart1_TX_Pointer++];
+}
  
  
  /*******************************************************************************
@@ -127,13 +125,16 @@ char  code BT_Command_Tab[][9]= //用于改变歌曲时发送给wifi的第几首歌
  * 修改原因：
  * 备注：
  *******************************************************************************/
+char  temp1,temp2,temp3,temp4;
 void BT_Send_CMD(uint8_t cmd)
 {
 	uint8_t  code bt_VOL_Send_Tab[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 	if(cmd<BT_VOL)
 		Uart1Transmit_SendString(&BT_Command_Tab[cmd][0]);
 	else
+	{
 		Uart1Transmit_SendString(&BT_Command_Tab[BT_VOL+bt_VOL_Send_Tab[sysVolume]][0]);
+	}
 }
  
  /*******************************************************************************
@@ -207,7 +208,7 @@ void BlueMode_Receive(void)
  *******************************************************************************/
 void BlueMode_Handle(void) //接收到的数据信息/状态进行处理
 {
-	BlueMode_Receive();
+	//BlueMode_Receive();
 	if (Music_Mode_TypeDef == MUSIC_BT)
 	{
 		if (Flag_BT_work == 0)//初始化蓝牙
@@ -223,18 +224,18 @@ void BlueMode_Handle(void) //接收到的数据信息/状态进行处理
 		{
 			case BT_STEP_START:
 				__EN_MUTE();//先静音
-				BT_Step_TypeDef++;
+				BT_Step_TypeDef++;//每次加1有延时的作用，因为下次再进来是10ms之后
 				break;
 			case BT_STEP_INITI1:
 				UART_Def_Init(); //先清除串口初始化
-				BT_CLR_POWER();  //先使蓝牙芯片断电
+				__BT_CLR_POWER();  //先使蓝牙芯片断电
 				BT_Step_TypeDef++;
 				break;
 			case BT_STEP_INITI2:
 				BT_Step_TypeDef++;
-				break;
+				break;          
 			case BT_STEP_INITI3:
-				BT_SET_POWER();  //让蓝牙上电
+				__BT_SET_POWER();  //让蓝牙上电
 				BT_Step_TypeDef++;
 				break;
 			case BT_STEP_INITI4:
@@ -242,16 +243,27 @@ void BlueMode_Handle(void) //接收到的数据信息/状态进行处理
 				BT_Step_TypeDef++;
 				break;
 			default:
-				if (sysVolume != btVolume)
+				/*这个是蓝牙模式就俩亮起蓝灯，但是有个标志函数Display_Flag()放在了那里,这里也用，不然进不去标志函数*/
+				if(BT_LED_BLUE_DET())//上电之后会置起与mcu连接的这个端口，mcu检测蓝牙芯片是否置起
 				{
-					btVolume = sysVolume;
-					BT_Send_CMD(BT_VOL); //串口发送音量信息到蓝牙端
+					/* 在设置闹钟的工作模式时，选择beep还是bt时，如果选择bt要让蓝牙标志闪烁，所以在这个设置状态下不能设置gblcd_bt */
+					if (FlagKSet_TypeDef != FLAG_KEYSET_SHORT_ALARM_ALWORKMODE)
+					{
+						//
+						gblcd_bt=1;//__BT_SET_LEDRED();//如果检测到蓝牙开机，就置起蓝灯
+						gbUser_AdjClk=1;
+					}
 				}
-				else if (bt_cmd)
-				{
-					BT_Send_CMD(bt_cmd);
-					bt_cmd = BT_NONE;  //清零
-				}
+//				if (sysVolume != btVolume)//这里有问题，会一直复位蓝牙，现写显示，回来再改
+//				{
+//					btVolume = sysVolume;
+//					BT_Send_CMD(BT_VOL); //串口发送音量信息到蓝牙端
+//				}
+//				else if (bt_cmd)
+//				{
+//					BT_Send_CMD(bt_cmd);
+//					bt_cmd = BT_NONE;  //清零
+//				}
 				if (BT_MUTE_DET()) //检测蓝牙是否发出静音命令
 				{
 					if (cntMuteBT > 5)
@@ -274,8 +286,10 @@ void BlueMode_Handle(void) //接收到的数据信息/状态进行处理
 		{
 			cntMuteBT = 0;
 			BT_Step_TypeDef = BT_STEP_START;
+			if(!(BT_LED_BLUE_DET()))//断电之后会置起与mcu连接的这个端口，mcu检测蓝牙芯片是否置起
+				__BT_SET_LEDBLUE();//如果检测到蓝牙关机，就置起蓝灯
 		}
-		Flag_BT_work = 0;
+		//Flag_BT_work = 0;
 		switch (BT_Step_TypeDef)
 		{
 			case BT_STEP_START:
@@ -289,7 +303,7 @@ void BlueMode_Handle(void) //接收到的数据信息/状态进行处理
 				BT_Step_TypeDef++;
 				break;
 			case BT_STEP_INITI3:
-				BT_SET_POWER();  //让蓝牙上电
+				__BT_SET_POWER();  //让蓝牙上电
 				BT_Step_TypeDef++;
 				break;
 			case BT_STEP_INITI4:

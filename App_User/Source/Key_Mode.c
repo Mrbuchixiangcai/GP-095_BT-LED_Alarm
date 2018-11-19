@@ -356,6 +356,10 @@ void KeyComMsg(void)
 		//Flag_data_bk=1;//数据改变时备份
 	   	switch(KeyValue)
 		{
+			/*******************************************************************************
+			*功能：贪睡按键
+			*
+			*******************************************************************************/
 			case KU(K_SNOOZE_DIMMER)://短按
 			{//Alarm_Ring_Run
 				if (Alarm1_TypeDef.Alarm_RingRun == ALARM_RING_RUN_ON)
@@ -375,11 +379,15 @@ void KeyComMsg(void)
 				
 				break;
 			}
+			/*******************************************************************************
+			*功能：音量加
+			*
+			*******************************************************************************/
 			case KU(K_VOLINC): //短按//音量加 
 			case KR(K_VOLINC): //长按//音量加
 			{
-				//长按“VOL+/NEXT”键，小时快速递增。
-				//长按“VOL+/NEXT”键，分钟位数快速递增。
+				//长按“VOL+”键，小时快速递增。
+				//长按“VOL+”键，分钟位数快速递增。
 				if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
 				{
 					if (Time_Temp_TypeDef.temp_RTC_Hour < 12)
@@ -428,14 +436,27 @@ void KeyComMsg(void)
 						sysVolume++;
 					}
 				}
-
 				break;
 			}
-			case KU(K_PLAY_PAUSE): //短按//短按分钟字符闪烁，
+			/*******************************************************************************
+			*功能：暂停播放
+			*
+			*******************************************************************************/
+			case KU(K_PLAY_PAUSE): //短按
 			{					
+				/* 这部分是在蓝牙和TF卡模式下短按播放/暂停 */
 				if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
 				{
-					Ctrl_Com_TypeDef = CTRL_NEXT;
+					if(!Flag_BT_Play)
+					{
+						Flag_BT_Play=1;//如果是暂停状态就播放，并置1
+						bt_cmd=BT_PAUSE;
+					}
+					else
+					{
+						Flag_BT_Play=0;//如果是播放状态就暂停，并置0
+						bt_cmd=BT_PLAY;
+					}
 				}
 				break;
 			}
@@ -444,18 +465,33 @@ void KeyComMsg(void)
 				
 				break;
 			}
+			/*******************************************************************************
+			*功能：下一曲
+			*
+			*******************************************************************************/
 			case KU(K_NEXT): //短按
+			{
+				if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
+				{
+					bt_cmd=BT_NEXT;//下一曲
+				}
+			}
 			case KR(K_NEXT): //长按
 			{
 				
 				break;
 			}
+			/*******************************************************************************
+			*功能：闹钟
+			*
+			*******************************************************************************/
 			case KU(K_ALARM): //短按//闹钟
 			{
-				/* 设置RTC时间 */
+				/* 设置RTC时间 从"K_AL_SNOOZE"键哪里过来的*/
 				if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR)
 				{
-					//在长按ALARM键和SNOOZE键进入设置时间模式-小时设置，在短按ALARM键设置分钟时间
+					/*在长按ALARM键和SNOOZE键进入设置时间模式-小时设置，在短按ALARM键设置分钟时间*/
+					SetDisplayState10s(ADJ_CLK_MIN);//配置为设置RTC的状态-闪
 					FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_MINUTE;
 					Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
 														   //认闹钟设置标志位),为2是30s计时标志位，
@@ -468,32 +504,48 @@ void KeyComMsg(void)
 					FlagKSet_TypeDef = FLAG_KEYSET_OFF;
 					gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour;
 					gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
-					//Time_Temp_TypeDef.Flag_Confirm_30Sec = 1;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
-															 //认闹钟设置标志位),为2是30s计时标志位，
+					Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;//短按ALARM键确认设置
+					timeCnt_30Sec = 0;//校准,以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
 				}
 
 				/* 设置闹钟时间 */
-				if ((PlayMode_TypeDef == PLAY_IN_TIME) && (FlagKSet_TypeDef == FLAG_KEYSET_OFF))
+				if(((PlayMode_TypeDef == PLAY_IN_TIME) && (FlagKSet_TypeDef == FLAG_KEYSET_OFF)) || (Alarm1_TypeDef.Flag_Again==1))
 				{
 					//只有在走时和没有其他设置模式下(比如时间设置，因为短按ALARM有其他功能)，才会进入此if功能
 					//设置脑中时间并开启闹钟
+					SetDisplayState10s(ADJ_ALARM1_HOUR);//闹钟小时闪烁
 					FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_HOUR;
 					Alarm1_TypeDef.Alarm_OnOff = ALARM_ON;
 					Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//第二次开启闹钟，并且不修改脑中时间，不动作30s自动保
 														  //存，(为1是确认闹钟设置标志位)为2是30s计时标志位，
+					Alarm1_TypeDef.Flag_Again=0;//设置好闹钟后重新进来，如果30s不操作就会被置为1
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))  
 				{
+					SetDisplayState10s(ADJ_ALARM1_MIN);//闹钟分钟闪烁
 					FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_MINUTE;
-					Alarm1_TypeDef.Flag_Confirm_30Sec = 0;//第二次开启闹钟，并且修改脑中时间，把不动作自动保存关闭
-					//timeCnt_30Sec = 0;					  //并校准时间为0
+					Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//第二次开启闹钟，并且修改脑中时间，把不动作自动保存关闭
+					timeCnt_30Sec = 0;				  //并校准时间为0
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
+					SetDisplayState10s(ADJ_ALARM1_WORK);//闹钟工作模式闪烁，beep响或者蓝牙标志闪
 					FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_ALWORKMODE;
+					//Alarm1_TypeDef.Alarm_WorkMode=ALARM_BT&ALARM_BEEP;//工作模式，在音量加和音量减那里设置
 					Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//短按ALARM键确认设置或不动作30s自动保存，(为1
 														  //是确认闹钟设置标志位)为2是30s计时标志位，
 					timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+				}
+				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
+				{
+					FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_CONFIRMSET;
+					Alarm1_TypeDef.Flag_Confirm_30Sec = 0;//短按ALARM键确认设置或不动作30s自动保存，(为1
+														  //是确认闹钟设置标志位)为2是30s计时标志位，
+					timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+					Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//短按ALARM键确认设置
+					Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
+					Alarm1_TypeDef.Flag_Again=1;
+					cntDispStatus=0;
 				}
 
 				break;
@@ -503,11 +555,15 @@ void KeyComMsg(void)
 				
 				break;
 			}
+			/*******************************************************************************
+			*功能：音量减
+			*
+			*******************************************************************************/
 			case KU(K_VOLDEC): //短按//音量减
 			case KR(K_VOLDEC): //长按//音量减
 			{
-				//长按“VOL-/PREV”键，小时快速递减；
-				//长按“VOL-/PREV”键，分钟位数快速递减；
+				//长按“VOL-”键，小时快速递减；
+				//长按“VOL-”键，分钟位数快速递减；
 				if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
 				{
 					if (Time_Temp_TypeDef.temp_RTC_Hour > 0)
@@ -559,6 +615,10 @@ void KeyComMsg(void)
 
 				break;
 			}
+			/*******************************************************************************
+			*功能：蓝牙
+			*
+			*******************************************************************************/
 			case KU(K_BT): //短按
 			{
 				//短按“VOL-/PREV”键，小时递减，
@@ -571,19 +631,30 @@ void KeyComMsg(void)
 			}
 			case KH(K_BT): //长按
 			{
-				//长按“VOL-/PREV”键，小时快速递减；
-				//长按“VOL-/PREV”键，分钟位数快速递减；
+				if (cntKeylong == 10)//2s
+					bt_cmd=BT_PAIR;
 				break;
 			}
+			/*******************************************************************************
+			*功能：上一曲
+			*
+			*******************************************************************************/
 			case KU(K_PREV): //短按
-			case KR(K_PREV): //长按
 			{
 				if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
 				{
-					Ctrl_Com_TypeDef = CTRL_PREV;
+					bt_cmd=BT_PREV;//上一曲
 				}
+			}
+			case KR(K_PREV): //长按
+			{
+				
 				break;
 			}
+			/*******************************************************************************
+			*功能：组合键=闹钟+贪睡
+			*
+			*******************************************************************************/
 			case KU(K_AL_SNOOZE): //短按
 			{
 
@@ -595,12 +666,20 @@ void KeyComMsg(void)
 				{
 					if (cntKeylong == 10)//2s
 					{
-						//长按ALARM和SNOOZE键2s进入时间设置模式-小事设置
+						//长按ALARM和SNOOZE键2s进入时间设置模式-小时设置
+						SetDisplayState10s(ADJ_CLK_HOUR);//配置为设置RTC的状态-闪
 						FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_HOUR;
+						Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
+														   //认闹钟设置标志位),为2是30s计时标志位，
+						timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
 					}
 				}
 				break;
 			}
+			/*******************************************************************************
+			*功能：组合键=闹钟+音量加
+			*
+			*******************************************************************************/
 			case KU(K_AL_VOLINC): //短按
 			case KR(K_AL_VOLINC): //长按
 			{
@@ -611,6 +690,10 @@ void KeyComMsg(void)
 				}
 				break;
 			}
+			/*******************************************************************************
+			*功能：组合键=闹钟+音量减
+			*
+			*******************************************************************************/
 			case KU(K_AL_VOLDEC): //短按
 			case KR(K_AL_VOLDEC): //长按
 			{
@@ -622,7 +705,6 @@ void KeyComMsg(void)
 				break;
 			}
 		}
-		testINT=KeyValue;
 	}
 }
 

@@ -55,7 +55,7 @@ typedef enum
 	FLAG_KEYSET_SHORT_ALARM_HOUR	  ,//(走时模式)短按ALARM按键，进入设置闹钟时间模式，并开启闹钟功能，再次短
 	FLAG_KEYSET_SHORT_ALARM_MINUTE	  ,//按ALARM键，进入设置分钟模式，再次短按ALARM键，选择响闹模式，第四次短
 	FLAG_KEYSET_SHORT_ALARM_ALWORKMODE,//按ALARM键，确实闹钟时间设置，或者不动作30s自动保存，并返回走时模式
-	//FLAG_KEYSET_SHORT_ALARM_CONFIRMSET,//
+	FLAG_KEYSET_SHORT_ALARM_CONFIRMSET,//
 }FLAG_KEYSET_TypeDef;
 
 typedef struct

@@ -143,9 +143,9 @@ enum
 };
 
 #define cDISP_DELAY__0SEC    0
-#define cDISP_DELAY__62ms5   1
+#define cDISP_DELAY__60ms    6     //cDISP_DELAY__62ms5   1
 #define cDISP_DELAY__125ms   2
-#define cDISP_DELAY__500ms   8     // 8  °¡62ms50 = 500ms
+#define cDISP_DELAY__500ms   50    // 50  °¡10ms  = 500ms
 #define cDISP_DELAY__1SEC    16    // 16 °¡62ms50 = 1000ms
 #define cDISP_DELAY__2SEC    32    // 32 °¡62ms50 = 2000ms
 #define cDISP_DELAY__3SEC    48    // 48 °¡62ms50 = 3000ms
@@ -153,7 +153,7 @@ enum
 #define cDISP_DELAY__5SEC    80    // 80 °¡62ms50 = 5000ms
 #define cDISP_DELAY__6SEC    96    // 80 °¡62ms50 = 5000ms
 #define cDISP_DELAY__6_5SEC  104   // 80 °¡62ms50 = 5000ms
-#define cDISP_DELAY_10SEC    160   // 160°¡62ms50 = 10000ms
+#define cDISP_DELAY_10SEC    10000  // 1000°¡10ms  = 10000ms
 #define cDISP_DELAY_14SEC    224   // 240°¡62ms50 = 15000ms
 #define cDISP_DELAY_14_5SEC  232   // 240°¡62ms50 = 15000ms
 #define cDISP_DELAY_15SEC    240   // 240°¡62ms50 = 15000ms
@@ -216,6 +216,7 @@ typedef struct
 								//÷æŒª),Œ™2 «30sº∆ ±±Í÷æŒª£¨
 	ALARM_WORK_MODE_TypeDef Alarm_WorkMode;
 	ALARM_SNOOZE_TypeDef Alarm_Snooze;
+	uint8_t  Flag_Again;
 }ALRAM_TypeDef;
 
 /****************************/
@@ -254,6 +255,22 @@ extern ALRAM_TypeDef  Alarm1_TypeDef;
 /************************************/
 extern u8 bdata lcd_BitRam0;
 extern u8 bdata lcd_BitRam1;
+extern bit  gblcd_buz1;
+extern bit  gblcd_al;//‘≠¿¥ «gblcd_radio1
+extern bit  gblcd_buz2;
+extern bit  gblcd_radio2;
+extern bit  gblcd_dot;//
+extern bit  gblcd_colon;//
+extern bit  gblcd_sleep;//
+extern bit  gblcd_aux;
+extern bit  gblcd_am ;//
+extern bit  gblcd_pm;//
+extern bit  gblcd_fm;
+extern bit  gblcd_mw;
+extern bit  gblcd_mhz;
+extern bit  gblcd_khz;
+extern bit  gblcd_five;
+extern bit  gblcd_bt;
 /*************************************/
 /*Õ‚≤øµ˜”√_±‰¡ø∂®“Âvariable definition*/
 /*************************************/
@@ -262,7 +279,7 @@ extern uint8_t  alarmMinute;//≈–∂œ¥À±‰¡øµƒ÷µ£¨Õ®π˝LEDœ‘ æ≥ˆ¿¥£¨“≤ø…“‘÷±Ω”∂‘¥À±‰¡
 extern uint8_t  alarmHour;
 extern uint8_t  tempAlarmMinute;//“ÚŒ™…Ë÷√ƒ÷÷””–∏ˆ»∑»œ…Ë÷√(À‰»ª◊˜”√≤ª¥Û),À˘“‘–Ë“™”–∏ˆ¡Ÿ ±±‰¡ø◊˜Œ™÷–º‰÷µ£¨µ»
 extern uint8_t  tempAlarmHour;  //µΩ»±»À…Ë÷√ªÚ’ﬂ30s∫Û◊‘∂Ø»∑»œ‘Ÿ∞—tempXxx’‚º∏∏ˆ±‰¡ø∏≥∏¯ƒ÷÷”µƒ◊Ó∫Û…Ë∂® ±º‰
-extern uint8_t  cntDispStatus;
+
 /**********************************/
 /*Õ‚≤øµ˜”√_ ˝◊È∂®“Âarray definition*/
 /**********************************/

@@ -1,0 +1,1 @@
+"App_User\Source\PWM.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Device;.\App_User\Include) DEBUG OBJECTEXTEND PRINT(.\Listings\PWM.lst) OBJECT(.\Objects\PWM.obj)

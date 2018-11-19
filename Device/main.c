@@ -11,6 +11,7 @@
 #include	"func_def.h"
 #include    "app_main.h"
 int testINT;
+uint8_t read_UARTData;
 void main()
 {
 	cli();          	// disable INT. during peripheral setting
@@ -46,14 +47,48 @@ void INT_UART_Rx() interrupt 9
 {
 	// UART Rx interrupt
 	// TODO: add your code here
-
+	uint8_t temp_RxData;
+	temp_RxData=UARTDR;
+	//read_UARTData=UARTST;//读取寄存器的各种状态标志，方便查看
+	UARTST &= (~0x24);//置零中断标志，不然会一直进来
+	uart1_RX_Timeout=10;
+	if(Flag_UART_ReceiveBuffer_A_B)
+	{
+		if(uart1_RX_Pointer<UART1_LEN_BUFFER)
+			uart1_ReceiveBuffer_A[uart1_RX_Pointer++]=temp_RxData;
+		if(temp_RxData=='\n')
+		{
+			uart1_RX_Pointer=0;
+			Flag_UART1_RX_Finish_A=1;
+			Flag_UART_ReceiveBuffer_A_B=~Flag_UART_ReceiveBuffer_A_B;
+		}
+	}
+	else
+	{
+		if(uart1_RX_Pointer<UART1_LEN_BUFFER)
+			uart1_ReceiveBuffer_B[uart1_RX_Pointer++]=temp_RxData;
+		if(temp_RxData=='\n')
+		{
+			uart1_RX_Pointer=0;
+			Flag_UART1_RX_Finish_B=1;
+			Flag_UART_ReceiveBuffer_A_B=~Flag_UART_ReceiveBuffer_A_B;
+		}
+	}
 }
 
 void INT_UART_Tx() interrupt 10
 {
 	// UART Tx interrupt
 	// TODO: add your code here
-
+	//read_UARTData=UARTST;
+	UARTST &= ~0x80;
+	if(uart1_EnableSend)
+	{
+		uart1_TX_Timeout=10;
+		UARTDR=uart1_TransmitBuffer[uart1_TX_Pointer++];
+		if(uart1_TransmitBuffer[uart1_TX_Pointer]=='\0')
+			uart1_EnableSend=0;
+	}
 }
 
 void INT_Timer0() interrupt 13
@@ -75,7 +110,25 @@ void INT_WT() interrupt 20
 {
 	// Watch timer interrupt
 	// TODO: add your code here
-
+	gbHalfSecond=(!gbHalfSecond);
+	if(gbHalfSecond)
+	{
+		if(++gRTC_Sec>59)
+		{
+			gRTC_Sec=0;
+			if(++gRTC_Minute>59)
+			{
+				gRTC_Minute=0;
+				if(++gRTC_Hour>23)
+				{
+					gRTC_Hour=0;
+					gRTC_Week<<=1;
+					if(gRTC_Week==0x80)//如果移位之后等于0x80，说明是第8次移位，这时候就是
+						gRTC_Week=0x01;//周一，所以赋值为0x01。
+				}
+			}
+		}
+	}
 }
 
 //======================================================
@@ -113,10 +166,10 @@ void Timer0_init()
 void Timer3_init()
 {
 	// initialize Timer3
-	// 8bit timer, period = 1.000000mS
-	T3DR = 0x7C;    	// period count
-	T3CR = 0x8E;    	// timer setting
-	IE2 |= 0x10;    	// Enable Timer3 interrupt
+	// 8bit timer, period = 0.050000mS
+	T3DR  = 0x18;    	// period count
+	T3CR  = 0x8A;    	// timer setting
+	IE2  |= 0x10;    	// Enable Timer3 interrupt
 	T3CR |= 0x01;   	// clear counter
 }
 

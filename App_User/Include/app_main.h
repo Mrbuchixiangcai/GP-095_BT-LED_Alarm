@@ -18,29 +18,16 @@
 #include "key_mode.h"
 #include "led_drive.h"
 #include "PWM.h"
+#include "system_sleep.h"
 
 /************************/
 /*宏定义macro definition*/
 /************************/
-//设置蜂鸣器响还是不响
-#define SET_BEEP(a)			if(a)				\  
-								P0 |= 0x04;		\
-							else				\
-								P0 &= (~0x04);
-#define BT_SET_LED_RED(a)		if(a)				\  
-								P5 |= 0x10;		\
-							else                \
-								P5 &= (~0x10);
-//蓝牙开机，检测到蓝牙信号后，就设置输出1
-#define BT_SET_LED_BLUE(a)  if(a)				\  
-								P5 |= 0x08;		\
-							else				\
-								P5 &= (~0x08);
-
 #define TF_CARD_DET()     (P0&0x01)    //检测TF卡是否插入
 #define BT_MUTE_DET()     (P6&0x02)    //P62,检测蓝牙是否发出mute信号,1为不静音
 #define BT_LED_RED_DET()  (P0&0x08)    //P03,检测蓝牙是否发出红色LED信号
 #define BT_LED_BLUE_DET() (P5&0x20)    //P55,检测蓝牙是否开启，如果开启，就从另一个端口输出一个Blue LED
+#define CHECK_DC_DET()    (P6&0x04)    //P62，检测电源是否拔掉
 
 #define __BT_SET_POWER()   do{P6 |=  (0x01);}while(0)//P60,使能蓝牙，如果使能了使三极管导通，蓝牙芯片上电
 #define __BT_CLR_POWER()   do{P6 &= (~0x01);}while(0)
@@ -139,7 +126,7 @@ typedef enum
 /****************************/
 /*标志位定义flags definetion*/
 /****************************/
-
+extern uint8_t Flag_DaylightSaving;
 /*****************************/
 /*变量定义variable definition*/
 /*****************************/
@@ -175,7 +162,8 @@ extern BOOL  gb0_5s;
 extern BOOL  gbUser_AdjClk;
 extern BOOL  gbHalfSecond;
 extern BOOL  gbTestMode;
-extern uint8_t    	  Flag_DispStatus;
+extern uint8_t Flag_DispStatus;
+extern uint8_t Flag_Alarm1_IQ_BTOrBEEp;
 
 /*************************************/
 /*外部调用_变量定义variable definition*/
@@ -198,7 +186,8 @@ extern uint8_t  idata cntNoFlash;
 extern uint8_t		  gZone;
 extern uint8_t  idata cntAlarm;
 extern int 			  testINT;
-extern uint32_t  cntDispStatus;
+extern uint16_t  	  cntDispStatus;
+extern uint8_t  idata cntAlarm_Runing_60Min;//闹钟到时响60分钟；
 /**********************************/
 /*外部调用_数组定义array definition*/
 /**********************************/
@@ -212,8 +201,8 @@ extern void Sys_Tick(void);
 /*外部调用_函数定义function definetion*/
 /*************************************/
 extern void UART_Def_Init();
-
-
+extern void WT_Def_Init();
+extern void ClearDisplayStatus(void);
 
 
 #endif

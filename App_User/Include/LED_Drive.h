@@ -89,6 +89,126 @@
 #define __CLR_COL2() do{P4 &= CBIT6;}while(0)
 #define __SET_BEEP() do{P0 |=  BIT2;}while(0)  //P02
 #define __CLR_BEEP() do{P0 &= CBIT2;}while(0)
+
+#define _SET_1B(a)  if(a)                 \
+                        P2 |=  BIT2;      \
+                    else                  \
+                        P2 &= CBIT2;      
+#define _SET_1C(a)  if(a)                 \
+                        P4 |=  BIT0;      \
+                    else                  \
+                        P4 &= CBIT0;      
+#define _SET_2A(a)  if(a)                 \
+                        P2 |=  BIT4;      \
+                    else                  \
+                        P2 &= CBIT4;      
+#define _SET_2B(a)  if(a)                 \
+                        P2 |=  BIT5;      \
+                    else                  \
+                        P2 &= CBIT5;      
+#define _SET_2C(a)  if(a)                 \
+                        P5 |=  BIT0;      \
+                    else                  \
+                        P5 &= CBIT0;      
+#define _SET_2D(a)  if(a)                 \
+                        P5 |=  BIT2;      \
+                    else                  \
+                        P5 &= CBIT2;      
+#define _SET_2E(a)  if(a)                 \
+                        P4 |=  BIT1;      \
+                    else                  \
+                        P4 &= CBIT1;      
+#define _SET_2F(a)  if(a)                 \
+                        P2 |=  BIT3;      \
+                    else                  \
+                        P2 &= CBIT3;      
+#define _SET_2G(a)  if(a)                 \
+                        P3 |=  BIT7;      \
+                    else                  \
+                        P3 &= CBIT7;      
+#define _SET_3A(a)  if(a)                 \
+                        P3 |=  BIT0;      \
+                    else                  \
+                        P3 &= CBIT0;      
+#define _SET_3B(a)  if(a)                 \
+                        P3 |=  BIT1;      \
+                    else                  \
+                        P3 &= CBIT1;      
+#define _SET_3C(a)  if(a)                 \
+                        P4 |=  BIT4;      \
+                    else                  \
+                        P4 &= CBIT4;      
+#define _SET_3D(a)  if(a)                 \
+                        P5 |=  BIT1;      \
+                    else                  \
+                        P5 &= CBIT1;      
+#define _SET_3E(a)  if(a)                 \
+                        P4 |=  BIT5;      \
+                    else                  \
+                        P4 &= CBIT5;      
+#define _SET_3F(a)   if(a)                 \
+                        P2 |=  BIT7;      \
+                    else                  \
+                        P2 &= CBIT7;      
+#define _SET_3G(a)  if(a)                 \
+                        P3 |=  BIT6;      \
+                    else                  \
+                        P3 &= CBIT6;      
+#define _SET_4A(a)  if(a)                 \
+                        P3 |=  BIT3;      \
+                    else                  \
+                        P3 &= CBIT3;      
+#define _SET_4B(a)  if(a)                 \
+                        P3 |=  BIT4;      \
+                    else                  \
+                        P3 &= CBIT4;      
+#define _SET_4C(a)  if(a)                 \
+                        P4 |=  BIT2;      \
+                    else                  \
+                        P4 &= CBIT2;      
+#define _SET_4D(a)  if(a)                 \
+                        P4 |=  BIT7;      \
+                    else                  \
+                        P4 &= CBIT7;      
+#define _SET_4E(a)  if(a)                 \
+                        P4 |=  BIT3;      \
+                    else                  \
+                        P4 &= CBIT3;      
+#define _SET_4F(a)  if(a)                 \
+                        P3 |=  BIT2;      \
+                    else                  \
+                        P3 &= CBIT2;      
+#define _SET_4G(a)  if(a)                 \
+                        P3 |=  BIT5;      \
+                    else                  \
+                        P3 &= CBIT5;      
+#define _SET_APM(a) if(a)                 \
+                        P2 |=  BIT1;      \
+                    else                  \
+                        P2 &=  CBIT1;      
+#define _SET_AL(a)  if(a)                 \
+                        P2 |=  BIT0;      \
+                    else                  \
+                        P2 &= CBIT0;      
+#define _SET_COL1(a)if(a)                 \
+                        P2 |=  BIT6;      \
+                     else                 \
+                        P2 &= CBIT6;      
+#define _SET_COL2(a)if(a)                 \
+                        P4 |=  BIT6;      \
+                    else                  \
+                        P4 &= CBIT6;      
+//蓝牙开机，检测到蓝牙信号后，并且没有tf卡就设置输出1
+#define _SET_BT_BLUE(a) if(a)			  \  
+							P5 |= BIT3;	  \
+					    else			  \
+							P5 &= CBIT3;
+//蓝牙开机，检测到蓝牙信号后，并且有tf卡就设置输出1
+#define _SET_BT_RED(a)	if(a)			  \  
+							P5 |= BIT4;	  \
+						else              \
+							P5 &= CBIT4;
+
 /*************************/
 /*类型定义byte definition*/
 /*************************/
@@ -124,6 +244,35 @@ void Display_LED(void);
 /************************************/
 /*外部调用_标志位定义flags definetion*/
 /************************************/
+extern bit Flag_SET_1B;
+extern bit Flag_SET_1C;
+extern bit Flag_SET_2A;
+extern bit Flag_SET_2B;
+extern bit Flag_SET_2C;
+extern bit Flag_SET_2D;
+extern bit Flag_SET_2E;
+extern bit Flag_SET_2F;
+extern bit Flag_SET_2G;
+extern bit Flag_SET_3A;
+extern bit Flag_SET_3B;
+extern bit Flag_SET_3C;
+extern bit Flag_SET_3D;
+extern bit Flag_SET_3E;
+extern bit Flag_SET_3F;
+extern bit Flag_SET_3G;
+extern bit Flag_SET_4A;
+extern bit Flag_SET_4B;
+extern bit Flag_SET_4C;
+extern bit Flag_SET_4D;
+extern bit Flag_SET_4E;
+extern bit Flag_SET_4F;
+extern bit Flag_SET_4G;
+extern bit Flag_SET_APM;
+extern bit Flag_SET_AL;
+extern bit Flag_SET_COL1;
+extern bit Flag_SET_COL2;
+extern bit Flag_SET_BT_BLUE;
+extern bit Flag_SET_BT_RED;
 
 /*************************************/
 /*外部调用_变量定义variable definition*/

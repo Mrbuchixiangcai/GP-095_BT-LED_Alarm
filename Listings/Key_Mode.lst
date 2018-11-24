@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 1   
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE KEY_MODE
@@ -62,7 +62,7 @@ line level    source
   52           * 修改日期
   53           * 修改人：
   54           * 第N次修改：
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 2   
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 2   
 
   55           * 修改原因：
   56           * 备注："P1=0x2F(0010_1111)"先赋值给P1口，P15为1，P14为0，输入端(P10-P13)为1，
@@ -126,7 +126,7 @@ line level    source
  114   2              return 9; //K_AL_SNOOZE
  115   2        }
  116   1        if((tmp1==0x0D)&&(tmp2==0x0E))
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 3   
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 3   
 
  117   1        {
  118   2              return 10; //K_AL_VOLINC
@@ -190,7 +190,7 @@ line level    source
  176   1      //              switch(temp_ReakData2)
  177   1      //              {
  178   1      //                      case 0x11:
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 4   
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 4   
 
  179   1      ////                            if (scanKeyValue == 1)//为1说明刚才alarm键被按下，因为每次调用这个函数都会初始化
  180   1      ////                            {                                         //keyValue，所以不会是上次调用函数留下的值
@@ -254,7 +254,7 @@ line level    source
  238           * 修改日期
  239           * 修改人：
  240           * 第N次修改：
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 5   
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 5   
 
  241           * 修改原因：
  242           * 备注：
@@ -318,7 +318,7 @@ line level    source
  299   4                              }
  300   3                              KeyEvent=0;
  301   3                      }
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 6   
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 6   
 
  302   2                      else
  303   2                      {
@@ -375,437 +375,561 @@ line level    source
  354   1              if(gbKeyPress)
  355   1              { 
  356   2                      //Flag_data_bk=1;//数据改变时备份
- 357   2                      switch(KeyValue)
- 358   2                      {
- 359   3                              /*******************************************************************************
- 360   3                              *功能：贪睡按键
- 361   3                              *
- 362   3                              *******************************************************************************/
- 363   3                              case KU(K_SNOOZE_DIMMER)://短按
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 7   
+ 357   2                      /**************************************************************
+ 358   2                      *功能：如果闹钟响应，按下出snooze的按键都关闭闹钟
+ 359   2                      ***************************************************************/
+ 360   2                      if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (Alarm1_TypeDef.Alarm_RingRun == ALARM_RING_RUN_ON))
+ 361   2                      {
+ 362   3                              
+ 363   3                              if((KeyValue & 0x0F) != K_SNOOZE_DIMMER)
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 7   
 
- 364   3                              {//Alarm_Ring_Run
- 365   4                                      if (Alarm1_TypeDef.Alarm_RingRun == ALARM_RING_RUN_ON)
- 366   4                                      {
- 367   5                                              Alarm1_TypeDef.Alarm_Snooze = ALARM_SNOOZE_ON;//进入贪睡模式，为9分钟
- 368   5                                      }
- 369   4                                      else//正常走时模式下，短按SNOOZE键，调节LED平亮度，可循环调节高、中、低亮度(默认为高)
- 370   4                                      {
- 371   5                                              LED_Brightness_TypeDef--;
- 372   5                                              if (LED_Brightness_TypeDef == LED_TURN_OFF)//三档循环
- 373   5                                                      LED_Brightness_TypeDef = LED_HIGH;
- 374   5                                      }
- 375   4                                      break;
- 376   4                              }
- 377   3                              case KH(K_SNOOZE_DIMMER)://长按
- 378   3                              {
- 379   4                                      
- 380   4                                      break;
- 381   4                              }
- 382   3                              /*******************************************************************************
- 383   3                              *功能：音量加
- 384   3                              *
- 385   3                              *******************************************************************************/
- 386   3                              case KU(K_VOLINC): //短按//音量加 
- 387   3                              case KR(K_VOLINC): //长按//音量加
- 388   3                              {
- 389   4                                      //长按“VOL+”键，小时快速递增。
- 390   4                                      //长按“VOL+”键，分钟位数快速递增。
- 391   4                                      if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
- 392   4                                      {
- 393   5                                              if (Time_Temp_TypeDef.temp_RTC_Hour < 12)
- 394   5                                              {
- 395   6                                                      Time_Temp_TypeDef.temp_RTC_Hour++;
- 396   6                                              }
- 397   5                                      }
- 398   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
- 399   4                                      {
- 400   5                                              if (Time_Temp_TypeDef.temp_RTC_Minute < 59)
- 401   5                                              {
- 402   6                                                      Time_Temp_TypeDef.temp_RTC_Minute++;
- 403   6                                              }
- 404   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
- 405   5                                      }
- 406   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
+ 364   3                              {
+ 365   4                                      Alarm1_PowerOFF();
+ 366   4                              }
+ 367   3                      }
+ 368   2                      switch(KeyValue)
+ 369   2                      {
+ 370   3                              /*******************************************************************************
+ 371   3                              *功能：贪睡按键
+ 372   3                              *
+ 373   3                              *******************************************************************************/
+ 374   3                              case KU(K_SNOOZE_DIMMER)://短按
+ 375   3                              {//Alarm_Ring_Run
+ 376   4                                      if (Alarm1_TypeDef.Alarm_RingRun == ALARM_RING_RUN_ON)
+ 377   4                                      {
+ 378   5                                              Alarm1_TypeDef.Alarm_Snooze = ALARM_SNOOZE_ON;//进入贪睡模式，为9分钟
+ 379   5                                              //Flag_BT_Play=0;//短按之后进入贪睡，并把播放标志清掉，因为在"Compare_1MinutePorc()"
+ 380   5                                                                         //里面有个判断这个标志位，发送暂停命令的
+ 381   5                                      }
+ 382   4                                      else//正常走时模式下，短按SNOOZE键，调节LED平亮度，可循环调节高、中、低亮度(默认为高)
+ 383   4                                      {
+ 384   5                                              LED_Brightness_TypeDef--;
+ 385   5                                              if (LED_Brightness_TypeDef == LED_TURN_OFF)//三档循环
+ 386   5                                                      LED_Brightness_TypeDef = LED_HIGH;
+ 387   5                                      }
+ 388   4                                      break;
+ 389   4                              }
+ 390   3                              case KH(K_SNOOZE_DIMMER)://长按
+ 391   3                              {
+ 392   4                                      
+ 393   4                                      break;
+ 394   4                              }
+ 395   3                              /*******************************************************************************
+ 396   3                              *功能：音量加
+ 397   3                              *
+ 398   3                              *******************************************************************************/
+ 399   3                              case KU(K_VOLINC): //短按//音量加 
+ 400   3                              case KR(K_VOLINC): //长按//音量加
+ 401   3                              {
+ 402   4                                      //长按“VOL+”键，小时快速递增。
+ 403   4                                      //长按“VOL+”键，分钟位数快速递增。
+ 404   4                                      if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
+ 405   4                                      {
+ 406   5                                              if (Time_Temp_TypeDef.temp_RTC_Hour <= 24)
+ 407   5                                              {
+ 408   6                                                      Time_Temp_TypeDef.temp_RTC_Hour++;
+ 409   6                                              }
+ 410   5                                              else
+ 411   5                                              {
+ 412   6                                                      if (Time_Temp_TypeDef.temp_RTC_Hour > 24)
+ 413   6                                                      {
+ 414   7                                                              Time_Temp_TypeDef.temp_RTC_Hour=0;
+ 415   7                                                      }
+ 416   6                                              }
+ 417   5                                              timeCnt_30Sec = 0;
+ 418   5                                      }
+ 419   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
+ 420   4                                      {
+ 421   5                                              if (Time_Temp_TypeDef.temp_RTC_Minute <= 59)
+ 422   5                                              {
+ 423   6                                                      Time_Temp_TypeDef.temp_RTC_Minute++;
+ 424   6                                              }
+ 425   5                                              else
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 8   
+
+ 426   5                                              {
+ 427   6                                                      if (Time_Temp_TypeDef.temp_RTC_Minute > 59)
+ 428   6                                                      {
+ 429   7                                                              Time_Temp_TypeDef.temp_RTC_Minute=0;
+ 430   7                                                      }
+ 431   6                                              }
+ 432   5                                              gRTC_Minute=0;
+ 433   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
+ 434   5                                      }
+ 435   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
              -))
- 407   4                                      {
- 408   5                                              if (Alarm1_TypeDef.tempHour < 12)
- 409   5                                              {
- 410   6                                                      Alarm1_TypeDef.tempHour++;
- 411   6                                              }
- 412   5                                      }
- 413   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
+ 436   4                                      {
+ 437   5                                              if (Alarm1_TypeDef.tempHour <= 24)
+ 438   5                                              {
+ 439   6                                                      Alarm1_TypeDef.tempHour++;
+ 440   6                                              }
+ 441   5                                              else
+ 442   5                                              {
+ 443   6                                                      if (Alarm1_TypeDef.tempHour > 24)
+ 444   6                                                      {
+ 445   7                                                              Alarm1_TypeDef.tempHour=0;
+ 446   7                                                      }
+ 447   6                                              }
+ 448   5                                              timeCnt_30Sec = 0;
+ 449   5                                      }
+ 450   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
              -ON))
- 414   4                                      {
- 415   5                                              if (Alarm1_TypeDef.tempMinute < 59)
- 416   5                                              {
- 417   6                                                      Alarm1_TypeDef.tempMinute++;
- 418   6                                              }
- 419   5                                      }
- 420   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
+ 451   4                                      {
+ 452   5                                              if (Alarm1_TypeDef.tempMinute <= 59)
+ 453   5                                              {
+ 454   6                                                      Alarm1_TypeDef.tempMinute++;
+ 455   6                                              }
+ 456   5                                              else
+ 457   5                                              {
+ 458   6                                                      if (Alarm1_TypeDef.tempMinute > 59)
+ 459   6                                                      {
+ 460   7                                                              Alarm1_TypeDef.tempMinute=0;
+ 461   7                                                      }
+ 462   6                                              }
+ 463   5                                              timeCnt_30Sec = 0;
+ 464   5                                      }
+ 465   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
              -ARM_ON))
- 421   4                                      {
- 422   5                                              if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 8   
+ 466   4                                      {
+ 467   5                                              if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)
+ 468   5                                              {
+ 469   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BT;
+ 470   6                                              }
+ 471   5                                              else
+ 472   5                                              {
+ 473   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BEEP;
+ 474   6                                              }
+ 475   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
+ 476   5                                      }
+ 477   4                                      else//在蓝牙或TF状态下，音量功能
+ 478   4                                      {
+ 479   5                                              if (sysVolume < 15)
+ 480   5                                              {
+ 481   6                                                      sysVolume++;
+ 482   6                                              }
+ 483   5                                      }
+ 484   4                                      break;
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 9   
 
- 423   5                                              {
- 424   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BT;
- 425   6                                              }
- 426   5                                              else
- 427   5                                              {
- 428   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BEEP;
- 429   6                                              }
- 430   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
- 431   5                                      }
- 432   4                                      else//在蓝牙或TF状态下，音量功能
- 433   4                                      {
- 434   5                                              if (sysVolume < 15)
- 435   5                                              {
- 436   6                                                      sysVolume++;
- 437   6                                              }
- 438   5                                      }
- 439   4                                      break;
- 440   4                              }
- 441   3                              /*******************************************************************************
- 442   3                              *功能：暂停播放
- 443   3                              *
- 444   3                              *******************************************************************************/
- 445   3                              case KU(K_PLAY_PAUSE): //短按
- 446   3                              {                                       
- 447   4                                      /* 这部分是在蓝牙和TF卡模式下短按播放/暂停 */
- 448   4                                      if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
- 449   4                                      {
- 450   5                                              if(!Flag_BT_Play)
- 451   5                                              {
- 452   6                                                      Flag_BT_Play=1;//如果是暂停状态就播放，并置1
- 453   6                                                      bt_cmd=BT_PAUSE;
- 454   6                                              }
- 455   5                                              else
- 456   5                                              {
- 457   6                                                      Flag_BT_Play=0;//如果是播放状态就暂停，并置0
- 458   6                                                      bt_cmd=BT_PLAY;
- 459   6                                              }
- 460   5                                      }
- 461   4                                      break;
- 462   4                              }
- 463   3                              case KR(K_PLAY_PAUSE): //计时
- 464   3                              {
- 465   4                                      
- 466   4                                      break;
- 467   4                              }
- 468   3                              /*******************************************************************************
- 469   3                              *功能：下一曲
- 470   3                              *
- 471   3                              *******************************************************************************/
- 472   3                              case KU(K_NEXT): //短按
- 473   3                              {
- 474   4                                      if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
- 475   4                                      {
- 476   5                                              bt_cmd=BT_NEXT;//下一曲
- 477   5                                      }
- 478   4                              }
- 479   3                              case KR(K_NEXT): //长按
- 480   3                              {
- 481   4                                      
- 482   4                                      break;
- 483   4                              }
- 484   3                              /*******************************************************************************
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 9   
+ 485   4                              }
+ 486   3                              /*******************************************************************************
+ 487   3                              *功能：暂停播放
+ 488   3                              *
+ 489   3                              *******************************************************************************/
+ 490   3                              case KU(K_PLAY_PAUSE): //短按
+ 491   3                              {                                       
+ 492   4                                      /* 这部分是在蓝牙和TF卡模式下短按播放/暂停 */
+ 493   4      //                              if (Music_Mode_TypeDef == MUSIC_BT)//在蓝牙模式
+ 494   4      //                              {
+ 495   4      //                                      if(!Flag_BT_Play)
+ 496   4      //                                      {
+ 497   4      //                                              Flag_BT_Play=1;//如果是暂停状态就播放，并置1
+ 498   4      //                                              Flag_BT_TF_Play=0;//清楚TF卡播放标志
+ 499   4      //                                              bt_cmd=BT_PLAY;
+ 500   4      //                                      }
+ 501   4      //                                      else
+ 502   4      //                                      {
+ 503   4      //                                              Flag_BT_Play=0;//如果是播放状态就暂停，并置0
+ 504   4      //                                              Flag_BT_TF_Play=0;//清楚TF卡播放标志
+ 505   4      //                                              bt_cmd=BT_PAUSE;
+ 506   4      //                                      }
+ 507   4      //                              }
+ 508   4      //                              else if(Music_Mode_TypeDef == MUSIC_TF)//在TF卡模式
+ 509   4      //                              {
+ 510   4      //                                      if(!Flag_BT_TF_Play)
+ 511   4      //                                      {
+ 512   4      //                                              Flag_BT_TF_Play=1;//如果是暂停状态就播放，并置1
+ 513   4      //                                              Flag_BT_Play=0;
+ 514   4      //                                              bt_cmd=BT_PLAY;
+ 515   4      //                                      }
+ 516   4      //                                      else
+ 517   4      //                                      {
+ 518   4      //                                              Flag_BT_TF_Play=0;//如果是播放状态就暂停，并置0
+ 519   4      //                                              Flag_BT_Play=0;
+ 520   4      //                                              bt_cmd=BT_PAUSE;
+ 521   4      //                                      }
+ 522   4      //                              }
+ 523   4                                      bt_cmd=BT_PLAY_PAUSE;
+ 524   4                                      break;
+ 525   4                              }
+ 526   3                              case KR(K_PLAY_PAUSE): //计时
+ 527   3                              {
+ 528   4                                      if (cntKeylong == 10)//2s
+ 529   4                                              bt_cmd=BT_IQ;
+ 530   4                                      break;
+ 531   4                              }
+ 532   3                              /*******************************************************************************
+ 533   3                              *功能：下一曲
+ 534   3                              *
+ 535   3                              *******************************************************************************/
+ 536   3                              case KU(K_NEXT): //短按
+ 537   3                              {
+ 538   4                                      if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
+ 539   4                                      {
+ 540   5                                              bt_cmd=BT_NEXT;//下一曲
+ 541   5                                      }
+ 542   4                              }
+ 543   3                              case KR(K_NEXT): //长按
+ 544   3                              {
+ 545   4                                      
+ 546   4                                      break;
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 10  
 
- 485   3                              *功能：闹钟
- 486   3                              *
- 487   3                              *******************************************************************************/
- 488   3                              case KU(K_ALARM): //短按//闹钟
- 489   3                              {
- 490   4                                      /* 设置RTC时间 从"K_AL_SNOOZE"键哪里过来的*/
- 491   4                                      if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR)
- 492   4                                      {
- 493   5                                              /*在长按ALARM键和SNOOZE键进入设置时间模式-小时设置，在短按ALARM键设置分钟时间*/
- 494   5                                              SetDisplayState10s(ADJ_CLK_MIN);//配置为设置RTC的状态-闪
- 495   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_MINUTE;
- 496   5                                              Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
- 497   5                                                                                                                         //认闹钟设置标志位),为2是30s计时标志位，
- 498   5                                              timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
- 499   5                                      }
- 500   4                                      else if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE)
- 501   4                                      {
- 502   5                                              //在长按ALARM键和SNOOZE键进入设置时间模式-小时设置，在短按ALARM键设置分钟时间
- 503   5                                              //在短按ALRM键确认时间设置，或者在进入分钟设置时间之后不动作30s即自动保存
- 504   5                                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
- 505   5                                              gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour;
- 506   5                                              gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
- 507   5                                              Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;//短按ALARM键确认设置
- 508   5                                              timeCnt_30Sec = 0;//校准,以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
- 509   5                                      }
- 510   4      
- 511   4                                      /* 设置闹钟时间 */
- 512   4                                      if(((PlayMode_TypeDef == PLAY_IN_TIME) && (FlagKSet_TypeDef == FLAG_KEYSET_OFF)) || (Alarm1_TypeDef.Fl
+ 547   4                              }
+ 548   3                              /*******************************************************************************
+ 549   3                              *功能：闹钟
+ 550   3                              *
+ 551   3                              *******************************************************************************/
+ 552   3                              case KU(K_ALARM): //短按//闹钟
+ 553   3                              {
+ 554   4                                      /* 设置RTC时间 从"K_AL_SNOOZE"键哪里过来的*/
+ 555   4                                      if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR)
+ 556   4                                      {
+ 557   5                                              /*在长按ALARM键和SNOOZE键进入设置时间模式-小时设置，在短按ALARM键设置分钟时间*/
+ 558   5                                              SetDisplayState10s(ADJ_CLK_MIN);//配置为设置RTC的状态-闪
+ 559   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_MINUTE;
+ 560   5                                              Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
+ 561   5                                                                                                                         //认闹钟设置标志位),为2是30s计时标志位，
+ 562   5                                              timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+ 563   5                                              break;
+ 564   5                                      }
+ 565   4                                      else if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE)
+ 566   4                                      {
+ 567   5                                              //在长按ALARM键和SNOOZE键进入设置时间模式-小时设置，在短按ALARM键设置分钟时间
+ 568   5                                              //在短按ALRM键确认时间设置，或者在进入分钟设置时间之后不动作30s即自动保存
+ 569   5                                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 570   5                                              gRTC_Hour   = Time_Temp_TypeDef.temp_RTC_Hour;
+ 571   5                                              gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
+ 572   5                                              Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;//短按ALARM键确认设置
+ 573   5                                              timeCnt_30Sec = 0;//校准,以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+ 574   5                                              cntDispStatus=0;
+ 575   5                                              Flag_DispStatus=0;
+ 576   5                                              break;
+ 577   5                                      }
+ 578   4      
+ 579   4                                      /* 设置闹钟时间 */
+ 580   4                                      if(((PlayMode_TypeDef == PLAY_IN_TIME) && (FlagKSet_TypeDef == FLAG_KEYSET_OFF)) || (Alarm1_TypeDef.Fl
              -ag_Again==1))
- 513   4                                      {
- 514   5                                              //只有在走时和没有其他设置模式下(比如时间设置，因为短按ALARM有其他功能)，才会进入此if功能
- 515   5                                              //设置脑中时间并开启闹钟
- 516   5                                              SetDisplayState10s(ADJ_ALARM1_HOUR);//闹钟小时闪烁
- 517   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_HOUR;
- 518   5                                              Alarm1_TypeDef.Alarm_OnOff = ALARM_ON;
- 519   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//第二次开启闹钟，并且不修改脑中时间，不动作30s自动保
- 520   5                                                                                                                        //存，(为1是确认闹钟设置标志位)为2是30s计时标志位，
- 521   5                                              Alarm1_TypeDef.Flag_Again=0;//设置好闹钟后重新进来，如果30s不操作就会被置为1
- 522   5                                      }
- 523   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
+ 581   4                                      {
+ 582   5                                              //只有在走时和没有其他设置模式下(比如时间设置，因为短按ALARM有其他功能)，才会进入此if功能
+ 583   5                                              //设置脑中时间并开启闹钟
+ 584   5                                              Alarm1_TypeDef.tempHour   = Alarm1_TypeDef.hour;//把原来设置的闹钟时间赋值给临时变量用于显示
+ 585   5                                              Alarm1_TypeDef.tempMinute = Alarm1_TypeDef.minute;
+ 586   5                                              SetDisplayState10s(ADJ_ALARM1_HOUR);//闹钟小时闪烁
+ 587   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_HOUR;
+ 588   5                                              Alarm1_TypeDef.Alarm_OnOff = ALARM_ON;
+ 589   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//第二次开启闹钟，并且不修改脑中时间，不动作30s自动保
+ 590   5                                                                                                                        //存，(为1是确认闹钟设置标志位)为2是30s计时标志位，
+ 591   5                                              Alarm1_TypeDef.Flag_Again=0;//设置好闹钟后重新进来，如果30s不操作就会被置为1
+ 592   5                                      }
+ 593   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
              -))  
- 524   4                                      {
- 525   5                                              SetDisplayState10s(ADJ_ALARM1_MIN);//闹钟分钟闪烁
- 526   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_MINUTE;
- 527   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//第二次开启闹钟，并且修改脑中时间，把不动作自动保存关闭
- 528   5                                              timeCnt_30Sec = 0;                                //并校准时间为0
- 529   5                                      }
- 530   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
+ 594   4                                      {
+ 595   5                                              SetDisplayState10s(ADJ_ALARM1_MIN);//闹钟分钟闪烁
+ 596   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_MINUTE;
+ 597   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//第二次开启闹钟，并且修改脑中时间，把不动作自动保存关闭
+ 598   5                                              timeCnt_30Sec = 0;                                //并校准时间为0
+ 599   5                                      }
+ 600   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
              -ON))
- 531   4                                      {
- 532   5                                              SetDisplayState10s(ADJ_ALARM1_WORK);//闹钟工作模式闪烁，beep响或者蓝牙标志闪
- 533   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_ALWORKMODE;
- 534   5                                              //Alarm1_TypeDef.Alarm_WorkMode=ALARM_BT&ALARM_BEEP;//工作模式，在音量加和音量减那里设置
- 535   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//短按ALARM键确认设置或不动作30s自动保存，(为1
- 536   5                                                                                                                        //是确认闹钟设置标志位)为2是30s计时标志位，
- 537   5                                              timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
- 538   5                                      }
- 539   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
-             -ARM_ON))
- 540   4                                      {
- 541   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_CONFIRMSET;
- 542   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 0;//短按ALARM键确认设置或不动作30s自动保存，(为1
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 10  
+ 601   4                                      {
+ 602   5                                              SetDisplayState10s(ADJ_ALARM1_WORK);//闹钟工作模式闪烁，beep响或者蓝牙标志闪
+ 603   5                                              FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_ALWORKMODE;
+ 604   5                                              //Alarm1_TypeDef.Alarm_WorkMode=ALARM_BT&ALARM_BEEP;//工作模式，在音量加和音量减那里设置
+ 605   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 2;//短按ALARM键确认设置或不动作30s自动保存，(为1
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 11  
 
- 543   5                                                                                                                        //是确认闹钟设置标志位)为2是30s计时标志位，
- 544   5                                              timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
- 545   5                                              Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//短按ALARM键确认设置
- 546   5                                              Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
- 547   5                                              Alarm1_TypeDef.Flag_Again=1;
- 548   5                                              cntDispStatus=0;
- 549   5                                      }
- 550   4      
- 551   4                                      break;
- 552   4                              }
- 553   3                              case KH(K_ALARM): //长按//闹钟
- 554   3                              {
- 555   4                                      
- 556   4                                      break;
- 557   4                              }
- 558   3                              /*******************************************************************************
- 559   3                              *功能：音量减
- 560   3                              *
- 561   3                              *******************************************************************************/
- 562   3                              case KU(K_VOLDEC): //短按//音量减
- 563   3                              case KR(K_VOLDEC): //长按//音量减
- 564   3                              {
- 565   4                                      //长按“VOL-”键，小时快速递减；
- 566   4                                      //长按“VOL-”键，分钟位数快速递减；
- 567   4                                      if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
- 568   4                                      {
- 569   5                                              if (Time_Temp_TypeDef.temp_RTC_Hour > 0)
- 570   5                                              {
- 571   6                                                      Time_Temp_TypeDef.temp_RTC_Hour--;
- 572   6                                              }
- 573   5                                      }
- 574   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
- 575   4                                      {
- 576   5                                              if (Time_Temp_TypeDef.temp_RTC_Minute > 0)
- 577   5                                              {
- 578   6                                                      Time_Temp_TypeDef.temp_RTC_Minute--;
- 579   6                                              }
- 580   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
- 581   5                                      }
- 582   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
+ 606   5                                                                                                                        //是确认闹钟设置标志位)为2是30s计时标志位，
+ 607   5                                              timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+ 608   5                                      }
+ 609   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
+             -ARM_ON))
+ 610   4                                      {
+ 611   5                                              //FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_CONFIRMSET;
+ 612   5                                              FlagKSet_TypeDef = FLAG_KEYSET_OFF;
+ 613   5                                              Alarm1_TypeDef.Flag_Confirm_30Sec = 0;//短按ALARM键确认设置或不动作30s自动保存，(为1
+ 614   5                                                                                                                        //是确认闹钟设置标志位)为2是30s计时标志位，
+ 615   5                                              timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+ 616   5                                              Alarm1_TypeDef.hour   = Alarm1_TypeDef.tempHour;//短按ALARM键确认设置
+ 617   5                                              Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
+ 618   5                                              Alarm1_TypeDef.Flag_Again=1;
+ 619   5                                              cntDispStatus=0;
+ 620   5                                              Flag_DispStatus=0;
+ 621   5                                      }
+ 622   4      
+ 623   4                                      break;
+ 624   4                              }
+ 625   3                              case KH(K_ALARM): //长按//闹钟
+ 626   3                              {
+ 627   4                                      
+ 628   4                                      break;
+ 629   4                              }
+ 630   3                              /*******************************************************************************
+ 631   3                              *功能：音量减
+ 632   3                              *
+ 633   3                              *******************************************************************************/
+ 634   3                              case KU(K_VOLDEC): //短按//音量减
+ 635   3                              case KR(K_VOLDEC): //长按//音量减
+ 636   3                              {
+ 637   4                                      //长按“VOL-”键，小时快速递减；
+ 638   4                                      //长按“VOL-”键，分钟位数快速递减；
+ 639   4                                      if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
+ 640   4                                      {
+ 641   5                                              if (Time_Temp_TypeDef.temp_RTC_Hour > 0)
+ 642   5                                              {
+ 643   6                                                      Time_Temp_TypeDef.temp_RTC_Hour--;
+ 644   6                                              }
+ 645   5                                              else //形成循环
+ 646   5                                              {
+ 647   6                                                      if (Time_Temp_TypeDef.temp_RTC_Hour == 0)
+ 648   6                                                              Time_Temp_TypeDef.temp_RTC_Hour=24;
+ 649   6                                              }
+ 650   5                                              timeCnt_30Sec = 0;
+ 651   5                                      }
+ 652   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
+ 653   4                                      {
+ 654   5                                              if (Time_Temp_TypeDef.temp_RTC_Minute > 0)
+ 655   5                                              {
+ 656   6                                                      Time_Temp_TypeDef.temp_RTC_Minute--;
+ 657   6                                              }
+ 658   5                                              else//形成循环
+ 659   5                                              {
+ 660   6                                                      if (Time_Temp_TypeDef.temp_RTC_Minute == 0)
+ 661   6                                                      {
+ 662   7                                                              Time_Temp_TypeDef.temp_RTC_Minute=59;
+ 663   7                                                      }
+ 664   6                                              }
+ 665   5                                              gRTC_Minute=0;
+ 666   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 12  
+
+ 667   5                                      }
+ 668   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON
              -))
- 583   4                                      {
- 584   5                                              if (Alarm1_TypeDef.tempHour > 0)
- 585   5                                              {
- 586   6                                                      Alarm1_TypeDef.tempHour--;
- 587   6                                              }
- 588   5                                      }
- 589   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
+ 669   4                                      {
+ 670   5                                              if (Alarm1_TypeDef.tempHour > 0)
+ 671   5                                              {
+ 672   6                                                      Alarm1_TypeDef.tempHour--;
+ 673   6                                              }
+ 674   5                                              else//形成循环
+ 675   5                                              {
+ 676   6                                                      if (Alarm1_TypeDef.tempHour == 0)
+ 677   6                                                      {
+ 678   7                                                              Alarm1_TypeDef.tempHour=24;
+ 679   7                                                      }
+ 680   6                                              }
+ 681   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
+ 682   5                                      }
+ 683   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_
              -ON))
- 590   4                                      {
- 591   5                                              if (Alarm1_TypeDef.tempMinute > 0)
- 592   5                                              {
- 593   6                                                      Alarm1_TypeDef.tempMinute--;
- 594   6                                              }
- 595   5                                      }
- 596   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
+ 684   4                                      {
+ 685   5                                              if (Alarm1_TypeDef.tempMinute > 0)
+ 686   5                                              {
+ 687   6                                                      Alarm1_TypeDef.tempMinute--;
+ 688   6                                              }
+ 689   5                                              else//形成循环
+ 690   5                                              {
+ 691   6                                                      if (Alarm1_TypeDef.tempMinute == 0)
+ 692   6                                                      {
+ 693   7                                                              Alarm1_TypeDef.tempMinute=59;
+ 694   7                                                      }
+ 695   6                                              }
+ 696   5                                              timeCnt_30Sec = 0;
+ 697   5                                      }
+ 698   4                                      else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == AL
              -ARM_ON))
- 597   4                                      {
- 598   5                                              if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)
- 599   5                                              {
- 600   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BT;
- 601   6                                              }
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 11  
+ 699   4                                      {
+ 700   5                                              if (Alarm1_TypeDef.Alarm_WorkMode == ALARM_BEEP)
+ 701   5                                              {
+ 702   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BT;
+ 703   6                                              }
+ 704   5                                              else
+ 705   5                                              {
+ 706   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BEEP;
+ 707   6                                              }
+ 708   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
+ 709   5                                      }
+ 710   4                                      else//在蓝牙或TF状态下，音量功能
+ 711   4                                      {
+ 712   5                                              if (sysVolume > 0)
+ 713   5                                              {
+ 714   6                                                      sysVolume--;
+ 715   6                                              }
+ 716   5                                      }
+ 717   4      
+ 718   4                                      break;
+ 719   4                              }
+ 720   3                              /*******************************************************************************
+ 721   3                              *功能：蓝牙
+ 722   3                              *
+ 723   3                              *******************************************************************************/
+ 724   3                              case KU(K_BT): //短按
+ 725   3                              {
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 13  
 
- 602   5                                              else
- 603   5                                              {
- 604   6                                                      Alarm1_TypeDef.Alarm_WorkMode = ALARM_BEEP;
- 605   6                                              }
- 606   5                                              timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
- 607   5                                      }
- 608   4                                      else//在蓝牙或TF状态下，音量功能
- 609   4                                      {
- 610   5                                              if (sysVolume > 0)
- 611   5                                              {
- 612   6                                                      sysVolume--;
- 613   6                                              }
- 614   5                                      }
- 615   4      
- 616   4                                      break;
- 617   4                              }
- 618   3                              /*******************************************************************************
- 619   3                              *功能：蓝牙
- 620   3                              *
- 621   3                              *******************************************************************************/
- 622   3                              case KU(K_BT): //短按
- 623   3                              {
- 624   4                                      //短按“VOL-/PREV”键，小时递减，
- 625   4                                      //短按“VOL-/PREV”键，分钟位数递减，
- 626   4                                      if (Music_Mode_TypeDef != MUSIC_BT)
- 627   4                                      {
- 628   5                                              Music_Mode_TypeDef = MUSIC_BT;
- 629   5                                      }
- 630   4                                      break;
- 631   4                              }
- 632   3                              case KH(K_BT): //长按
- 633   3                              {
- 634   4                                      if (cntKeylong == 10)//2s
- 635   4                                              bt_cmd=BT_PAIR;
- 636   4                                      break;
- 637   4                              }
- 638   3                              /*******************************************************************************
- 639   3                              *功能：上一曲
- 640   3                              *
- 641   3                              *******************************************************************************/
- 642   3                              case KU(K_PREV): //短按
- 643   3                              {
- 644   4                                      if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
- 645   4                                      {
- 646   5                                              bt_cmd=BT_PREV;//上一曲
- 647   5                                      }
- 648   4                              }
- 649   3                              case KR(K_PREV): //长按
- 650   3                              {
- 651   4                                      
- 652   4                                      break;
- 653   4                              }
- 654   3                              /*******************************************************************************
- 655   3                              *功能：组合键=闹钟+贪睡
- 656   3                              *
- 657   3                              *******************************************************************************/
- 658   3                              case KU(K_AL_SNOOZE): //短按
- 659   3                              {
- 660   4      
- 661   4                                      break;
- 662   4                              }
- 663   3                              case KR(K_AL_SNOOZE): //长按
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 12  
+ 726   4                                      //短按“VOL-/PREV”键，小时递减，
+ 727   4                                      //短按“VOL-/PREV”键，分钟位数递减，
+ 728   4                                      if (Music_Mode_TypeDef == MUSIC_OFF)
+ 729   4                                      {
+ 730   5                                              Music_Mode_TypeDef = MUSIC_BT;//如果已经插入TF卡，在TF_Check()里面也会立马转为TF卡模式
+ 731   5                                      }
+ 732   4                                      else
+ 733   4                                      {
+ 734   5                                              Music_Mode_TypeDef = MUSIC_OFF;
+ 735   5                                      }
+ 736   4                                      break;
+ 737   4                              }
+ 738   3                              case KR(K_BT): //长按
+ 739   3                              {
+ 740   4                                      if (cntKeylong == 10)//2s
+ 741   4                                              bt_cmd=BT_PAIR;
+ 742   4                                      break;
+ 743   4                              }
+ 744   3                              /*******************************************************************************
+ 745   3                              *功能：上一曲
+ 746   3                              *
+ 747   3                              *******************************************************************************/
+ 748   3                              case KU(K_PREV): //短按
+ 749   3                              {
+ 750   4                                      if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
+ 751   4                                      {
+ 752   5                                              bt_cmd=BT_PREV;//上一曲
+ 753   5                                      }
+ 754   4                              }
+ 755   3                              case KR(K_PREV): //长按
+ 756   3                              {
+ 757   4                                      
+ 758   4                                      break;
+ 759   4                              }
+ 760   3                              /*******************************************************************************
+ 761   3                              *功能：设置RTC时间     组合键=闹钟+贪睡
+ 762   3                              *
+ 763   3                              *******************************************************************************/
+ 764   3                              case KU(K_AL_SNOOZE): //短按
+ 765   3                              {
+ 766   4      
+ 767   4                                      break;
+ 768   4                              }
+ 769   3                              case KR(K_AL_SNOOZE): //长按
+ 770   3                              {
+ 771   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
+ 772   4                                      {
+ 773   5                                              if (cntKeylong == 10)//2s
+ 774   5                                              {
+ 775   6                                                      //长按ALARM和SNOOZE键2s进入时间设置模式-小时设置
+ 776   6                                                      Time_Temp_TypeDef.temp_RTC_Hour   = gRTC_Hour;
+ 777   6                                                      Time_Temp_TypeDef.temp_RTC_Minute = gRTC_Minute;
+ 778   6                                                      SetDisplayState10s(ADJ_CLK_HOUR);//配置为设置RTC的状态-闪
+ 779   6                                                      FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_HOUR;
+ 780   6                                                      Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
+ 781   6                                                                                                                         //认闹钟设置标志位),为2是30s计时标志位，
+ 782   6                                                      timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+ 783   6                                              }
+ 784   5                                      }
+ 785   4                                      break;
+ 786   4                              }
+ 787   3                              /*******************************************************************************
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 14  
 
- 664   3                              {
- 665   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
- 666   4                                      {
- 667   5                                              if (cntKeylong == 10)//2s
- 668   5                                              {
- 669   6                                                      //长按ALARM和SNOOZE键2s进入时间设置模式-小时设置
- 670   6                                                      SetDisplayState10s(ADJ_CLK_HOUR);//配置为设置RTC的状态-闪
- 671   6                                                      FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_HOUR;
- 672   6                                                      Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
- 673   6                                                                                                                         //认闹钟设置标志位),为2是30s计时标志位，
- 674   6                                                      timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
- 675   6                                              }
- 676   5                                      }
- 677   4                                      break;
- 678   4                              }
- 679   3                              /*******************************************************************************
- 680   3                              *功能：组合键=闹钟+音量加
- 681   3                              *
- 682   3                              *******************************************************************************/
- 683   3                              case KU(K_AL_VOLINC): //短按
- 684   3                              case KR(K_AL_VOLINC): //长按
- 685   3                              {
- 686   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
- 687   4                                      {
- 688   5                                              if (cntKeylong == 10)//2s
- 689   5                                                      gRTC_Hour = gRTC_Hour + 1;//组合键-闹钟和音量加-同时2s-RTC时间加一小时，表示开启夏令时
- 690   5                                      }
- 691   4                                      break;
- 692   4                              }
- 693   3                              /*******************************************************************************
- 694   3                              *功能：组合键=闹钟+音量减
- 695   3                              *
- 696   3                              *******************************************************************************/
- 697   3                              case KU(K_AL_VOLDEC): //短按
- 698   3                              case KR(K_AL_VOLDEC): //长按
- 699   3                              {
- 700   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
- 701   4                                      {
- 702   5                                              if (cntKeylong == 10)//2s
- 703   5                                                      gRTC_Hour = gRTC_Hour - 1;//组合键-闹钟和音量减-同时2s-RTC时间减一小时，表示关闭夏令时
- 704   5                                      }
- 705   4                                      break;
- 706   4                              }
- 707   3                      }
- 708   2              }
- 709   1      }
- 710          
- 711          
- 712          
- 713          
- 714           
- 715           /*******************************************************************************
- 716           * 函数原型：
- 717           * 输入参数：
- 718           * 输出参数：
- 719           * 函数功能：
- 720           * 返回值说明：
- 721           * 创建日期：
- 722           * 创建人：
- 723           * 修改日期
- 724           * 修改人：
- 725           * 第N次修改：
-C51 COMPILER V9.00   KEY_MODE                                                              11/19/2018 17:13:53 PAGE 13  
+ 788   3                              *功能：增加一小时夏令时      组合键=闹钟+音量加
+ 789   3                              *
+ 790   3                              *******************************************************************************/
+ 791   3                              case KU(K_AL_VOLINC): //短按
+ 792   3                              case KR(K_AL_VOLINC): //长按
+ 793   3                              {
+ 794   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
+ 795   4                                      {
+ 796   5                                              if(Flag_DaylightSaving != 1)//只进来1次，除非减了夏令时
+ 797   5                                              {
+ 798   6                                                      if (cntKeylong == 10)//2s
+ 799   6                                                      {
+ 800   7                                                              gRTC_Hour = gRTC_Hour + 1;//组合键-闹钟和音量加-同时2s-RTC时间加一小时，表示开启夏令时
+ 801   7                                                              Flag_DaylightSaving=1;
+ 802   7                                                      }
+ 803   6                                              }
+ 804   5                                      }
+ 805   4                                      break;
+ 806   4                              }
+ 807   3                              /*******************************************************************************
+ 808   3                              *功能：减少一小时夏令时      组合键=闹钟+音量减
+ 809   3                              *
+ 810   3                              *******************************************************************************/
+ 811   3                              case KU(K_AL_VOLDEC): //短按
+ 812   3                              case KR(K_AL_VOLDEC): //长按
+ 813   3                              {
+ 814   4                                      if (PlayMode_TypeDef == PLAY_IN_TIME)
+ 815   4                                      {
+ 816   5                                              if(Flag_DaylightSaving != 2)//纸巾来一次，除非加了夏令时
+ 817   5                                              {
+ 818   6                                                      if (cntKeylong == 10)//2s
+ 819   6                                                      {
+ 820   7                                                              gRTC_Hour = gRTC_Hour - 1;//组合键-闹钟和音量加-同时2s-RTC时间加一小时，表示开启夏令时
+ 821   7                                                              Flag_DaylightSaving=2;
+ 822   7                                                      }
+ 823   6                                              }
+ 824   5                                      }
+ 825   4                                      break;
+ 826   4                              }
+ 827   3                      }
+ 828   2              }
+ 829   1      }
+ 830          
+ 831          
+ 832          
+ 833          
+ 834           
+ 835           /*******************************************************************************
+ 836           * 函数原型：
+ 837           * 输入参数：
+ 838           * 输出参数：
+ 839           * 函数功能：
+ 840           * 返回值说明：
+ 841           * 创建日期：
+ 842           * 创建人：
+ 843           * 修改日期
+ 844           * 修改人：
+ 845           * 第N次修改：
+ 846           * 修改原因：
+ 847           * 备注：
+ 848           *******************************************************************************/
+ 849           
+C51 COMPILER V9.00   KEY_MODE                                                              11/24/2018 11:03:41 PAGE 15  
 
- 726           * 修改原因：
- 727           * 备注：
- 728           *******************************************************************************/
- 729           
- 730           
- 731           /*******************************************************************************
- 732           * 函数原型：
- 733           * 输入参数：
- 734           * 输出参数：
- 735           * 函数功能：
- 736           * 返回值说明：
- 737           * 创建日期：
- 738           * 创建人：
- 739           * 修改日期
- 740           * 修改人：
- 741           * 第N次修改：
- 742           * 修改原因：
- 743           * 备注：
- 744           *******************************************************************************/
- 745          
- 746          
- 747          
- 748          
- 749          
- 750          
- 751          
- 752          
- 753          
- 754          
- 755          
- 756          
- 757          
- 758          
- 759          
+ 850           
+ 851           /*******************************************************************************
+ 852           * 函数原型：
+ 853           * 输入参数：
+ 854           * 输出参数：
+ 855           * 函数功能：
+ 856           * 返回值说明：
+ 857           * 创建日期：
+ 858           * 创建人：
+ 859           * 修改日期
+ 860           * 修改人：
+ 861           * 第N次修改：
+ 862           * 修改原因：
+ 863           * 备注：
+ 864           *******************************************************************************/
+ 865          
+ 866          
+ 867          
+ 868          
+ 869          
+ 870          
+ 871          
+ 872          
+ 873          
+ 874          
+ 875          
+ 876          
+ 877          
+ 878          
+ 879          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    961    ----
+   CODE SIZE        =   1095    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

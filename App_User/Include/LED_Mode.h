@@ -234,8 +234,10 @@ typedef struct
 /******************************/
 /*函数声明Function declaration*/
 /******************************/
+void Alarm1_PowerOFF(void);
 void Display(void);
 void SetDisplayState10s(uint8_t status);
+
 /*****************************/
 /*函数定义function definetion*/
 /*****************************/
@@ -249,6 +251,7 @@ void SetDisplayState10s(uint8_t status);
 /*********************************/
 extern LED_BRIGHTNESS_TypeDef  LED_Brightness_TypeDef;
 extern ALRAM_TypeDef  Alarm1_TypeDef;
+extern ALRAM_TypeDef  BK_Alarm1_TypeDef;
 
 /************************************/
 /*外部调用_标志位定义flags definetion*/

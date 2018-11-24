@@ -354,6 +354,17 @@ void KeyComMsg(void)
 	if(gbKeyPress)
 	{ 
 		//Flag_data_bk=1;//数据改变时备份
+		/**************************************************************
+		*功能：如果闹钟响应，按下出snooze的按键都关闭闹钟
+		***************************************************************/
+		if((Alarm1_TypeDef.Alarm_OnOff == ALARM_ON) && (Alarm1_TypeDef.Alarm_RingRun == ALARM_RING_RUN_ON))
+		{
+			
+			if((KeyValue & 0x0F) != K_SNOOZE_DIMMER)
+			{
+				Alarm1_PowerOFF();
+			}
+		}
 	   	switch(KeyValue)
 		{
 			/*******************************************************************************
@@ -365,6 +376,8 @@ void KeyComMsg(void)
 				if (Alarm1_TypeDef.Alarm_RingRun == ALARM_RING_RUN_ON)
 				{
 					Alarm1_TypeDef.Alarm_Snooze = ALARM_SNOOZE_ON;//进入贪睡模式，为9分钟
+					//Flag_BT_Play=0;//短按之后进入贪睡，并把播放标志清掉，因为在"Compare_1MinutePorc()"
+								   //里面有个判断这个标志位，发送暂停命令的
 				}
 				else//正常走时模式下，短按SNOOZE键，调节LED平亮度，可循环调节高、中、低亮度(默认为高)
 				{
@@ -390,32 +403,64 @@ void KeyComMsg(void)
 				//长按“VOL+”键，分钟位数快速递增。
 				if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_HOUR) && (PlayMode_TypeDef == PLAY_IN_TIME))
 				{
-					if (Time_Temp_TypeDef.temp_RTC_Hour < 12)
+					if (Time_Temp_TypeDef.temp_RTC_Hour <= 24)
 					{
 						Time_Temp_TypeDef.temp_RTC_Hour++;
 					}
+					else
+					{
+						if (Time_Temp_TypeDef.temp_RTC_Hour > 24)
+						{
+							Time_Temp_TypeDef.temp_RTC_Hour=0;
+						}
+					}
+					timeCnt_30Sec = 0;
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
 				{
-					if (Time_Temp_TypeDef.temp_RTC_Minute < 59)
+					if (Time_Temp_TypeDef.temp_RTC_Minute <= 59)
 					{
 						Time_Temp_TypeDef.temp_RTC_Minute++;
 					}
+					else
+					{
+						if (Time_Temp_TypeDef.temp_RTC_Minute > 59)
+						{
+							Time_Temp_TypeDef.temp_RTC_Minute=0;
+						}
+					}
+					gRTC_Minute=0;
 					timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
-					if (Alarm1_TypeDef.tempHour < 12)
+					if (Alarm1_TypeDef.tempHour <= 24)
 					{
 						Alarm1_TypeDef.tempHour++;
 					}
+					else
+					{
+						if (Alarm1_TypeDef.tempHour > 24)
+						{
+							Alarm1_TypeDef.tempHour=0;
+						}
+					}
+					timeCnt_30Sec = 0;
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
-					if (Alarm1_TypeDef.tempMinute < 59)
+					if (Alarm1_TypeDef.tempMinute <= 59)
 					{
 						Alarm1_TypeDef.tempMinute++;
 					}
+					else
+					{
+						if (Alarm1_TypeDef.tempMinute > 59)
+						{
+							Alarm1_TypeDef.tempMinute=0;
+						}
+					}
+					timeCnt_30Sec = 0;
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
@@ -445,24 +490,43 @@ void KeyComMsg(void)
 			case KU(K_PLAY_PAUSE): //短按
 			{					
 				/* 这部分是在蓝牙和TF卡模式下短按播放/暂停 */
-				if (Music_Mode_TypeDef > MUSIC_OFF)//在蓝牙和TF卡模式
-				{
-					if(!Flag_BT_Play)
-					{
-						Flag_BT_Play=1;//如果是暂停状态就播放，并置1
-						bt_cmd=BT_PAUSE;
-					}
-					else
-					{
-						Flag_BT_Play=0;//如果是播放状态就暂停，并置0
-						bt_cmd=BT_PLAY;
-					}
-				}
+//				if (Music_Mode_TypeDef == MUSIC_BT)//在蓝牙模式
+//				{
+//					if(!Flag_BT_Play)
+//					{
+//						Flag_BT_Play=1;//如果是暂停状态就播放，并置1
+//						Flag_BT_TF_Play=0;//清楚TF卡播放标志
+//						bt_cmd=BT_PLAY;
+//					}
+//					else
+//					{
+//						Flag_BT_Play=0;//如果是播放状态就暂停，并置0
+//						Flag_BT_TF_Play=0;//清楚TF卡播放标志
+//						bt_cmd=BT_PAUSE;
+//					}
+//				}
+//				else if(Music_Mode_TypeDef == MUSIC_TF)//在TF卡模式
+//				{
+//					if(!Flag_BT_TF_Play)
+//					{
+//						Flag_BT_TF_Play=1;//如果是暂停状态就播放，并置1
+//						Flag_BT_Play=0;
+//						bt_cmd=BT_PLAY;
+//					}
+//					else
+//					{
+//						Flag_BT_TF_Play=0;//如果是播放状态就暂停，并置0
+//						Flag_BT_Play=0;
+//						bt_cmd=BT_PAUSE;
+//					}
+//				}
+				bt_cmd=BT_PLAY_PAUSE;
 				break;
 			}
 			case KR(K_PLAY_PAUSE): //计时
 			{
-				
+				if (cntKeylong == 10)//2s
+					bt_cmd=BT_IQ;
 				break;
 			}
 			/*******************************************************************************
@@ -496,6 +560,7 @@ void KeyComMsg(void)
 					Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
 														   //认闹钟设置标志位),为2是30s计时标志位，
 					timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+					break;
 				}
 				else if (FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE)
 				{
@@ -506,6 +571,9 @@ void KeyComMsg(void)
 					gRTC_Minute = Time_Temp_TypeDef.temp_RTC_Minute;
 					Time_Temp_TypeDef.Flag_Confirm_30Sec = 0;//短按ALARM键确认设置
 					timeCnt_30Sec = 0;//校准,以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
+					cntDispStatus=0;
+					Flag_DispStatus=0;
+					break;
 				}
 
 				/* 设置闹钟时间 */
@@ -513,6 +581,8 @@ void KeyComMsg(void)
 				{
 					//只有在走时和没有其他设置模式下(比如时间设置，因为短按ALARM有其他功能)，才会进入此if功能
 					//设置脑中时间并开启闹钟
+					Alarm1_TypeDef.tempHour   = Alarm1_TypeDef.hour;//把原来设置的闹钟时间赋值给临时变量用于显示
+					Alarm1_TypeDef.tempMinute = Alarm1_TypeDef.minute;
 					SetDisplayState10s(ADJ_ALARM1_HOUR);//闹钟小时闪烁
 					FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_HOUR;
 					Alarm1_TypeDef.Alarm_OnOff = ALARM_ON;
@@ -538,7 +608,8 @@ void KeyComMsg(void)
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
-					FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_CONFIRMSET;
+					//FlagKSet_TypeDef = FLAG_KEYSET_SHORT_ALARM_CONFIRMSET;
+					FlagKSet_TypeDef = FLAG_KEYSET_OFF;
 					Alarm1_TypeDef.Flag_Confirm_30Sec = 0;//短按ALARM键确认设置或不动作30s自动保存，(为1
 														  //是确认闹钟设置标志位)为2是30s计时标志位，
 					timeCnt_30Sec = 0;//校准，以防以前设置的时间或者其他功能使用时timeCnt_30Sec有大于0的值
@@ -546,6 +617,7 @@ void KeyComMsg(void)
 					Alarm1_TypeDef.minute = Alarm1_TypeDef.tempMinute;
 					Alarm1_TypeDef.Flag_Again=1;
 					cntDispStatus=0;
+					Flag_DispStatus=0;
 				}
 
 				break;
@@ -570,6 +642,12 @@ void KeyComMsg(void)
 					{
 						Time_Temp_TypeDef.temp_RTC_Hour--;
 					}
+					else //形成循环
+					{
+						if (Time_Temp_TypeDef.temp_RTC_Hour == 0)
+							Time_Temp_TypeDef.temp_RTC_Hour=24;
+					}
+					timeCnt_30Sec = 0;
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SETTIME_MINUTE) && (PlayMode_TypeDef == PLAY_IN_TIME))
 				{
@@ -577,6 +655,14 @@ void KeyComMsg(void)
 					{
 						Time_Temp_TypeDef.temp_RTC_Minute--;
 					}
+					else//形成循环
+					{
+						if (Time_Temp_TypeDef.temp_RTC_Minute == 0)
+						{
+							Time_Temp_TypeDef.temp_RTC_Minute=59;
+						}
+					}
+					gRTC_Minute=0;
 					timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_HOUR) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
@@ -585,6 +671,14 @@ void KeyComMsg(void)
 					{
 						Alarm1_TypeDef.tempHour--;
 					}
+					else//形成循环
+					{
+						if (Alarm1_TypeDef.tempHour == 0)
+						{
+							Alarm1_TypeDef.tempHour=24;
+						}
+					}
+					timeCnt_30Sec = 0;//开启了不动作30s自动保存，这里动作了，所以重新置0
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_MINUTE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
@@ -592,6 +686,14 @@ void KeyComMsg(void)
 					{
 						Alarm1_TypeDef.tempMinute--;
 					}
+					else//形成循环
+					{
+						if (Alarm1_TypeDef.tempMinute == 0)
+						{
+							Alarm1_TypeDef.tempMinute=59;
+						}
+					}
+					timeCnt_30Sec = 0;
 				}
 				else if ((FlagKSet_TypeDef == FLAG_KEYSET_SHORT_ALARM_ALWORKMODE) && (Alarm1_TypeDef.Alarm_OnOff == ALARM_ON))
 				{
@@ -623,13 +725,17 @@ void KeyComMsg(void)
 			{
 				//短按“VOL-/PREV”键，小时递减，
 				//短按“VOL-/PREV”键，分钟位数递减，
-				if (Music_Mode_TypeDef != MUSIC_BT)
+				if (Music_Mode_TypeDef == MUSIC_OFF)
 				{
-					Music_Mode_TypeDef = MUSIC_BT;
+					Music_Mode_TypeDef = MUSIC_BT;//如果已经插入TF卡，在TF_Check()里面也会立马转为TF卡模式
+				}
+				else
+				{
+					Music_Mode_TypeDef = MUSIC_OFF;
 				}
 				break;
 			}
-			case KH(K_BT): //长按
+			case KR(K_BT): //长按
 			{
 				if (cntKeylong == 10)//2s
 					bt_cmd=BT_PAIR;
@@ -652,7 +758,7 @@ void KeyComMsg(void)
 				break;
 			}
 			/*******************************************************************************
-			*功能：组合键=闹钟+贪睡
+			*功能：设置RTC时间     组合键=闹钟+贪睡
 			*
 			*******************************************************************************/
 			case KU(K_AL_SNOOZE): //短按
@@ -667,6 +773,8 @@ void KeyComMsg(void)
 					if (cntKeylong == 10)//2s
 					{
 						//长按ALARM和SNOOZE键2s进入时间设置模式-小时设置
+						Time_Temp_TypeDef.temp_RTC_Hour   = gRTC_Hour;
+						Time_Temp_TypeDef.temp_RTC_Minute = gRTC_Minute;
 						SetDisplayState10s(ADJ_CLK_HOUR);//配置为设置RTC的状态-闪
 						FlagKSet_TypeDef = FLAG_KEYSET_SETTIME_HOUR;
 						Time_Temp_TypeDef.Flag_Confirm_30Sec=2;//短按ALARM键确认设置或不动作30s自动保存，(为1是确
@@ -677,7 +785,7 @@ void KeyComMsg(void)
 				break;
 			}
 			/*******************************************************************************
-			*功能：组合键=闹钟+音量加
+			*功能：增加一小时夏令时      组合键=闹钟+音量加
 			*
 			*******************************************************************************/
 			case KU(K_AL_VOLINC): //短按
@@ -685,13 +793,19 @@ void KeyComMsg(void)
 			{
 				if (PlayMode_TypeDef == PLAY_IN_TIME)
 				{
-					if (cntKeylong == 10)//2s
-						gRTC_Hour = gRTC_Hour + 1;//组合键-闹钟和音量加-同时2s-RTC时间加一小时，表示开启夏令时
+					if(Flag_DaylightSaving != 1)//只进来1次，除非减了夏令时
+					{
+						if (cntKeylong == 10)//2s
+						{
+							gRTC_Hour = gRTC_Hour + 1;//组合键-闹钟和音量加-同时2s-RTC时间加一小时，表示开启夏令时
+							Flag_DaylightSaving=1;
+						}
+					}
 				}
 				break;
 			}
 			/*******************************************************************************
-			*功能：组合键=闹钟+音量减
+			*功能：减少一小时夏令时      组合键=闹钟+音量减
 			*
 			*******************************************************************************/
 			case KU(K_AL_VOLDEC): //短按
@@ -699,8 +813,14 @@ void KeyComMsg(void)
 			{
 				if (PlayMode_TypeDef == PLAY_IN_TIME)
 				{
-					if (cntKeylong == 10)//2s
-						gRTC_Hour = gRTC_Hour - 1;//组合键-闹钟和音量减-同时2s-RTC时间减一小时，表示关闭夏令时
+					if(Flag_DaylightSaving != 2)//纸巾来一次，除非加了夏令时
+					{
+						if (cntKeylong == 10)//2s
+						{
+							gRTC_Hour = gRTC_Hour - 1;//组合键-闹钟和音量加-同时2s-RTC时间加一小时，表示开启夏令时
+							Flag_DaylightSaving=2;
+						}
+					}
 				}
 				break;
 			}

@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MAIN                                                                  11/19/2018 17:13:52 PAGE 1   
+C51 COMPILER V9.00   MAIN                                                                  11/24/2018 11:14:26 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
@@ -27,348 +27,390 @@ line level    source
   17   1              cli();                  // disable INT. during peripheral setting
   18   1              port_init();            // initialize ports
   19   1              clock_init();           // initialize operation clock
-  20   1              LCD_init();             // initialize LCD
-  21   1              Timer0_init();          // initialize Timer0
-  22   1              Timer3_init();          // initialize Timer3
-  23   1              //UART_init();          // initialize UART interface
-  24   1              //WDT_init();           // initialize Watch-dog timer//从Program Size（编译时显示的"Program Size:
-  25   1                                                      // data=95.0 xdata=25 code=3244"(这个大小是现在注释的时候的)）可以看出
-  26   1                                                      //，程序在data开辟了大量的数据（95 Byte），在启动代码中会执行对data的
-  27   1                                                      //初始化，由于开启了(如果)看门狗,同时由于定义的data很大，在启动代码中
-  28   1                                                      //执行初始化时间远远超过了喂狗时间，所以导致执行启动代码的过程中看门狗
-  29   1                                                      //复位，一直进不了主程序，关不了狗，程序就一直复位，无限循环，会一直停
-  30   1                                                      //在"?C_STARTUP:     LJMP    STARTUP1"这里。【大部分(好的)程序员会在
-  31   1                                                      //main函数(这里是app_main函数)的第一句话才把看门狗打开】
-  32   1                                                      //参考网址：http://blog.sina.com.cn/s/blog_69d693150101ddk6.html
-  33   1                                                      //所以把看门狗打开放在了PowerON_Reset()函数中
-  34   1              WT_init();              // initialize Watch timer
-  35   1              sei();                  // enable INT.
-  36   1              
-  37   1              // TODO: add your main code here
-  38   1              app_main();
-  39   1              while(1);
-  40   1      }
-  41          
-  42          //======================================================
-  43          // interrupt routines
-  44          //======================================================
-  45          
-  46          void INT_UART_Rx() interrupt 9
-  47          {
-  48   1              // UART Rx interrupt
-  49   1              // TODO: add your code here
-  50   1              uint8_t temp_RxData;
-  51   1              temp_RxData=UARTDR;
-  52   1              //read_UARTData=UARTST;//读取寄存器的各种状态标志，方便查看
-  53   1              UARTST &= (~0x24);//置零中断标志，不然会一直进来
-  54   1              uart1_RX_Timeout=10;
-C51 COMPILER V9.00   MAIN                                                                  11/19/2018 17:13:52 PAGE 2   
+  20   1              BUZ_init();             // initialize Buzzer
+  21   1              LCD_init();             // initialize LCD
+  22   1              Timer0_init();          // initialize Timer0
+  23   1              Timer3_init();          // initialize Timer3
+  24   1              //UART_init();          // initialize UART interface
+  25   1              //WDT_init();           // initialize Watch-dog timer//从Program Size（编译时显示的"Program Size:
+  26   1                                                      // data=95.0 xdata=25 code=3244"(这个大小是现在注释的时候的)）可以看出
+  27   1                                                      //，程序在data开辟了大量的数据（95 Byte），在启动代码中会执行对data的
+  28   1                                                      //初始化，由于开启了(如果)看门狗,同时由于定义的data很大，在启动代码中
+  29   1                                                      //执行初始化时间远远超过了喂狗时间，所以导致执行启动代码的过程中看门狗
+  30   1                                                      //复位，一直进不了主程序，关不了狗，程序就一直复位，无限循环，会一直停
+  31   1                                                      //在"?C_STARTUP:     LJMP    STARTUP1"这里。【大部分(好的)程序员会在
+  32   1                                                      //main函数(这里是app_main函数)的第一句话才把看门狗打开】
+  33   1                                                      //参考网址：http://blog.sina.com.cn/s/blog_69d693150101ddk6.html
+  34   1                                                      //所以把看门狗打开放在了PowerON_Reset()函数中
+  35   1              //WT_init();            // initialize Watch timer
+  36   1              sei();                  // enable INT.
+  37   1              
+  38   1              // TODO: add your main code here
+  39   1              app_main();
+  40   1              while(1);
+  41   1      }
+  42          
+  43          //======================================================
+  44          // interrupt routines
+  45          //======================================================
+  46          
+  47          void INT_UART_Rx() interrupt 9
+  48          {
+  49   1              // UART Rx interrupt
+  50   1              // TODO: add your code here
+  51   1              uint8_t temp_RxData;
+  52   1              temp_RxData=UARTDR;
+  53   1              //read_UARTData=UARTST;//读取寄存器的各种状态标志，方便查看
+  54   1              UARTST &= (~0x24);//置零中断标志，不然会一直进来
+C51 COMPILER V9.00   MAIN                                                                  11/24/2018 11:14:26 PAGE 2   
 
-  55   1              if(Flag_UART_ReceiveBuffer_A_B)
-  56   1              {
-  57   2                      if(uart1_RX_Pointer<UART1_LEN_BUFFER)
-  58   2                              uart1_ReceiveBuffer_A[uart1_RX_Pointer++]=temp_RxData;
-  59   2                      if(temp_RxData=='\n')
-  60   2                      {
-  61   3                              uart1_RX_Pointer=0;
-  62   3                              Flag_UART1_RX_Finish_A=1;
-  63   3                              Flag_UART_ReceiveBuffer_A_B=~Flag_UART_ReceiveBuffer_A_B;
-  64   3                      }
-  65   2              }
-  66   1              else
-  67   1              {
-  68   2                      if(uart1_RX_Pointer<UART1_LEN_BUFFER)
-  69   2                              uart1_ReceiveBuffer_B[uart1_RX_Pointer++]=temp_RxData;
-  70   2                      if(temp_RxData=='\n')
-  71   2                      {
-  72   3                              uart1_RX_Pointer=0;
-  73   3                              Flag_UART1_RX_Finish_B=1;
-  74   3                              Flag_UART_ReceiveBuffer_A_B=~Flag_UART_ReceiveBuffer_A_B;
-  75   3                      }
-  76   2              }
-  77   1      }
-  78          
-  79          void INT_UART_Tx() interrupt 10
-  80          {
-  81   1              // UART Tx interrupt
-  82   1              // TODO: add your code here
-  83   1              //read_UARTData=UARTST;
-  84   1              UARTST &= ~0x80;
-  85   1              if(uart1_EnableSend)
-  86   1              {
-  87   2                      uart1_TX_Timeout=10;
-  88   2                      UARTDR=uart1_TransmitBuffer[uart1_TX_Pointer++];
-  89   2                      if(uart1_TransmitBuffer[uart1_TX_Pointer]=='\0')
-  90   2                              uart1_EnableSend=0;
-  91   2              }
-  92   1      }
-  93          
-  94          void INT_Timer0() interrupt 13
-  95          {
-  96   1              // Timer0 interrupt
-  97   1              // TODO: add your code here
-  98   1              Sys_Tick();
-  99   1      
- 100   1      }
- 101          
- 102          void INT_Timer3() interrupt 16
- 103          {
- 104   1              // Timer3 interrupt
- 105   1              // TODO: add your code here
- 106   1      
- 107   1      }
- 108          
- 109          void INT_WT() interrupt 20
- 110          {
- 111   1              // Watch timer interrupt
- 112   1              // TODO: add your code here
- 113   1              gbHalfSecond=(!gbHalfSecond);
- 114   1              if(gbHalfSecond)
- 115   1              {
- 116   2                      if(++gRTC_Sec>59)
-C51 COMPILER V9.00   MAIN                                                                  11/19/2018 17:13:52 PAGE 3   
+  55   1              uart1_RX_Timeout=10;
+  56   1              if(Flag_UART_ReceiveBuffer_A_B)
+  57   1              {
+  58   2                      if(uart1_RX_Pointer<UART1_LEN_BUFFER)
+  59   2                              uart1_ReceiveBuffer_A[uart1_RX_Pointer++]=temp_RxData;
+  60   2                      if(temp_RxData=='\n')
+  61   2                      {
+  62   3                              uart1_RX_Pointer=0;
+  63   3                              Flag_UART1_RX_Finish_A=1;
+  64   3                              Flag_UART_ReceiveBuffer_A_B=~Flag_UART_ReceiveBuffer_A_B;
+  65   3                      }
+  66   2              }
+  67   1              else
+  68   1              {
+  69   2                      if(uart1_RX_Pointer<UART1_LEN_BUFFER)
+  70   2                              uart1_ReceiveBuffer_B[uart1_RX_Pointer++]=temp_RxData;
+  71   2                      if(temp_RxData=='\n')
+  72   2                      {
+  73   3                              uart1_RX_Pointer=0;
+  74   3                              Flag_UART1_RX_Finish_B=1;
+  75   3                              Flag_UART_ReceiveBuffer_A_B=~Flag_UART_ReceiveBuffer_A_B;
+  76   3                      }
+  77   2              }
+  78   1      }
+  79          
+  80          void INT_UART_Tx() interrupt 10
+  81          {
+  82   1              // UART Tx interrupt
+  83   1              // TODO: add your code here
+  84   1              //read_UARTData=UARTST;
+  85   1              UARTST &= ~0x80;
+  86   1              if(uart1_EnableSend)
+  87   1              {
+  88   2                      uart1_TX_Timeout=10;
+  89   2                      UARTDR=uart1_TransmitBuffer[uart1_TX_Pointer++];
+  90   2                      if(uart1_TransmitBuffer[uart1_TX_Pointer]=='\0')
+  91   2                              uart1_EnableSend=0;
+  92   2              }
+  93   1      }
+  94          
+  95          void INT_Timer0() interrupt 13
+  96          {
+  97   1              // Timer0 interrupt
+  98   1              // TODO: add your code here
+  99   1              Sys_Tick();
+ 100   1      
+ 101   1      }
+ 102          
+ 103          void INT_Timer3() interrupt 16
+ 104          {
+ 105   1              // Timer3 interrupt
+ 106   1              // TODO: add your code here
+ 107   1              LED_Deive();
+ 108   1      }
+ 109          
+ 110          void INT_WT() interrupt 20
+ 111          {
+ 112   1              // Watch timer interrupt
+ 113   1              // TODO: add your code here
+ 114   1              //0.5s进来一次
+ 115   1              
+ 116   1              gbHalfSecond=(!gbHalfSecond);
+C51 COMPILER V9.00   MAIN                                                                  11/24/2018 11:14:26 PAGE 3   
 
- 117   2                      {
- 118   3                              gRTC_Sec=0;
- 119   3                              if(++gRTC_Minute>59)
- 120   3                              {
- 121   4                                      gRTC_Minute=0;
- 122   4                                      if(++gRTC_Hour>23)
- 123   4                                      {
- 124   5                                              gRTC_Hour=0;
- 125   5                                              gRTC_Week<<=1;
- 126   5                                              if(gRTC_Week==0x80)//如果移位之后等于0x80，说明是第8次移位，这时候就是
- 127   5                                                      gRTC_Week=0x01;//周一，所以赋值为0x01。
- 128   5                                      }
- 129   4                              }
- 130   3                      }
- 131   2              }
- 132   1      }
- 133          
- 134          //======================================================
- 135          // peripheral setting routines
- 136          //======================================================
- 137          
- 138          unsigned char UART_read()
- 139          {
- 140   1              unsigned char dat;
- 141   1              
- 142   1              while(!(UARTST & 0x20));        // wait
- 143   1              dat = UARTDR;           // read
- 144   1              return  dat;
- 145   1      }
- 146          
- 147          void LCD_init()
- 148          {
- 149   1              // initialize LCD
- 150   1              // Frame freq. = 16.000000Hz
- 151   1              LCDCRH = 0x00;          // LCD control High
- 152   1              LCDCRL = 0x00;          // LCD control Low
- 153   1              LCDCCR = 0x00;          // LCD Contrast control
- 154   1      }
- 155          
- 156          void Timer0_init()
- 157          {
- 158   1              // initialize Timer0
- 159   1              // 8bit timer, period = 1.000000mS
- 160   1              T0CR = 0x92;            // timer setting
- 161   1              T0DR = 0x7C;            // period count
- 162   1              IE2 |= 0x02;            // Enable Timer0 interrupt
- 163   1              T0CR |= 0x01;           // clear counter
- 164   1      }
- 165          
- 166          void Timer3_init()
- 167          {
- 168   1              // initialize Timer3
- 169   1              // 8bit timer, period = 0.050000mS
- 170   1              T3DR  = 0x18;           // period count
- 171   1              T3CR  = 0x8A;           // timer setting
- 172   1              IE2  |= 0x10;           // Enable Timer3 interrupt
- 173   1              T3CR |= 0x01;           // clear counter
+ 117   1              if(gbHalfSecond)
+ 118   1              {
+ 119   2                      if(++gRTC_Sec>59)
+ 120   2                      {
+ 121   3                              gRTC_Sec=0;
+ 122   3                              if(++gRTC_Minute>59)
+ 123   3                              {
+ 124   4                                      gRTC_Minute=0;
+ 125   4                                      if(++gRTC_Hour>23)
+ 126   4                                      {
+ 127   5                                              gRTC_Hour=0;
+ 128   5                                              gRTC_Week<<=1;
+ 129   5                                              if(gRTC_Week==0x80)//如果移位之后等于0x80，说明是第8次移位，这时候就是
+ 130   5                                                      gRTC_Week=0x01;//周一，所以赋值为0x01。
+ 131   5                                      }
+ 132   4                              }
+ 133   3                      }
+ 134   2      //              if(++gRTC_Minute>59)//这里把分钟提到和秒一样的等级，是测试用，可以缩短测试时间时的时间
+ 135   2      //              {
+ 136   2      //                      gRTC_Minute=0;
+ 137   2      //                      if(++gRTC_Hour>23)
+ 138   2      //                      {
+ 139   2      //                              gRTC_Hour=0;
+ 140   2      //                              gRTC_Week<<=1;
+ 141   2      //                              if(gRTC_Week==0x80)//如果移位之后等于0x80，说明是第8次移位，这时候就是
+ 142   2      //                                      gRTC_Week=0x01;//周一，所以赋值为0x01。
+ 143   2      //                      }
+ 144   2      //              }
+ 145   2              }
+ 146   1              gblcd_dot=gbHalfSecond;
+ 147   1      }
+ 148          
+ 149          //======================================================
+ 150          // peripheral setting routines
+ 151          //======================================================
+ 152          
+ 153          unsigned char UART_read()
+ 154          {
+ 155   1              unsigned char dat;
+ 156   1              
+ 157   1              while(!(UARTST & 0x20));        // wait
+ 158   1              dat = UARTDR;           // read
+ 159   1              return  dat;
+ 160   1      }
+ 161          
+ 162          void BUZ_OnOff(unsigned char On)
+ 163          {
+ 164   1              // Buzzer ON(On=1) / OFF(On=0)
+ 165   1              BUZCR = (On)? (BUZCR | 1) : (BUZCR & (~1));     // ON / OFF
+ 166   1      }
+ 167          
+ 168          void BUZ_init()
+ 169          {
+ 170   1              // initialize Buzzer
+ 171   1              // Frequency (Hz) = 1000.000000
+ 172   1              BUZCR = 0x00;           // clock source
+ 173   1              BUZDR = 0xF9;           // count value
  174   1      }
  175          
- 176          bit  enUart=0;
- 177          void UART_init()
- 178          {
-C51 COMPILER V9.00   MAIN                                                                  11/19/2018 17:13:52 PAGE 4   
+ 176          void LCD_init()
+ 177          {
+ 178   1              // initialize LCD
+C51 COMPILER V9.00   MAIN                                                                  11/24/2018 11:14:26 PAGE 4   
 
- 179   1              // initialize UART interface
- 180   1              // UART : 9615bps N 8 1
- 181   1              if(!enUart)
- 182   1              {
- 183   2                      UARTCR2  = 0x02;        // activate UART
- 184   2                      UARTCR1  = 0x06;        // bit count, parity
- 185   2                      UARTCR2 |= 0xEC;        // interrupt, speed
- 186   2                      UARTCR3  = 0x00;        // stop bit
- 187   2                      UARTBD   = 0x67;        // baud rate
- 188   2                      IE1     |= 0x18;        // enable UART interrupt
- 189   2              }
- 190   1              enUart=1;
- 191   1      }
- 192          
- 193          void UART_Def_Init()
- 194          {
- 195   1              // initialize UART interface
- 196   1              // UART : 9615bps N 8 1
- 197   1              if(enUart)
- 198   1              {
- 199   2                      UARTCR2  = 0x00;        // activate UART
- 200   2                      UARTCR1  = 0x00;        // bit count, parity
- 201   2                      UARTCR2 |= 0x00;        // interrupt, speed
- 202   2                      UARTCR3  = 0x00;        // stop bit
- 203   2                      UARTBD   = 0x00;        // baud rate
- 204   2                      IE1     &=~0x18;    // disable UART interrupt
- 205   2              }
- 206   1              enUart=0;
- 207   1      }
- 208          
- 209          void UART_write(unsigned char dat)
- 210          {
- 211   1              while(!(UARTST & 0x80));        // wait
- 212   1              UARTDR = dat;           // write
- 213   1      }
- 214          
- 215          void WDT_clear()
- 216          {
- 217   1              WDTCR |= 0x20;          // Clear Watch-dog timer
- 218   1      }
- 219          
- 220          void WDT_init()
- 221          {
- 222   1              // initialize Watch-dog timer
- 223   1              WDTDR = 0x01;           // period
- 224   1              WDTCR = 0xC0;           // setting
- 225   1              //WDTCR |= 0x02;        // Use WDTRC
- 226   1              WDT_clear();
- 227   1      }
- 228          
- 229          void WT_init()
- 230          {
- 231   1              // initialize Watch timer
- 232   1              WTCR = 0x80;            // setting
- 233   1              WTDR = 0x01;            // set duty
- 234   1              WTDR = 0x81;            // clear WT
- 235   1              IE3 |= 0x04;            // Enable WT interrupt
+ 179   1              // Frame freq. = 16.000000Hz
+ 180   1              LCDCRH = 0x00;          // LCD control High
+ 181   1              LCDCRL = 0x00;          // LCD control Low
+ 182   1              LCDCCR = 0x00;          // LCD Contrast control
+ 183   1      }
+ 184          
+ 185          void Timer0_init()
+ 186          {
+ 187   1              // initialize Timer0
+ 188   1              // 8bit timer, period = 1.000000mS
+ 189   1              T0CR = 0x92;            // timer setting
+ 190   1              T0DR = 0x7C;            // period count
+ 191   1              IE2 |= 0x02;            // Enable Timer0 interrupt
+ 192   1              T0CR |= 0x01;           // clear counter
+ 193   1      }
+ 194          
+ 195          void Timer3_init()
+ 196          {
+ 197   1              // initialize Timer3
+ 198   1              // 8bit timer, period = 0.050000mS
+ 199   1              T3DR  = 0x18;           // period count
+ 200   1              T3CR  = 0x8A;           // timer setting
+ 201   1              IE2  |= 0x10;           // Enable Timer3 interrupt
+ 202   1              T3CR |= 0x01;           // clear counter
+ 203   1      }
+ 204          
+ 205          bit  enUart=0;
+ 206          void UART_init()
+ 207          {
+ 208   1              // initialize UART interface
+ 209   1              // UART : 9615bps N 8 1
+ 210   1              if(!enUart)
+ 211   1              {
+ 212   2                      UARTCR2  = 0x02;        // activate UART
+ 213   2                      UARTCR1  = 0x06;        // bit count, parity
+ 214   2                      UARTCR2 |= 0xEC;        // interrupt, speed
+ 215   2                      UARTCR3  = 0x00;        // stop bit
+ 216   2                      UARTBD   = 0x67;        // baud rate
+ 217   2                      IE1     |= 0x18;        // enable UART interrupt
+ 218   2              }
+ 219   1              enUart=1;
+ 220   1      }
+ 221          
+ 222          void UART_Def_Init()
+ 223          {
+ 224   1              // initialize UART interface
+ 225   1              // UART : 9615bps N 8 1
+ 226   1              if(enUart)
+ 227   1              {
+ 228   2                      UARTCR2  = 0x00;        // activate UART
+ 229   2                      UARTCR1  = 0x00;        // bit count, parity
+ 230   2                      UARTCR2 |= 0x00;        // interrupt, speed
+ 231   2                      UARTCR3  = 0x00;        // stop bit
+ 232   2                      UARTBD   = 0x00;        // baud rate
+ 233   2                      IE1     &=~0x18;    // disable UART interrupt
+ 234   2              }
+ 235   1              enUart=0;
  236   1      }
  237          
- 238          void clock_init()
+ 238          void UART_write(unsigned char dat)
  239          {
- 240   1              // internal RC clock (16.000000MHz)
-C51 COMPILER V9.00   MAIN                                                                  11/19/2018 17:13:52 PAGE 5   
+ 240   1              while(!(UARTST & 0x80));        // wait
+C51 COMPILER V9.00   MAIN                                                                  11/24/2018 11:14:26 PAGE 5   
 
- 241   1              OSCCR = 0x28;           // Set Int. OSC
- 242   1              SCCR  = 0x00;           // Use Int. OSC
- 243   1      //      // external clock//外部时钟源配置
- 244   1      //      OSCCR = 0x0A;           // Enable int. 1MHz and Ext. OSC
- 245   1      //      BITCR = 0x09;           // Set waiting time : 16ms@1MHz
- 246   1      //      while((BITCR & 0x80) == 0);     // Ext. OSC stabilizing time
- 247   1      //      SCCR = 0x01;            // Change to Ext. OSC
- 248   1      //      OSCCR |= 0x04;          // Disable Int. OSC
- 249   1      }
- 250          
- 251          void port_init()
- 252          {
- 253   1              // initialize ports
- 254   1              //   1 : P13      in  
- 255   1              //   2 : P14      out 
- 256   1              //   3 : P15      out 
- 257   1              //   8 : P60      out 
- 258   1              //   9 : P61      in  
- 259   1              //  10 : P62      in  
- 260   1              //  11 : SXIN     in  
- 261   1              //  12 : SXOUT    out 
- 262   1              //  14 : P20      out 
- 263   1              //  15 : P21      out 
- 264   1              //  16 : P22      out 
- 265   1              //  17 : P23      out 
- 266   1              //  18 : P24      out 
- 267   1              //  19 : P25      out 
- 268   1              //  20 : P26      out 
- 269   1              //  21 : P27      out 
- 270   1              //  22 : P30      out 
- 271   1              //  23 : P31      out 
- 272   1              //  24 : P32      out 
- 273   1              //  25 : P33      out 
- 274   1              //  26 : P34      out 
- 275   1              //  27 : P35      out 
- 276   1              //  28 : P36      out 
- 277   1              //  29 : P37      out 
- 278   1              //  30 : P40      out 
- 279   1              //  31 : P41      out 
- 280   1              //  32 : P42      out 
- 281   1              //  33 : P43      out 
- 282   1              //  34 : P44      out 
- 283   1              //  35 : P45      out 
- 284   1              //  36 : P46      out 
- 285   1              //  37 : P47      out 
- 286   1              //  38 : P50      out 
- 287   1              //  39 : P51      out 
- 288   1              //  40 : P52      out 
- 289   1              //  41 : P53      out 
- 290   1              //  42 : P54      out 
- 291   1              //  43 : P55      in  
- 292   1              //  44 : TXD      out 
- 293   1              //  45 : RXD      in  
- 294   1              //  46 : P00      in  
- 295   1              //  47 : P01      out 
- 296   1              //  48 : P02      out 
- 297   1              //  49 : P03      in  
- 298   1              //  50 : P10      in  
- 299   1              //  51 : P11      in  
- 300   1              //  52 : P12      in  
- 301   1              P0IO = 0xF6;            // direction
- 302   1              P0PU = 0x00;            // pullup
-C51 COMPILER V9.00   MAIN                                                                  11/19/2018 17:13:52 PAGE 6   
+ 241   1              UARTDR = dat;           // write
+ 242   1      }
+ 243          
+ 244          void WDT_clear()
+ 245          {
+ 246   1              WDTCR |= 0x20;          // Clear Watch-dog timer
+ 247   1      }
+ 248          
+ 249          void WDT_init()
+ 250          {
+ 251   1              // initialize Watch-dog timer
+ 252   1              WDTDR = 0x01;           // period
+ 253   1              WDTCR = 0xC0;           // setting
+ 254   1              //WDTCR |= 0x02;        // Use WDTRC
+ 255   1              WDT_clear();
+ 256   1      }
+ 257          
+ 258          /*关闭WT中断，要显示2s，不能让RTC走动*/
+ 259          void WT_Def_Init()
+ 260          {
+ 261   1              // initialize Watch timer
+ 262   1              WTCR = 0x00;            // setting
+ 263   1              WTDR = 0x00;            // set duty
+ 264   1              WTDR = 0x00;            // clear WT
+ 265   1              IE3 &= ~0x04;           // Enable WT interrupt
+ 266   1      }
+ 267          
+ 268          void WT_init()
+ 269          {
+ 270   1              // initialize Watch timer
+ 271   1              WTCR = 0x88;            // setting//0.5s
+ 272   1              WTDR = 0x01;            // set duty
+ 273   1              WTDR = 0x80;            // clear WT
+ 274   1              IE3 |= 0x04;            // Enable WT interrupt
+ 275   1      }
+ 276          
+ 277          void clock_init()
+ 278          {
+ 279   1              // internal RC clock (16.000000MHz)
+ 280   1              //OSCCR = 0x29;         // Set Int. OSC
+ 281   1              OSCCR = (IRCS_16MHZ | IRC_EN | (1 << SCLKE));
+ 282   1              SCCR  = 0x00;           // Use Int. OSC
+ 283   1      //      // external clock//外部时钟源配置
+ 284   1      //      OSCCR = 0x0A;           // Enable int. 1MHz and Ext. OSC
+ 285   1      //      BITCR = 0x09;           // Set waiting time : 16ms@1MHz
+ 286   1      //      while((BITCR & 0x80) == 0);     // Ext. OSC stabilizing time
+ 287   1      //      SCCR = 0x01;            // Change to Ext. OSC
+ 288   1      //      OSCCR |= 0x04;          // Disable Int. OSC
+ 289   1      }
+ 290          
+ 291          void port_init()
+ 292          {
+ 293   1              // initialize ports
+ 294   1              //   1 : P13      in  
+ 295   1              //   2 : P14      out 
+ 296   1              //   3 : P15      out 
+ 297   1              //   8 : P60      out 
+ 298   1              //   9 : P61      in  
+ 299   1              //  10 : P62      in  
+ 300   1              //  11 : SXIN     in  
+ 301   1              //  12 : SXOUT    out 
+ 302   1              //  14 : P20      out 
+C51 COMPILER V9.00   MAIN                                                                  11/24/2018 11:14:26 PAGE 6   
 
- 303   1              P0OD = 0x00;            // open drain
- 304   1              P0DB = 0x00;            // bit7~6(debounce clock), bit1~0=P01~00 debounce
- 305   1              P0   = 0x00;            // port initial value
- 306   1      
- 307   1              P1IO = 0xF0;            // direction
- 308   1              P1PU = 0x0F;            // pullup
- 309   1              P1OD = 0x00;            // open drain
- 310   1              P1DB = 0x00;            // P17~10 debounce
- 311   1              P1   = 0x00;            // port initial value
- 312   1      
- 313   1              P2IO = 0xFF;            // direction
- 314   1              P2PU = 0x00;            // pullup
- 315   1              P2OD = 0x00;            // open drain
- 316   1              P2   = 0x00;            // port initial value
- 317   1      
- 318   1              P3IO = 0xFF;            // direction
- 319   1              P3PU = 0x00;            // pullup
- 320   1              P3OD = 0x00;            // open drain
- 321   1              P3   = 0x00;            // port initial value
- 322   1      
- 323   1              P4IO = 0xFF;            // direction
- 324   1              P4PU = 0x00;            // pullup
- 325   1              P4OD = 0x00;            // open drain
- 326   1              P4   = 0x00;            // port initial value
- 327   1      
- 328   1              P5IO = 0x5F;            // direction
- 329   1              P5PU = 0x00;            // pullup
- 330   1              P5OD = 0x00;            // open drain
- 331   1              P5   = 0x00;            // port initial value
- 332   1      
- 333   1              P6IO = 0xF1;            // direction
- 334   1              P6PU = 0x00;            // pullup
- 335   1              P6OD = 0x00;            // open drain
- 336   1              P6   = 0x00;            // port initial value
- 337   1      
- 338   1              // Set port functions
- 339   1              P0FSR = 0x00;           // P0 selection
- 340   1              P2FSR = 0x00;           // P2 selection
- 341   1              P3FSR = 0x00;           // P3 selection
- 342   1              P4FSR = 0x00;           // P4 selection
- 343   1              P5FSRH = 0x18;          // P5 selection High
- 344   1              P5FSRL = 0x00;          // P5 selection Low
- 345   1              P6FSR = 0x0C;           // P6 selection
- 346   1      }
- 347          
+ 303   1              //  15 : P21      out 
+ 304   1              //  16 : P22      out 
+ 305   1              //  17 : P23      out 
+ 306   1              //  18 : P24      out 
+ 307   1              //  19 : P25      out 
+ 308   1              //  20 : P26      out 
+ 309   1              //  21 : P27      out 
+ 310   1              //  22 : P30      out 
+ 311   1              //  23 : P31      out 
+ 312   1              //  24 : P32      out 
+ 313   1              //  25 : P33      out 
+ 314   1              //  26 : P34      out 
+ 315   1              //  27 : P35      out 
+ 316   1              //  28 : P36      out 
+ 317   1              //  29 : P37      out 
+ 318   1              //  30 : P40      out 
+ 319   1              //  31 : P41      out 
+ 320   1              //  32 : P42      out 
+ 321   1              //  33 : P43      out 
+ 322   1              //  34 : P44      out 
+ 323   1              //  35 : P45      out 
+ 324   1              //  36 : P46      out 
+ 325   1              //  37 : P47      out 
+ 326   1              //  38 : P50      out 
+ 327   1              //  39 : P51      out 
+ 328   1              //  40 : P52      out 
+ 329   1              //  41 : P53      out 
+ 330   1              //  42 : P54      out 
+ 331   1              //  43 : P55      in  
+ 332   1              //  44 : TXD      out 
+ 333   1              //  45 : RXD      in  
+ 334   1              //  46 : P00      in  
+ 335   1              //  47 : P01      out 
+ 336   1              //  48 : P02      out 
+ 337   1              //  49 : P03      in  
+ 338   1              //  50 : P10      in  
+ 339   1              //  51 : P11      in  
+ 340   1              //  52 : P12      in  
+ 341   1              P0IO = 0xF6;            // direction
+ 342   1              P0PU = 0x01;            // pullup
+ 343   1              P0OD = 0x00;            // open drain
+ 344   1              P0DB = 0x00;            // bit7~6(debounce clock), bit1~0=P01~00 debounce
+ 345   1              P0   = 0x00;            // port initial value
+ 346   1      
+ 347   1              P1IO = 0xF0;            // direction
+ 348   1              P1PU = 0x0F;            // pullup
+ 349   1              P1OD = 0x00;            // open drain
+ 350   1              P1DB = 0x00;            // P17~10 debounce
+ 351   1              P1   = 0x00;            // port initial value
+ 352   1      
+ 353   1              P2IO = 0xFF;            // direction
+ 354   1              P2PU = 0x00;            // pullup
+ 355   1              P2OD = 0x00;            // open drain
+ 356   1              P2   = 0x00;            // port initial value
+ 357   1      
+ 358   1              P3IO = 0xFF;            // direction
+ 359   1              P3PU = 0x00;            // pullup
+ 360   1              P3OD = 0x00;            // open drain
+ 361   1              P3   = 0x00;            // port initial value
+ 362   1      
+ 363   1              P4IO = 0xFF;            // direction
+ 364   1              P4PU = 0x00;            // pullup
+C51 COMPILER V9.00   MAIN                                                                  11/24/2018 11:14:26 PAGE 7   
+
+ 365   1              P4OD = 0x00;            // open drain
+ 366   1              P4   = 0x00;            // port initial value
+ 367   1      
+ 368   1              P5IO = 0x5F;            // direction
+ 369   1              P5PU = 0x00;            // pullup
+ 370   1              P5OD = 0x00;            // open drain
+ 371   1              P5   = 0x00;            // port initial value
+ 372   1      
+ 373   1              P6IO = 0xF1;            // direction
+ 374   1              P6PU = 0x00;            // pullup
+ 375   1              P6OD = 0x00;            // open drain
+ 376   1              P6   = 0x00;            // port initial value
+ 377   1      
+ 378   1              // Set port functions
+ 379   1              P0FSR = 0x02;           // P0 selection//开启buze
+ 380   1              P2FSR = 0x00;           // P2 selection
+ 381   1              P3FSR = 0x00;           // P3 selection
+ 382   1              P4FSR = 0x00;           // P4 selection
+ 383   1              P5FSRH = 0x18;          // P5 selection High
+ 384   1              P5FSRL = 0x00;          // P5 selection Low
+ 385   1              P6FSR = 0x0C;           // P6 selection//开启Xin和Xout
+ 386   1      }
+ 387          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    507    ----
+   CODE SIZE        =    607    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

@@ -421,6 +421,11 @@
               <FileType>1</FileType>
               <FilePath>.\App_User\Source\PWM.c</FilePath>
             </File>
+            <File>
+              <FileName>system_sleep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App_User\Source\system_sleep.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

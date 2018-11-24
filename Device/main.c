@@ -17,6 +17,7 @@ void main()
 	cli();          	// disable INT. during peripheral setting
 	port_init();    	// initialize ports
 	clock_init();   	// initialize operation clock
+	BUZ_init();     	// initialize Buzzer
 	LCD_init();     	// initialize LCD
 	Timer0_init();  	// initialize Timer0
 	Timer3_init();  	// initialize Timer3
@@ -31,7 +32,7 @@ void main()
 						//main函数(这里是app_main函数)的第一句话才把看门狗打开】
 						//参考网址：http://blog.sina.com.cn/s/blog_69d693150101ddk6.html
 						//所以把看门狗打开放在了PowerON_Reset()函数中
-	WT_init();      	// initialize Watch timer
+	//WT_init();      	// initialize Watch timer
 	sei();          	// enable INT.
 	
 	// TODO: add your main code here
@@ -103,13 +104,15 @@ void INT_Timer3() interrupt 16
 {
 	// Timer3 interrupt
 	// TODO: add your code here
-
+	LED_Deive();
 }
 
 void INT_WT() interrupt 20
 {
 	// Watch timer interrupt
 	// TODO: add your code here
+	//0.5s进来一次
+	
 	gbHalfSecond=(!gbHalfSecond);
 	if(gbHalfSecond)
 	{
@@ -128,7 +131,19 @@ void INT_WT() interrupt 20
 				}
 			}
 		}
+//		if(++gRTC_Minute>59)//这里把分钟提到和秒一样的等级，是测试用，可以缩短测试时间时的时间
+//		{
+//			gRTC_Minute=0;
+//			if(++gRTC_Hour>23)
+//			{
+//				gRTC_Hour=0;
+//				gRTC_Week<<=1;
+//				if(gRTC_Week==0x80)//如果移位之后等于0x80，说明是第8次移位，这时候就是
+//					gRTC_Week=0x01;//周一，所以赋值为0x01。
+//			}
+//		}
 	}
+	gblcd_dot=gbHalfSecond;
 }
 
 //======================================================
@@ -142,6 +157,20 @@ unsigned char UART_read()
 	while(!(UARTST & 0x20));	// wait
 	dat = UARTDR;   	// read
 	return	dat;
+}
+
+void BUZ_OnOff(unsigned char On)
+{
+	// Buzzer ON(On=1) / OFF(On=0)
+	BUZCR = (On)? (BUZCR | 1) : (BUZCR & (~1));	// ON / OFF
+}
+
+void BUZ_init()
+{
+	// initialize Buzzer
+	// Frequency (Hz) = 1000.000000
+	BUZCR = 0x00;   	// clock source
+	BUZDR = 0xF9;   	// count value
 }
 
 void LCD_init()
@@ -226,19 +255,30 @@ void WDT_init()
 	WDT_clear();
 }
 
+/*关闭WT中断，要显示2s，不能让RTC走动*/
+void WT_Def_Init()
+{
+	// initialize Watch timer
+	WTCR = 0x00;    	// setting
+	WTDR = 0x00;    	// set duty
+	WTDR = 0x00;    	// clear WT
+	IE3 &= ~0x04;    	// Enable WT interrupt
+}
+
 void WT_init()
 {
 	// initialize Watch timer
-	WTCR = 0x80;    	// setting
+	WTCR = 0x88;    	// setting//0.5s
 	WTDR = 0x01;    	// set duty
-	WTDR = 0x81;    	// clear WT
+	WTDR = 0x80;    	// clear WT
 	IE3 |= 0x04;    	// Enable WT interrupt
 }
 
 void clock_init()
 {
 	// internal RC clock (16.000000MHz)
-	OSCCR = 0x28;   	// Set Int. OSC
+	//OSCCR = 0x29;   	// Set Int. OSC
+	OSCCR = (IRCS_16MHZ | IRC_EN | (1 << SCLKE));
 	SCCR  = 0x00;    	// Use Int. OSC
 //	// external clock//外部时钟源配置
 //	OSCCR = 0x0A;   	// Enable int. 1MHz and Ext. OSC
@@ -299,7 +339,7 @@ void port_init()
 	//  51 : P11      in  
 	//  52 : P12      in  
 	P0IO = 0xF6;    	// direction
-	P0PU = 0x00;    	// pullup
+	P0PU = 0x01;    	// pullup
 	P0OD = 0x00;    	// open drain
 	P0DB = 0x00;    	// bit7~6(debounce clock), bit1~0=P01~00 debounce
 	P0   = 0x00;    	// port initial value
@@ -336,12 +376,12 @@ void port_init()
 	P6   = 0x00;    	// port initial value
 
 	// Set port functions
-	P0FSR = 0x00;   	// P0 selection
+	P0FSR = 0x02;   	// P0 selection//开启buze
 	P2FSR = 0x00;   	// P2 selection
 	P3FSR = 0x00;   	// P3 selection
 	P4FSR = 0x00;   	// P4 selection
 	P5FSRH = 0x18;  	// P5 selection High
 	P5FSRL = 0x00;  	// P5 selection Low
-	P6FSR = 0x0C;   	// P6 selection
+	P6FSR = 0x0C;   	// P6 selection//开启Xin和Xout
 }
 

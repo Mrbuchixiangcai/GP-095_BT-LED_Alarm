@@ -10,7 +10,7 @@
 /************************/
 /*宏定义macro definition*/
 /************************/
-#define UART1_LEN_BUFFER 8
+#define UART1_LEN_BUFFER 10
 
 /*************************/
 /*类型定义byte definition*/
@@ -25,14 +25,23 @@ typedef enum
 enum
 {
 	BT_NONE    = 0,
+	BT_PAIR       ,//配对//8字符
+	BT_LINK_BACK  ,//回连
+	
+	BT_PLAY       ,//播放//9字符
 	BT_PAUSE      ,//暂停
-	BT_PLAY       ,//播放
+	BT_PLAY_PAUSE ,//播放/暂停
 	BT_PREV       ,//上一曲
 	BT_NEXT       ,//下一曲
-	BT_PAIR       ,//配对
-	BT_LINK_BACK  ,//回连
-	BT_POWER_DOWN ,//关机
+	BT_IQ		  ,//查询状态
 	BT_DISCONN    ,//断开连接
+	BT_QUERY_VOL  ,//获取音量值
+	
+	BT_POWER_DOWN ,//10//关机//10字符
+	BT_SDO		  ,//TF卡插入告诉蓝牙
+	BT_SDF		  ,//TF卡拔出告诉蓝牙
+	BT_TF_CARD	  ,//切换到TF卡模式
+	BT_MODE		  ,//从TF卡模式切回蓝牙模式
 	BT_VOL	      ,//音量
 };
 
@@ -86,11 +95,12 @@ extern MUSIC_MODE_TypeDef Music_Mode_TypeDef;
 /************************************/
 extern bit Flag_BT_work;
 extern bit Flag_BT_Connect;//蓝牙连接标志位
-extern bit Flag_BT_Play;   //蓝牙播放,1是在播放，0是在暂停(停止)
+extern uint8_t Flag_BT_Play;   //蓝牙播放,1是在播放，0是在暂停(停止)
 extern bit Flag_BT_Pause;  //暂停
 extern bit Flag_UART1_RX_Finish_A;
 extern bit Flag_UART1_RX_Finish_B;
 extern bit Flag_UART_ReceiveBuffer_A_B;
+extern bit Flag_BT_TF_Play;//蓝牙TF卡播放模式，1正在播放，0是在暂停(停止)
 /*************************************/
 /*外部调用_变量定义variable definition*/
 /*************************************/
@@ -109,7 +119,7 @@ extern uint8_t  idata uart1_ReceiveBuffer_B[UART1_LEN_BUFFER];
 /**************************************/
 /*外部调用_函数声明Function declaration*/
 /**************************************/
-
+void BT_Send_CMD(uint8_t cmd);
 /*************************************/
 /*外部调用_函数定义function definetion*/
 /*************************************/

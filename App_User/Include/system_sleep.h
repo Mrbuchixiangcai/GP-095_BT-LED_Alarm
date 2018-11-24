@@ -1,8 +1,8 @@
 /**********************************/
 /*头文件定义header file definition*/
 /**********************************/
-#ifndef __PWM_H__
-#define __PWM_H__
+#ifndef __SYSTEM_SLEEP_H__
+#define __SYSTEM_SLEEP_H__
 
 /*******************/
 /*头文件header file*/
@@ -16,7 +16,10 @@
 /*************************/
 /*类型定义byte definition*/
 /*************************/
-
+enum
+{
+	CRYL_32768 = 0,
+};
 /****************************/
 /*标志位定义flags definetion*/
 /****************************/
@@ -32,8 +35,7 @@
 /******************************/
 /*函数声明Function declaration*/
 /******************************/
-void LED_Deive(void);
-void TF_Check(void);
+void CheckDC(void);
 /*****************************/
 /*函数定义function definetion*/
 /*****************************/
@@ -68,7 +70,9 @@ void TF_Check(void);
 
 
 
+
 #endif
+
 
 
 

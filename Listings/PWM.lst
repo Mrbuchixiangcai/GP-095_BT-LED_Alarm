@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   PWM                                                                   11/19/2018 17:35:23 PAGE 1   
+C51 COMPILER V9.00   PWM                                                                   11/24/2018 10:48:16 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE PWM
@@ -12,7 +12,7 @@ line level    source
    2          /*头文件header file*/
    3          /*******************/
    4          #include "app_main.h"
-   5          
+   5          #include "led_drive.h"
    6          /************************/
    7          /*宏定义macro definition*/
    8          /************************/
@@ -28,65 +28,200 @@ line level    source
   18          /*****************************/
   19          /*变量定义variable definition*/
   20          /*****************************/
-  21          uint8_t  val;
-  22          uint8_t  cur_Val;
-  23          uint8_t  user_Val;
-  24          uint8_t  sum_Val;
+  21          uint8_t  value;
+  22          uint8_t  cur_Value;
+  23          uint8_t  user_Value;
+  24          uint8_t  sum_Value;
   25          uint8_t  light_Brightness;//亮度
-  26          /**************************/
-  27          /*数组定义array definition*/
+  26          uint8_t  cntBT_BTTF_Switchover;//切换tf卡和蓝牙连接时间隔50ms发送两条命令，
+  27          uint16_t  cntJustPower_Delay;//用作上电延时计数5s
   28          /**************************/
-  29          
-  30          /******************************/
-  31          /*函数声明Function declaration*/
+  29          /*数组定义array definition*/
+  30          /**************************/
+  31          
   32          /******************************/
-  33          
-  34          /*****************************/
-  35          /*函数定义function definetion*/
+  33          /*函数声明Function declaration*/
+  34          /******************************/
+  35          
   36          /*****************************/
-  37          /*******************************************************************************
-  38          * 函数原型：
-  39          * 输入参数：
-  40          * 输出参数：
-  41          * 函数功能：
-  42          * 返回值说明：
-  43          * 创建日期：
-  44          * 创建人：
-  45          * 修改日期
-  46          * 修改人：
-  47          * 第N次修改：
-  48          * 修改原因：
-  49          * 备注：
-  50          *******************************************************************************/
-  51          void LED_Deive(void)
-  52          {
-  53   1              //if(--val==0)
-  54   1                      
-C51 COMPILER V9.00   PWM                                                                   11/19/2018 17:35:23 PAGE 2   
+  37          /*函数定义function definetion*/
+  38          /*****************************/
+  39          /*******************************************************************************
+  40          * 函数原型：
+  41          * 输入参数：
+  42          * 输出参数：
+  43          * 函数功能：
+  44          * 返回值说明：
+  45          * 创建日期：
+  46          * 创建人：
+  47          * 修改日期
+  48          * 修改人：
+  49          * 第N次修改：
+  50          * 修改原因：
+  51          * 备注：
+  52          *******************************************************************************/
+  53          void LED_Deive(void)
+  54          {
+C51 COMPILER V9.00   PWM                                                                   11/24/2018 10:48:16 PAGE 2   
 
-  55   1      }
-  56          
-  57          
-  58          
-  59          
-  60          
-  61          
-  62          
-  63          
-  64          
-  65          
-  66          
-  67          
-  68          
-  69          
+  55   1          if (--value == 0)
+  56   1          {
+  57   2              _SET_1B(0);
+  58   2              _SET_1C(0);
+  59   2              _SET_2A(0);
+  60   2              _SET_2B(0);
+  61   2              _SET_2C(0);
+  62   2              _SET_2D(0);
+  63   2              _SET_2E(0);
+  64   2              _SET_2F(0);
+  65   2              _SET_2G(0);
+  66   2              _SET_3A(0);
+  67   2              _SET_3B(0);
+  68   2              _SET_3C(0);
+  69   2              _SET_3D(0);
+  70   2              _SET_3E(0);
+  71   2              _SET_3F(0);
+  72   2              _SET_3G(0);
+  73   2              _SET_4A(0);
+  74   2              _SET_4B(0);
+  75   2              _SET_4C(0);
+  76   2              _SET_4D(0);
+  77   2              _SET_4E(0);
+  78   2              _SET_4F(0);
+  79   2              _SET_4G(0);
+  80   2              _SET_APM(0);
+  81   2              _SET_AL(0);
+  82   2              _SET_COL1(0);
+  83   2              _SET_COL2(0);
+  84   2              _SET_BT_BLUE(0);
+  85   2                      _SET_BT_RED(0);
+  86   2          }
+  87   1          if(--sum_Value==0)
+  88   1          {
+  89   2              if(LED_Brightness_TypeDef == LED_LOW)
+  90   2              {
+  91   3                              
+  92   3                value=100;
+  93   3              }
+  94   2              else if (LED_Brightness_TypeDef == LED_MEDIUM)
+  95   2              {
+  96   3                  value = 175;
+  97   3              }
+  98   2              else if (LED_Brightness_TypeDef == LED_HIGH)
+  99   2              {
+ 100   3                  value = 255;
+ 101   3              }
+ 102   2              if (value)
+ 103   2              {
+ 104   3                  _SET_1B(Flag_SET_1B);
+ 105   3                  _SET_1C(Flag_SET_1C);
+ 106   3                  _SET_2A(Flag_SET_2A);
+ 107   3                  _SET_2B(Flag_SET_2B);
+ 108   3                  _SET_2C(Flag_SET_2C);
+ 109   3                  _SET_2D(Flag_SET_2D);
+ 110   3                  _SET_2E(Flag_SET_2E);
+ 111   3                  _SET_2F(Flag_SET_2F);
+ 112   3                  _SET_2G(Flag_SET_2G);
+ 113   3                  _SET_3A(Flag_SET_3A);
+ 114   3                  _SET_3B(Flag_SET_3B);
+ 115   3                  _SET_3C(Flag_SET_3C);
+ 116   3                  _SET_3D(Flag_SET_3D);
+C51 COMPILER V9.00   PWM                                                                   11/24/2018 10:48:16 PAGE 3   
+
+ 117   3                  _SET_3E(Flag_SET_3E);
+ 118   3                  _SET_3F(Flag_SET_3F);
+ 119   3                  _SET_3G(Flag_SET_3G);
+ 120   3                  _SET_4A(Flag_SET_4A);
+ 121   3                  _SET_4B(Flag_SET_4B);
+ 122   3                  _SET_4C(Flag_SET_4C);
+ 123   3                  _SET_4D(Flag_SET_4D);
+ 124   3                  _SET_4E(Flag_SET_4E);
+ 125   3                  _SET_4F(Flag_SET_4F);
+ 126   3                  _SET_4G(Flag_SET_4G);
+ 127   3                  _SET_APM(Flag_SET_APM);
+ 128   3                  _SET_AL(Flag_SET_AL);
+ 129   3                  _SET_COL1(Flag_SET_COL1);
+ 130   3                  _SET_COL2(Flag_SET_COL2);
+ 131   3                              _SET_BT_BLUE(Flag_SET_BT_BLUE);
+ 132   3                              _SET_BT_RED(Flag_SET_BT_RED);
+ 133   3              }
+ 134   2          }
+ 135   1      }
+ 136          
+ 137          /*******************************************************************************
+ 138          * 函数原型：
+ 139          * 输入参数：
+ 140          * 输出参数：
+ 141          * 函数功能：
+ 142          * 返回值说明：
+ 143          * 创建日期：
+ 144          * 创建人：
+ 145          * 修改日期
+ 146          * 修改人：
+ 147          * 第N次修改：
+ 148          * 修改原因：
+ 149          * 备注：
+ 150          *******************************************************************************/
+ 151          void TF_Check(void)
+ 152          {
+ 153   1              cntJustPower_Delay++;
+ 154   1              if(cntJustPower_Delay<500)//5s，这里上电延迟5s
+ 155   1                      return;
+ 156   1              cntJustPower_Delay=500;
+ 157   1              if((TF_CARD_DET())==0)//为0说明插入了TF卡
+ 158   1              {
+ 159   2                      if(Music_Mode_TypeDef == MUSIC_BT)
+ 160   2                      {
+ 161   3                              //Music_Mode_TypeDef=MUSIC_TF;
+ 162   3                              bt_cmd=BT_SDO;//告诉蓝牙TF卡插入
+ 163   3                              //BT_Send_CMD(BT_TF_CARD);//切换到TF卡模式
+ 164   3                              cntBT_BTTF_Switchover++;
+ 165   3                              if(cntBT_BTTF_Switchover>=5)//50ms//BT_TF_CARD和BT_SDO两个命令间隔30ms发送
+ 166   3                              {
+ 167   4                                      cntBT_BTTF_Switchover=0;
+ 168   4                                      Music_Mode_TypeDef=MUSIC_TF;
+ 169   4                                      bt_cmd=BT_TF_CARD;//切换到TF卡模式
+ 170   4                              }
+ 171   3                      }
+ 172   2              }
+ 173   1              else
+ 174   1              {
+ 175   2                      if(Music_Mode_TypeDef == MUSIC_TF)//转为蓝牙连接没有tf卡模式只进来一次，因为要发送数据，不能一直发送
+ 176   2                      {
+ 177   3                              //Music_Mode_TypeDef=MUSIC_BT;
+ 178   3                              bt_cmd=BT_SDF;//告诉蓝牙TF卡拨出
+C51 COMPILER V9.00   PWM                                                                   11/24/2018 10:48:16 PAGE 4   
+
+ 179   3                              //BT_Send_CMD(BT_MODE);//切换回蓝牙模式
+ 180   3                              cntBT_BTTF_Switchover++;
+ 181   3                              if(cntBT_BTTF_Switchover>=5)//50ms//BT_TF_CARD和BT_SDO两个命令间隔30ms发送
+ 182   3                              {
+ 183   4                                      cntBT_BTTF_Switchover=0;
+ 184   4                                      Music_Mode_TypeDef=MUSIC_BT;
+ 185   4                                      bt_cmd=BT_MODE;//切换回蓝牙模式
+ 186   4                              }
+ 187   3                      }
+ 188   2              }
+ 189   1      }
+ 190          
+ 191          
+ 192          
+ 193          
+ 194          
+ 195          
+ 196          
+ 197          
+ 198          
+ 199          
+ 200          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =      1    ----
+   CODE SIZE        =    539    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      5    ----
+   DATA SIZE        =      8    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
